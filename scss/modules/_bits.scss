@@ -1,0 +1,28 @@
+@import '../utils/index';
+.bits {
+    &__header {
+        @include header;
+    }
+    >*+* {
+        margin-top: $element-spacing;
+    }
+    &__users {
+        display: inline-block;
+    }
+    &__bits-record {
+        @include simple-list-item;
+        margin: 0.1rem;
+        width: auto;
+        >*+* {
+            margin-left: $element-spacing;
+        }
+    }
+    &__user {
+        font-weight: bolder;
+    }
+    &__amount {
+        &:after {
+            content: "¢";
+        }
+    }
+}

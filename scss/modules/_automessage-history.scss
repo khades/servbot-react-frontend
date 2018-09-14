@@ -1,0 +1,38 @@
+@import '../utils/index';
+.automessage-history {
+    >*+* {
+        margin-top: $element-spacing;
+    }
+    &__line {
+        display: inline-flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    color:black;
+    background:white;
+    @include mshadow;
+    padding: $element-spacing;
+    flex-wrap: wrap;
+    &__duration-limit {
+        @include prepend-svg("../../svg/time.svg",1rem, black);
+    }
+    &__message-limit {
+        @include prepend-svg("../../svg/message-typing.svg",1rem, black);
+    }
+    &__date {
+        color: $color-grey;
+    }
+    &__message {
+        @include prepend-svg("../../svg/message.svg",1rem, black);
+    }
+    &__game {
+        @include prepend-svg("../../svg/media-play.svg",1rem, black);
+    }
+    &__user {
+        color: $color-main;
+        @include simple-tooltip;
+    }
+}

@@ -1,0 +1,27 @@
+@import '../utils/index';
+.user-bits {
+    &__header {
+        @include header;
+    }
+    >*+* {
+        margin-top: $element-spacing;
+    }
+    &__history {
+        @include simple-list-item;
+        justify-content: space-between;
+        &--positive::before {
+            content: "+";
+        }
+    }
+    &__change {
+        &--positive::before {
+            content: "+";
+        }
+    }
+    &__history-right {
+        display: flex;
+        >*+* {
+            margin-left: $element-spacing;
+        }
+    }
+}

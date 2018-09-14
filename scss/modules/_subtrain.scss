@@ -1,0 +1,9 @@
+@import '../utils/index';
+.subtrain  {
+    > * + * {
+        margin-top: $container-spacing;
+    }
+    &__header {
+        @include header-nm;
+    }
+}

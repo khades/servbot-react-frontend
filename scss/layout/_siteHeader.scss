@@ -1,0 +1,20 @@
+@import '../utils/index';
+
+#siteHeader {
+  background-color: $background-main-color;
+  margin: auto;
+  position: fixed;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 3;
+  top: 0;
+  @include mshadow;
+ // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  //border-bottom: 1px solid     #3254a8;
+
+  @include breakpoint($desktop-width) {
+    display:none;
+//    padding-left: 15em;
+  }
+}

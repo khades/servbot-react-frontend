@@ -1,0 +1,46 @@
+@import '../utils/index';
+.roulette {
+    margin-top: $content-spacing;
+    height: 200px;
+    overflow: hidden;
+    &__items {
+        width: auto;
+        margin-left: calc(50% - 100px);
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        transform: translateX(0);
+        display: inline-flex;
+        flex-direction: row;
+    }
+    &__item-footer {
+        font-weight: bolder;
+        font-size: 1rem;
+        max-width: 100%;
+        white-space: normal;
+        overflow: hidden;
+        text-align: center;
+    }
+    &__item-header {
+        font-size: 0.9rem;
+    }
+    &__item {
+        background-color: black;
+        color: white;
+        width: 200px;
+        height: 200px;
+        border: 1px solid white;
+        justify-content: center;
+        align-items: center;
+        display: inline-flex;
+        flex-direction: column;
+        padding: 1rem;
+        &--lost {
+            background-color: grey;
+            transition: all 0.5s ease-in-out;
+        }
+        &--won {
+            background-color: red;
+            transition: all 1s ease-in-out;
+        }
+    }
+}

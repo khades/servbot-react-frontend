@@ -1,0 +1,26 @@
+@import '../utils/index';
+.songrequests-library-item {
+    @include mshadow;
+    width: 100%;
+    padding: $element-spacing;
+    background: white;
+    &__header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &__title{ 
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+            color: $color-main;
+            cursor: pointer;
+        }
+    }
+    &__ban-issuer {
+        color:$color-grey;
+    }
+    >*+* {
+        margin-top: $element-spacing;
+    }
+}

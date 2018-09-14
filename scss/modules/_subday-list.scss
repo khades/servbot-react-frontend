@@ -1,0 +1,42 @@
+@import '../utils/index';
+.subday-list {
+    >*+* {
+        margin-top: $container-spacing;
+    }
+    &__hgroup {
+        @include stretchedflex;
+    }
+    &__header {
+        @include header-nm;
+    }
+    &__item {
+        @include simple-list-item();
+        flex-wrap: no-wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        &+& {
+            margin-top: $element-spacing;
+        }
+    }
+    &__create {
+        >*+* {
+            margin-top: $container-spacing;
+        }
+    }
+    &__name {
+        &--is-active {
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+    }
+    &__list {
+        @include prepend-svg("../../svg/th-list.svg", 1rem, #fff);
+    }
+    &__add {
+        @include prepend-svg("../../svg/plus.svg", 1.2rem, white);
+
+    }
+    &__date {
+        @include prepend-svg("../../svg/time.svg", 1.2rem, white);
+    }
+}

@@ -1,0 +1,15 @@
+@mixin simple-list-item() {
+    width: 100%;
+    color: black;
+
+    background: white;
+    padding: $element-spacing;
+
+    @include mshadow;
+
+
+
+    width: 100%;
+    display: inline-flex;
+
+}

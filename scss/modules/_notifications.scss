@@ -1,0 +1,87 @@
+@import '../utils/_index.scss';
+@keyframes notification-shown {
+    0% {
+        margin-top: 0;
+        opacity: 0;
+        height: auto;
+        padding: $element-spacing;
+    }
+    20% {
+        margin-top: $element-spacing;
+        opacity: 0;
+        height: auto;
+        padding: $element-spacing;
+        transform: translateX(100%);
+    }
+    100% {
+        margin-top: $element-spacing;
+        opacity: 1;
+        height: auto;
+        padding: $element-spacing;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes notification-hidden {
+    0% {
+        margin-top: $element-spacing;
+        opacity: 1;
+        height: auto;
+        padding: $element-spacing;
+        transform: translateX(0%);
+    }
+    80% {
+        margin-top: $element-spacing;
+        opacity: 0;
+        height: auto;
+        padding: $element-spacing;
+        transform: translateX(100%);
+    }
+    100% {
+        margin-top: 0;
+        opacity: 0;
+        height: 0;
+        padding: 0;
+    }
+}
+
+.notifications {
+    position: fixed;
+    bottom: $element-spacing;
+    right: $element-spacing;
+    left: $element-spacing;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 10;
+    @include breakpoint(320px) {
+        width: 300px;
+        left: auto;
+    }
+    &__item {
+        &--hidden {
+            animation-name: notification-hidden;
+            animation-duration: 0.3s;
+            margin-top: 0;
+            opacity: 0;
+            height: 0;
+            padding: 0;
+        }
+        opacity: 1;
+        animation-name: notification-shown;
+        animation-duration: 0.3s;
+        margin-top: $element-spacing;
+        height: auto;
+        padding: $element-spacing;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 3px;
+        text-shadow: 1px 1px 0 black;
+        background:rgba(0,0,0,0.8);
+        // background-color: $background-main-color;
+        color: white;
+    }
+}

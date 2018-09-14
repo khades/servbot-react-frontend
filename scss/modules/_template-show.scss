@@ -1,0 +1,43 @@
+@import '../utils/index';
+.template-show {
+    >*+* {
+        margin-top: $content-spacing;
+    }
+    &__block {
+        >*+* {
+            margin-top: $element-spacing;
+        }
+    }
+    .control-group {
+        margin-top: $container-spacing;
+
+    }
+    &__original-body {
+        margin-top:$element-spacing;
+        color: $color-grey;
+    }
+    &__buttons {
+        @include autoflex;
+    }
+    &__header-nm {
+        @include header-nm;
+    }
+
+    &__header {
+        @include header;
+    }
+    &__hgroup {
+        @include stretchedflex;
+    }
+    &__buttons {
+        margin-top: $container-spacing;
+
+    }
+    &__history {
+        >*+* {
+            margin-top: $element-spacing;
+        }
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,27 @@
+table {
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
+  border-spacing: 0px;
+  border-width: 1px 1px 1px 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+td,
+th {
+  padding: 0.5em 1em;
+  text-align: left;
+  border: 1px solid #cbcbcb;
+  border-width: 0 0 0 1px;
+}
+
+thead {
+  background-color: #e0e0e0;
+  color: #000;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+tr:nth-child(2n-1) td {
+  background-color: #f2f2f2
+}

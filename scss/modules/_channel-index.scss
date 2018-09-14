@@ -1,0 +1,31 @@
+@import '../utils/index';
+.channel-index {
+    >*+* {
+        margin-top: $element-spacing;
+    }
+    &__hgroup {
+        &+* {
+            margin-top: $content-spacing;
+
+        }
+    }
+    &__header {
+        @include header-nm;
+    }
+    &__mod-channels {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: -0.1rem;
+        margin-right: -0.1rem;
+        &>a {
+            @include button;
+            margin: 0.2rem;
+      
+        }
+    }
+    .control-group label {
+        font-size: 1.17rem;
+        font-weight:bolder;
+    }
+}

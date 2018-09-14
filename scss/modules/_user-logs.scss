@@ -1,0 +1,84 @@
+@import '../utils/index';
+.user-logs {
+    >*+* {
+        margin-top: $content-spacing;
+
+    }
+    &__block {
+        >*+* {
+            margin-top: $element-spacing;
+        }
+    }
+
+    &__header,
+    &__bans-header {
+        @include header;
+        & + * {
+            $container-spacing: 1.2rem;
+        }
+    }
+    &__ban-item {
+        width: 100%;
+
+        background: white;
+        padding: $element-spacing;
+
+        @include mshadow;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &__ban-date {
+        color:$color-grey;
+    }
+    &__ban-type,&__history__ban {
+        display: flex;
+        flex-direction: column;
+        >*+* {
+            margin-top: $element-spacing;
+        }
+    }
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  
+    &__bans {
+        >*+* {
+            margin-top: $element-spacing;
+        }
+    }
+    &__history {
+        // & + & {
+        //     border-top: 1px grey solid;
+        // }
+        width: 100%;
+
+         background: white;
+
+         @include mshadow;
+
+        padding: $element-spacing;
+        display: flex;
+        flex-direction: column;
+        &__date {
+           color:$color-grey;
+        }
+        &__message-body {
+            margin-top:$element-spacing;
+        }
+        &__timeout,
+      
+        &__username {
+            color: $color-main;
+
+        }
+        &__row {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    &__ban-reason {
+        font-weight: bolder;
+
+    }
+}

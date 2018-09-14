@@ -1,0 +1,70 @@
+@import '../utils/index';
+
+
+.headerContent {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  color: $background-color;
+  min-height: 2.85em;
+
+  &__profile-image {
+    max-height: 32px;
+    border-radius: 50%;
+    border: 1px white;
+    margin-left: 0.5em;
+  }
+  &__menu-button-container {
+    display: inline-flex;
+  }
+  &__right {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    select {
+      padding: 0.2rem !important;
+      background-color: $background-main-color;
+      border: 0px solid grey;
+      border-radius:0px;
+      box-shadow: unset;
+      color:white;
+      text-decoration-line: underline;
+      font-weight: bolder;
+     
+    }
+  }
+  &__menu-button {
+    transition: background-color 150ms linear;
+    min-width: 2.85em;
+    background: svg-load("../svg/th-menu.svg", fill=#fff);
+    background-size: 1.6em;
+    background-repeat: no-repeat;
+    background-position: center;
+    >span {
+      font-size: 1.6em;
+      margin-top: -3px;
+    }
+    &:hover {
+      background-color: $color-blue;
+    }
+    &__menu-shown {
+      background-color: $color-main;
+    }
+    display: inline-flex;
+    justify-content: center;
+    align-items:center;
+    @include breakpoint($desktop-width) {
+      display: none;
+    }
+  }
+  &__profile-info {
+    min-height: 2.85em;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    margin-right: 0.5em;
+  }
+}

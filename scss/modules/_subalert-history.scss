@@ -1,0 +1,79 @@
+@import '../utils/index';
+.subalert-history {
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    color: black;
+    background: white;
+    border-radius: 0.1em;
+    @include mshadow;
+    padding: $element-spacing;
+    flex-wrap: wrap;
+    >*+* {
+        margin-top: $element-spacing;
+    }
+    &__label {
+        font-weight: bolder;
+    
+    }
+    // &__follower {
+    //     border-left: 2px solid salmon;
+    //     padding-left: $element-spacing;
+    // }
+    // &__prime {
+    //     >.subalert-history__label {
+    //         color: yellow;
+    //     }
+    //     border-left: 2px solid yellow;
+    // }
+    // &__five {
+    //     >.subalert-history__label {
+    //         color: greenyellow;
+    //     }
+    //     border-left: 2px solid greenyellow;
+    // }
+    // &__ten {
+    //     >.subalert-history__label {
+    //         color: orange;
+    //     }
+    //     border-left: 2px solid orange;
+    // }
+    // &__twenty-five {
+    //     >.subalert-history__label {
+    //         color: cyan;
+    //     }
+    //     border-left: 2px solid cyan;
+    // }
+    &__prime,
+    &__five,
+    &__ten,
+    &__twenty-five {
+        display: inline-flex;
+        flex-direction: column;
+    }
+    &__date {
+        color: $color-grey;
+    }
+    &__row {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    // &__body {
+    //     @include prepend-svg("../../svg/message.svg");
+    // }
+    &__user {
+        color: $color-main;
+        @include simple-tooltip;
+    }
+    &__repeat-body {
+        @include prepend-svg("../../svg/refresh.svg", 1rem, black);
+    }
+    &__sub-message {
+        @include prepend-svg("../../svg/message.svg",1rem, black);
+    }
+    &__resub-message {
+        @include prepend-svg("../../svg/message-typing.svg",1rem, black);
+    }
+}

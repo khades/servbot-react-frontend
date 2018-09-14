@@ -1,0 +1,12 @@
+node_modules
+bower_components
+dist/app.js
+dist/app.js.map
+dist/style.css
+dist/style.css.map
+config.js
+yarn.lock
+package-lock.json
+config.ts
+yarn-error.log
+.vscode

@@ -1,0 +1,37 @@
+@import '../utils/index';
+.subalert-show {
+    >*+* {
+        margin-top: $container-spacing;
+    }
+    &__header {
+        margin-top: $content-spacing;
+        @include header;
+    }
+    &__block {
+        &+& {
+            margin-top: $content-spacing;
+        }
+        >*+* {
+            margin-top: $container-spacing;
+        }
+    }
+    &__headernm {
+        @include header-nm;
+    }
+    &__history {
+        >*+* {
+            margin-top: $element-spacing;
+        }
+        display: flex;
+        flex-direction: column;
+    }
+    &__repeat-body>label {
+        @include prepend-svg("../../svg/refresh.svg", 1.2rem, black);
+    }
+    &__sub-message>label {
+        @include prepend-svg("../../svg/message.svg", 1.2rem, black);
+    }
+    &__resub-message>label {
+        @include prepend-svg("../../svg/message-typing.svg", 1.2rem, black);
+    }
+}

@@ -1,0 +1,20 @@
+@import '../utils/index';
+.multiinput {
+    display: flex;
+    flex-direction: column;
+    &__row {
+        width: 100%;
+        display:inline-flex;
+        > input {
+            flex-grow:2;
+        }
+    }
+    &__remove { 
+        @include button;
+        height: 2.25rem;
+        border-radius:0px;
+    }
+    > * + * {
+        margin-top: $element-spacing;
+    }
+}

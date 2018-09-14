@@ -1,0 +1,42 @@
+@import '../utils/index';
+.template-list {
+    >*+* {
+        margin-top: $element-spacing;
+    }
+    display: flex;
+    flex-direction: column;
+    &__hgroup {
+        @include stretchedflex;
+    }
+    &__header-buttons {
+        @include autoflex;
+    }
+    &__header-button {
+        &--list {
+            @include prepend-svg("../svg/th-list.svg", 1rem, #fff);
+        }
+        &--create {
+            @include prepend-svg("../svg/plus.svg", 1rem, #fff);
+        }
+        @include button;
+    }
+
+    &__goto-command {
+        width: 100%;
+        display: block;
+        @include breakpoint($desktop-width) {
+            width: auto;
+        }
+    }
+    &__container {
+        >*+* {
+            margin-top: $element-spacing;
+        }
+        display: inline-flex;
+        flex-wrap: wrap;
+    }
+    &__header {
+        @include header-nm;
+        line-height: 2.25rem;
+    }
+}

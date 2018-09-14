@@ -1,0 +1,61 @@
+@import '../utils/index';
+.mustashe {
+    //   background-color: $color-grey;
+    // padding-left: 0.15em;
+    // padding-right: 0.15em;
+    border-radius: 2px; // margin-left: 0.15em; //   text-shadow: 1px 1px 0 #f0f0f0;
+    // margin-right: 0.15em;
+    &__end-if {
+        &:after {
+            margin-left: 0.15em;
+            content: "}";
+            font-weight: bolder;
+        }
+    }
+    &__start-if-true {
+        margin-left: 0.15em;
+     //   margin-right: 0.15em;
+        color: $color-main;
+        font-weight: bolder;
+        &:before {
+            margin-left: 0.15em;
+            content: "If ";
+            font-weight: bolder;
+            color: black;
+        }
+        &:after {
+            margin-left: 0.15em;
+            margin-right: 0.15em;
+            content: "{";
+            font-weight: bolder;
+            color: black;
+        }
+    }
+    &__start-if-false {
+        color: $color-main;
+        font-weight: bolder;
+        margin-left: 0.15em;
+     //   margin-right: 0.15em;
+        &:before {
+            margin-left: 0.15em;
+            content: "If not ";
+            font-weight: bolder;
+            color: black;
+        }
+        &:after {
+            margin-left: 0.15em;
+            margin-right: 0.15em;
+            content: "{";
+            font-weight: bolder;
+            color: black;
+        }
+    }
+    &__variable {
+        padding-left: 0.15em;
+        padding-right: 0.15em;
+        color: $color-main;
+        font-weight: bolder;
+        margin-left: 0.15em;
+        margin-right: 0.15em;
+    }
+}

@@ -1,0 +1,99 @@
+@import '../utils/index';
+.subday {
+    >*+* {
+        margin-top: $content-spacing;
+    }
+    &__header{
+        @include header-nm();
+    }
+    &__subheader {
+        font-size: 1.2rem;
+        font-weight: bolder;
+        & + * {
+            margin-top: $element-spacing;
+        }
+    }
+    &__winner-user--sub:before, &__vote-user--sub:before{
+        content:"★";
+        margin-right: 0.35rem;
+    }
+    &__winner {
+        @include simple-list-item();
+        flex-wrap: no-wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        &+& {
+            margin-top: $element-spacing;
+        }
+        >* {
+            align-self: center;
+        }
+        align-content: center;
+        >button {
+        
+                margin-left: $element-spacing;
+        
+        }
+    }
+    &__roulette {
+        margin-top: $content-spacing;
+        height: 200px;
+        overflow: hidden;
+        &--hidden {
+            height: 0;
+            margin-top: 0;
+        }
+    }
+    &__roulette-items {
+        width: auto;
+        white-space: nowrap;
+        margin-left: calc(50% - 100px);
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        transform: translateX(0);
+    }
+    &__roulette-item-game {
+        font-weight: bolder;
+        font-size: 1.2rem;
+    }
+    &__roulette-item-header {
+        font-size: 0.9rem;
+    }
+    &__roulette-item {
+        background-color: black;
+        color: white;
+        width: 198px;
+        height: 198px;
+        border: 1px solid white;
+        justify-content: center;
+        align-items: center;
+        display: inline-flex;
+        flex-direction: column;
+        padding: 1rem;
+        &--lost {
+            background-color: grey;
+            transition: all 0.5s ease-in-out;
+        }
+        &--won {
+            background-color: red;
+            transition: all 1s ease-in-out;
+        }
+    }
+    &__winner-user {
+        flex-grow: 2;
+    }
+
+    &__buttons {
+        margin-top: $container-spacing;
+        @include autoflex;
+    }
+    &__vote {
+        @include simple-list-item();
+        flex-wrap: no-wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        &+& {
+            margin-top: $element-spacing;
+        }
+    }
+}

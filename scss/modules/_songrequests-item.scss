@@ -1,0 +1,71 @@
+@import '../utils/index';
+.songrequests-item {
+    >*+* {
+        margin-top: $element-spacing;
+    }
+    @include simple-list-item;
+    flex-direction: column;
+    &__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &__user {
+        color: $color-grey;
+    }
+    &__order {
+        color: $color-grey;
+        margin-right: 0.3rem;
+
+    }
+    &__buttons {
+        display: inline-flex;
+        flex-direction: row;
+      //  justify-content: space-between;
+        >* {
+            white-space: nowrap;
+            
+            // flex-grow: 2;
+        }
+        >*+* {
+            margin-left: $element-spacing;
+        }
+        input {
+            flex-grow: 2;
+            width: 5rem;
+        }
+    }
+    &__play-button {
+        @include button;
+        @include prepend-svg("../../svg/media-play.svg", 1.4rem, white,0px);
+
+    }
+    &__title {
+        transition: color 0.2s ease-in-out;
+        &:hover {
+            cursor: pointer;
+
+            color: $color-main;
+        }
+    }
+    &__play-next-button {
+        @include button;
+        @include prepend-svg("../../svg/arrow-up-thick.svg", 1.4rem, white,0px);
+
+    }
+    &__delete-button {
+        @include button;
+        @include prepend-svg("../../svg/times.svg", 1.4rem, white,0px);
+
+    }
+    &__pause-button {
+        @include button;
+        @include prepend-svg("../../svg/media-pause.svg", 1.4rem, white,0px);
+   
+    }
+    &__ban-button {
+        @include button;
+        @include prepend-svg("../../svg/cancel.svg", 1.4rem, white,0px);
+   
+    }
+}

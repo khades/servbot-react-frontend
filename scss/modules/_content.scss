@@ -1,0 +1,7 @@
+@import '../utils/index';
+.content {
+  margin: auto;
+  >* {
+    padding: 1em;
+  }
+}

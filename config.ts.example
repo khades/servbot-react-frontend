@@ -1,0 +1,6 @@
+var config = {
+    appUrl: "http://localhost:8080",
+    defaultLang:"ru"
+}
+
+export default config;

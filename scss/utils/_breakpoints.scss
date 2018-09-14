@@ -1,0 +1,44 @@
+@import 'variables';
+@import '../../node_modules/breakpoint-sass/stylesheets/_breakpoint.scss';
+@mixin autoflex {
+  display: flex;
+  flex-direction: column;
+  >*+* {
+    margin-top: $element-spacing;
+    @include breakpoint($desktop-width) {
+      margin-top: 0px;
+      margin-left: $element-spacing;
+    }
+  }
+  @include breakpoint($desktop-width) {
+    flex-direction: row;
+  }
+}
+
+@mixin stretchedflex {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  >*+* {
+    margin-top: $element-spacing;
+    @include breakpoint($desktop-width) {
+      margin-top: 0px;
+    }
+  }
+  @include breakpoint($desktop-width) {
+    flex-direction: row;
+  }
+}
+
+@mixin flexlist {
+  >*+* {
+    margin-top: $element-spacing;
+  }
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin mshadow {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 3px 8px 0 rgba(0,0,0,0.11);
+}

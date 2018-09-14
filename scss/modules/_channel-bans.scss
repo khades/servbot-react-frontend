@@ -1,0 +1,37 @@
+@import '../utils/index';
+.channel-bans {
+    >*+* {
+        margin-top: $element-spacing;
+    }
+    &__page-header{
+        @include header;
+    }
+    &__item {
+        @include simple-list-item();
+        flex-wrap: no-wrap;
+        flex-direction: column;
+
+
+
+        >*+* {
+            margin-top: $element-spacing;
+        }
+        justify-content: space-between;
+        &+& {
+            margin-top: $element-spacing;
+        }
+    }
+    &__header {
+        flex-direction: row;
+        justify-content: space-between;
+        display: inline-flex;
+        
+    }
+  
+    &__name {
+        color: $color-main;
+    }
+    &__date {
+        color: $color-grey;
+    }
+}
