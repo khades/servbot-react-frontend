@@ -1,6 +1,7 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
 import API from "../api/api";
 import States from "../utils/states";
+import actiontypes from "./actiontypes";
 
 export function* getChannelName(action: any) {
     const state = yield select();
@@ -13,7 +14,7 @@ export function* getChannelName(action: any) {
         payload: {
             channelNameID: action.payload.channelNameID,
         },
-        type: "CHANNELNAME/LOADING",
+        type: actiontypes.LOADING,
     });
 
     try {
@@ -23,18 +24,18 @@ export function* getChannelName(action: any) {
                 channelName,
                 channelNameID: action.payload.channelNameID,
             },
-            type: "CHANNELNAME/READY",
+            type: actiontypes.READY,
         });
     } catch (err) {
         yield put({
             payload: {
                 channelNameID: action.payload.channelNameID,
             },
-            type: "CHANNELNAME/NOTFOUND",
+            type: actiontypes.NOTFOUND,
         });
     }
 }
 
 export default function* saga() {
-    yield takeLatest("CHANNELNAME/GET", getChannelName);
+    yield takeLatest(actiontypes.GET, getChannelName);
 }

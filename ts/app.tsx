@@ -14,8 +14,6 @@ const store = createStore(
 );
 sagaMiddleware.run(sagas);
 
-const action = type => store.dispatch({ type });
-
 class App extends Component {
     constructor(props) {
         super(props);

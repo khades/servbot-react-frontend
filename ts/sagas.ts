@@ -1,7 +1,10 @@
 import { all } from "redux-saga/effects";
-import channelNameSaga from "./channelName/saga";
+import channelName from "./channelName/saga";
+import userInfo from "./userinfo/saga";
+
 export default function* rootSaga() {
     yield all([
-        channelNameSaga,
+        channelName,
+        userInfo,
     ]);
 }

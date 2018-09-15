@@ -1,11 +1,11 @@
 enum States {
-    LOADING = 0,
-    READY,
-    NOTAUTHORIZED,
-    FORBIDDEN,
-    ERROR,
-    NOTFOUND,
-    UPDATING,
+    LOADING = "LOADING",
+    READY = "READY",
+    NOTAUTHORIZED = "NOTAUTHORIZED",
+    FORBIDDEN = "FORBIDDEN",
+    ERROR = "ERROR",
+    NOTFOUND = "NOTFOUND",
+    UPDATING = "UPDATING",
 }
 
 export default States;

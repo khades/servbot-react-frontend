@@ -1,8 +1,9 @@
+import actiontypes from "./actiontypes";
 import States from "../utils/states";
 
-export const reducer = (state = {}, action: any) => {
+const reducer = (state = {}, action: any) => {
     switch (action.type) {
-        case "CHANNELNAME/READY":
+        case actiontypes.READY:
             return {
                 ...state, ...{
                     [action.payload.channelNameID]: {
@@ -11,7 +12,7 @@ export const reducer = (state = {}, action: any) => {
                     },
                 },
             };
-        case "CHANNELNAME/NOTFOUND":
+        case actiontypes.NOTFOUND:
             return {
                 ...state, ...{
                     [action.payload.channelNameID]: {
@@ -19,7 +20,7 @@ export const reducer = (state = {}, action: any) => {
                     },
                 },
             };
-        case "CHANNELNAME/LOADING":
+        case actiontypes.LOADING:
             return {
                 ...state, ...{
                     [action.payload.channelNameID]:
@@ -30,3 +31,5 @@ export const reducer = (state = {}, action: any) => {
             return state;
     }
 };
+
+export default reducer;

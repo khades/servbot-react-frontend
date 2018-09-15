@@ -6,16 +6,10 @@ describe("ChannelName reducer", () => {
     it("Should properly accept LOADING event", () => {
         expect(reducer({},
             {
-                payload: {
-                    channelNameID: "1",
-                },
                 type: actiontypes.LOADING,
             })).toEqual({
-                1: {
-                    state: States.LOADING,
-                },
+                state: States.LOADING,
             });
-
     });
     it("Should properly accept READY event", () => {
         expect(reducer({},
@@ -26,25 +20,18 @@ describe("ChannelName reducer", () => {
                 },
                 type: actiontypes.READY,
             })).toEqual({
-                1: {
-                    name: "2",
-                    state: States.READY,
-                },
+                channelName: "2",
+                channelNameID: "1",
+                state: States.READY,
             });
-
     });
     it("Should properly upgrade state from LOADING event to READY", () => {
         let reducerState = reducer({},
             {
-                payload: {
-                    channelNameID: "1",
-                },
                 type: actiontypes.LOADING,
             });
         expect(reducerState).toEqual({
-            1: {
-                state: States.LOADING,
-            },
+            state: States.LOADING,
         });
         reducerState = reducer(reducerState, {
             payload: {
@@ -54,35 +41,25 @@ describe("ChannelName reducer", () => {
             type: actiontypes.READY,
         });
         expect(reducerState).toEqual({
-            1: {
-                name: "2",
-                state: States.READY,
-            },
+            channelName: "2",
+            channelNameID: "1",
+            state: States.READY,
         });
     });
-    it("Should properly upgrade state from LOADING event to NOTFOUND", () => {
+    it("Should properly upgrade state from LOADING event to NOTAUTHORIZED", () => {
         let reducerState = reducer({},
             {
-                payload: {
-                    channelNameID: "1",
-                },
                 type: actiontypes.LOADING,
             });
         expect(reducerState).toEqual({
-            1: {
-                state: States.LOADING,
-            },
+            state: States.LOADING,
         });
         reducerState = reducer(reducerState, {
-            payload: {
-                channelNameID: "1",
-            },
-            type: actiontypes.NOTFOUND,
+            type: actiontypes.NOTAUTHORIZED,
         });
         expect(reducerState).toEqual({
-            1: {
-                state: States.NOTFOUND,
-            },
+            state: States.NOTAUTHORIZED,
         });
+
     });
 });

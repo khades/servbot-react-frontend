@@ -1,7 +1,8 @@
 import { call, put, select } from "redux-saga/effects";
 import API from "../api/api";
-import { getChannelName } from "./saga";
 import States from "../utils/states";
+import actiontypes from "./actiontypes";
+import { getChannelName } from "./saga";
 
 describe("ChannelName sagas", () => {
 
@@ -13,7 +14,7 @@ describe("ChannelName sagas", () => {
             payload: {
                 channelNameID: "1",
             },
-            type: "CHANNELNAME/LOADING",
+            type: actiontypes.LOADING,
         }));
         expect(saga.next().value).toEqual(call(API.getChannelName, "1"));
         expect(saga.next("world").value).toEqual(put({
@@ -21,7 +22,7 @@ describe("ChannelName sagas", () => {
                 channelName: "world",
                 channelNameID: "1",
             },
-            type: "CHANNELNAME/READY",
+            type: actiontypes.READY,
         }));
         expect(saga.next().done).toBe(true);
     });
@@ -34,7 +35,7 @@ describe("ChannelName sagas", () => {
             payload: {
                 channelNameID: "1",
             },
-            type: "CHANNELNAME/LOADING",
+            type: actiontypes.LOADING,
         }));
 
         expect(saga.next().value).toEqual(call(API.getChannelName, "1"));
@@ -42,7 +43,7 @@ describe("ChannelName sagas", () => {
             payload: {
                 channelNameID: "1",
             },
-            type: "CHANNELNAME/NOTFOUND",
+            type: actiontypes.NOTFOUND,
         }));
         expect(saga.next().done).toBe(true);
     });
@@ -59,7 +60,7 @@ describe("ChannelName sagas", () => {
             payload: {
                 channelNameID: "1",
             },
-            type: "CHANNELNAME/LOADING",
+            type: actiontypes.LOADING,
         }));
         expect(saga.next().value).toEqual(call(API.getChannelName, "1"));
         expect(saga.next("world").value).toEqual(put({
@@ -67,7 +68,7 @@ describe("ChannelName sagas", () => {
                 channelName: "world",
                 channelNameID: "1",
             },
-            type: "CHANNELNAME/READY",
+            type: actiontypes.READY,
         }));
         expect(saga.next().done).toBe(true);
     });
