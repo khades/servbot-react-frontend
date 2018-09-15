@@ -20,7 +20,7 @@ describe("ChannelName sagas", () => {
             type: "CHANNELNAME/LOADING",
         }));
         expect(saga.next().value).toEqual(call(API.getChannelName, "1"));
-        expect(saga.next().value).toEqual(put({
+        expect(saga.next("world").value).toEqual(put({
             payload: {
                 channelName: "world",
                 channelNameID: "1",
@@ -43,7 +43,7 @@ describe("ChannelName sagas", () => {
         }));
 
         expect(saga.next().value).toEqual(call(API.getChannelName, "1"));
-        expect(saga.next().value).toEqual(put({
+        expect(saga.throw("Testing Error").value).toEqual(put({
             payload: {
                 channelNameID: "1",
             },
@@ -67,7 +67,7 @@ describe("ChannelName sagas", () => {
             type: "CHANNELNAME/LOADING",
         }));
         expect(saga.next().value).toEqual(call(API.getChannelName, "1"));
-        expect(saga.next().value).toEqual(put({
+        expect(saga.next("world").value).toEqual(put({
             payload: {
                 channelName: "world",
                 channelNameID: "1",
