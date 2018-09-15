@@ -1,0 +1,55 @@
+@import '../utils/index';
+
+.site-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &__menu {
+        top: 2.85em;
+        background-color: $background-main-color;
+        margin-left: auto;
+        margin-right: auto;
+
+        position: fixed;
+        width: 100vw;
+        bottom: 0;
+        left: 0;
+
+        @include breakpoint($desktop-width) {
+            width: 15em;
+            top: 0;
+        }
+
+        //   top: 0;
+        overflow: hidden;
+        z-index: 5;
+        transition: transform 150ms linear;
+
+        &.hidden {
+            transform: translateX(-100%);
+
+            @include breakpoint($desktop-width) {
+                transform: translateX(0%);
+            }
+        }
+
+        &.shown {
+            transform: translateX(0%);
+        }
+    }
+    &__content {
+        padding-top: 2.85em; // padding-bottom: 6.5em;
+        padding-left: 0em;
+      
+        z-index: 1;
+        max-height: 100vh;
+        overflow-y: auto;
+        @include breakpoint($desktop-width) {
+          padding-top: 0px;
+          padding-left: 15em;
+        }
+    }
+}

@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter, Link, Route } from "react-router-dom";
-import { createStore, applyMiddleware  } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import reducers from "./reducers";
 import sagas from "./sagas";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
+import "../scss/index.scss";
 
+import SideMenu from "./sidenav/components";
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 const store = createStore(
     reducers,
@@ -20,13 +22,13 @@ class App extends Component {
     }
     public render() {
         return (
-            <div>
-                <nav>
-                    <Link to="/dashboard">Dashboard</Link>
-                </nav>
-                <div>
-                    <Route path="/dashboard" />
+            <div className="site-container">
+                <div className="site-container__menu">
+                    <SideMenu />
                 </div>
+                <section className="site-container__content">
+                        <Route path="/dashboard" />
+                </section>
             </div>);
     }
 }
