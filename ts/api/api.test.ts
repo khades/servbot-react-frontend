@@ -2,17 +2,13 @@ import API from "./api";
 import { fetchMock } from "fetch-mock";
 import States from "../utils/states";
 
-describe("ChannelName api", () => {
+describe("ChannelName API", () => {
     afterEach(() => {
         fetchMock.restore();
     });
     it("Should return proper channelname by id", () => {
         fetchMock.get("*", { channel: "world" });
         expect(API.getChannelName("1")).resolves.toBe("world");
-    });
-    it("Should not return proper channelname by id if network error thrown", () => {
-        fetchMock.get("*", { throws: { message: "network error" } });
-        expect(API.getChannelName("1")).rejects.toEqual(Error(States.NOTFOUND));
     });
     it("Should properly reject if status code is 401", () => {
         fetchMock.get("*", { status: 401 });
@@ -34,6 +30,20 @@ describe("API auth", () => {
     });
     it("Should properly reject if network error thrown", () => {
         fetchMock.get("*", { throws: { message: "network error" } });
-        expect(API.getChannelName("1")).rejects.toEqual(Error(States.NOTFOUND));
+        expect(API.auth("1")).rejects.toEqual(Error(States.OFFLINE));
+    });
+});
+
+describe("UserInfo API", () => {
+    afterEach(() => {
+        fetchMock.restore();
+    });
+    it("Should properly resolve if status code is not 401", () => {
+        fetchMock.get("*", { channel: "world" });
+        expect(API.getUserInfo()).resolves.toEqual({ channel: "world" });
+    });
+    it("Should properly reject if status code is 401", () => {
+        fetchMock.get("*", { status: 401 });
+        expect(API.getUserInfo()).rejects.toEqual(Error(States.NOTAUTHORIZED));
     });
 });

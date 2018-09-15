@@ -11,7 +11,11 @@ function url(uri: string): string {
 
 export default {
     simpleauth(...params) {
-        return fetch(...params).then((result) => {
+        return fetch(...params).catch((error) => {
+            if (error.message === "network error") {
+                throw Error(States.OFFLINE);
+            }
+        }).then((result) => {
             if (result.status === 401) {
                 throw Error(States.NOTAUTHORIZED);
             } else {
@@ -20,7 +24,7 @@ export default {
         });
     },
     auth(...params) {
-        return this.simpleauth(...params)
+        return this.simpleauth(...params);
     },
     getTime() {
         return fetch(url("api/time"))
@@ -40,7 +44,6 @@ export default {
                     throw Error(States.NOTFOUND);
                 }
             })
-            .then((result) => result.channel)
-            .catch((error) => { throw Error(States.NOTFOUND); });
+            .then((result) => result.channel);
     },
 };

@@ -6,6 +6,7 @@ enum States {
     ERROR = "ERROR",
     NOTFOUND = "NOTFOUND",
     UPDATING = "UPDATING",
+    OFFLINE = "OFFLINE",
 }
 
 export default States;
