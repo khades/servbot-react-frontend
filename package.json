@@ -53,7 +53,7 @@
     "build-dev": "node ./node_modules/webpack/bin/webpack.js",
     "build": "node ./node_modules/webpack/bin/webpack.js --config ./webpack-prod.config.js",
     "start": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/jest-cli/bin/jest.js"
   },
   "author": "khades",
   "license": "ISC"
