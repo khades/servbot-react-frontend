@@ -15,7 +15,7 @@ export enum Routes {
     REDIRECT,
 }
 
-export const setRoute = (route) => ({
+export const setRoute = (route: any) => ({
     route,
     type: "SET_ROUTE",
 });

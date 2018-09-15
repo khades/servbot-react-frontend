@@ -10,13 +10,11 @@ import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 const store = createStore(
     reducers,
-    applyMiddleware(sagaMiddleware)
-)
-sagaMiddleware.run(sagas)
+    applyMiddleware(sagaMiddleware),
+);
+sagaMiddleware.run(sagas);
 
-
-const action = type => store.dispatch({ type })
-
+// const action = type: any => store.dispatch({ type });
 
 class App extends Component {
     constructor(props) {

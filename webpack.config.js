@@ -4,7 +4,7 @@ var webpack = require("webpack")
 module.exports = {
     entry: {
         app: [
-            "./js/app.tsx"
+            "./ts/app.tsx"
         ]
     },
     devServer: {
