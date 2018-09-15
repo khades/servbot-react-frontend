@@ -11,11 +11,19 @@ export const reducer = (state = {}, action: any) => {
                     },
                 },
             };
+        case "CHANNELNAME/NOTFOUND":
+            return {
+                ...state, ...{
+                    [action.payload.channelNameID]: {
+                        state: States.NOTFOUND,
+                    },
+                },
+            };
         case "CHANNELNAME/LOADING":
             return {
                 ...state, ...{
                     [action.payload.channelNameID]:
-                        { name: "LOADING", state: States.LOADING },
+                        { state: States.LOADING },
                 },
             };
         default:

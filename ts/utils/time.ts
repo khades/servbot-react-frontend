@@ -1,8 +1,9 @@
-import appUrl from "./appUrl";
+import API from "../api";
+
 const time = {
     getTime() {
-        fetch(appUrl("api/time"))
-        .then((response) => response.json())
+        API.getTime()
+
         .then((response) => {
             const serverDate = new Date(response.time);
             const localDate = new Date();
