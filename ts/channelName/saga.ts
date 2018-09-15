@@ -1,5 +1,5 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import API from "../api";
+import API from "../api/api";
 import States from "../utils/states";
 
 export function* getChannelName(action: any) {

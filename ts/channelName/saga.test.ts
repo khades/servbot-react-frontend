@@ -1,15 +1,11 @@
-import { fetchMock } from "fetch-mock";
 import { call, put, select } from "redux-saga/effects";
-import API from "../api";
+import API from "../api/api";
 import { getChannelName } from "./saga";
 import States from "../utils/states";
 
 describe("ChannelName sagas", () => {
-    afterEach(() => {
-        fetchMock.restore();
-    });
+
     it("Should do proper steps if store is empty", () => {
-        fetchMock.get("*", { channel: "world" });
 
         const saga = getChannelName({ payload: { channelNameID: "1" } });
         expect(saga.next().value).toEqual(select());
@@ -30,7 +26,6 @@ describe("ChannelName sagas", () => {
         expect(saga.next().done).toBe(true);
     });
     it("Should do proper steps if store is empty with error", () => {
-        fetchMock.get("*", { throws: { message: "network error" } });
 
         const saga = getChannelName({ payload: { channelNameID: "1" } });
         expect(saga.next().value).toEqual(select());
@@ -55,7 +50,7 @@ describe("ChannelName sagas", () => {
     it("Should do proper steps if store is not empty", () => {
         const saga = getChannelName({ payload: { channelNameID: "1" } });
         expect(saga.next().value).toEqual(select());
-        expect(saga.next({ 1: {  state: States.READY, value: "something"} }).done).toBe(true);
+        expect(saga.next({ 1: { state: States.READY, value: "something" } }).done).toBe(true);
     });
     it("Should do proper steps if store is not empty, but element is not found yet", () => {
         const saga = getChannelName({ payload: { channelNameID: "1" } });

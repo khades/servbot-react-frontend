@@ -1,4 +1,4 @@
-import config from "../config";
+import config from "../../config";
 function url(uri: string): string {
     if (uri.startsWith("/")) {
         return config.appUrl + uri;
