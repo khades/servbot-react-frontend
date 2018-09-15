@@ -9,6 +9,7 @@ import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import "../scss/index.scss";
 
 import SideMenu from "./sidenav/components";
+import Header from "./header/component";
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 const store = createStore(
     reducers,
@@ -16,7 +17,7 @@ const store = createStore(
 );
 sagaMiddleware.run(sagas);
 
-class App extends Component {
+class Page extends Component {
     constructor(props) {
         super(props);
     }
@@ -26,8 +27,16 @@ class App extends Component {
                 <div className="site-container__menu">
                     <SideMenu />
                 </div>
+                <div className="site-container__header">
+                    <Header />
+                </div>
                 <section className="site-container__content">
+                    <BrowserRouter>
+
                         <Route path="/dashboard" />
+
+                    </BrowserRouter>
+
                 </section>
             </div>);
     }
@@ -35,8 +44,7 @@ class App extends Component {
 
 ReactDOM.render((
     <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+        <Page />
+
     </Provider>
 ), document.body);

@@ -40,16 +40,37 @@
             transform: translateX(0%);
         }
     }
+
     &__content {
         padding-top: 2.85em; // padding-bottom: 6.5em;
         padding-left: 0em;
-      
+
         z-index: 1;
         max-height: 100vh;
         overflow-y: auto;
+
         @include breakpoint($desktop-width) {
-          padding-top: 0px;
-          padding-left: 15em;
+            padding-top: 0px;
+            padding-left: 15em;
+        }
+    }
+
+    &__header {
+        background-color: $background-main-color;
+        margin: auto;
+        position: fixed;
+        right: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: 3;
+        top: 0;
+        @include mshadow;
+        // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        //border-bottom: 1px solid     #3254a8;
+
+        @include breakpoint($desktop-width) {
+            display: none;
+            //    padding-left: 15em;
         }
     }
 }
