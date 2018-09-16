@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import * as React from "react";
 // import { create } from "react-test-renderer";
 
-import CheckBox, { ICheckboxProps } from "./checkbox";
+import Checkbox, { ICheckboxProps } from "./checkbox";
 
 describe("Checkbox", () => {
     it("should render and have no errors", () => {
@@ -15,7 +15,7 @@ describe("Checkbox", () => {
             setValue: (value: boolean) => { startingValue = value; },
         };
         const checkbox = shallow(
-            <CheckBox {...props} />,
+            <Checkbox {...props} />,
         );
         expect(checkbox.find("input").length).toBeGreaterThan(0);
         expect(checkbox.find(".checkbox__errors").length).toBe(0);
@@ -32,7 +32,7 @@ describe("Checkbox", () => {
             setValue: (value: boolean) => { startingValue = value; },
         };
         const checkbox = shallow(
-            <CheckBox {...props} />,
+            <Checkbox {...props} />,
         );
         expect(checkbox.find(".checkbox__errors").length).toBe(1);
         expect(checkbox.find(".checkbox__errors").text()).toBe("1, 2");
@@ -47,7 +47,7 @@ describe("Checkbox", () => {
             setValue: (value: boolean) => { startingValue = value; },
         };
         const checkbox = shallow(
-            <CheckBox {...props} />,
+            <Checkbox {...props} />,
         );
 
         checkbox.find("input").simulate("click", { currentTarget: { checked: true } });

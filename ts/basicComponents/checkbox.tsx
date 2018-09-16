@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import * as React from "react";
-// import "../../scss/modules/_checkbox.scss";
+import "../../scss/modules/_checkbox.scss";
 
 export interface ICheckboxProps {
     getValue: () => boolean;

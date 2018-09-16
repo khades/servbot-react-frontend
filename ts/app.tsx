@@ -7,7 +7,7 @@ import reducers from "./reducers";
 import sagas from "./sagas";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import "../scss/index.scss";
-import CheckBox, {ICheckboxProps} from "./basicComponents/checkbox";
+import Checkbox, {ICheckboxProps} from "./basicComponents/checkbox";
 
 import SideMenu from "./sidenav/components";
 import Header from "./header/component";
@@ -42,7 +42,7 @@ class Page extends Component {
                 <section className="site-container__content">
                     <BrowserRouter>
 
-                                                <CheckBox {...props} />
+                                                <Checkbox {...props} />
 
                     </BrowserRouter>
 
