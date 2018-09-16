@@ -1,6 +1,6 @@
 module.exports = {
-    setupFiles: ["./enzyme-test-setup.js"],
-    snapshotSerializers: ["enzyme-to-json/serializer"],
+    // setupFiles: ["./enzyme-test-setup.js"],
+    // snapshotSerializers: ["enzyme-to-json/serializer"],
     transform: {
         "^.+\\.tsx?$": "ts-jest",
         "^.+\\.jsx?$": "babel-jest"
