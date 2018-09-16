@@ -11,6 +11,10 @@ export interface ICheckboxProps {
 }
 
 export default class Checkbox extends React.Component<ICheckboxProps, {}> {
+    constructor() {
+        super();
+        this.clickButton = this.clickButton.bind(this);
+    }
     public render() {
         const inputClassname = classnames({
             "checkbox": true,
@@ -37,8 +41,8 @@ export default class Checkbox extends React.Component<ICheckboxProps, {}> {
     private renderErrors() {
         if (this.props.getErrors && this.props.getErrors().length > 0) {
             return (
-                <div className="checkbox__error">
-                    {this.props.getErrors().join(" ,")}
+                <div className="checkbox__errors">
+                    {this.props.getErrors().join(", ")}
                 </div>
             );
         }

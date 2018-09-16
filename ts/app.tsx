@@ -7,6 +7,7 @@ import reducers from "./reducers";
 import sagas from "./sagas";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import "../scss/index.scss";
+import CheckBox, {ICheckboxProps} from "./basicComponents/checkbox";
 
 import SideMenu from "./sidenav/components";
 import Header from "./header/component";
@@ -16,6 +17,14 @@ const store = createStore(
     applyMiddleware(sagaMiddleware),
 );
 sagaMiddleware.run(sagas);
+let startingValue: boolean = false;
+const props: ICheckboxProps = {
+    getValue: () => startingValue,
+    getErrors: () => ["1", "2"],
+    getLabel: () => "LABEL",
+    id: "LABEL",
+    setValue: (value: boolean) => { startingValue = value; },
+};
 
 class Page extends Component {
     constructor(props) {
@@ -33,7 +42,7 @@ class Page extends Component {
                 <section className="site-container__content">
                     <BrowserRouter>
 
-                        <Route path="/dashboard" />
+                                                <CheckBox {...props} />
 
                     </BrowserRouter>
 
