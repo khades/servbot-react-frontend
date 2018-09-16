@@ -1,9 +1,11 @@
 module.exports = {
-    "transform": {
+    setupFiles: ["./enzyme-test-setup.js"],
+
+    transform: {
         "^.+\\.tsx?$": "ts-jest",
         "^.+\\.jsx?$": "babel-jest"
     },
-    "moduleFileExtensions": [
+    moduleFileExtensions: [
         "ts",
         "tsx",
         "js",
@@ -11,5 +13,5 @@ module.exports = {
         "json",
         "node"
     ],
-    testMatch: ["**/?(*.)+(spec|test).ts?(x)"],
+    testMatch: ["**/?(*.)+(spec|test).ts?(x)"]
 }

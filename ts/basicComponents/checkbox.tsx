@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import * as React from "react";
-import "../../scss/modules/_checkbox.scss";
+// import "../../scss/modules/_checkbox.scss";
 
 export interface ICheckboxProps {
     getValue: () => boolean;
@@ -11,7 +11,6 @@ export interface ICheckboxProps {
 }
 
 export default class Checkbox extends React.Component<ICheckboxProps, {}> {
-
     public render() {
         const inputClassname = classnames({
             "checkbox": true,
@@ -22,7 +21,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, {}> {
                 <input
                     type="checkbox"
                     id={this.props.id}
-                    checked={this.props.getValue()}
+                    defaultChecked={this.props.getValue()}
                     onClick={this.clickButton}
                 />
                 <label htmlFor={this.props.id}>
@@ -33,7 +32,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, {}> {
         );
     }
     private clickButton(event: React.MouseEvent<HTMLInputElement>): void {
-        this.props.setValue(event.target.checked);
+        this.props.setValue(event.currentTarget.checked);
     }
     private renderErrors() {
         if (this.props.getErrors && this.props.getErrors().length > 0) {
