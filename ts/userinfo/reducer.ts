@@ -1,15 +1,20 @@
+import { IUserInfo } from "../api/types";
 import States from "../utils/states";
-import actiontypes from "./actiontypes";
+import UserInfoAction, { actiontypes } from "./actions";
 
-const initialState = {
+export interface IUserInfoState extends IUserInfo {
+    state: States;
+}
+
+const initialState: IUserInfoState = {
     avatarUrl: "",
     modChannels: [],
-    state: States.LOADING,
+    state: States.NOTINITIATED,
     userID: "",
     username: "",
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state: IUserInfoState = initialState, action: UserInfoAction) => {
     switch (action.type) {
         case actiontypes.READY:
             return { ...action.payload, ...{ state: States.READY } };

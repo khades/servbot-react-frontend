@@ -6,28 +6,28 @@ import {
     IChannelNameReadyAction,
 } from "./actions";
 
-export const getChannelName = (channelNameID: string): IChannelNameGetAction => ({
+export const get = (channelNameID: string): IChannelNameGetAction => ({
     payload: {
         channelNameID,
     },
     type: actiontypes.GET,
 });
 
-export const loadingChannelName = (channelNameID: string): IChannelNameLoadingAction => ({
+export const loading = (channelNameID: string): IChannelNameLoadingAction => ({
     payload: {
         channelNameID,
     },
     type: actiontypes.LOADING,
 });
 
-export const notFoundChannelName = (channelNameID: string): IChannelNameNotFoundAction => ({
+export const notFound = (channelNameID: string): IChannelNameNotFoundAction => ({
     payload: {
         channelNameID,
     },
     type: actiontypes.NOTFOUND,
 });
 
-export const readyChannelName = (channelNameID: string, channelName: string): IChannelNameReadyAction => ({
+export const ready = (channelNameID: string, channelName: string): IChannelNameReadyAction => ({
     payload: {
         channelName,
         channelNameID,

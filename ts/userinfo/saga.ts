@@ -1,29 +1,24 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
 import API from "../api/api";
 import States from "../utils/states";
-import actiontypes from "./actiontypes";
+import * as actions from "./actioncreators";
+import { actiontypes, IUserInfoGetAction } from "./actions";
+import { IUserInfoState } from "./reducer";
 
-export function* getUserInfo() {
-    const state = yield select();
+export function* getUserInfo(action: IUserInfoGetAction) {
+    const state: IUserInfoState = yield select();
 
-    if (state.state === States.READY) {
+    if (state.state !== States.NOTINITIATED) {
         return;
     }
 
-    yield put({
-        type: actiontypes.LOADING,
-    });
+    yield put(actions.loading());
 
     try {
-        const channelName: string = yield call(API.getUserInfo);
-        yield put({
-            payload: channelName,
-            type: actiontypes.READY,
-        });
+        const userInfo: IUserInfoState = yield call(API.getUserInfo);
+        yield put(actions.ready(userInfo));
     } catch (err) {
-        yield put({
-            type: actiontypes.NOTAUTHORIZED,
-        });
+        yield put(actions.notAuthorized());
     }
 }
 

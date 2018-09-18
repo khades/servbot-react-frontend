@@ -10,6 +10,7 @@ function url(uri: string): string {
 }
 
 export default {
+    // input?: Request | string, init?: RequestInit
     simpleauth(...params) {
         return fetch(...params).catch((error) => {
             if (error.message === "network error") {

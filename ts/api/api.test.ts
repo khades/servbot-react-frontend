@@ -1,6 +1,6 @@
-import API from "./api";
 import { fetchMock } from "fetch-mock";
 import States from "../utils/states";
+import API from "./api";
 
 describe("ChannelName API", () => {
     afterEach(() => {

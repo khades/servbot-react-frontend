@@ -1,21 +1,20 @@
-import * as actions from "./actioncreators";
 import { call, put, select, takeLatest } from "redux-saga/effects";
 import API from "../api/api";
-import States from "../utils/states";
+import * as actions from "./actioncreators";
+import { actiontypes, IChannelNameGetAction } from "./actions";
 import { IChannelNameStore } from "./reducer";
-import { actiontypes, ChannelNameActions } from "./actions";
 
-export function* getChannelName(action: ChannelNameActions) {
+export function* getChannelName(action: IChannelNameGetAction) {
     const state: IChannelNameStore = yield select();
-    if (state[action.payload.channelNameID] && state[action.payload.channelNameID].state === States.READY) {
+    if (state[action.payload.channelNameID]) {
         return;
     }
-    yield put(actions.loadingChannelName(action.payload.channelNameID));
+    yield put(actions.loading(action.payload.channelNameID));
     try {
         const channelName: string = yield call(API.getChannelName, action.payload.channelNameID);
-        yield put(actions.readyChannelName(action.payload.channelNameID, channelName));
+        yield put(actions.ready(action.payload.channelNameID, channelName));
     } catch (err) {
-        yield put(actions.notFoundChannelName(action.payload.channelNameID));
+        yield put(actions.notFound(action.payload.channelNameID));
     }
 }
 

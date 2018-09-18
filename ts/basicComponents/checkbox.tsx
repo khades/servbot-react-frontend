@@ -11,8 +11,8 @@ export interface ICheckboxProps {
 }
 
 export default class Checkbox extends React.Component<ICheckboxProps, {}> {
-    constructor() {
-        super();
+    constructor(props: ICheckboxProps) {
+        super(props);
         this.clickButton = this.clickButton.bind(this);
     }
     public render() {
