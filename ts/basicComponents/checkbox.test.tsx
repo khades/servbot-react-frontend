@@ -1,8 +1,5 @@
-import { shallow } from "enzyme";
-
 import * as React from "react";
 import { create } from "react-test-renderer";
-
 import Checkbox, { ICheckboxProps } from "./checkbox";
 
 describe("Checkbox", () => {

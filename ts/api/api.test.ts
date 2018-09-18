@@ -22,7 +22,7 @@ describe("API auth", () => {
     });
     it("Should properly resolve if status code is not 401", () => {
         fetchMock.get("*", { channel: "world" });
-        expect(API.auth("1").then((res) => res.json())).resolves.toEqual({ channel: "world" });
+        expect(API.auth("1").then((res: any) => res.json())).resolves.toEqual({ channel: "world" });
     });
     it("Should properly reject if status code is 401", () => {
         fetchMock.get("*", { status: 401 });

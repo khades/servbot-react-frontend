@@ -15,7 +15,7 @@ export default {
             if (error.message === "network error") {
                 throw Error(States.OFFLINE);
             }
-        }).then((result) => {
+        }).then((result: Response) => {
             if (result.status === 401) {
                 throw Error(States.NOTAUTHORIZED);
             } else {
@@ -31,13 +31,13 @@ export default {
             .then((response) => response.json());
     },
     getUserInfo() {
-        return this.auth(url("api/user/index")).then((res) => res.json());
+        return this.auth(url("api/user/index")).then((res: Response) => res.json());
     },
     getChannelName(channelID: string): Promise<string> {
         return this.auth(
             url(`/api/channel/${channelID}/channelname`),
         )
-            .then((result) => {
+            .then((result: Response) => {
                 if (result.status === 200) {
                     return result.json();
                 } else {
