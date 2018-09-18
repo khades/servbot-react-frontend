@@ -47,9 +47,8 @@ describe("ChannelName sagas", () => {
 
     it("Should do proper reject steps if any api problems", () => {
         const saga = getUserInfo(actions.get());
-
         expect(saga.next().value).toEqual(select());
-        expect(saga.next({ type: States.NOTINITIATED }).value).toEqual(put(actions.loading()));
+        expect(saga.next({ state: States.NOTINITIATED }).value).toEqual(put(actions.loading()));
         expect(saga.next().value).toEqual(call(API.getUserInfo));
         expect(saga.throw("Testing Error").value).toEqual(put(actions.notAuthorized()));
         expect(saga.next().done).toBe(true);
