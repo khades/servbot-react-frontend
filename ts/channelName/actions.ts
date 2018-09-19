@@ -31,9 +31,8 @@ export interface IChannelNameGetAction {
         channelNameID: string;
     };
 }
-type ChannelNameActions = IChannelNameReadyAction
+
+export type ChannelNameActions = IChannelNameReadyAction
     | IChannelNameNotFoundAction
     | IChannelNameLoadingAction
     | IChannelNameGetAction;
-
-export default ChannelNameActions;

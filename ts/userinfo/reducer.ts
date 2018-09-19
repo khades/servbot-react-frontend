@@ -1,6 +1,6 @@
 import { IUserInfo } from "../api/types";
 import States from "../utils/states";
-import UserInfoAction, { actiontypes } from "./actions";
+import { actiontypes, UserInfoAction } from "./actions";
 
 export interface IUserInfoState extends IUserInfo {
     state: States;

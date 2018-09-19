@@ -8,7 +8,7 @@ import sagas from "./sagas";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import "../scss/index.scss";
 import Checkbox, {ICheckboxProps} from "./basicComponents/checkbox";
-
+import Notifications from "./notifications/container";
 import SideMenu from "./sidenav/components";
 import Header from "./header/component";
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
@@ -39,6 +39,7 @@ class Page extends Component {
                 <div className="site-container__header">
                     <Header />
                 </div>
+                <Notifications />
                 <section className="site-container__content">
                     <BrowserRouter>
 

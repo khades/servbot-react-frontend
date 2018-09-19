@@ -63,5 +63,9 @@
     "test": "node ./node_modules/jest-cli/bin/jest.js"
   },
   "author": "khades",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/react-transition-group": "^2.0.14",
+    "react-transition-group": "^2.4.0"
+  }
 }

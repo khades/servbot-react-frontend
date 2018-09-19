@@ -1,5 +1,6 @@
 export enum actiontypes {
     ADD = "NOTIFICATIONS/ADD",
+    GET = "NOTIFICATIONS/GET",
     HIDE = "NOTIFICATIONS/HIDE",
     AUTOHIDE = "NOTIFICATIONS/AUTOHIDE",
 }
@@ -27,8 +28,6 @@ export interface INotificationsAutohideAction {
     };
 }
 
-type NotificationsActions = INotificationsAddAction
+export type NotificationsActions = INotificationsAddAction
     | INotificationsHideAction
     | INotificationsAutohideAction;
-
-export default NotificationsActions;

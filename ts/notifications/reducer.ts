@@ -1,5 +1,4 @@
-import actions, { actiontypes } from "./actions";
-
+import { actiontypes, NotificationsActions } from "./actions";
 
 export interface INotification {
     args: string[];
@@ -8,8 +7,13 @@ export interface INotification {
     id: string;
     type?: string;
 }
+const initialState: INotification[] = [
+    { args: [], body: "hey", date: new Date(), id: "3" },
+    { args: [], body: "hey", date: new Date(), id: "5" },
+    { args: [], body: "hey", date: new Date(), id: "43" },
+];
 
-const reducer = (state: INotification[] = [], action: actions): INotification[] => {
+const reducer = (state: INotification[] = initialState, action?: NotificationsActions): INotification[] => {
     switch (action.type) {
         case actiontypes.ADD:
             if (action.payload.type && state.some((item) => item.type === action.payload.type)) {

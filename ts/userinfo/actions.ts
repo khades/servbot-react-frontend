@@ -20,9 +20,7 @@ export interface IUserInfoNotAuthorizedAction {
 export interface IUserInfoLoadingAction {
     type: actiontypes.LOADING;
 }
-type UserInfoAction = IUserInfoGetAction
+export  type UserInfoAction = IUserInfoGetAction
     | IUserInfoNotAuthorizedAction
     | IUserInfoReadyAction
     | IUserInfoLoadingAction;
-
-export default UserInfoAction;
