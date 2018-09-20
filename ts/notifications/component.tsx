@@ -12,28 +12,25 @@ export interface INotificationsProps {
 }
 
 export default class Notifications extends React.Component<INotificationsProps, {}> {
+    constructor(props: INotificationsProps) {
+        super(props);
+        this.generateItem = this.generateItem.bind(this);
+    }
     public render() {
-        const items = this.props.getNotifications().map((item) => {
-            const onClick = () => this.props.hideNotification(item.id);
-            return (
-                <CSSTransition classNames={{ exit: "notifications__item--hidden" }} timeout={300} key={item.id}>{
-                    (state) => (
-                        <div
-                            className="notifications__item"
-                            onClick={onClick}
-                        >
-                            {item.body}
-                        </div>
-                    )
-                }
-                </CSSTransition>
-            );
-        });
+
         return (
             <TransitionGroup className="notifications" >
-                {items}
+                {this.props.getNotifications().map(this.generateItem)}
             </TransitionGroup>
         );
     }
 
+    private generateItem(item: INotification) {
+        const onClick = () => this.props.hideNotification(item.id);
+        return (
+            <CSSTransition classNames={{ exit: "notifications__item--hidden" }} timeout={300} key={item.id}>
+                {() => <div className="notifications__item" onClick={onClick}>{item.body}</div>}
+            </CSSTransition>
+        );
+    }
 }

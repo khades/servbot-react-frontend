@@ -1,4 +1,5 @@
 @import '../utils/index';
+
 .checkbox {
     input {
         display: none;
@@ -6,13 +7,16 @@
     input:checked+label:before {
         color: black;
     }
-    &:hover label:before {
+
+    label:hover:before {
         border-color: black;
         color: $color-grey !important;
     }
+
     label {
         display: flex;
         align-items: center;
+        cursor: pointer;
         &:before {
             color: white;
             content: "\2714";
@@ -33,7 +37,14 @@
             width: 1rem;
             height: 1rem;
             border: 1px solid grey;
-            transition: border-color 0.3s ease-in-out, color 0.1s ease-in-out;
+            transition: border-color 0.3s ease-in-out, color 0.15s ease-in-out;
         }
     }
+    &--error {
+        label {
+            color: $color-error;
+            font-weight: bolder;
+        }
+    }
+
 }
