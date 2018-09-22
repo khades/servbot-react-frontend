@@ -9,11 +9,18 @@ export interface ICheckboxProps {
     id: string;
     setValue: (value: boolean) => void;
 }
-
+/**
+ *
+ *
+ * @export
+ * @class Checkbox
+ * @extends {React.Component<ICheckboxProps, {}>}
+ */
 export default class Checkbox extends React.Component<ICheckboxProps, {}> {
     constructor(props: ICheckboxProps) {
         super(props);
         this.clickButton = this.clickButton.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
     }
     public render() {
         const inputClassname = classnames({

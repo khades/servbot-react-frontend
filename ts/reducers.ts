@@ -1,15 +1,15 @@
 import { combineReducers } from "redux";
-import channelName from "./channelName/reducer";
-import notifications from "./notifications/reducer";
+import channelName, { IChannelNameStore } from "./channelName/reducer";
+import notifications, { INotification } from "./notifications/reducer";
 
 import routes from "./routes/reducers";
 
-import userInfo from "./userinfo/reducer";
+import userInfo, { IUserInfoState } from "./userinfo/reducer";
 
-export default combineReducers({
+export default combineReducers<IChannelNameStore| INotification[]| IUserInfoState>({
   channelName,
   notifications,
 
- // routes,
+  // routes,
   userInfo,
 });

@@ -1,7 +1,9 @@
 import { connect } from "react-redux";
+import { Dispatch } from "redux";
 import * as actions from "./actioncreators";
+import { NotificationsActions } from "./actions";
 import Notifications from "./component";
-import reducer from "./reducer";
+import { INotification } from "./reducer";
 
 const mapStateToProps = (state) => {
     return {
@@ -9,7 +11,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<NotificationsActions>) => {
     return {
         hideNotification: (id: string) => dispatch(actions.hide(id)),
     };

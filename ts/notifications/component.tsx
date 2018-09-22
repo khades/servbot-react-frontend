@@ -4,11 +4,12 @@ import {
     TransitionGroup,
 } from "react-transition-group";
 import "../../scss/modules/_notifications.scss";
+import { INotificationsAddAction } from "./actions";
 import { INotification } from "./reducer";
 
 export interface INotificationsProps {
     getNotifications: () => INotification[];
-    hideNotification: (id: string) => void;
+    hideNotification: (id: string) => INotificationsAddAction;
 }
 
 export default class Notifications extends React.Component<INotificationsProps, {}> {
@@ -16,8 +17,8 @@ export default class Notifications extends React.Component<INotificationsProps, 
         super(props);
         this.generateItem = this.generateItem.bind(this);
     }
-    public render() {
 
+    public render() {
         return (
             <TransitionGroup className="notifications" >
                 {this.props.getNotifications().map(this.generateItem)}

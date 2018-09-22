@@ -12,23 +12,25 @@
         margin: 2px; //  border: 1pt solid $background-main-color;
         color: $background-main-color;
         cursor: pointer;
-        &__content {
-            text-align: center;
-            min-width: 3rem;
-            padding:0.7rem 1rem 0.7rem 1rem
-        }
+       
         &:hover {
             color: $background-color;
             background: $background-main-color;
         }
-        &__selected {
+        &--selected {
             color: $background-color;
             background: $color-main !important; //    border-color: $color-main  !important;
             cursor: default;
         }
-        &__inactive {
+        &--inactive {
             background-color: white !important;
             color: darkgrey !important;
         }
+    }
+    
+    &__item-content {
+        text-align: center;
+        min-width: 3rem;
+        padding:0.7rem 1rem 0.7rem 1rem
     }
 }

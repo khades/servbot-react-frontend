@@ -15,11 +15,14 @@ describe("Checkbox", () => {
             <Checkbox {...props} />,
         ).root;
         expect(checkbox.findAll((el) => el.type === "input" && el.props.type === "checkbox").length).toBeGreaterThan(0);
+        expect(checkbox.findAll(
+            (el) => el.type === "label" && el.children && el.children[0] === "LABEL").length).toBeGreaterThan(0);
+
         expect(checkbox.findAll((el) => el.props.className === "checkbox__errors").length).toBe(0);
         expect(checkbox.findAll((el) => el.props.className === "checkbox--error").length).toBe(0);
 
     });
-    it("should render", () => {
+    it("should render and have errors", () => {
         let startingValue: boolean = false;
         const props: ICheckboxProps = {
             getErrors: () => ["1", "2"],
@@ -34,6 +37,8 @@ describe("Checkbox", () => {
         ).root;
         expect(checkbox.findAll((el) => el.props.className === "checkbox__errors").length).toBe(1);
         expect(checkbox.findAll((el) => el.props.className === "checkbox checkbox--error").length).toBe(1);
+        expect(checkbox.findAll(
+            (el) => el.type === "label" && el.children && el.children[0] === "LABEL").length).toBeGreaterThan(0);
         expect(checkbox.findAll(
             (el) => el.props.className === "checkbox__errors" && el.children && el.children[0] === "1, 2",
         ).length).toBe(1);
