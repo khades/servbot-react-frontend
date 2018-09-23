@@ -1,11 +1,10 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import * as actions from "./actioncreators";
-import { NotificationsActions } from "./actions";
 import Notifications from "./component";
-import { INotification } from "./reducer";
+import { IStore } from "../reducers";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: IStore) => {
     return {
         getNotifications: () => state.notifications,
     };

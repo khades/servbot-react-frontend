@@ -4,7 +4,7 @@ import userInfo from "./userinfo/saga";
 
 export default function* rootSaga() {
     yield all([
-         channelName,
-         userInfo,
+        channelName,
+        userInfo,
     ]);
 }

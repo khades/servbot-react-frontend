@@ -5,6 +5,7 @@ export enum actiontypes {
     GET = "USERINFO/GET",
     NOTAUTHORIZED = "USERINFO/NOTAUTHORIZED",
     LOADING = "USERINFO/LOADING",
+    SETCHANNEL = "USERINFO/SETCHANNEL",
 }
 
 export interface IUserInfoGetAction {
@@ -20,7 +21,12 @@ export interface IUserInfoNotAuthorizedAction {
 export interface IUserInfoLoadingAction {
     type: actiontypes.LOADING;
 }
-export  type UserInfoAction = IUserInfoGetAction
+export interface IUserInfoSetChannelAction {
+    type: actiontypes.SETCHANNEL;
+    payload: string;
+}
+export type UserInfoAction = IUserInfoGetAction
     | IUserInfoNotAuthorizedAction
     | IUserInfoReadyAction
-    | IUserInfoLoadingAction;
+    | IUserInfoLoadingAction
+    | IUserInfoSetChannelAction;

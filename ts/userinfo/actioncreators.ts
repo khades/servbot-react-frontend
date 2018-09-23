@@ -13,3 +13,8 @@ export const ready = (payload: IUserInfo): actions.IUserInfoReadyAction => ({
     payload,
     type: actions.actiontypes.READY,
 });
+
+export const setChannel = (payload: string): actions.IUserInfoSetChannelAction => ({
+    payload,
+    type: actions.actiontypes.SETCHANNEL,
+});
