@@ -1,12 +1,5 @@
 import classnames from "classnames";
 import * as React from "react";
-import "../../scss/modules/_paginator.scss";
-
-export interface IPaginatorProps {
-    getPages: () => number;
-    getPage: () => number;
-    setPage: (page: number) => void;
-}
 
 export interface IPaginatorState {
     lastPage: boolean;
@@ -15,8 +8,13 @@ export interface IPaginatorState {
     pages: number;
 }
 
-export default class Paginator extends React.Component<IPaginatorProps, IPaginatorState> {
+export interface IPaginatorProps {
+    getPages: () => number;
+    getPage: () => number;
+    setPage: (page: number) => void;
+}
 
+export default class Paginator extends React.Component<IPaginatorProps, IPaginatorState> {
     public static getDerivedStateFromProps(props: IPaginatorProps, state: IPaginatorState) {
         return {
             firstPage: props.getPage() === 1,
@@ -45,7 +43,10 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
         this.generateNextButtons = this.generateNextButtons.bind(this);
         this.generateButtons = this.generateButtons.bind(this);
         this.generateButton = this.generateButton.bind(this);
-
+        this.goToFirst = this.goToFirst.bind(this);
+        this.goToPrevious = this.goToPrevious.bind(this);
+        this.goToNext = this.goToNext.bind(this);
+        this.goToLast = this.goToLast.bind(this);
         this.state = {
             firstPage: props.getPage() === 1,
             lastPage: props.getPage() === props.getPages(),
@@ -83,7 +84,7 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
             this.props.setPage(value);
         };
         return (
-            <div className={classes} onClick={onclick}>
+            <div className={classes} data-value={value} key={value.toString()} onClick={onclick}>
                 <div className="paginator__item-content">
                     {value.toString()}
                 </div>
@@ -104,12 +105,17 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
 
         return (
             <React.Fragment>
-                <div className={firstButtonClasses} onClick={this.goToFirst}>
+                <div className={firstButtonClasses} data-value={"first"} key="first" onClick={this.goToFirst}>
                     <div className="paginator__item-content">
                         "❮❮"
                     </div>
                 </div>
-                <div className={prevButtonClasses} onClick={this.goToPrevious}>
+                <div
+                    className={prevButtonClasses}
+                    data-value={"prev"}
+                    key="prev"
+                    onClick={this.goToPrevious}
+                >
                     <div className="paginator__item-content">
                         "❮"
                     </div>
@@ -131,18 +137,28 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
 
         return (
             <React.Fragment>
-                <div className={nextButtonClasses} onClick={this.goToNext}>
+                <div
+                    className={nextButtonClasses}
+                    data-value={"next"}
+                    key="next"
+                    onClick={this.goToNext}
+                >
                     <div className="paginator__item-content">
                         "❯"
                     </div>
                 </div>
-                <div className={lastButtonClasses} onClick={this.goToLast}>
+                <div
+                    className={lastButtonClasses}
+                    data-value={"last"}
+                    key="last"
+                    onClick={this.goToLast}
+                >
                     <div className="paginator__item-content">
                         "❯❯"
                     </div>
                 </div>
 
-            </React.Fragment>
+            </React.Fragment >
         );
     }
 
@@ -166,7 +182,7 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
 
     private goToPrevious() {
         if (this.state.firstPage !== true) {
-            this.props.setPage(this.state.pages - 1);
+            this.props.setPage(this.state.page - 1);
         }
     }
 }

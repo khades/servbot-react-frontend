@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select should render and have no errors and no options selected 1`] = `
+<div
+  className="control-group"
+>
+  <label
+    className="control-group__label"
+    htmlFor="ID"
+  >
+    LABEL
+  </label>
+  <select
+    id="ID"
+    onChange={[Function]}
+  >
+    <option
+      disabled={true}
+      selected={true}
+      value=""
+    />
+    <option
+      selected={false}
+      value="1"
+    >
+      one
+    </option>
+    <option
+      selected={false}
+      value="2"
+    >
+      two
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Select should render and have no errors and option selected 1`] = `
+<div
+  className="control-group"
+>
+  <label
+    className="control-group__label"
+    htmlFor="ID"
+  >
+    LABEL
+  </label>
+  <select
+    id="ID"
+    onChange={[Function]}
+  >
+    <option
+      selected={true}
+      value="1"
+    >
+      one
+    </option>
+    <option
+      selected={false}
+      value="2"
+    >
+      two
+    </option>
+  </select>
+</div>
+`;

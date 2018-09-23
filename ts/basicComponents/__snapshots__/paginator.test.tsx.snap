@@ -1,0 +1,622 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paginator should properly render for page 1 and pages 2 1`] = `
+<div
+  className="paginator"
+>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value="first"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--inactive"
+    data-value="prev"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value={1}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      1
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={2}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      2
+    </div>
+  </div>
+  <div
+    className="paginator__item"
+    data-value="next"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value="last"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯❯"
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Paginator should properly render for page 1 and pages 4 1`] = `
+<div
+  className="paginator"
+>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value="first"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--inactive"
+    data-value="prev"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value={1}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      1
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={2}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      2
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={3}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      3
+    </div>
+  </div>
+  <div
+    className="paginator__item"
+    data-value="next"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value="last"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯❯"
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Paginator should properly render for page 1 and pages 14 1`] = `
+<div
+  className="paginator"
+>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value="first"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--inactive"
+    data-value="prev"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value={1}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      1
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={2}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      2
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={3}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      3
+    </div>
+  </div>
+  <div
+    className="paginator__item"
+    data-value="next"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value="last"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯❯"
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Paginator should properly render for page 3 and pages 4 1`] = `
+<div
+  className="paginator"
+>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value="first"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--inactive"
+    data-value="prev"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value={1}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      1
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={2}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      2
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={3}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      3
+    </div>
+  </div>
+  <div
+    className="paginator__item"
+    data-value="next"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value="last"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯❯"
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Paginator should properly render for page 6 and pages 14 1`] = `
+<div
+  className="paginator"
+>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value="first"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item"
+    data-value="prev"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={4}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      4
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={5}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      5
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value={6}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      6
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={7}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      7
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={8}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      8
+    </div>
+  </div>
+  <div
+    className="paginator__item"
+    data-value="next"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value="last"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯❯"
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Paginator should properly render for page 11 and pages 14 1`] = `
+<div
+  className="paginator"
+>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value="first"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item"
+    data-value="prev"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={9}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      9
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={10}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      10
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value={11}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      11
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={12}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      12
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={13}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      13
+    </div>
+  </div>
+  <div
+    className="paginator__item"
+    data-value="next"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value="last"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯❯"
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Paginator should properly render for page 14 and pages 14 1`] = `
+<div
+  className="paginator"
+>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value="first"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item"
+    data-value="prev"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❮"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={12}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      12
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop"
+    data-value={13}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      13
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value={14}
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      14
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--inactive"
+    data-value="next"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯"
+    </div>
+  </div>
+  <div
+    className="paginator__item paginator__item--desktop paginator__item--selected"
+    data-value="last"
+    onClick={[Function]}
+  >
+    <div
+      className="paginator__item-content"
+    >
+      "❯❯"
+    </div>
+  </div>
+</div>
+`;

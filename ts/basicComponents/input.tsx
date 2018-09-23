@@ -2,11 +2,11 @@ import * as React from "react";
 import ControlGroup from "./control-group";
 
 export interface IInputProps {
-    id: string;
+    getErrors?: () => string[];
     getLabel: () => string;
     getValue: () => string;
+    id: string;
     setValue: (value: string) => void;
-    getErrors?: () => string[];
 }
 
 export default class Input extends React.Component<IInputProps, {}> {

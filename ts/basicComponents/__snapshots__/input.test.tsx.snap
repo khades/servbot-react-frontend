@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input inital value should be properly set 1`] = `
+<div
+  className="control-group"
+>
+  <label
+    className="control-group__label"
+    htmlFor="ID"
+  >
+    LABEL
+  </label>
+  <input
+    defaultValue="testValue"
+    id="ID"
+    onChange={[Function]}
+  />
+</div>
+`;

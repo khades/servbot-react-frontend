@@ -6,9 +6,9 @@ describe("Input", () => {
     it("value change should work", () => {
         let inputValue = "";
         const props: IInputProps = {
-            id: "ID",
             getLabel: () => "LABEL",
             getValue: () => inputValue,
+            id: "ID",
             setValue: (value: string) => inputValue = value,
         };
 
@@ -25,15 +25,16 @@ describe("Input", () => {
     });
     it("inital value should be properly set", () => {
         const props: IInputProps = {
-            id: "ID",
             getLabel: () => "LABEL",
             getValue: () => "testValue",
+            id: "ID",
             setValue: (value: string) => value,
         };
 
         const input = create(
             <Input {...props} />,
         );
+        expect(input.toJSON()).toMatchSnapshot();
 
         const inputInstance = input.root.find((el) => el.type === "input");
         expect(inputInstance.props.defaultValue).toBe("testValue");

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should render and have errors 1`] = `
+<div
+  className="checkbox checkbox--error"
+>
+  <input
+    defaultChecked={true}
+    id="LABEL"
+    onClick={[Function]}
+    type="checkbox"
+  />
+  <label
+    htmlFor="LABEL"
+  >
+    LABEL
+  </label>
+  <div
+    className="checkbox__errors"
+  >
+    1, 2
+  </div>
+</div>
+`;
+
+exports[`Checkbox should render and have no errors 1`] = `
+<div
+  className="checkbox"
+>
+  <input
+    defaultChecked={false}
+    id="LABEL"
+    onClick={[Function]}
+    type="checkbox"
+  />
+  <label
+    htmlFor="LABEL"
+  >
+    LABEL
+  </label>
+</div>
+`;
