@@ -1,10 +1,9 @@
 import * as actions from "./actions";
 export const NotificationTimeout: number = 10000;
 
-export const add = (body: string, args: string[] = [], type?: string, date: Date = new Date()):
+export const add = (body: string, rgs: string[] = [], type?: string, date: Date = new Date()):
     actions.INotificationsAddAction => ({
         payload: {
-            args,
             body,
             date,
             type,

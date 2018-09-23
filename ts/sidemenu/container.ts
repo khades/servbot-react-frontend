@@ -1,24 +1,28 @@
 import * as actions from "./actioncreators";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import Notifications from "./component";
+import SideMenu from "./component";
 import { IStore } from "../reducers";
+import * as channelSelectors from "../userInfo/storeselectors";
 
 const mapStateToProps = (state: IStore) => {
     return {
-        getNotifications: () => state.notifications,
+        getCurrentChannel: () => state.userInfo.currentChannel,
+        getIsModOnChannel: () => channelSelectors.getIfUserIsModerator(state),
+        getMenuState: () =>  state.sideMenu.state,
+        getUserInfo: () => state.userInfo,
     };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        hideNotification: (id: string) => dispatch(actions.hide(id)),
+        hideMenu: () => dispatch(actions.hide()),
     };
 };
 
 const VisibleNotifications = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(Notifications);
+)(SideMenu);
 
 export default VisibleNotifications;

@@ -1,12 +1,15 @@
-import { call, put, select, takeLatest } from "redux-saga/effects";
+import { call, put, select, takeEvery } from "redux-saga/effects";
 import API from "../api/api";
 import * as actions from "./actioncreators";
 import { actiontypes, IChannelNameGetAction } from "./actions";
 import { IChannelNameStore } from "./reducer";
+import { IStore } from "../reducers";
 
 export function* getChannelName(action: IChannelNameGetAction) {
-    const state: IChannelNameStore = yield select();
-    if (state[action.payload.channelNameID]) {
+    const state: IStore = yield select();
+
+
+    if (state.channelName[action.payload.channelNameID]) {
         return;
     }
     yield put(actions.loading(action.payload.channelNameID));
@@ -19,5 +22,5 @@ export function* getChannelName(action: IChannelNameGetAction) {
 }
 
 export default function* saga() {
-    yield takeLatest(actiontypes.GET, getChannelName);
+    yield takeEvery(actiontypes.GET, getChannelName);
 }

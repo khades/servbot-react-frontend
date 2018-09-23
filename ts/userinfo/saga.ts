@@ -4,11 +4,12 @@ import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, IUserInfoGetAction } from "./actions";
 import { IUserInfoState } from "./reducer";
+import { IStore } from "../reducers";
 
 export function* getUserInfo(action: IUserInfoGetAction) {
-    const state: IUserInfoState = yield select();
+    const state: IStore = yield select();
 
-    if (state.state !== States.NOTINITIATED) {
+    if (state.userInfo.state !== States.NOTINITIATED) {
         return;
     }
 

@@ -8,13 +8,11 @@ export interface IStartPageProps extends IUserInfoState {
     userInfo: IUserInfoState;
     getIfUserIsMod: () => boolean;
     setCurrentChannel: (channel: string) => void;
-    getUserInfo: () => void;
 }
 
 export default class StartPage extends React.Component<IStartPageProps, {}> {
     constructor(props: IStartPageProps) {
         super(props);
-        props.getUserInfo();
         this.generateModChannels = this.generateModChannels.bind(this);
     }
     public render() {
@@ -32,10 +30,16 @@ export default class StartPage extends React.Component<IStartPageProps, {}> {
         return (
             <div className="start-page" >
                 <div className="start-page__hgroup">
-                    <div className="start-page__header">{l10n.formatString(l10n.CHANNEL_TITLE, "khadesru")}</div>
-                    <div>{l10n.formatString(l10n.YOURE_MODERATOR, "khadesru")}</div>
+                    <div className="start-page__header">
+                        {l10n.formatString(l10n.CHANNEL_TITLE, this.props.userInfo.username)}
+                    </div>
+                    <div>
+                        {l10n.formatString(l10n.YOURE_MODERATOR, "khadesru")}
+                    </div>
                 </div>
-                <h1>{l10n.AVAILABLE_CHANNELS_TO_MOD}</h1>
+                <h1>
+                    {l10n.AVAILABLE_CHANNELS_TO_MOD}
+                </h1>
                 <div className="start-page__mod-channels">
                     {this.generateModChannels()}
                 </div>

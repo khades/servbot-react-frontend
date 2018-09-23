@@ -4,50 +4,58 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import reducers from "./reducers";
-import sagas from "./sagas";
+import * as sagas from "./sagas";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import "../scss/index.scss";
 import Notifications from "./notifications/container";
-import SideMenu from "./sidenav/components";
-import Header from "./header/component";
+import SideMenu from "./sidemenu/container";
+import Header from "./header/container";
 import StartPage from "./startpage/container";
+import { createLogger } from "redux-logger";
+import channelName from "./channelName/saga";
 
+const reduxlogger = createLogger({
+    // ...options
+});
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 const store = createStore(
     reducers,
-    {},
-    applyMiddleware(sagaMiddleware),
+    applyMiddleware(reduxlogger, sagaMiddleware),
 );
 
-sagaMiddleware.run(sagas);
+sagaMiddleware.run(sagas.rootSaga);
 
-class Page extends Component<{}> {
+interface IHeaderMenuState {
+    shown: boolean;
+}
+class Page extends Component<{}, IHeaderMenuState> {
     constructor() {
         super({});
     }
     public render() {
         return (
-            <div className="site-container">
-                <div className="site-container__menu">
-                    <SideMenu />
-                </div>
-                <div className="site-container__header">
-                    <Header />
-                </div>
-                <Notifications />
-                <section className="site-container__content">
-                    <div className="content">
-                        <BrowserRouter>
-                            <StartPage />
-                        </BrowserRouter>
+            <Provider store={store}>
+
+                <div className="site-container">
+                    <div className="site-container__menu">
+                        <SideMenu />
                     </div>
-                </section>
-            </div>);
+                    <div className="site-container__header">
+                        <Header />
+                    </div>
+                    <Notifications />
+                    <section className="site-container__content">
+                        <div className="content">
+                            <StartPage />
+
+                        </div>
+                    </section>
+                </div>
+            </Provider>
+        );
     }
 }
 
 ReactDOM.render((
-    <Provider store={store}>
-        <Page />
-    </Provider>
+    <Page />
 ), document.getElementById("main"));

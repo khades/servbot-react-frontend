@@ -1,4 +1,4 @@
-import LocalizedStrings from "localized-strings";
+import LocalizedStrings from "react-localization";
 import l10nEN from "./l10n-en";
 import l10nRU from "./l10n-ru";
 import { IL10nStrings } from "./l10nString";

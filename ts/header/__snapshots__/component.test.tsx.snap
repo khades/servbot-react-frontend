@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render properly for SideMenuState == HIDDEN  1`] = `
+<div
+  className="headerContent"
+>
+  <div
+    className="headerContent__menu-button-container"
+    onClick={[Function]}
+  >
+    <div
+      className="headerContent__menu-button"
+    />
+  </div>
+</div>
+`;
+
+exports[`Header should render properly for SideMenuState == INIT  1`] = `
+<div
+  className="headerContent"
+>
+  <div
+    className="headerContent__menu-button-container"
+    onClick={[Function]}
+  >
+    <div
+      className="headerContent__menu-button"
+    />
+  </div>
+</div>
+`;
+
+exports[`Header should render properly for SideMenuState == SHOWN  1`] = `
+<div
+  className="headerContent"
+>
+  <div
+    className="headerContent__menu-button-container headerContent__menu-button__menu-shown"
+    onClick={[Function]}
+  >
+    <div
+      className="headerContent__menu-button"
+    />
+  </div>
+</div>
+`;

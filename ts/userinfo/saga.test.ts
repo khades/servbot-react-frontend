@@ -5,12 +5,16 @@ import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { getUserInfo } from "./saga";
 
-describe("ChannelName sagas", () => {
+describe("Username sagas", () => {
 
     it("Should do proper steps if store is empty", () => {
         const saga = getUserInfo(actions.get());
         expect(saga.next().value).toEqual(select());
-        expect(saga.next({ state: States.NOTINITIATED }).value).toEqual(put(actions.loading()));
+        expect(saga.next({
+            userInfo: {
+                state: States.NOTINITIATED,
+            },
+        }).value).toEqual(put(actions.loading()));
         expect(saga.next().value).toEqual(call(API.getUserInfo));
 
         const payload: IUserInfo = {
@@ -28,27 +32,43 @@ describe("ChannelName sagas", () => {
         const saga = getUserInfo(actions.get());
 
         expect(saga.next().value).toEqual(select());
-        expect(saga.next({ state: States.READY }).done).toBe(true);
+        expect(saga.next({
+            userInfo: {
+                state: States.READY,
+            },
+        }).done).toBe(true);
     });
 
     it("Should do proper steps if store is empty but in process of loading", () => {
         const saga = getUserInfo(actions.get());
 
         expect(saga.next().value).toEqual(select());
-        expect(saga.next({ state: States.LOADING }).done).toBe(true);
+        expect(saga.next({
+            userInfo: {
+                state: States.LOADING,
+            },
+        }).done).toBe(true);
     });
 
     it("Should do proper steps if store is empty with rejections", () => {
         const saga = getUserInfo(actions.get());
 
         expect(saga.next().value).toEqual(select());
-        expect(saga.next({ state: States.NOTAUTHORIZED }).done).toBe(true);
+        expect(saga.next({
+            userInfo: {
+                state: States.NOTAUTHORIZED,
+            },
+        }).done).toBe(true);
     });
 
     it("Should do proper reject steps if any api problems", () => {
         const saga = getUserInfo(actions.get());
         expect(saga.next().value).toEqual(select());
-        expect(saga.next({ state: States.NOTINITIATED }).value).toEqual(put(actions.loading()));
+        expect(saga.next({
+            userInfo: {
+                state: States.NOTINITIATED,
+            },
+        }).value).toEqual(put(actions.loading()));
         expect(saga.next().value).toEqual(call(API.getUserInfo));
         expect(saga.throw("Testing Error").value).toEqual(put(actions.notAuthorized()));
         expect(saga.next().done).toBe(true);

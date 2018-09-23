@@ -1,10 +1,10 @@
-import { all } from "redux-saga/effects";
+import { all, select, take, fork, } from "redux-saga/effects";
 import channelName from "./channelName/saga";
 import userInfo from "./userinfo/saga";
 
-export default function* rootSaga() {
+export function* rootSaga() {
     yield all([
-        channelName,
-        userInfo,
+        fork(channelName),
+        fork(userInfo),
     ]);
 }

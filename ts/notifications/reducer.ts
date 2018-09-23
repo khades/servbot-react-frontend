@@ -1,16 +1,15 @@
 import { actiontypes, NotificationsActions } from "./actions";
 
 export interface INotification {
-    args: string[];
     body: string;
     date: Date;
     id: string;
     type?: string;
 }
 const initialState: INotification[] = [
-    // { args: [], body: "hey", date: new Date(), id: "3" },
-    // { args: [], body: "hey", date: new Date(), id: "5" },
-    // { args: [], body: "hey", date: new Date(), id: "43" },
+    // {  body: "hey", date: new Date(), id: "3" },
+    // {  body: "hey", date: new Date(), id: "5" },
+    // { body: "hey", date: new Date(), id: "43" },
 ];
 
 const reducer = (state: INotification[] = initialState, action?: NotificationsActions): INotification[] => {
@@ -20,7 +19,6 @@ const reducer = (state: INotification[] = initialState, action?: NotificationsAc
                 return state;
             }
             const newNotification: INotification = {
-                args: action.payload.args,
                 body: action.payload.body,
                 date: action.payload.date,
                 id: Math.random().toString(36).substr(2, 9) + Date().toString(),

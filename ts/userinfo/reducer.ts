@@ -19,13 +19,13 @@ const initialState: IUserInfoState = {
 const reducer = (state: IUserInfoState = initialState, action: UserInfoAction) => {
     switch (action.type) {
         case actiontypes.READY:
-            return Object.assign(state, {}, action.payload, { state: States.READY });
+            return Object.assign({}, state, action.payload, { state: States.READY });
         case actiontypes.NOTAUTHORIZED:
-            return Object.assign(state, {}, { state: States.NOTAUTHORIZED });
+            return Object.assign({}, state, { state: States.NOTAUTHORIZED });
         case actiontypes.LOADING:
-            return Object.assign(state, {}, { state: States.LOADING });
+            return Object.assign({}, state, { state: States.LOADING });
         case actiontypes.SETCHANNEL:
-            return Object.assign(state, {}, { currentChannel: action.payload });
+            return Object.assign({}, state, { currentChannel: action.payload });
         default:
             return state;
     }

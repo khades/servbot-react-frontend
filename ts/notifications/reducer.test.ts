@@ -8,7 +8,6 @@ describe("Notification reducer", () => {
     it("Should properly accept ADD event when type present, but doesnt match", () => {
         expect(reducer([
             {
-                args: [],
                 body: "Hello",
                 date: new Date(),
                 id: "4",
@@ -18,7 +17,6 @@ describe("Notification reducer", () => {
     it("Should properly accept ADD event when type present, and matches new Type", () => {
         expect(reducer([
             {
-                args: [],
                 body: "Hello",
                 date: new Date(),
                 id: "4",
@@ -28,7 +26,6 @@ describe("Notification reducer", () => {
     it("Should properly accept HIDE event if notification with that id exists", () => {
         expect(reducer([
             {
-                args: [],
                 body: "Hello",
                 date: new Date(),
                 id: "4",
@@ -38,7 +35,6 @@ describe("Notification reducer", () => {
     it("Should properly accept HIDE event if notification with that id doesnt exist", () => {
         expect(reducer([
             {
-                args: [],
                 body: "Hello",
                 date: new Date(),
                 id: "4",
@@ -49,21 +45,18 @@ describe("Notification reducer", () => {
         const date: Date = new Date();
         expect(reducer([
             {
-                args: [],
                 body: "Hello",
                 date: new Date(date.getTime() - 1000 - actions.NotificationTimeout),
                 id: "3",
                 type: "Some",
             },
             {
-                args: [],
                 body: "Hello",
                 date,
                 id: "2",
                 type: "Some",
             },
             {
-                args: [],
                 body: "Hello",
                 date,
                 id: "4",

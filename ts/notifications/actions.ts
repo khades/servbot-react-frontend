@@ -8,7 +8,6 @@ export enum actiontypes {
 export interface INotificationsAddAction {
     type: actiontypes.ADD;
     payload: {
-        args: string[];
         body: string,
         date: Date,
         type?: string,
