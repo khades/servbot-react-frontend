@@ -1,11 +1,6 @@
 import * as React from "react";
 import "../../scss/modules/_site-menu.scss";
 
-// export interface HelloProps { compiler: string; framework: string; }
-
-// 'HelloProps' describes the shape of props.
-// State is never set so we use the '{}' type.
-// export class Hello extends React.Component<HelloProps, {}> {
 export default class SideMenu extends React.Component<{}, {}> {
     public render() {
         return (

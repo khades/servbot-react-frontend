@@ -6,7 +6,7 @@ import routes from "./routes/reducers";
 
 import userInfo, { IUserInfoState } from "./userinfo/reducer";
 
-export default combineReducers<IChannelNameStore| INotification[]| IUserInfoState>({
+export default combineReducers({
   channelName,
   notifications,
 

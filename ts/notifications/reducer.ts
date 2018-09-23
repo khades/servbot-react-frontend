@@ -8,9 +8,9 @@ export interface INotification {
     type?: string;
 }
 const initialState: INotification[] = [
-    { args: [], body: "hey", date: new Date(), id: "3" },
-    { args: [], body: "hey", date: new Date(), id: "5" },
-    { args: [], body: "hey", date: new Date(), id: "43" },
+    // { args: [], body: "hey", date: new Date(), id: "3" },
+    // { args: [], body: "hey", date: new Date(), id: "5" },
+    // { args: [], body: "hey", date: new Date(), id: "43" },
 ];
 
 const reducer = (state: INotification[] = initialState, action?: NotificationsActions): INotification[] => {

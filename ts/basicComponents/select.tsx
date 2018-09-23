@@ -2,33 +2,45 @@ import * as React from "react";
 import ControlGroup from "./control-group";
 
 export interface ISelectProps {
-    id: string;
-    getLabel: () => string;
     getValue: () => string;
-    setValue: (value: string) => void;
     getValues: () => ISelectValue[];
+    id: string;
+    label: string;
     getErrors?: () => string[];
+    setValue: (value: string) => void;
 }
 
 export interface ISelectValue {
     label: string;
     value: string;
 }
-
-export default class Select extends React.Component<ISelectProps, {}> {
+interface ISelectState {
+    selectedValue: string;
+}
+export default class Select extends React.Component<ISelectProps, ISelectState> {
+    public static getDerivedStateFromProps(props: ISelectProps, state: ISelectState) {
+        const value = props.getValue();
+        return {
+            selectedValue: props.getValues().some((option) => option.value === value) ? value : "",
+        };
+    }
     constructor(props: ISelectProps) {
         super(props);
         this.generateOptions = this.generateOptions.bind(this);
         this.setValue = this.setValue.bind(this);
+        const value = props.getValue();
+        this.state = {
+            selectedValue: props.getValues().some((option) => option.value === value) ? value : "",
+        };
     }
     public render() {
         return (
             <ControlGroup
                 id={this.props.id}
                 getErrors={this.props.getErrors}
-                getLabel={this.props.getLabel}
+                label={this.props.label}
             >
-                <select id={this.props.id} onChange={this.setValue}>
+                <select defaultValue={this.state.selectedValue} id={this.props.id} onChange={this.setValue}>
                     {this.generateOptions()}
                 </select>
             </ControlGroup>
@@ -40,18 +52,13 @@ export default class Select extends React.Component<ISelectProps, {}> {
     }
 
     private generateOptions() {
-        let hasOptionSelected = false;
-        const value = this.props.getValue();
-        if (value !== "") {
-            hasOptionSelected = this.props.getValues().some((option) => option.value === value);
-        }
         const options = this.props.getValues().map((option) => (
-            <option key={option.value} value={option.value} selected={option.value === this.props.getValue()}>
+            <option key={option.value} value={option.value}>
                 {option.label}
             </option>
         ));
-        if (hasOptionSelected === false) {
-            options.unshift(<option key="emptyOption" disabled={true} selected={true} value={""} />);
+        if (this.state.selectedValue === "") {
+            options.unshift(<option key="emptyOption" disabled={true} value={""} />);
         }
         return options;
     }

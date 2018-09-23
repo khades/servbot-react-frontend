@@ -3,9 +3,9 @@ import ControlGroup from "./control-group";
 
 export interface IInputProps {
     getErrors?: () => string[];
-    getLabel: () => string;
     getValue: () => string;
     id: string;
+    label: string;
     setValue: (value: string) => void;
 }
 
@@ -19,7 +19,7 @@ export default class Input extends React.Component<IInputProps, {}> {
             <ControlGroup
                 id={this.props.id}
                 getErrors={this.props.getErrors}
-                getLabel={this.props.getLabel}
+                label={this.props.label}
             >
                 <input
                     id={this.props.id}

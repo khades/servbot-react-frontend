@@ -11,22 +11,20 @@ exports[`Select should render and have no errors and no options selected 1`] = `
     LABEL
   </label>
   <select
+    defaultValue=""
     id="ID"
     onChange={[Function]}
   >
     <option
       disabled={true}
-      selected={true}
       value=""
     />
     <option
-      selected={false}
       value="1"
     >
       one
     </option>
     <option
-      selected={false}
       value="2"
     >
       two
@@ -46,17 +44,16 @@ exports[`Select should render and have no errors and option selected 1`] = `
     LABEL
   </label>
   <select
+    defaultValue="1"
     id="ID"
     onChange={[Function]}
   >
     <option
-      selected={true}
       value="1"
     >
       one
     </option>
     <option
-      selected={false}
       value="2"
     >
       two

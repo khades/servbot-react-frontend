@@ -10,7 +10,7 @@ const time = {
             this.offset = serverDate.getTime() - localDate.getTime();
         });
     },
-    now() {
+    now(): Date {
         return new Date(new Date().getTime() + this.offset);
     },
 };

@@ -5,8 +5,8 @@ import ControlGroup, { IControlGroupProps } from "./control-group";
 describe("Control Group", () => {
     it("should render and have no errors", () => {
         const props: IControlGroupProps = {
-            getLabel: () => "LABEL",
             id: "ID",
+            label: "LABEL",
         };
         const TestComponent: React.SFC<{}> = () => (
             <div className="testComponent" />
@@ -31,8 +31,8 @@ describe("Control Group", () => {
     it("should render and have errors", () => {
         const props: IControlGroupProps = {
             getErrors: () => ["1", "2"],
-            getLabel: () => "LABEL",
             id: "ID",
+            label: "LABEL",
         };
 
         const controlGroup = create(

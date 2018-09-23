@@ -6,9 +6,9 @@ describe("Input", () => {
     it("value change should work", () => {
         let inputValue = "";
         const props: IInputProps = {
-            getLabel: () => "LABEL",
             getValue: () => inputValue,
             id: "ID",
+            label: "LABEL",
             setValue: (value: string) => inputValue = value,
         };
 
@@ -25,9 +25,9 @@ describe("Input", () => {
     });
     it("inital value should be properly set", () => {
         const props: IInputProps = {
-            getLabel: () => "LABEL",
             getValue: () => "testValue",
             id: "ID",
+            label: "LABEL",
             setValue: (value: string) => value,
         };
 

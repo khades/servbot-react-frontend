@@ -5,10 +5,10 @@ import Select, { ISelectProps } from "./select";
 describe("Select", () => {
     it("should render and have no errors and no options selected", () => {
         const props: ISelectProps = {
-            getLabel: () => "LABEL",
             getValue: () => "",
             getValues: () => [{ value: "1", label: "one" }, { value: "2", label: "two" }],
             id: "ID",
+            label: "LABEL",
             setValue: (input: string) => input,
         };
 
@@ -17,7 +17,7 @@ describe("Select", () => {
         );
         expect(select.root.findAll((el) => el.type === "option").length).toBe(3);
         expect(select.root.findAll(
-            (el) => el.type === "option" && el.props.selected === true && el.props.disabled === true).length).toBe(1);
+            (el) => el.type === "option" && el.props.disabled === true).length).toBe(1);
         expect(select.root.findAll(
             (el) => el.type === "option").length).toBe(3);
         expect(select.toJSON()).toMatchSnapshot();
@@ -26,10 +26,10 @@ describe("Select", () => {
 
     it("should render and have no errors and option selected", () => {
         const props: ISelectProps = {
-            getLabel: () => "LABEL",
             getValue: () => "1",
             getValues: () => [{ value: "1", label: "one" }, { value: "2", label: "two" }],
             id: "ID",
+            label: "LABEL",
             setValue: (input: string) => input,
         };
 
@@ -37,7 +37,6 @@ describe("Select", () => {
             <Select {...props} />,
         );
         expect(select.root.findAll((el) => el.type === "option").length).toBe(2);
-        expect(select.root.findAll((el) => el.type === "option" && el.props.selected === true).length).toBe(1);
         expect(select.toJSON()).toMatchSnapshot();
 
     });
@@ -45,10 +44,10 @@ describe("Select", () => {
     it("value change should work", () => {
         let selectValue = "";
         const props: ISelectProps = {
-            getLabel: () => "LABEL",
             getValue: () => selectValue,
             getValues: () => [{ value: "1", label: "one" }, { value: "2", label: "two" }],
             id: "ID",
+            label: "LABEL",
             setValue: (value: string) => selectValue = value,
         };
 
@@ -56,15 +55,15 @@ describe("Select", () => {
             <Select {...props} />,
         );
         expect(select.root.findAll(
-            (el) => el.type === "option" && el.props.selected === true && el.props.disabled === true).length).toBe(1);
+            (el) => el.type === "option" && el.props.disabled === true).length).toBe(1);
 
-        expect(select.root.findAll((el) => el.type === "option" && el.props.selected === true).length).toBe(1);
+        expect(select.root.findAll((el) => el.type === "option").length).toBe(3);
         const selectInstance = select.root.find((el) => el.type === "select");
         selectInstance.props.onChange({ currentTarget: { value: "2" } });
         select.update(
             <Select {...props} />,
         );
-        expect(select.root.findAll((el) => el.type === "option" && el.props.selected === true).length).toBe(1);
+        expect(select.root.findAll((el) => el.type === "option").length).toBe(2);
         expect(selectValue).toBe("2");
     });
 });

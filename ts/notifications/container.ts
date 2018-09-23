@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<NotificationsActions>) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         hideNotification: (id: string) => dispatch(actions.hide(id)),
     };

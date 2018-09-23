@@ -12,7 +12,7 @@ export default class Textarea extends React.Component<IInputProps, {}> {
             <ControlGroup
                 id={this.props.id}
                 getErrors={this.props.getErrors}
-                getLabel={this.props.getLabel}
+                label={this.props.label}
             >
                 <textarea
                     id={this.props.id}
