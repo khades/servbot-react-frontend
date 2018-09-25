@@ -5,25 +5,24 @@ import { IInputProps } from "./input";
 export default class Textarea extends React.Component<IInputProps, {}> {
     constructor(props: IInputProps) {
         super(props);
-        this.setValue = this.setValue.bind(this);
     }
     public render() {
         return (
             <ControlGroup
                 id={this.props.id}
-                getErrors={this.props.getErrors}
+                errors={this.props.errors}
                 label={this.props.label}
             >
                 <textarea
                     id={this.props.id}
                     onChange={this.setValue}
-                    defaultValue={this.props.getValue()}
+                    defaultValue={this.props.value}
                 />
             </ControlGroup>
         );
     }
 
-    private setValue(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    private setValue = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         this.props.setValue(event.currentTarget.value);
     }
 

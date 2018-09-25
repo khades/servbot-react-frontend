@@ -6,10 +6,10 @@ describe("Checkbox", () => {
     it("should render and have no errors", () => {
         let startingValue: boolean = false;
         const props: ICheckboxProps = {
-            getLabel: () => "LABEL",
-            getValue: () => startingValue,
             id: "LABEL",
+            label: "LABEL",
             setValue: (value: boolean) => { startingValue = value; },
+            value: startingValue,
         };
         const checkbox = create(
             <Checkbox {...props} />,
@@ -29,11 +29,11 @@ describe("Checkbox", () => {
     it("should render and have errors", () => {
         let startingValue: boolean = true;
         const props: ICheckboxProps = {
-            getErrors: () => ["1", "2"],
-            getLabel: () => "LABEL",
-            getValue: () => startingValue,
+            errors: ["1", "2"],
             id: "LABEL",
+            label: "LABEL",
             setValue: (value: boolean) => { startingValue = value; },
+            value: startingValue,
         };
 
         const checkbox = create(
@@ -54,10 +54,10 @@ describe("Checkbox", () => {
     it("should properly change state", () => {
         let startingValue: boolean = false;
         const props: ICheckboxProps = {
-            getLabel: () => "LABEL",
-            getValue: () => startingValue,
             id: "LABEL",
+            label: "LABEL",
             setValue: (value: boolean) => { startingValue = value; },
+            value: startingValue,
         };
         const checkbox = create(
             <Checkbox {...props} />,

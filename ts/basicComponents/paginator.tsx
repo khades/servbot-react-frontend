@@ -4,23 +4,19 @@ import * as React from "react";
 export interface IPaginatorState {
     lastPage: boolean;
     firstPage: boolean;
-    page: number;
-    pages: number;
 }
 
 export interface IPaginatorProps {
-    getPages: () => number;
-    getPage: () => number;
+    pages: number;
+    page: number;
     setPage: (page: number) => void;
 }
 
 export default class Paginator extends React.Component<IPaginatorProps, IPaginatorState> {
     public static getDerivedStateFromProps(props: IPaginatorProps, state: IPaginatorState) {
         return {
-            firstPage: props.getPage() === 1,
-            lastPage: props.getPage() === props.getPages(),
-            page: props.getPage(),
-            pages: props.getPages(),
+            firstPage: props.page === 1,
+            lastPage: props.page === props.pages,
         };
     }
 
@@ -39,19 +35,11 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
 
     constructor(props: IPaginatorProps) {
         super(props);
-        this.generatePrevButtons = this.generatePrevButtons.bind(this);
-        this.generateNextButtons = this.generateNextButtons.bind(this);
-        this.generateButtons = this.generateButtons.bind(this);
-        this.generateButton = this.generateButton.bind(this);
-        this.goToFirst = this.goToFirst.bind(this);
-        this.goToPrevious = this.goToPrevious.bind(this);
-        this.goToNext = this.goToNext.bind(this);
-        this.goToLast = this.goToLast.bind(this);
+
         this.state = {
-            firstPage: props.getPage() === 1,
-            lastPage: props.getPage() === props.getPages(),
-            page: props.getPage(),
-            pages: props.getPages(),
+            firstPage: props.page === 1,
+            lastPage: props.page === props.pages,
+
         };
     }
 
@@ -65,8 +53,8 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
         );
     }
 
-    private generateButtons() {
-        const pages = Paginator.generateButtonsRange(this.state.pages, this.state.page);
+    private generateButtons = () => {
+        const pages = Paginator.generateButtonsRange(this.props.pages, this.props.page);
         return (
             <React.Fragment>
                 {pages.map((page) => this.generateButton(page))}
@@ -74,11 +62,11 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
         );
     }
 
-    private generateButton(value: number) {
+    private generateButton = (value: number) => {
         const classes = classnames({
             "paginator__item": true,
             "paginator__item--desktop": true,
-            "paginator__item--selected": this.state.page === value,
+            "paginator__item--selected": this.props.page === value,
         });
         const onclick = () => {
             this.props.setPage(value);
@@ -123,7 +111,7 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
             </React.Fragment>
         );
     }
-    private generateNextButtons() {
+    private generateNextButtons = () => {
         const lastButtonClasses = classnames({
             "paginator__item": true,
             "paginator__item--desktop": true,
@@ -162,27 +150,27 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
         );
     }
 
-    private goToNext() {
+    private goToNext = () => {
         if (this.state.lastPage !== true) {
-            this.props.setPage(this.state.page + 1);
+            this.props.setPage(this.props.page + 1);
         }
     }
 
-    private goToLast() {
+    private goToLast = () => {
         if (this.state.lastPage !== true) {
-            this.props.setPage(this.state.pages);
+            this.props.setPage(this.props.pages);
         }
     }
 
-    private goToFirst() {
+    private goToFirst = () => {
         if (this.state.firstPage !== true) {
             this.props.setPage(1);
         }
     }
 
-    private goToPrevious() {
+    private goToPrevious = () => {
         if (this.state.firstPage !== true) {
-            this.props.setPage(this.state.page - 1);
+            this.props.setPage(this.props.page - 1);
         }
     }
 }

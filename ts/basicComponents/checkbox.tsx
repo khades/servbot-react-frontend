@@ -3,9 +3,9 @@ import * as React from "react";
 import "../../scss/modules/_checkbox.scss";
 
 export interface ICheckboxProps {
-    getValue: () => boolean;
-    getErrors?: () => string[];
-    getLabel: () => string;
+    value: boolean;
+    errors?: string[];
+    label: string;
     id: string;
     setValue: (value: boolean) => void;
 }
@@ -19,37 +19,35 @@ export interface ICheckboxProps {
 export default class Checkbox extends React.Component<ICheckboxProps, {}> {
     constructor(props: ICheckboxProps) {
         super(props);
-        this.clickButton = this.clickButton.bind(this);
-        this.renderErrors = this.renderErrors.bind(this);
     }
     public render() {
         const inputClassname = classnames({
             "checkbox": true,
-            "checkbox--error": this.props.getErrors && this.props.getErrors().length > 0,
+            "checkbox--error": this.props.errors && this.props.errors.length > 0,
         });
         return (
             <div className={inputClassname} >
                 <input
                     type="checkbox"
                     id={this.props.id}
-                    defaultChecked={this.props.getValue()}
+                    defaultChecked={this.props.value}
                     onClick={this.clickButton}
                 />
                 <label htmlFor={this.props.id}>
-                    {this.props.getLabel()}
+                    {this.props.label}
                 </label>
                 {this.renderErrors()}
             </div>
         );
     }
-    private clickButton(event: React.MouseEvent<HTMLInputElement>): void {
+    private clickButton = (event: React.MouseEvent<HTMLInputElement>) => {
         this.props.setValue(event.currentTarget.checked);
     }
-    private renderErrors() {
-        if (this.props.getErrors && this.props.getErrors().length > 0) {
+    private renderErrors = () => {
+        if (this.props.errors && this.props.errors.length > 0) {
             return (
                 <div className="checkbox__errors">
-                    {this.props.getErrors().join(", ")}
+                    {this.props.errors.join(", ")}
                 </div>
             );
         }

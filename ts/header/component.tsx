@@ -5,19 +5,18 @@ import "../../scss/modules/_headerContent.scss";
 import { SideMenuStates } from "../sidemenu/reducer";
 
 export interface IHeaderProps {
-    getSideMenuState: () => SideMenuStates;
+    sideMenuState: SideMenuStates;
     hideMenu: () => void;
     showMenu: () => void;
 }
 export default class Header extends React.Component<IHeaderProps, {}> {
     constructor(props: IHeaderProps) {
         super(props);
-        this.onClick = this.onClick.bind(this);
     }
     public render() {
         const headerClassNames = classnames({
             "headerContent__menu-button-container": true,
-            "headerContent__menu-button__menu-shown": this.props.getSideMenuState() === SideMenuStates.SHOWN,
+            "headerContent__menu-button__menu-shown": this.props.sideMenuState === SideMenuStates.SHOWN,
         });
         return (
             <div className="headerContent">
@@ -27,8 +26,8 @@ export default class Header extends React.Component<IHeaderProps, {}> {
             </div>
         );
     }
-    private onClick() {
-        if (this.props.getSideMenuState() === SideMenuStates.SHOWN) {
+    private onClick = () => {
+        if (this.props.sideMenuState === SideMenuStates.SHOWN) {
             this.props.hideMenu();
         } else {
             this.props.showMenu();

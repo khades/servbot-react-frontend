@@ -1,40 +1,36 @@
 import * as React from "react";
 import "../../scss/modules/_start-page.scss";
+import ChannelName from "../channelName/container";
 import Select, { ISelectProps } from "../basicComponents/select";
 import { l10n, setLang } from "../l10n/l10n";
 import { IUserInfoState } from "../userinfo/reducer";
+import { Link } from "react-router-dom";
 
-export interface IStartPageProps extends IUserInfoState {
+export interface IStartPageProps {
     userInfo: IUserInfoState;
-    getIfUserIsMod: () => boolean;
-    setCurrentChannel: (channel: string) => void;
+    ifUserIsMod: boolean;
 }
 
 export default class StartPage extends React.Component<IStartPageProps, {}> {
-    constructor(props: IStartPageProps) {
-        super(props);
-        this.generateModChannels = this.generateModChannels.bind(this);
-    }
     public render() {
-
         const langSelectProps: ISelectProps = {
-            getValue: l10n.getLanguage.bind(l10n),
-            getValues: () => [{ value: "en-US", label: "English" }, { value: "ru-RU", label: "Русский" }],
             id: "language",
             label: l10n.LANGUAGE,
             setValue: (lang: string) => {
                 setLang(lang);
             },
+            value: l10n.getLanguage(),
+            values: [{ value: "en-US", label: "English" }, { value: "ru-RU", label: "Русский" }],
         };
 
         return (
             <div className="start-page" >
                 <div className="start-page__hgroup">
                     <div className="start-page__header">
-                        {l10n.formatString(l10n.CHANNEL_TITLE, this.props.userInfo.username)}
+                        {l10n.formatString(l10n.CHANNEL_TITLE, this.renderChannelName())}
                     </div>
                     <div>
-                        {l10n.formatString(l10n.YOURE_MODERATOR, "khadesru")}
+                        {this.renderChannelModInfo}
                     </div>
                 </div>
                 <h1>
@@ -50,15 +46,32 @@ export default class StartPage extends React.Component<IStartPageProps, {}> {
             </div>
         );
     }
-    private generateModChannels() {
+    private renderChannelName = () => {
+        return <ChannelName channelID={this.props.userInfo.currentChannel} />;
+    }
+    private renderChannelModInfo = () => {
+        if (this.props.ifUserIsMod === true) {
+            return (
+                <React.Fragment>
+                    {l10n.formatString(l10n.YOURE_MODERATOR, this.renderChannelName())}
+                </React.Fragment>
+            );
+        }
+        return (
+            <React.Fragment>
+                {l10n.formatString(l10n.YOURE_NOT_MODERATOR, this.renderChannelName())}
+            </React.Fragment>
+        );
+    }
+    private generateModChannels = () => {
         return this.props.userInfo.modChannels.map((item) =>
             (
-                <a
-                    key={item.channelNameID}
-                    href={"#/channel/" + item.channelNameID}
+                <Link
+                    key={item.channelID}
+                    to={"/channel/" + item.channelID}
                 >
-                    {item.channelName}
-                </a>
+                    {item.channel}
+                </Link>
             ));
     }
 }

@@ -1,8 +1,8 @@
-import classnames from "classnames";
 import * as React from "react";
-import { IChannelName } from "./reducer";
-import States from "../utils/states";
 import "../../scss/modules/_channel-name.scss";
+import States from "../utils/states";
+import { IChannelName } from "./reducer";
+
 export interface IChannelNameState {
     channelID: string;
     getChannelName: (channelID: string) => void;
@@ -11,11 +11,11 @@ export interface IChannelNameState {
 
 export default class ChannelName extends React.Component<IChannelNameState, {}> {
     public componentDidMount() {
-        if (this.props.value.state === States.NOTINITIATED) {
-            this.props.getChannelName(this.props.channelID);
-        }
+        this.fetchChannelName();
     }
-
+    public componentDidUpdate() {
+        this.fetchChannelName();
+    }
     public render() {
         const state = this.props.value.state;
         if (state === States.READY) {
@@ -31,13 +31,12 @@ export default class ChannelName extends React.Component<IChannelNameState, {}> 
             );
         }
         return (
-            <span onClick={this.get.bind(this)} className="channel-name channel-name--loading" />
+            <span className="channel-name channel-name--loading" />
         );
     }
-    private get() {
-        if (this.props.value.state === States.NOTINITIATED) {
+    private fetchChannelName = () => {
+        if (this.props.value.state === States.NOTINITIATED && this.props.channelID && this.props.channelID !== "") {
             this.props.getChannelName(this.props.channelID);
         }
-
     }
 }

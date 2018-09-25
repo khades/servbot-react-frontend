@@ -1,22 +1,20 @@
 .channel-name {
     display: inline-block;
     height: 1em;
-    vertical-align: middle;
     background-color: rgba(255, 255, 255, 0);
     transition: background-color 0.15s ease-in-out;
-
     &--loading {
         background-color: rgba(127, 127, 127, 0.3);
         width: 5em;
         border-radius: 3px;
-        height: 1.2rem;
+        height: 1.3rem;
     }
-
     &--notfound {
-        background-color: rgba(255, 0, 0, 0.247);
+        vertical-align: text-top;
+        background-color: rgba(255, 0, 0, 0.7);
         width: 5em;
         border-radius: 3px;
-        height: 1.2rem;
-
+        height: 1.2em;
+       // border-radius: 0.6em;
     }
 }

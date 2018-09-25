@@ -6,6 +6,6 @@ export interface IUserInfo {
 }
 
 export interface IUserModInfo {
-    channelName: string;
-    channelNameID: string;
+    channel: string;
+    channelID: string;
 }

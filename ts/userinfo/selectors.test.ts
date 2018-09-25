@@ -3,30 +3,30 @@ import States from "../utils/states";
 import { IUserInfoState } from "./reducer";
 import * as selectors from "./selectors";
 
-describe("ChannelName selectors", () => {
+describe("UserInfo selectors", () => {
     it("should return true if works properly", () => {
         const initialState: IUserInfoState = {
             avatarUrl: "",
             currentChannel: "323232",
             modChannels: [{
-                channelName: "asdasd",
-                channelNameID: "323232",
+                channel: "asdasd",
+                channelID: "323232",
             },
             {
-                channelName: "sdfsdfsdf",
-                channelNameID: "43434343",
+                channel: "sdfsdfsdf",
+                channelID: "43434343",
             },
             {
-                channelName: "dfgdfgdfg",
-                channelNameID: "312625324",
+                channel: "dfgdfgdfg",
+                channelID: "312625324",
             },
             {
-                channelName: "qweqeqw",
-                channelNameID: "123158123",
+                channel: "qweqeqw",
+                channelID: "123158123",
             },
             {
-                channelName: "345345345",
-                channelNameID: "54372934",
+                channel: "345345345",
+                channelID: "54372934",
             }],
             state: States.NOTINITIATED,
             userID: "",
@@ -40,24 +40,24 @@ describe("ChannelName selectors", () => {
             avatarUrl: "",
             currentChannel: "3232323",
             modChannels: [{
-                channelName: "asdasd",
-                channelNameID: "323232",
+                channel: "asdasd",
+                channelID: "323232",
             },
             {
-                channelName: "sdfsdfsdf",
-                channelNameID: "43434343",
+                channel: "sdfsdfsdf",
+                channelID: "43434343",
             },
             {
-                channelName: "dfgdfgdfg",
-                channelNameID: "312625324",
+                channel: "dfgdfgdfg",
+                channelID: "312625324",
             },
             {
-                channelName: "qweqeqw",
-                channelNameID: "123158123",
+                channel: "qweqeqw",
+                channelID: "123158123",
             },
             {
-                channelName: "345345345",
-                channelNameID: "54372934",
+                channel: "345345345",
+                channelID: "54372934",
             }],
             state: States.NOTINITIATED,
             userID: "",

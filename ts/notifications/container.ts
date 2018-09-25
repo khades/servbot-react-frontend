@@ -6,7 +6,7 @@ import { IStore } from "../reducers";
 
 const mapStateToProps = (state: IStore) => {
     return {
-        getNotifications: () => state.notifications,
+        notifications:  state.notifications,
     };
 };
 

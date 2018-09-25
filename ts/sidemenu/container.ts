@@ -7,10 +7,10 @@ import * as channelSelectors from "../userInfo/storeselectors";
 
 const mapStateToProps = (state: IStore) => {
     return {
-        getCurrentChannel: () => state.userInfo.currentChannel,
-        getIsModOnChannel: () => channelSelectors.getIfUserIsModerator(state),
-        getMenuState: () =>  state.sideMenu.state,
-        getUserInfo: () => state.userInfo,
+        currentChannel: state.userInfo.currentChannel,
+        isModOnChannel: channelSelectors.getIfUserIsModerator(state),
+        menuState: state.sideMenu.state,
+        userInfo: state.userInfo,
     };
 };
 

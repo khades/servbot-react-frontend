@@ -8,10 +8,9 @@ function url(uri: string): string {
         return config.appUrl + "/" + uri;
     }
 }
-
-export default {
+const API = {
     // input?: Request | string, init?: RequestInit
-    simpleauth(...params) {
+    simpleauth: (...params) => {
         return fetch(...params).catch((error) => {
             if (error.message === "network error") {
                 throw Error(States.OFFLINE);
@@ -24,18 +23,18 @@ export default {
             }
         });
     },
-    auth(...params) {
-        return this.simpleauth(...params);
+    auth: (...params) => {
+        return API.simpleauth(...params);
     },
-    getTime() {
+    getTime: () => {
         return fetch(url("api/time"))
             .then((response) => response.json());
     },
-    getUserInfo() {
-        return this.auth(url("api/user/index")).then((res: Response) => res.json());
+    getUserInfo: () => {
+        return API.auth(url("api/user/index")).then((res: Response) => res.json());
     },
-    getChannelName(channelID: string): Promise<string> {
-        return this.auth(
+    getChannelName: (channelID: string): Promise<string> => {
+        return API.auth(
             url(`/api/channel/${channelID}/channelname`),
         )
             .then((result: Response) => {
@@ -48,3 +47,5 @@ export default {
             .then((result) => result.channel);
     },
 };
+
+export default API;

@@ -5,11 +5,11 @@ import Select, { ISelectProps } from "./select";
 describe("Select", () => {
     it("should render and have no errors and no options selected", () => {
         const props: ISelectProps = {
-            getValue: () => "",
-            getValues: () => [{ value: "1", label: "one" }, { value: "2", label: "two" }],
             id: "ID",
             label: "LABEL",
             setValue: (input: string) => input,
+            value: "",
+            values: [{ value: "1", label: "one" }, { value: "2", label: "two" }],
         };
 
         const select = create(
@@ -26,11 +26,11 @@ describe("Select", () => {
 
     it("should render and have no errors and option selected", () => {
         const props: ISelectProps = {
-            getValue: () => "1",
-            getValues: () => [{ value: "1", label: "one" }, { value: "2", label: "two" }],
             id: "ID",
             label: "LABEL",
             setValue: (input: string) => input,
+            value: "1",
+            values: [{ value: "1", label: "one" }, { value: "2", label: "two" }],
         };
 
         const select = create(
@@ -42,13 +42,11 @@ describe("Select", () => {
     });
 
     it("value change should work", () => {
-        let selectValue = "";
         const props: ISelectProps = {
-            getValue: () => selectValue,
-            getValues: () => [{ value: "1", label: "one" }, { value: "2", label: "two" }],
             id: "ID",
             label: "LABEL",
-            setValue: (value: string) => selectValue = value,
+            setValue: (value: string) => { props.value = value; }, value: "",
+            values: [{ value: "1", label: "one" }, { value: "2", label: "two" }],
         };
 
         const select = create(
@@ -64,6 +62,6 @@ describe("Select", () => {
             <Select {...props} />,
         );
         expect(select.root.findAll((el) => el.type === "option").length).toBe(2);
-        expect(selectValue).toBe("2");
+        expect(props.value).toBe("2");
     });
 });

@@ -30,7 +30,7 @@ describe("Control Group", () => {
 
     it("should render and have errors", () => {
         const props: IControlGroupProps = {
-            getErrors: () => ["1", "2"],
+            errors: ["1", "2"],
             id: "ID",
             label: "LABEL",
         };

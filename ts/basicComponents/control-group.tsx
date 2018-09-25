@@ -3,7 +3,7 @@ import * as React from "react";
 import "../../scss/modules/_control-group.scss";
 
 export interface IControlGroupProps {
-    getErrors?: () => string[];
+    errors?: string[];
     id: string;
     label: string;
 }
@@ -11,12 +11,11 @@ export interface IControlGroupProps {
 export default class ControlGroup extends React.Component<IControlGroupProps, {}> {
     constructor(props: IControlGroupProps) {
         super(props);
-        this.renderErrors = this.renderErrors.bind(this);
     }
     public render() {
         const groupClassname = classnames({
             "control-group": true,
-            "control-group--error": this.props.getErrors && this.props.getErrors().length > 0,
+            "control-group--error": this.props.errors && this.props.errors.length > 0,
         });
         return (
             <div className={groupClassname} >
@@ -28,11 +27,11 @@ export default class ControlGroup extends React.Component<IControlGroupProps, {}
             </div>
         );
     }
-    private renderErrors() {
-        if (this.props.getErrors && this.props.getErrors().length > 0) {
+    private renderErrors = () => {
+        if (this.props.errors && this.props.errors.length > 0) {
             return (
                 <div className="control-group__errors">
-                    {this.props.getErrors().join(", ")}
+                    {this.props.errors.join(", ")}
                 </div>
             );
         }

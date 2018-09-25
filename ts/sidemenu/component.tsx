@@ -5,55 +5,51 @@ import { IUserInfoState } from "../userinfo/reducer";
 import { SideMenuStates } from "./reducer";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
+import { Link } from "react-router-dom";
 export interface ISideMenuProps {
+    currentChannel: string;
     hideMenu: () => void;
-    getMenuState: () => SideMenuStates;
-    getIsModOnChannel: () => boolean;
-    getUserInfo: () => IUserInfoState;
-}
-interface ISideMenuState {
+    menuState: SideMenuStates;
+    isModOnChannel: boolean;
     userInfo: IUserInfoState;
 }
-export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuState> {
-    public static getDerivedStateFromProps(props: ISideMenuProps, state: ISideMenuState) {
-        return {
-            userInfo: props.getUserInfo(),
-        };
-    }
+
+export default class SideMenu extends React.Component<ISideMenuProps, {}> {
 
     constructor(props: ISideMenuProps) {
         super(props);
-        this.state = { userInfo: props.getUserInfo() };
-        this.generateModMenu = this.generateModMenu.bind(this);
-        this.generateUserMenu = this.generateUserMenu.bind(this);
+
     }
 
     public render() {
         const headerClassNames = classnames({
             "site-menu": true,
-            "site-menu--hidden": this.props.getMenuState() !== SideMenuStates.SHOWN,
-            "site-menu--shown": this.props.getMenuState() === SideMenuStates.SHOWN,
+            "site-menu--hidden": this.props.menuState !== SideMenuStates.SHOWN,
+            "site-menu--shown": this.props.menuState === SideMenuStates.SHOWN,
         });
         return (
             <div className={headerClassNames}>
                 <div className="site-menu__container">
-                    <a href="#/channel/40635840" className="site-menu__header">
-                        <img src={this.state.userInfo.avatarUrl} />
+                    <Link to="/channel/40635840" className="site-menu__header">
+                        <img src={this.props.userInfo.avatarUrl} />
                         <div className="site-menu__header-info">
-                            <div>khadesru </div>
+                            <div>{this.props.userInfo.username} </div>
                             <span>
-                                {l10n.formatString(l10n.CHANNEL_TITLE, <ChannelName channelID="40635840" />)}
+                                {this.generateCurrentChannel()}
                             </span>
                         </div>
-                    </a>
+                    </Link>
                     {this.generateModMenu()}
                     {this.generateUserMenu()}
                 </div>
             </div>
         );
     }
-    private generateModMenu() {
-        if (this.props.getIsModOnChannel() === false) {
+    private generateCurrentChannel = () => {
+        return l10n.formatString(l10n.CHANNEL_TITLE, <ChannelName channelID={this.props.userInfo.currentChannel} />);
+    }
+    private generateModMenu = () => {
+        if (this.props.isModOnChannel === false) {
             return null;
         }
         return (
@@ -91,8 +87,8 @@ export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuS
             </React.Fragment>
         );
     }
-    private generateUserMenu() {
-        if (this.props.getIsModOnChannel() === true) {
+    private generateUserMenu = () => {
+        if (this.props.isModOnChannel === true) {
             return null;
         }
         return (

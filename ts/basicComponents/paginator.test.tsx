@@ -26,8 +26,8 @@ describe("Paginator", () => {
     });
     it("should properly render for page 1 and pages 14", () => {
         const props: IPaginatorProps = {
-            getPage: () => 1,
-            getPages: () => 14,
+            page: 1,
+            pages: 14,
             setPage: (input: number) => input,
         };
 
@@ -38,8 +38,8 @@ describe("Paginator", () => {
     });
     it("should properly render for page 3 and pages 14", () => {
         const props: IPaginatorProps = {
-            getPage: () => 3,
-            getPages: () => 14,
+            page: 3,
+            pages: 14,
             setPage: (input: number) => input,
         };
 
@@ -49,8 +49,8 @@ describe("Paginator", () => {
     });
     it("should properly render for page 6 and pages 14", () => {
         const props: IPaginatorProps = {
-            getPage: () => 6,
-            getPages: () => 14,
+            page: 6,
+            pages: 14,
             setPage: (input: number) => input,
         };
 
@@ -61,8 +61,8 @@ describe("Paginator", () => {
     });
     it("should properly render for page 11 and pages 14", () => {
         const props: IPaginatorProps = {
-            getPage: () => 11,
-            getPages: () => 14,
+            page: 11,
+            pages: 14,
             setPage: (input: number) => input,
         };
 
@@ -74,8 +74,8 @@ describe("Paginator", () => {
 
     it("should properly render for page 14 and pages 14", () => {
         const props: IPaginatorProps = {
-            getPage: () => 14,
-            getPages: () => 14,
+            page: 14,
+            pages: 14,
             setPage: (input: number) => input,
         };
 
@@ -87,8 +87,8 @@ describe("Paginator", () => {
 
     it("should properly render for page 1 and pages 4", () => {
         const props: IPaginatorProps = {
-            getPage: () => 1,
-            getPages: () => 4,
+            page: 1,
+            pages: 4,
             setPage: (input: number) => input,
         };
 
@@ -99,8 +99,8 @@ describe("Paginator", () => {
     });
     it("should properly render for page 3 and pages 4", () => {
         const props: IPaginatorProps = {
-            getPage: () => 1,
-            getPages: () => 4,
+            page: 1,
+            pages: 4,
             setPage: (input: number) => input,
         };
 
@@ -112,8 +112,8 @@ describe("Paginator", () => {
 
     it("should properly render for page 1 and pages 2", () => {
         const props: IPaginatorProps = {
-            getPage: () => 1,
-            getPages: () => 2,
+            page: 1,
+            pages: 2,
             setPage: (input: number) => input,
         };
 
@@ -123,11 +123,10 @@ describe("Paginator", () => {
         expect(paginator).toMatchSnapshot();
     });
     it("should properly react to numeric button presses", () => {
-        let page = 11;
         const props: IPaginatorProps = {
-            getPage: () => page,
-            getPages: () => 14,
-            setPage: (value: number) => page = value,
+            page: 11,
+            pages: 14,
+            setPage: (value: number) => { props.page = value; },
         };
 
         const paginator = create(
@@ -135,15 +134,14 @@ describe("Paginator", () => {
         ).root;
         const button = paginator.find((el) => el.props["data-value"] === 13);
         button.props.onClick();
-        expect(page).toBe(13);
+        expect(props.page).toBe(13);
 
     });
     it("should properly react to arrow button presses - \"<\" case", () => {
-        let page = 11;
         const props: IPaginatorProps = {
-            getPage: () => page,
-            getPages: () => 14,
-            setPage: (value: number) => page = value,
+            page: 11,
+            pages: 14,
+            setPage: (value: number) => { props.page = value; },
         };
 
         const paginator = create(
@@ -151,15 +149,14 @@ describe("Paginator", () => {
         ).root;
         const button = paginator.find((el) => el.props["data-value"] === "prev");
         button.props.onClick();
-        expect(page).toBe(10);
+        expect(props.page).toBe(10);
     });
 
     it("should properly react to arrow button presses - \"<\" case, already first item", () => {
-        let page = 1;
         const props: IPaginatorProps = {
-            getPage: () => page,
-            getPages: () => 14,
-            setPage: (value: number) => page = value,
+            page: 1,
+            pages: 14,
+            setPage: (value: number) => { props.page = value; },
         };
 
         const paginator = create(
@@ -167,15 +164,14 @@ describe("Paginator", () => {
         ).root;
         const button = paginator.find((el) => el.props["data-value"] === "prev");
         button.props.onClick();
-        expect(page).toBe(1);
+        expect(props.page).toBe(1);
     });
 
     it("should properly react to arrow button presses - \"<<\" case", () => {
-        let page = 11;
         const props: IPaginatorProps = {
-            getPage: () => page,
-            getPages: () => 14,
-            setPage: (value: number) => page = value,
+            page: 11,
+            pages: 14,
+            setPage: (value: number) => { props.page = value; },
         };
 
         const paginator = create(
@@ -183,15 +179,14 @@ describe("Paginator", () => {
         ).root;
         const button = paginator.find((el) => el.props["data-value"] === "first");
         button.props.onClick();
-        expect(page).toBe(1);
+        expect(props.page).toBe(1);
     });
 
     it("should properly react to arrow button presses - \"<<\" case, already first item", () => {
-        let page = 1;
         const props: IPaginatorProps = {
-            getPage: () => page,
-            getPages: () => 14,
-            setPage: (value: number) => page = value,
+            page: 1,
+            pages: 14,
+            setPage: (value: number) => { props.page = value; },
         };
 
         const paginator = create(
@@ -199,15 +194,14 @@ describe("Paginator", () => {
         ).root;
         const button = paginator.find((el) => el.props["data-value"] === "first");
         button.props.onClick();
-        expect(page).toBe(1);
+        expect(props.page).toBe(1);
     });
 
     it("should properly react to arrow button presses - \">\" case", () => {
-        let page = 11;
         const props: IPaginatorProps = {
-            getPage: () => page,
-            getPages: () => 14,
-            setPage: (value: number) => page = value,
+            page: 11,
+            pages: 14,
+            setPage: (value: number) => { props.page = value; },
         };
 
         const paginator = create(
@@ -215,15 +209,14 @@ describe("Paginator", () => {
         ).root;
         const button = paginator.find((el) => el.props["data-value"] === "next");
         button.props.onClick();
-        expect(page).toBe(12);
+        expect(props.page).toBe(12);
     });
 
     it("should properly react to arrow button presses - \">\" case, already last item", () => {
-        let page = 14;
         const props: IPaginatorProps = {
-            getPage: () => page,
-            getPages: () => 14,
-            setPage: (value: number) => page = value,
+            page: 14,
+            pages: 14,
+            setPage: (value: number) => { props.page = value; },
         };
 
         const paginator = create(
@@ -231,15 +224,14 @@ describe("Paginator", () => {
         ).root;
         const button = paginator.find((el) => el.props["data-value"] === "next");
         button.props.onClick();
-        expect(page).toBe(14);
+        expect(props.page).toBe(14);
     });
 
     it("should properly react to arrow button presses - \">>\" case", () => {
-        let page = 11;
         const props: IPaginatorProps = {
-            getPage: () => page,
-            getPages: () => 14,
-            setPage: (value: number) => page = value,
+            page: 11,
+            pages: 14,
+            setPage: (value: number) => { props.page = value; },
         };
 
         const paginator = create(
@@ -247,15 +239,14 @@ describe("Paginator", () => {
         ).root;
         const button = paginator.find((el) => el.props["data-value"] === "last");
         button.props.onClick();
-        expect(page).toBe(14);
+        expect(props.page).toBe(14);
     });
 
     it("should properly react to arrow button presses - \">>\" case, already last item", () => {
-        let page = 14;
         const props: IPaginatorProps = {
-            getPage: () => page,
-            getPages: () => 14,
-            setPage: (value: number) => page = value,
+            page: 141,
+            pages: 14,
+            setPage: (value: number) => { props.page = value; },
         };
 
         const paginator = create(
@@ -263,6 +254,6 @@ describe("Paginator", () => {
         ).root;
         const button = paginator.find((el) => el.props["data-value"] === "last");
         button.props.onClick();
-        expect(page).toBe(14);
+        expect(props.page).toBe(14);
     });
 });

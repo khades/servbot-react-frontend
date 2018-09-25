@@ -1,8 +1,8 @@
-import * as actions from "../sidemenu/actioncreators";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import Header from "./component";
 import { IStore } from "../reducers";
+import * as actions from "../sidemenu/actioncreators";
+import Header from "./component";
 
 const mapStateToProps = (state: IStore) => {
     return {

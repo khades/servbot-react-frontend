@@ -1,20 +1,18 @@
-import * as actions from "../userinfo/actioncreators";
-import * as selectors from "../userinfo/storeselectors";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
+import * as selectors from "../userinfo/storeselectors";
 import StartPage from "./component";
 
 const mapStateToProps = (state: IStore) => {
     return {
-        getIfUserIsMod: () => selectors.getIfUserIsModerator(state),
+        ifUserIsMod: selectors.getIfUserIsModerator(state),
         userInfo: selectors.getUserInfo(state),
     };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        setCurrentChannel: (channel: string) => dispatch(actions.setChannel(channel)),
     };
 };
 

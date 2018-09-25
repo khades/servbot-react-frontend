@@ -1,9 +1,9 @@
-import * as actions from "./actioncreators";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import ChannelName, { IChannelNameState } from "./component";
 import { IStore } from "../reducers";
+import * as actions from "./actioncreators";
 import * as selectors from "./selectors";
+import ChannelName, { IChannelNameState } from "./component";
 
 const mapStateToProps = (state: IStore, props: IChannelNameState) => {
     return {

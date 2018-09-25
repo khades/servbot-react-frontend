@@ -6,10 +6,10 @@ describe("Input", () => {
     it("value change should work", () => {
         let inputValue = "";
         const props: IInputProps = {
-            getValue: () => inputValue,
             id: "ID",
             label: "LABEL",
             setValue: (value: string) => inputValue = value,
+            value: inputValue,
         };
 
         const input = create(
@@ -25,10 +25,10 @@ describe("Input", () => {
     });
     it("inital value should be properly set", () => {
         const props: IInputProps = {
-            getValue: () => "testValue",
             id: "ID",
             label: "LABEL",
             setValue: (value: string) => value,
+            value: "testValue",
         };
 
         const input = create(

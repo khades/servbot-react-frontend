@@ -6,9 +6,9 @@ import Header, { IHeaderProps } from "./component";
 describe("Header", () => {
     it("should render properly for SideMenuState == SHOWN ", () => {
         const props: IHeaderProps = {
-            getSideMenuState: () => SideMenuStates.SHOWN,
             hideMenu: () => 1,
             showMenu: () => 1,
+            sideMenuState: SideMenuStates.SHOWN,
         };
         const header = create(
             <Header {...props} />,
@@ -17,9 +17,9 @@ describe("Header", () => {
     });
     it("should render properly for SideMenuState == HIDDEN ", () => {
         const props: IHeaderProps = {
-            getSideMenuState: () => SideMenuStates.HIDDEN,
             hideMenu: () => 1,
             showMenu: () => 1,
+            sideMenuState: SideMenuStates.HIDDEN,
         };
         const header = create(
             <Header {...props} />,
@@ -28,9 +28,9 @@ describe("Header", () => {
     });
     it("should render properly for SideMenuState == INIT ", () => {
         const props: IHeaderProps = {
-            getSideMenuState: () => SideMenuStates.INIT,
             hideMenu: () => 1,
             showMenu: () => 1,
+            sideMenuState: SideMenuStates.INIT,
         };
         const header = create(
             <Header {...props} />,
