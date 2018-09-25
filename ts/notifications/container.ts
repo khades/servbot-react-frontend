@@ -1,8 +1,8 @@
-import * as actions from "./actioncreators";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import Notifications from "./component";
 import { IStore } from "../reducers";
+import * as actions from "./actioncreators";
+import Notifications from "./component";
 
 const mapStateToProps = (state: IStore) => {
     return {

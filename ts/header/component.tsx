@@ -1,5 +1,4 @@
 import classnames from "classnames";
-
 import * as React from "react";
 import "../../scss/modules/_headerContent.scss";
 import { SideMenuStates } from "../sidemenu/reducer";
@@ -10,9 +9,6 @@ export interface IHeaderProps {
     showMenu: () => void;
 }
 export default class Header extends React.Component<IHeaderProps, {}> {
-    constructor(props: IHeaderProps) {
-        super(props);
-    }
     public render() {
         const headerClassNames = classnames({
             "headerContent__menu-button-container": true,

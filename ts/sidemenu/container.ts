@@ -1,9 +1,9 @@
-import * as actions from "./actioncreators";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import SideMenu from "./component";
 import { IStore } from "../reducers";
 import * as channelSelectors from "../userInfo/storeselectors";
+import * as actions from "./actioncreators";
+import SideMenu from "./component";
 
 const mapStateToProps = (state: IStore) => {
     return {

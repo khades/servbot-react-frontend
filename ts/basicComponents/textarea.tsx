@@ -3,9 +3,6 @@ import ControlGroup from "./control-group";
 import { IInputProps } from "./input";
 
 export default class Textarea extends React.Component<IInputProps, {}> {
-    constructor(props: IInputProps) {
-        super(props);
-    }
     public render() {
         return (
             <ControlGroup

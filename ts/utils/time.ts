@@ -3,7 +3,6 @@ import API from "../api/api";
 const time = {
     getTime() {
         API.getTime()
-
         .then((response) => {
             const serverDate = new Date(response.time);
             const localDate = new Date();

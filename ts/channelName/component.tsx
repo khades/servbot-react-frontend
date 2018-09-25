@@ -2,7 +2,6 @@ import * as React from "react";
 import "../../scss/modules/_channel-name.scss";
 import States from "../utils/states";
 import { IChannelName } from "./reducer";
-
 export interface IChannelNameState {
     channelID: string;
     getChannelName: (channelID: string) => void;

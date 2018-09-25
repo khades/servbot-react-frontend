@@ -2,8 +2,8 @@ import classnames from "classnames";
 import * as React from "react";
 
 export interface IPaginatorState {
-    lastPage: boolean;
-    firstPage: boolean;
+    readonly lastPage: boolean;
+    readonly firstPage: boolean;
 }
 
 export interface IPaginatorProps {
@@ -39,7 +39,6 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
         this.state = {
             firstPage: props.page === 1,
             lastPage: props.page === props.pages,
-
         };
     }
 
@@ -68,11 +67,8 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
             "paginator__item--desktop": true,
             "paginator__item--selected": this.props.page === value,
         });
-        const onclick = () => {
-            this.props.setPage(value);
-        };
         return (
-            <div className={classes} data-value={value} key={value.toString()} onClick={onclick}>
+            <div className={classes} data-value={value} key={value.toString()} onClick={this.goToPage}>
                 <div className="paginator__item-content">
                     {value.toString()}
                 </div>
@@ -166,6 +162,11 @@ export default class Paginator extends React.Component<IPaginatorProps, IPaginat
         if (this.state.firstPage !== true) {
             this.props.setPage(1);
         }
+    }
+
+    private goToPage = (event: React.MouseEvent<HTMLDivElement>): void => {
+        const value = parseInt(event.currentTarget.dataset.value, 10);
+        this.props.setPage(value);
     }
 
     private goToPrevious = () => {

@@ -1,10 +1,10 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
+import API from "../api/api";
 import { IStore } from "../reducers";
+import States from "../utils/states";
+import * as actions from "./actioncreators";
 import { actiontypes, IUserInfoGetAction } from "./actions";
 import { IUserInfoState } from "./reducer";
-import * as actions from "./actioncreators";
-import API from "../api/api";
-import States from "../utils/states";
 
 export function* getUserInfo(action: IUserInfoGetAction) {
     const state: IStore = yield select();

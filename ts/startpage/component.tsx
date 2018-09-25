@@ -1,10 +1,10 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import "../../scss/modules/_start-page.scss";
-import ChannelName from "../channelName/container";
 import Select, { ISelectProps } from "../basicComponents/select";
+import ChannelName from "../channelName/container";
 import { l10n, setLang } from "../l10n/l10n";
 import { IUserInfoState } from "../userinfo/reducer";
-import { Link } from "react-router-dom";
 
 export interface IStartPageProps {
     userInfo: IUserInfoState;

@@ -10,9 +10,7 @@ export interface IInputProps {
 }
 
 export default class Input extends React.Component<IInputProps, {}> {
-    constructor(props: IInputProps) {
-        super(props);
-    }
+
     public render() {
         return (
             <ControlGroup

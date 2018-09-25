@@ -133,7 +133,13 @@ describe("Paginator", () => {
             <Paginator {...props} />,
         ).root;
         const button = paginator.find((el) => el.props["data-value"] === 13);
-        button.props.onClick();
+        button.props.onClick({
+            currentTarget: {
+                dataset: {
+                    value: "13",
+                },
+            },
+        });
         expect(props.page).toBe(13);
 
     });

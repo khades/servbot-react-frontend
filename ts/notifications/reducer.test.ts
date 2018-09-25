@@ -12,7 +12,7 @@ describe("Notification reducer", () => {
                 date: new Date(),
                 id: "4",
                 type: "Some",
-            }], actions.add("Hello", [], "Other")).length).toEqual(2);
+            }], actions.add("Hello",  "Other")).length).toEqual(2);
     });
     it("Should properly accept ADD event when type present, and matches new Type", () => {
         expect(reducer([
@@ -21,7 +21,7 @@ describe("Notification reducer", () => {
                 date: new Date(),
                 id: "4",
                 type: "Some",
-            }], actions.add("Hello", [], "Some")).length).toEqual(1);
+            }], actions.add("Hello", "Some")).length).toEqual(1);
     });
     it("Should properly accept HIDE event if notification with that id exists", () => {
         expect(reducer([

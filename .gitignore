@@ -10,3 +10,4 @@ package-lock.json
 config.ts
 yarn-error.log
 .vscode
+coverage

@@ -35,7 +35,6 @@ describe("Checkbox", () => {
             setValue: (value: boolean) => { startingValue = value; },
             value: startingValue,
         };
-
         const checkbox = create(
             <Checkbox {...props} />,
         );

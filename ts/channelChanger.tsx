@@ -1,20 +1,20 @@
 import * as React from "react";
-import * as actions from "./userinfo/actioncreators";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router";
 import { Dispatch } from "redux";
 import { IStore } from "./reducers";
+import * as actions from "./userinfo/actioncreators";
 
 interface IChannelChangerRoute {
     id: string;
 }
+
 interface IChannelChanger extends RouteComponentProps<IChannelChangerRoute> {
     setChannel: (channelID: string) => void;
 }
 class ChannelChanger extends React.Component<IChannelChanger, {}> {
-    constructor(props: IChannelChanger) {
-        super(props);
-        props.setChannel(props.match.params.id);
+    public componentDidMount() {
+        this.props.setChannel(this.props.match.params.id);
     }
 
     public render() {
@@ -23,7 +23,6 @@ class ChannelChanger extends React.Component<IChannelChanger, {}> {
 
     public componentDidUpdate(prevProps: IChannelChanger) {
         if (prevProps.match.params.id !== this.props.match.params.id) {
-
             this.props.setChannel(this.props.match.params.id);
         }
     }

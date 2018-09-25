@@ -9,9 +9,7 @@ export interface IControlGroupProps {
 }
 
 export default class ControlGroup extends React.Component<IControlGroupProps, {}> {
-    constructor(props: IControlGroupProps) {
-        super(props);
-    }
+
     public render() {
         const groupClassname = classnames({
             "control-group": true,

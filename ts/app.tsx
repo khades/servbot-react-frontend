@@ -1,30 +1,23 @@
-import React, { Component } from "react";
+import * as React from "react";
 import ReactDOM from "react-dom";
-import { Provider, connect } from "react-redux";
-import { Route, HashRouter, withRouter } from "react-router-dom";
-import { createStore, applyMiddleware, Dispatch } from "redux";
-import reducers, { IStore } from "./reducers";
-import * as sagas from "./sagas";
+import { connect, Provider } from "react-redux";
+import { HashRouter, Route, withRouter } from "react-router-dom";
+import { applyMiddleware, createStore, Dispatch } from "redux";
+import { createLogger } from "redux-logger";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import "../scss/index.scss";
-import Notifications from "./notifications/container";
-import SideMenu from "./sidemenu/container";
+import ChannelChanger from "./channelChanger";
 import Header from "./header/container";
+import Notifications from "./notifications/container";
+import reducers, { IStore } from "./reducers";
+import * as sagas from "./sagas";
+import SideMenu from "./sidemenu/container";
 import StartPage from "./startpage/container";
-import { createLogger } from "redux-logger";
+import * as actions from "./userinfo/actioncreators";
 import { IUserInfoState } from "./userinfo/reducer";
 import * as selectors from "./userinfo/storeselectors";
-import * as actions from "./userinfo/actioncreators";
 import States from "./utils/states";
-import ChannelChanger from "./channelChanger";
-const Child = ({ match }) => {
-    console.log(match);
-    return (
-        <div>
-            <h3>ID: Hello</h3>
-        </div>
-    );
-}
+
 const reduxlogger = createLogger({
     // ...options
 });
@@ -40,7 +33,7 @@ interface IPageProps {
     getUserInfo: () => void;
     userInfo: IUserInfoState;
 }
-class Page extends Component<IPageProps, {}> {
+class Page extends React.Component<IPageProps, {}> {
 
     public componentDidMount() {
         if (this.props.userInfo.state === States.NOTINITIATED) {

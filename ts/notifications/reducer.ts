@@ -6,13 +6,20 @@ export interface INotification {
     id: string;
     type?: string;
 }
-const initialState: INotification[] = [
-    // {  body: "hey", date: new Date(), id: "3" },
-    // {  body: "hey", date: new Date(), id: "5" },
-    // { body: "hey", date: new Date(), id: "43" },
-];
-
-const reducer = (state: INotification[] = initialState, action?: NotificationsActions): INotification[] => {
+// const initialValue = [{
+//     body: "AAAAAA",
+//     date: new Date(),
+//     id: "222",
+// }, {
+//     body: "BBBB",
+//     date: new Date(),
+//     id: "333",
+// }, {
+//     body: "CCCCCCC",
+//     date: new Date(),
+//     id: "444",
+// }];
+const reducer = (state: INotification[] = [], action?: NotificationsActions): INotification[] => {
     switch (action.type) {
         case actiontypes.ADD:
             if (action.payload.type && state.some((item) => item.type === action.payload.type)) {

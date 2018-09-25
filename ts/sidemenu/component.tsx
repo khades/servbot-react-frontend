@@ -1,11 +1,11 @@
 import classnames from "classnames";
 import * as React from "react";
+import { Link } from "react-router-dom";
 import "../../scss/modules/_site-menu.scss";
-import { IUserInfoState } from "../userinfo/reducer";
-import { SideMenuStates } from "./reducer";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
-import { Link } from "react-router-dom";
+import { IUserInfoState } from "../userinfo/reducer";
+import { SideMenuStates } from "./reducer";
 export interface ISideMenuProps {
     currentChannel: string;
     hideMenu: () => void;
@@ -15,12 +15,6 @@ export interface ISideMenuProps {
 }
 
 export default class SideMenu extends React.Component<ISideMenuProps, {}> {
-
-    constructor(props: ISideMenuProps) {
-        super(props);
-
-    }
-
     public render() {
         const headerClassNames = classnames({
             "site-menu": true,

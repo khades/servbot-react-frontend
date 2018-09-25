@@ -13,10 +13,6 @@ export interface INotificationsProps {
 }
 
 export default class Notifications extends React.Component<INotificationsProps, {}> {
-    constructor(props: INotificationsProps) {
-        super(props);
-    }
-
     public render() {
         return (
             <TransitionGroup className="notifications" >
@@ -25,12 +21,13 @@ export default class Notifications extends React.Component<INotificationsProps, 
         );
     }
 
-    private generateItem = (item: INotification) => {
-        const onClick = () => this.props.hideNotification(item.id);
-        return (
-            <CSSTransition classNames={{ exit: "notifications__item--hidden" }} timeout={300} key={item.id}>
-                {() => <div className="notifications__item" onClick={onClick}>{item.body}</div>}
-            </CSSTransition>
-        );
+    private generateItem = (item: INotification) => (
+        <CSSTransition classNames={{ exit: "notifications__item--hidden" }} timeout={300} key={item.id}>
+            {() => <div className="notifications__item" data-id={item.id} onClick={this.hideNotification}>{item.body}</div>}
+        </CSSTransition>
+    )
+
+    private hideNotification = (event: React.MouseEvent<HTMLDivElement>): void => {
+        this.props.hideNotification(event.currentTarget.dataset.id);
     }
 }

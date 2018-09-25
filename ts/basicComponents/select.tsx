@@ -15,7 +15,7 @@ export interface ISelectValue {
     value: string;
 }
 interface ISelectState {
-    selectedValue: string;
+    readonly selectedValue: string;
 }
 export default class Select extends React.Component<ISelectProps, ISelectState> {
     public static getDerivedStateFromProps(props: ISelectProps, state: ISelectState) {
