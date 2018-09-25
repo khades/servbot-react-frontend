@@ -1,5 +1,5 @@
 import * as React from "react";
-import ReactDOM from "react-dom";
+import * as ReactDOM from "react-dom";
 import { connect, Provider } from "react-redux";
 import { HashRouter, Route, withRouter } from "react-router-dom";
 import { applyMiddleware, createStore, Dispatch } from "redux";
@@ -8,8 +8,10 @@ import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import "../scss/index.scss";
 import ChannelChanger from "./channelChanger";
 import Header from "./header/container";
+import IndexRedirector from "./indexRedirector";
 import Notifications from "./notifications/container";
 import reducers, { IStore } from "./reducers";
+import * as routes from "./routes";
 import * as sagas from "./sagas";
 import SideMenu from "./sidemenu/container";
 import StartPage from "./startpage/container";
@@ -17,7 +19,6 @@ import * as actions from "./userinfo/actioncreators";
 import { IUserInfoState } from "./userinfo/reducer";
 import * as selectors from "./userinfo/storeselectors";
 import States from "./utils/states";
-
 const reduxlogger = createLogger({
     // ...options
 });
@@ -44,7 +45,8 @@ class Page extends React.Component<IPageProps, {}> {
     public render() {
         return (
             <div className="site-container">
-                <Route path="/channel/:id" component={ChannelChanger} />
+                <Route path={routes.ChannelIndex} component={ChannelChanger} />
+                <Route exact={true} path="/" component={IndexRedirector} />
                 <div className="site-container__menu">
                     <SideMenu />
                 </div>
@@ -54,7 +56,8 @@ class Page extends React.Component<IPageProps, {}> {
                 <Notifications />
                 <section className="site-container__content">
                     <div className="content">
-                        <StartPage />
+                        <Route exact={true} path={routes.ChannelIndex} component={StartPage} />
+
                     </div>
                 </section>
             </div>

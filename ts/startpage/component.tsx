@@ -4,6 +4,7 @@ import "../../scss/modules/_start-page.scss";
 import Select, { ISelectProps } from "../basicComponents/select";
 import ChannelName from "../channelName/container";
 import { l10n, setLang } from "../l10n/l10n";
+import * as routes from "../routes";
 import { IUserInfoState } from "../userinfo/reducer";
 
 export interface IStartPageProps {
@@ -12,16 +13,15 @@ export interface IStartPageProps {
 }
 
 export default class StartPage extends React.Component<IStartPageProps, {}> {
+    private langSelectProps: ISelectProps = {
+        id: "language",
+        label: l10n.LANGUAGE,
+        setValue: setLang,
+        value: l10n.getLanguage(),
+        values: [{ value: "en-US", label: "English" }, { value: "ru-RU", label: "Русский" }],
+    };
+
     public render() {
-        const langSelectProps: ISelectProps = {
-            id: "language",
-            label: l10n.LANGUAGE,
-            setValue: (lang: string) => {
-                setLang(lang);
-            },
-            value: l10n.getLanguage(),
-            values: [{ value: "en-US", label: "English" }, { value: "ru-RU", label: "Русский" }],
-        };
 
         return (
             <div className="start-page" >
@@ -40,12 +40,13 @@ export default class StartPage extends React.Component<IStartPageProps, {}> {
                     {this.generateModChannels()}
                 </div>
                 <div className="start-page__language">
-                    <Select {...langSelectProps} />
+                    <Select {...this.langSelectProps} />
 
                 </div>
             </div>
         );
     }
+
     private renderChannelName = () => {
         return <ChannelName channelID={this.props.userInfo.currentChannel} />;
     }
@@ -64,11 +65,13 @@ export default class StartPage extends React.Component<IStartPageProps, {}> {
         );
     }
     private generateModChannels = () => {
-        return this.props.userInfo.modChannels.map((item) =>
+        return this.props.userInfo.modChannels.filter(
+            (channel) => channel.channelID !== this.props.userInfo.currentChannel,
+        ).map((item) =>
             (
                 <Link
                     key={item.channelID}
-                    to={"/channel/" + item.channelID}
+                    to={routes.toChannelIndex(item.channelID)}
                 >
                     {item.channel}
                 </Link>
