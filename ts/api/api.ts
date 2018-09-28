@@ -1,5 +1,6 @@
 import config from "../../config";
 import States from "../utils/states";
+import { IUserLogsInfo } from "./types";
 
 function url(uri: string): string {
     if (uri.startsWith("/")) {
@@ -33,6 +34,14 @@ const API = {
     getUserInfo: () => {
         return API.auth(url("api/user/index")).then((res: Response) => res.json());
     },
+    getUsersLogs: (channelID: string, username?: string): Promise<IUserLogsInfo[]> => {
+        if (username) {
+            return API.auth(url(`/api/channel/${channelID}/logs/search/${username}`))
+                .then((res: Response) => res.json());
+        }
+        return API.auth(url(`/api/channel/${channelID}/logs`)).then((res: Response) => res.json());
+    },
+
     getChannelName: (channelID: string): Promise<string> => {
         return API.auth(
             url(`/api/channel/${channelID}/channelname`),
