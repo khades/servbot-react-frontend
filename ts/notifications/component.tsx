@@ -1,6 +1,7 @@
+import classnames from "classnames";
 import * as React from "react";
 import {
-    CSSTransition,
+    Transition,
     TransitionGroup,
 } from "react-transition-group";
 import "../../scss/modules/_notifications.scss";
@@ -21,20 +22,27 @@ export default class Notifications extends React.Component<INotificationsProps, 
     }
 
     private generateItem = (item: INotification) => (
-        <CSSTransition classNames={{ exit: "notifications__item--hidden" }} timeout={300} key={item.id}>
-            {() => this.generateItemContent(item)}
-        </CSSTransition>
+        <Transition classNames={{ exit: "notifications__item--hidden" }} timeout={300} key={item.id}>
+            {(state) => this.generateItemContent(item, state === "exiting")}
+        </Transition>
     )
 
-    private generateItemContent = (item: INotification) => (
-        <div
-            className="notifications__item"
-            data-id={item.id}
-            onClick={this.hideNotification}
-        >
-            {item.body}
-        </div>
-    )
+    private generateItemContent = (item: INotification, exiting: boolean) => {
+        const itemClasses = classnames({
+            "notifications__item": true,
+            "notifications__item--hidden": exiting === true,
+        });
+        return (
+            <div
+                className={itemClasses}
+                key={item.id}
+                data-id={item.id}
+                onClick={this.hideNotification}
+            >
+                {item.body}
+            </div>
+        );
+    }
 
     private hideNotification = (event: React.MouseEvent<HTMLDivElement>): void => {
         this.props.hideNotification(event.currentTarget.dataset.id);

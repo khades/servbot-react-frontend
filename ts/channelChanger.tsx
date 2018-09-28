@@ -6,7 +6,7 @@ import { IStore } from "./reducers";
 import * as actions from "./userinfo/actioncreators";
 
 interface IChannelChangerRoute {
-    id: string;
+    channel: string;
 }
 
 interface IChannelChanger extends RouteComponentProps<IChannelChangerRoute> {
@@ -14,7 +14,7 @@ interface IChannelChanger extends RouteComponentProps<IChannelChangerRoute> {
 }
 class ChannelChanger extends React.Component<IChannelChanger, {}> {
     public componentDidMount() {
-        this.props.setChannel(this.props.match.params.id);
+        this.props.setChannel(this.props.match.params.channel);
     }
 
     public render() {
@@ -22,8 +22,8 @@ class ChannelChanger extends React.Component<IChannelChanger, {}> {
     }
 
     public componentDidUpdate(prevProps: IChannelChanger) {
-        if (prevProps.match.params.id !== this.props.match.params.id) {
-            this.props.setChannel(this.props.match.params.id);
+        if (prevProps.match.params.channel !== this.props.match.params.channel) {
+            this.props.setChannel(this.props.match.params.channel);
         }
     }
 }

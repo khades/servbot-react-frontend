@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Side Menu should not render if not ready 1`] = `
+<div
+  className="site-menu site-menu--shown"
+>
+  <div
+    className="site-menu__container"
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`Side Menu should render properly for mods 1`] = `
+<div
+  className="site-menu site-menu--shown"
+>
+  <div
+    className="site-menu__container"
+    onClick={[Function]}
+  >
+    <a
+      className="site-menu__header"
+      href="/channel/2345"
+      onClick={[Function]}
+    >
+      <img
+        src=""
+      />
+      <div
+        className="site-menu__header-info"
+      >
+        <div>
+          63636363
+           
+        </div>
+        <span>
+          Channel 
+          <span
+            className="channel-name"
+          >
+            Channel
+          </span>
+        </span>
+      </div>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/logs"
+      onClick={[Function]}
+    >
+      <span>
+        Message logs
+      </span>
+    </a>
+    <a
+      aria-current="page"
+      className="site-menu__link site-menu__link--selected"
+      href="/channel/2345/bans"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span>
+        Bans
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/templates"
+      onClick={[Function]}
+    >
+      <span>
+        Chat Commands
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/subAlert"
+      onClick={[Function]}
+    >
+      <span>
+        Subscription alerts
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/autoMessages"
+      onClick={[Function]}
+    >
+      <span>
+        Automessages
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/songrequests"
+      onClick={[Function]}
+    >
+      <span>
+        Song requests
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/subdays"
+      onClick={[Function]}
+    >
+      <span>
+        Subdays
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/subs"
+      onClick={[Function]}
+    >
+      <span>
+        Subscriptions
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/externalservices"
+      onClick={[Function]}
+    >
+      <span>
+        External Services
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/subtrain"
+      onClick={[Function]}
+    >
+      <span>
+        Subtrain
+      </span>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Side Menu should render properly for non-mods 1`] = `
+<div
+  className="site-menu site-menu--shown"
+>
+  <div
+    className="site-menu__container"
+    onClick={[Function]}
+  >
+    <a
+      className="site-menu__header"
+      href="/channel/2345"
+      onClick={[Function]}
+    >
+      <img
+        src=""
+      />
+      <div
+        className="site-menu__header-info"
+      >
+        <div>
+          63636363
+           
+        </div>
+        <span>
+          Channel 
+          <span
+            className="channel-name"
+          >
+            Channel
+          </span>
+        </span>
+      </div>
+    </a>
+    <a
+      aria-current="page"
+      className="site-menu__link site-menu__link--selected"
+      href="/channel/2345/templates"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span>
+        Chat Commands
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/songrequests"
+      onClick={[Function]}
+    >
+      <span>
+        Song requests
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/subdays"
+      onClick={[Function]}
+    >
+      <span>
+        Subdays
+      </span>
+    </a>
+  </div>
+</div>
+`;

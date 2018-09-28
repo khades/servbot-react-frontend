@@ -7,7 +7,6 @@ import SideMenu from "./component";
 
 const mapStateToProps = (state: IStore) => {
     return {
-        currentChannel: state.userInfo.currentChannel,
         isModOnChannel: channelSelectors.getIfUserIsModerator(state),
         menuState: state.sideMenu.state,
         userInfo: state.userInfo,

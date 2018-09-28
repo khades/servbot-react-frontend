@@ -30,7 +30,7 @@ export default class StartPage extends React.Component<IStartPageProps, {}> {
                         {l10n.formatString(l10n.CHANNEL_TITLE, this.renderChannelName())}
                     </div>
                     <div>
-                        {this.renderChannelModInfo}
+                        {this.renderChannelModInfo()}
                     </div>
                 </div>
                 <h1>

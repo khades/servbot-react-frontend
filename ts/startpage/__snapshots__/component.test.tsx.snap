@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Side Menu should render properly for mods 1`] = `
+<div
+  className="start-page"
+>
+  <div
+    className="start-page__hgroup"
+  >
+    <div
+      className="start-page__header"
+    >
+      Channel 
+      <span
+        className="channel-name channel-name--loading"
+      />
+    </div>
+    <div>
+      You're moderator on channel 
+      <span
+        className="channel-name channel-name--loading"
+      />
+    </div>
+  </div>
+  <h1>
+    Channels, available to control
+  </h1>
+  <div
+    className="start-page__mod-channels"
+  >
+    <a
+      href="/channel/3545"
+      onClick={[Function]}
+    >
+      test2
+    </a>
+    <a
+      href="/channel/3548"
+      onClick={[Function]}
+    >
+      test3
+    </a>
+  </div>
+  <div
+    className="start-page__language"
+  >
+    <div
+      className="control-group"
+    >
+      <label
+        className="control-group__label"
+        htmlFor="language"
+      >
+        Localisation of app
+      </label>
+      <select
+        defaultValue="en-US"
+        id="language"
+        onChange={[Function]}
+      >
+        <option
+          value="en-US"
+        >
+          English
+        </option>
+        <option
+          value="ru-RU"
+        >
+          Русский
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Side Menu should render properly for non-mods 1`] = `
+<div
+  className="start-page"
+>
+  <div
+    className="start-page__hgroup"
+  >
+    <div
+      className="start-page__header"
+    >
+      Channel 
+      <span
+        className="channel-name channel-name--loading"
+      />
+    </div>
+    <div>
+      You're not moderator on channel 
+      <span
+        className="channel-name channel-name--loading"
+      />
+    </div>
+  </div>
+  <h1>
+    Channels, available to control
+  </h1>
+  <div
+    className="start-page__mod-channels"
+  >
+    <a
+      href="/channel/3545"
+      onClick={[Function]}
+    >
+      test2
+    </a>
+    <a
+      href="/channel/3548"
+      onClick={[Function]}
+    >
+      test3
+    </a>
+  </div>
+  <div
+    className="start-page__language"
+  >
+    <div
+      className="control-group"
+    >
+      <label
+        className="control-group__label"
+        htmlFor="language"
+      >
+        Localisation of app
+      </label>
+      <select
+        defaultValue="en-US"
+        id="language"
+        onChange={[Function]}
+      >
+        <option
+          value="en-US"
+        >
+          English
+        </option>
+        <option
+          value="ru-RU"
+        >
+          Русский
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+`;

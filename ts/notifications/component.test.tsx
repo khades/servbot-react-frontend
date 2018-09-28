@@ -1,6 +1,5 @@
 import * as React from "react";
 import { create } from "react-test-renderer";
-import { SideMenuStates } from "../sidemenu/reducer";
 import Notifications, { INotificationsProps } from "./component";
 
 describe("Notifications", () => {
@@ -70,11 +69,9 @@ describe("Notifications", () => {
             <Notifications {...props} />,
         );
         const notification = notifications.root.findAll((el) => {
-          //  console.dir(el.instance);
             return el.props["data-id"] === notificationToHide;
         });
         notification[0].props.onClick({ currentTarget: { dataset: { id: notificationToHide } } });
         expect(hiddenNotification).toEqual(notificationToHide);
     });
-
 });

@@ -69,7 +69,7 @@
             background-color: tint($color-main, 30%);
         }
 
-        &.is-selected {
+        &--selected {
             background-color: $color-main;
             color: #eeeeee !important;
         }
