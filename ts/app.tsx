@@ -11,7 +11,7 @@ import Header from "./header/container";
 import IndexRedirector from "./indexRedirector";
 import Notifications from "./notifications/container";
 import reducers, { IStore } from "./reducers";
-import * as routes from "./routes";
+import * as routes from "./routes/routes";
 import * as sagas from "./sagas";
 import SideMenu from "./sidemenu/container";
 import StartPage from "./startpage/container";

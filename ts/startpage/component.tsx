@@ -4,7 +4,7 @@ import "../../scss/modules/_start-page.scss";
 import Select, { ISelectProps } from "../basicComponents/select";
 import ChannelName from "../channelName/container";
 import { l10n, setLang } from "../l10n/l10n";
-import * as routes from "../routes";
+import * as routes from "../routes/routes";
 import { IUserInfoState } from "../userinfo/reducer";
 
 export interface IStartPageProps {

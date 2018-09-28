@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "../../scss/modules/_site-menu.scss";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
+import * as Routes from "../routes/routes";
 import { IUserInfoState } from "../userinfo/reducer";
 import { SideMenuStates } from "./reducer";
 export interface ISideMenuProps {
@@ -24,7 +25,7 @@ export default class SideMenu extends React.Component<ISideMenuProps, {}> {
         return (
             <div className={headerClassNames}>
                 <div className="site-menu__container">
-                    <Link to="/channel/40635840" className="site-menu__header">
+                    <Link to={Routes.toChannelIndex(this.props.userInfo.currentChannel)} className="site-menu__header">
                         <img src={this.props.userInfo.avatarUrl} />
                         <div className="site-menu__header-info">
                             <div>{this.props.userInfo.username} </div>

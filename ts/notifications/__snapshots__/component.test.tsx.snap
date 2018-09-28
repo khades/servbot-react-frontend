@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notifications should render properly   1`] = `
+<div
+  className="notifications"
+>
+  <div
+    className="notifications__item"
+    data-id="222"
+    onClick={[Function]}
+  >
+    AAAAAA
+  </div>
+  <div
+    className="notifications__item"
+    data-id="333"
+    onClick={[Function]}
+  >
+    BBBB
+  </div>
+  <div
+    className="notifications__item"
+    data-id="444"
+    onClick={[Function]}
+  >
+    CCCCCCC
+  </div>
+</div>
+`;

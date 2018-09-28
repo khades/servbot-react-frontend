@@ -6,6 +6,7 @@
     ],
     "plugins": [
         "transform-class-properties",
-        "babel-plugin-redux-saga"
+        "babel-plugin-redux-saga",
+        "@babel/plugin-syntax-dynamic-import"
     ]
 }
