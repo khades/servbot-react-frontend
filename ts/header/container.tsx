@@ -17,9 +17,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const VisibleNotifications = connect(
+const HeaderContainer = connect(
     mapStateToProps,
     mapDispatchToProps,
 )(Header);
 
-export default VisibleNotifications;
+export default HeaderContainer;

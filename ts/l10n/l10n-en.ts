@@ -39,7 +39,7 @@ const l10nEN = {
     EXTERNAL_SERVICES_TWITCHDJ_NOTIFY: "Post message in chat on song change",
     USER_LIST: "Users on channel {0}",
     USER_LIST_TOP_100_SHOWN: "Last 100 active users are shown",
-    USER_LIST_INPUT_PLACEHOLDER: "🔍 Search by username",
+    USER_LIST_INPUT_PLACEHOLDER: "Search by username",
     USER_LOGS: "Chat logs of user {0} on channel {1}",
     USER_BANS: "Bans of user {0} on channel {1}",
     USER_AKA: "Also known as {0}",

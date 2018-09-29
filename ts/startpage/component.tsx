@@ -5,6 +5,7 @@ import Select, { ISelectProps } from "../basicComponents/select";
 import ChannelName from "../channelName/container";
 import { l10n, setLang } from "../l10n/l10n";
 import * as routes from "../routes/routes";
+import { StatusWrapper } from "../statusWrapper";
 import { IUserInfoState } from "../userinfo/reducer";
 
 export interface IStartPageProps {
@@ -24,26 +25,28 @@ export default class StartPage extends React.Component<IStartPageProps, {}> {
     public render() {
 
         return (
-            <div className="start-page" >
-                <div className="start-page__hgroup">
-                    <div className="start-page__header">
-                        {l10n.formatString(l10n.CHANNEL_TITLE, this.renderChannelName())}
+            <StatusWrapper state={this.props.userInfo.state}>
+                <div className="start-page" >
+                    <div className="start-page__hgroup">
+                        <div className="start-page__header">
+                            {l10n.formatString(l10n.CHANNEL_TITLE, this.renderChannelName())}
+                        </div>
+                        <div>
+                            {this.renderChannelModInfo()}
+                        </div>
                     </div>
-                    <div>
-                        {this.renderChannelModInfo()}
+                    <h1>
+                        {l10n.AVAILABLE_CHANNELS_TO_MOD}
+                    </h1>
+                    <div className="start-page__mod-channels">
+                        {this.generateModChannels()}
                     </div>
-                </div>
-                <h1>
-                    {l10n.AVAILABLE_CHANNELS_TO_MOD}
-                </h1>
-                <div className="start-page__mod-channels">
-                    {this.generateModChannels()}
-                </div>
-                <div className="start-page__language">
-                    <Select {...this.langSelectProps} />
+                    <div className="start-page__language">
+                        <Select {...this.langSelectProps} />
 
+                    </div>
                 </div>
-            </div>
+            </StatusWrapper>
         );
     }
 

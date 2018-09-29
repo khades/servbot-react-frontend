@@ -30,7 +30,7 @@ interface ISideMenuState {
 export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuState> {
     public static readonly routes: IRoute[] = [{
         label: l10n.MESSAGE_LOGS,
-        link: Routes.ToChannelLogs,
+        link: Routes.ToChannelUsers,
         modsOnly: true,
     },
     {

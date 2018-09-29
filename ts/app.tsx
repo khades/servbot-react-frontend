@@ -1,3 +1,5 @@
+import { ConnectedRouter, connectRouter, routerMiddleware } from "connected-react-router";
+import { createHashHistory } from "history";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { connect, Provider } from "react-redux";
@@ -7,6 +9,7 @@ import { createLogger } from "redux-logger";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import "../scss/index.scss";
 import ChannelChanger from "./channelChanger";
+import ChannelUsers from "./channelUsers/container";
 import Header from "./header/container";
 import IndexRedirector from "./indexRedirector";
 import Notifications from "./notifications/container";
@@ -22,10 +25,14 @@ import States from "./utils/states";
 const reduxlogger = createLogger({
     // ...options
 });
+
+const history = createHashHistory();
+
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 const store = createStore(
-    reducers,
-    applyMiddleware(reduxlogger, sagaMiddleware),
+    connectRouter(history)(reducers), // new root reducer with router state
+
+    applyMiddleware(reduxlogger, sagaMiddleware, routerMiddleware(history)),
 );
 
 sagaMiddleware.run(sagas.rootSaga);
@@ -55,10 +62,9 @@ class Page extends React.Component<IPageProps, {}> {
                 </div>
                 <Notifications />
                 <section className="site-container__content">
-                    <div className="content">
-                        <Route exact={true} path={routes.ChannelIndex} component={StartPage} />
+                    <Route exact={true} path={routes.ChannelIndex} component={StartPage} />
+                    <Route exact={true} path={routes.ChannelUsers} component={ChannelUsers} />
 
-                    </div>
                 </section>
             </div>
         );
@@ -84,8 +90,8 @@ const PageContainer = withRouter(connect(
 
 ReactDOM.render((
     <Provider store={store}>
-        <HashRouter>
+        <ConnectedRouter history={history}>
             <PageContainer />
-        </HashRouter>
+        </ConnectedRouter>
     </Provider>
 ), document.getElementById("main"));

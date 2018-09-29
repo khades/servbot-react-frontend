@@ -2,7 +2,7 @@ import States from "../utils/states";
 import * as actions from "./actioncreators";
 import reducer from "./reducer";
 
-describe("UsersLogs reducer", () => {
+describe("ChannelUsers reducer", () => {
     it("Should properly accept LOADING event", () => {
         const initialState = {
             channelID: "",
@@ -142,5 +142,21 @@ describe("UsersLogs reducer", () => {
             userName: "457",
             users: [],
         });
+    });
+    it("Should set state as UPDATING if channel matches", () => {
+        const initialState = {
+            channelID: "123",
+            state: States.READY,
+            userName: "345",
+            users: [],
+        };
+        const date = new Date();
+        expect(reducer(initialState,
+            actions.loading("123", "346"))).toEqual({
+                channelID: "123",
+                state: States.UPDATING,
+                userName: "346",
+                users: [],
+            });
     });
 });

@@ -18,9 +18,9 @@ export const Template = "/channel/:channel/templates/:template";
 
 export const ToTemplate = (channel: string, template: string ) => generatePath(Template, { channel, template });
 
-export const ChannelLogs = "/channel/:channel/logs";
+export const ChannelUsers = "/channel/:channel/logs";
 
-export const ToChannelLogs = (channel: string ) => generatePath(ChannelLogs, { channel });
+export const ToChannelUsers = (channel: string ) => generatePath(ChannelUsers, { channel });
 
 export const ChannelUserLogs = "/channel/:channel/logs/:userID";
 

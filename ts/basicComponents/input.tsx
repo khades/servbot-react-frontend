@@ -7,6 +7,7 @@ export interface IInputProps {
     label: string;
     value: string;
     setValue: (value: string) => void;
+    placeholder?: string;
 }
 
 export default class Input extends React.Component<IInputProps, {}> {
@@ -22,6 +23,7 @@ export default class Input extends React.Component<IInputProps, {}> {
                     id={this.props.id}
                     onChange={this.setValue}
                     defaultValue={this.props.value}
+                    placeholder={this.props.placeholder}
                 />
             </ControlGroup>
         );

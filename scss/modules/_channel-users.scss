@@ -1,10 +1,13 @@
 @import '../utils/index';
+
 .channel-users {
     >*+* {
         margin-top: $element-spacing;
     }
+
     &__description {
         display: none;
+
         @include breakpoint($desktop-width) {
             display: inline-flex
         }
@@ -14,50 +17,68 @@
         >* {
             line-height: 2.25rem;
         }
+
         display: flex;
         flex-direction: column;
         flex-wrap:nowrap;
+
         @include breakpoint($desktop-width) {
             flex-direction: row;
             justify-content: space-between;
         }
-        input {       
-            width: 100%;
-            margin-top:$element-spacing;
-            @include breakpoint($desktop-width) {
-                margin-top:0px;
 
-                width: 20rem;
-            }
+    }
+
+    &__search-input-button {
+        cursor: pointer;
+        background-color: $color-main;
+
+        &:hover,
+        &:focus {
+            background-color: shade($color-main, 25%);
         }
-    
+
+        padding-left: $element-spacing;
+        padding-right: $element-spacing;
+    }
+
+    &__search-input {
+        display: inline-flex;
+        margin-top: $element-spacing;
+
+        @include breakpoint($desktop-width) {
+            margin-top: 0px;
+        }
+
+        input {
+            flex-grow: 2;
+            width: 20rem;
+
+        }
+
     }
 
     &__header {
         @include header-nm;
     }
+
     &__container {
         margin-left: -0.2rem;
         margin-right: -0.2rem;
         display: flex;
         flex-wrap: wrap;
-        &__user-link {
-            @include button;
-         //   text-decoration: none;
-         //   color: white;
-         //   text-shadow: 1px 1px 0px  #303030;
 
-         //   background: $color-main;
-            margin: 0.2rem;
-         //   padding: 0.5rem;
-          //  border-radius: 3px;
-            display: inline-flex; // flex-basis: 250px;
-            // flex-grow: 2;
-            flex-grow: 2;
-            justify-content: center;
-            &__user {
-                font-weight: bolder;
-            }
+    }
+
+    &__user-link {
+        @include button;
+        margin: 0.2rem;
+        display: inline-flex;
+        flex-grow: 2;
+        justify-content: center;
+
+        >* {
+            font-weight: bolder;
         }
     }
 }

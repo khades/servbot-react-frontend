@@ -12,7 +12,7 @@ describe("ChannelName API", () => {
     });
     it("Should properly reject if status code is 401", () => {
         fetchMock.get("*", { status: 401 });
-        expect(API.getChannelName("1")).rejects.toEqual(Error(States.NOTAUTHORIZED));
+        expect(API.getChannelName("1")).rejects.toEqual(States.NOTAUTHORIZED);
     });
 });
 
@@ -26,11 +26,11 @@ describe("API auth", () => {
     });
     it("Should properly reject if status code is 401", () => {
         fetchMock.get("*", { status: 401 });
-        expect(API.auth("1")).rejects.toEqual(Error(States.NOTAUTHORIZED));
+        expect(API.auth("1")).rejects.toEqual(States.NOTAUTHORIZED);
     });
     it("Should properly reject if network error thrown", () => {
         fetchMock.get("*", { throws: { message: "network error" } });
-        expect(API.auth("1")).rejects.toEqual(Error(States.OFFLINE));
+        expect(API.auth("1")).rejects.toEqual(States.OFFLINE);
     });
 });
 
@@ -44,6 +44,6 @@ describe("UserInfo API", () => {
     });
     it("Should properly reject if status code is 401", () => {
         fetchMock.get("*", { status: 401 });
-        expect(API.getUserInfo()).rejects.toEqual(Error(States.NOTAUTHORIZED));
+        expect(API.getUserInfo()).rejects.toEqual(States.NOTAUTHORIZED);
     });
 });

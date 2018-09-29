@@ -16,6 +16,7 @@ export interface IUserLogsInfo {
     userID: string;
     knownNicknames?: string[];
     messages?: IUserLogsMessage[];
+    bans?: IUserLogsMessage[];
 }
 
 export interface IUserLogsMessage {

@@ -1,5 +1,8 @@
 @import '../utils/index';
 .content {
+  position: relative;
+  height: 100vh;
+  max-height:100vh;
   margin: auto;
   >* {
     padding: 1em;
