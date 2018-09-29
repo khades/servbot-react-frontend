@@ -14,6 +14,7 @@ module.exports = {
     },
     output: {
         filename: "app.js",
+        chunkFilename: '[name].bundle.js',
         path: __dirname + "/dist"
     },
     mode: 'development',
@@ -47,7 +48,7 @@ module.exports = {
             },
             {
                 test: /\.tsx?$/,
-                loader: "babel-loader"
+                loader: "babel-loader?cacheDirectory=true"
             }
         ]
     },

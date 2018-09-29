@@ -1,14 +1,14 @@
-import { ConnectedRouter, connectRouter, routerMiddleware } from "connected-react-router";
 import { createHashHistory } from "history";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {  Provider } from "react-redux";
+import Loadable from "react-loadable";
+import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import { createLogger } from "redux-logger";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 
-import PageContainer from "./page";
-import reducers, { IStore } from "./reducers";
+import { HashRouter } from "react-router-dom";
+import reducers from "./reducers";
 import * as sagas from "./sagas";
 
 const reduxlogger = createLogger({
@@ -19,16 +19,19 @@ const history = createHashHistory();
 
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 const store = createStore(
-    connectRouter(history)(reducers),
-    applyMiddleware(reduxlogger, sagaMiddleware, routerMiddleware(history)),
+    reducers,
+    applyMiddleware(reduxlogger, sagaMiddleware),
 );
 
 sagaMiddleware.run(sagas.rootSaga);
-
+const LoadablePageContainer = Loadable({
+    loader: () => import("./page"),
+    loading: () => <div>Loading...</div>,
+});
 ReactDOM.render((
     <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <PageContainer />
-        </ConnectedRouter>
+        <HashRouter>
+            <LoadablePageContainer />
+        </HashRouter>
     </Provider>
 ), document.getElementById("main"));

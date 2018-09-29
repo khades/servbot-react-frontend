@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import * as React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, RouteComponentProps } from "react-router-dom";
 import "../../scss/modules/_site-menu.scss";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
@@ -8,7 +8,11 @@ import * as Routes from "../routes/routes";
 import { IUserInfoState } from "../userinfo/reducer";
 import { SideMenuStates } from "./reducer";
 
-export interface ISideMenuProps {
+interface ISideMenuRoute {
+    channelID: string;
+}
+
+export interface ISideMenuProps extends RouteComponentProps<ISideMenuRoute> {
     hideMenu: () => void;
     menuState: SideMenuStates;
     isModOnChannel: boolean;
@@ -20,13 +24,16 @@ interface IRoute {
     label: string;
     modsOnly?: boolean;
 }
-interface ISideMenuRoute {
+
+interface ISideMenuCurrentRoute {
     link: string;
     label: string;
 }
+
 interface ISideMenuState {
-    readonly routes: ISideMenuRoute[];
+    readonly routes: ISideMenuCurrentRoute[];
 }
+
 export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuState> {
     public static readonly routes: IRoute[] = [{
         label: l10n.MESSAGE_LOGS,
@@ -76,7 +83,7 @@ export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuS
         modsOnly: true,
     }];
 
-    public static generateRoutesState = (routes: IRoute[], isMod: boolean, channelID: string): ISideMenuRoute[] => {
+    public static generateRoutesState = (routes: IRoute[], isMod: boolean, channelID: string): ISideMenuCurrentRoute[] => {
         if (channelID === "") {
             return [];
         }
@@ -102,7 +109,7 @@ export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuS
             routes: SideMenu.generateRoutesState(
                 SideMenu.routes,
                 props.isModOnChannel,
-                props.userInfo.currentChannel,
+                props.match.params.channelID,
             ),
         };
     }
@@ -114,7 +121,7 @@ export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuS
             routes: SideMenu.generateRoutesState(
                 SideMenu.routes,
                 props.isModOnChannel,
-                props.userInfo.currentChannel,
+                props.match.params.channelID,
             ),
         };
     }
@@ -136,11 +143,12 @@ export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuS
     }
 
     private generateLink = () => {
-        if (!this.props.userInfo.currentChannel || this.props.userInfo.currentChannel === "") {
+        const channel = this.props.match.params.channelID;
+        if (!channel || channel === "") {
             return null;
         }
         return (
-            <Link to={Routes.toChannelIndex(this.props.userInfo.currentChannel)} className="site-menu__header">
+            <Link to={Routes.toChannelIndex(channel)} className="site-menu__header">
                 <img src={this.props.userInfo.avatarUrl} />
                 <div className="site-menu__header-info">
                     <div>{this.props.userInfo.username} </div>
@@ -153,7 +161,7 @@ export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuS
     }
 
     private generateCurrentChannel = () => {
-        return l10n.formatString(l10n.CHANNEL_TITLE, <ChannelName channelID={this.props.userInfo.currentChannel} />);
+        return l10n.formatString(l10n.CHANNEL_TITLE, <ChannelName channelID={this.props.match.params.channelID} />);
     }
 
     private generateMenu = () => {
@@ -164,7 +172,7 @@ export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuS
         );
     }
 
-    private generateMenuItem = (route: ISideMenuRoute) => (
+    private generateMenuItem = (route: ISideMenuCurrentRoute) => (
         <NavLink
             key={route.link}
             activeClassName="site-menu__link--selected"

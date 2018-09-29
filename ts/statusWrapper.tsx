@@ -10,7 +10,6 @@ export interface IStatusWrapperState {
 
 export class StatusWrapper extends React.Component<IStatusWrapperState, {}> {
     public render = () => {
-        console.log("a");
         const renderLoading = this.props.state === States.NOTINITIATED
             || this.props.state === States.LOADING
             || this.props.state === States.UPDATING;

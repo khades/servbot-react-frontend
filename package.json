@@ -14,6 +14,7 @@
     "@types/jest": "^23.3.2",
     "@types/react": "^16.4.14",
     "@types/react-dom": "^16.0.7",
+    "@types/react-loadable": "^5.4.1",
     "@types/react-redux": "^6.0.9",
     "@types/react-router-dom": "^4.3.1",
     "@types/react-test-renderer": "^16.0.2",
@@ -29,7 +30,6 @@
     "bourbon": "^5.1.0",
     "breakpoint-sass": "^2.7.1",
     "classnames": "^2.2.6",
-    "connected-react-router": "^4.5.0",
     "css-loader": "^1.0.0",
     "cssnano": "^4.1.0",
     "fetch-mock": "^7.0.0-alpha.6",
@@ -41,6 +41,7 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-hot-loader": "^4.3.7",
+    "react-loadable": "^5.5.0",
     "react-localization": "^1.0.11",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
@@ -66,7 +67,6 @@
   "scripts": {
     "build-dev": "node ./node_modules/webpack/bin/webpack.js",
     "build": "node ./node_modules/webpack/bin/webpack.js --config ./webpack-prod.config.js",
-    "coverage": "node ./node_modules/jest-cli/bin/jest.js --coverage",
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot",
     "test": "node ./node_modules/jest-cli/bin/jest.js"
   },

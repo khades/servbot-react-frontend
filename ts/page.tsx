@@ -1,18 +1,16 @@
 import * as React from "react";
+import Loadable from "react-loadable";
 import { connect } from "react-redux";
 import { Route, withRouter } from "react-router";
 import { Dispatch } from "redux";
 import "../scss/index.scss";
-import Bans from "./bans/container";
-import ChannelChanger from "./channelChanger";
-import ChannelUsers from "./channelUsers/container";
 import Header from "./header/container";
 import IndexRedirector from "./indexRedirector";
 import Notifications from "./notifications/container";
 import { IStore } from "./reducers";
 import * as routes from "./routes/routes";
 import SideMenu from "./sidemenu/container";
-import StartPage from "./startpage/container";
+import { StatusWrapper } from "./statusWrapper";
 import * as actions from "./userinfo/actioncreators";
 import { IUserInfoState } from "./userinfo/reducer";
 import * as selectors from "./userinfo/storeselectors";
@@ -24,6 +22,36 @@ interface IPageProps {
     userInfo: IUserInfoState;
 }
 
+const LoadableStartPage = Loadable({
+    loader: () => import("./startpage/container"),
+    loading: () => <div>Loading...</div>,
+});
+
+const LoadableChannelUsers = Loadable({
+    loader: () => import("./channelUsers/container"),
+    loading: () => <div>Loading...</div>,
+});
+
+const LoadableUserLogs = Loadable({
+    loader: () => import("./userLogs/container"),
+    loading: () => <div>Loading...</div>,
+});
+
+const LoadableBans = Loadable({
+    loader: () => import("./bans/container"),
+    loading: () => <div>Loading...</div>,
+});
+
+const LoadableSideMenu = Loadable({
+    loader: () => import("./sidemenu/container"),
+    loading: () => <div>Loading...</div>,
+});
+
+const LoadableHeader = Loadable({
+    loader: () => import("./header/container"),
+    loading: () => <div>Loading...</div>,
+});
+
 class PageComponent extends React.Component<IPageProps, {}> {
 
     public componentDidMount() {
@@ -34,26 +62,25 @@ class PageComponent extends React.Component<IPageProps, {}> {
 
     public render() {
         return (
-
+            //    <StatusWrapper state={this.props.userInfo.state}>
             <div className="site-container">
-                <Route path={routes.ChannelIndex} component={ChannelChanger} />
+                {/* <Route path={routes.ChannelIndex} component={ChannelChanger} /> */}
                 <Route exact={true} path="/" component={IndexRedirector} />
                 <div className="site-container__menu">
-                    <SideMenu />
+                    <Route path={routes.ChannelIndex} component={LoadableSideMenu} />
                 </div>
                 <div className="site-container__header">
-                    <Header />
+                    <LoadableHeader />
                 </div>
                 <Notifications />
                 <section className="site-container__content">
-                    <Route exact={true} path={routes.ChannelIndex} component={StartPage} />
-                    <Route exact={true} path={routes.ChannelUsers} component={ChannelUsers} />
-                    <Route exact={true} path={routes.ChannelUserLogs} component={UserLogs} />
-                    <Route exact={true} path={routes.Bans} component={Bans} />
-
+                    <Route exact={true} path={routes.ChannelIndex} component={LoadableStartPage} />
+                    <Route exact={true} path={routes.ChannelUsers} component={LoadableChannelUsers} />
+                    <Route exact={true} path={routes.ChannelUserLogs} component={LoadableUserLogs} />
+                    <Route exact={true} path={routes.Bans} component={LoadableBans} />
                 </section>
             </div>
-
+            //    </StatusWrapper>
         );
     }
 }
@@ -70,9 +97,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const Page = (withRouter(connect(
+const Page = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
-)(PageComponent)));
+)(PageComponent));
 
 export default Page;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import "../../scss/modules/_start-page.scss";
 import Select, { ISelectProps } from "../basicComponents/select";
 import ChannelName from "../channelName/container";
@@ -8,7 +8,11 @@ import * as routes from "../routes/routes";
 import { StatusWrapper } from "../statusWrapper";
 import { IUserInfoState } from "../userinfo/reducer";
 
-export interface IStartPageProps {
+interface IStartPageRoute {
+    channelID: string;
+}
+
+export interface IStartPageProps extends RouteComponentProps<IStartPageRoute> {
     userInfo: IUserInfoState;
     ifUserIsMod: boolean;
 }
@@ -51,7 +55,7 @@ export default class StartPage extends React.Component<IStartPageProps, {}> {
     }
 
     private renderChannelName = () => {
-        return <ChannelName channelID={this.props.userInfo.currentChannel} />;
+        return <ChannelName channelID={this.props.match.params.channelID} />;
     }
     private renderChannelModInfo = () => {
         if (this.props.ifUserIsMod === true) {
@@ -69,7 +73,7 @@ export default class StartPage extends React.Component<IStartPageProps, {}> {
     }
     private generateModChannels = () => {
         return this.props.userInfo.modChannels.filter(
-            (channel) => channel.channelID !== this.props.userInfo.currentChannel,
+            (channel) => channel.channelID !== this.props.match.params.channelID,
         ).map((item) =>
             (
                 <Link
