@@ -11,8 +11,10 @@ export interface IUserLogsState {
 
 const initialState = {
     channelID: "",
+
     state: States.NOTINITIATED,
     userID: "",
+
 };
 
 const reducer = (state: IUserLogsState = initialState, action: UserLogsAction): IUserLogsState => {

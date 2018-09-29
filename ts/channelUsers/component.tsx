@@ -9,7 +9,7 @@ import { StatusWrapper } from "../statusWrapper";
 import { IChannelUsersState } from "./reducer";
 
 interface IChannelUsersRoute {
-    channel: string;
+    channelID: string;
 }
 
 interface IChannelUsersProps extends RouteComponentProps<IChannelUsersRoute>, IChannelUsersState {
@@ -19,12 +19,12 @@ export default class ChannelUsers extends React.Component<IChannelUsersProps, {}
     private textInput: React.RefObject<HTMLInputElement> = React.createRef();
 
     public componentDidMount() {
-        this.props.fetchData(this.props.match.params.channel);
+        this.props.fetchData(this.props.match.params.channelID);
     }
 
     public componentDidUpdate(prevProps: IChannelUsersProps) {
-        if (prevProps.match.params.channel !== this.props.match.params.channel) {
-            this.props.fetchData(this.props.match.params.channel);
+        if (prevProps.match.params.channelID !== this.props.match.params.channelID) {
+            this.props.fetchData(this.props.match.params.channelID);
         }
     }
 
@@ -53,7 +53,7 @@ export default class ChannelUsers extends React.Component<IChannelUsersProps, {}
 
     private search = () => {
         const value = this.textInput.current.value;
-        this.props.fetchData(this.props.match.params.channel, value);
+        this.props.fetchData(this.props.match.params.channelID, value);
     }
     private generateUserList = () => {
         if (!this.props.users || this.props.users.length === 0) {
@@ -70,7 +70,7 @@ export default class ChannelUsers extends React.Component<IChannelUsersProps, {}
         return (
             <Link
                 className="channel-users__user-link"
-                to={Routes.ToChannelUserLogs(this.props.match.params.channel, user.userID)}
+                to={Routes.ToChannelUserLogs(this.props.match.params.channelID, user.userID)}
             >
                 {user.user}
             </Link>
@@ -78,6 +78,6 @@ export default class ChannelUsers extends React.Component<IChannelUsersProps, {}
     }
 
     private renderChannelName = () => {
-        return <ChannelName channelID={this.props.match.params.channel} />;
+        return <ChannelName channelID={this.props.match.params.channelID} />;
     }
 }

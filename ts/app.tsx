@@ -21,6 +21,7 @@ import StartPage from "./startpage/container";
 import * as actions from "./userinfo/actioncreators";
 import { IUserInfoState } from "./userinfo/reducer";
 import * as selectors from "./userinfo/storeselectors";
+import UserLogs from "./userLogs/container";
 import States from "./utils/states";
 const reduxlogger = createLogger({
     // ...options
@@ -64,6 +65,7 @@ class Page extends React.Component<IPageProps, {}> {
                 <section className="site-container__content">
                     <Route exact={true} path={routes.ChannelIndex} component={StartPage} />
                     <Route exact={true} path={routes.ChannelUsers} component={ChannelUsers} />
+                    <Route exact={true} path={routes.ChannelUserLogs} component={UserLogs} />
 
                 </section>
             </div>

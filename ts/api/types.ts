@@ -19,6 +19,14 @@ export interface IUserLogsInfo {
     bans?: IUserLogsMessage[];
 }
 
+export enum MessageType {
+    MESSAGE = "message",
+    TIMEOUT = "timeout",
+    UNTIMEOUT = "untimeout",
+    BAN = "ban",
+    UNBAN = "unban",
+}
+
 export interface IUserLogsMessage {
     banIssuer: string;
     banIssuerID: string;
@@ -26,6 +34,8 @@ export interface IUserLogsMessage {
     banReason: string;
     date: Date;
     messageBody: string;
-    messageType: string;
+    messageType: MessageType;
     username: string;
 }
+
+
