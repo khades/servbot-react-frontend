@@ -38,4 +38,9 @@ export interface IUserLogsMessage {
     username: string;
 }
 
-
+export interface IBan {
+    banLength: number;
+    date: Date;
+    user: string;
+    userID: string;
+}

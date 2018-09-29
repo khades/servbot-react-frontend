@@ -1,12 +1,15 @@
 
 import { combineReducers } from "redux";
+import bans, { IBansState } from "./bans/reducer";
 import channelName, { IChannelNameStore } from "./channelName/reducer";
 import channelUsers, { IChannelUsersState } from "./channelUsers/reducer";
 import notifications, { INotification } from "./notifications/reducer";
 import sideMenu, { ISideMenuStore } from "./sidemenu/reducer";
 import userInfo, { IUserInfoState } from "./userinfo/reducer";
 import userLogs, { IUserLogsState } from "./userLogs/reducer";
+
 export interface IStore {
+  readonly bans: IBansState;
   readonly channelName: IChannelNameStore;
   readonly channelUsers: IChannelUsersState;
   readonly notifications: INotification[];
@@ -16,6 +19,7 @@ export interface IStore {
 }
 
 export default combineReducers<IStore, {}>({
+  bans,
   channelName,
   channelUsers,
   notifications,

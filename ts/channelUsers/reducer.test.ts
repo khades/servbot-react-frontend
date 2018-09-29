@@ -1,10 +1,10 @@
 import States from "../utils/states";
 import * as actions from "./actioncreators";
-import reducer from "./reducer";
+import reducer, { IChannelUsersState } from "./reducer";
 
 describe("ChannelUsers reducer", () => {
     it("Should properly accept LOADING event", () => {
-        const initialState = {
+        const initialState: IChannelUsersState = {
             channelID: "",
             state: States.NOTINITIATED,
             userName: "",
@@ -20,7 +20,7 @@ describe("ChannelUsers reducer", () => {
     });
 
     it("Should properly accept LOADING event with one parameter", () => {
-        const initialState = {
+        const initialState: IChannelUsersState = {
             channelID: "",
             state: States.NOTINITIATED,
             userName: "",
@@ -35,7 +35,7 @@ describe("ChannelUsers reducer", () => {
     });
 
     it("Should properly accept READY event", () => {
-        const initialState = {
+        const initialState: IChannelUsersState = {
             channelID: "123",
             state: States.LOADING,
             userName: "345",
@@ -70,7 +70,7 @@ describe("ChannelUsers reducer", () => {
     });
 
     it("Should properly upgrade state from NOTINITIATED event to READY", () => {
-        const initialState = {
+        const initialState: IChannelUsersState = {
             channelID: "",
             state: States.NOTINITIATED,
             userName: "",
@@ -118,7 +118,7 @@ describe("ChannelUsers reducer", () => {
     });
 
     it("Should properly upgrade state from LOADING event to NOTAUTHORIZED", () => {
-        const initialState = {
+        const initialState: IChannelUsersState = {
             channelID: "",
             state: States.NOTINITIATED,
             userName: "",
@@ -144,7 +144,7 @@ describe("ChannelUsers reducer", () => {
         });
     });
     it("Should set state as UPDATING if channel matches", () => {
-        const initialState = {
+        const initialState: IChannelUsersState = {
             channelID: "123",
             state: States.READY,
             userName: "345",

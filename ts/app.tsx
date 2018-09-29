@@ -8,6 +8,7 @@ import { applyMiddleware, createStore, Dispatch } from "redux";
 import { createLogger } from "redux-logger";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import "../scss/index.scss";
+import Bans from "./bans/container";
 import ChannelChanger from "./channelChanger";
 import ChannelUsers from "./channelUsers/container";
 import Header from "./header/container";
@@ -66,6 +67,7 @@ class Page extends React.Component<IPageProps, {}> {
                     <Route exact={true} path={routes.ChannelIndex} component={StartPage} />
                     <Route exact={true} path={routes.ChannelUsers} component={ChannelUsers} />
                     <Route exact={true} path={routes.ChannelUserLogs} component={UserLogs} />
+                    <Route exact={true} path={routes.Bans} component={Bans} />
 
                 </section>
             </div>

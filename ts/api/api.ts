@@ -1,6 +1,6 @@
 import config from "../../config";
 import States from "../utils/states";
-import { IUserLogsInfo } from "./types";
+import { IUserLogsInfo, IBan } from "./types";
 
 function url(uri: string): string {
     if (uri.startsWith("/")) {
@@ -50,6 +50,11 @@ const API = {
     },
     getUserLogs: (channelID: string, userID: string): Promise<IUserLogsInfo> => {
         return API.auth(url(`/api/channel/${channelID}/logs/userid/${userID}`)).then((res: Response) => res.json());
+    },
+    getBans: (channelID: string): Promise<IBan[]> => {
+        return API.auth(url(`/api/channel/${channelID}/bans`))
+            .then((res: Response) => res.json())
+            .then((res) => res.bans);
     },
     getChannelName: (channelID: string): Promise<string> => {
         return API.auth(

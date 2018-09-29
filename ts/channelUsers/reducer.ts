@@ -9,7 +9,7 @@ export interface IChannelUsersState {
     state: States;
 }
 
-const initialState = {
+const initialState: IChannelUsersState = {
     channelID: "",
     state: States.NOTINITIATED,
     userName: "",
@@ -41,12 +41,6 @@ const reducer = (state: IChannelUsersState = initialState, action: ChannelUsersA
                     users: [],
                 };
             }
-
-        // case actiontypes.GET:
-        //     return Object.assign({}, state, {
-        //         channelID: action.payload.channelID,
-        //         userName: action.payload.userName,
-        //     });
         default:
             return state;
     }
