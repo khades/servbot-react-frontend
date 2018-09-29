@@ -1,6 +1,6 @@
 import * as React from "react";
 import { create } from "react-test-renderer";
-import Notifications, { INotificationsProps } from "./component";
+import NotificationsComponent, { INotificationsProps } from "./component";
 
 describe("Notifications", () => {
     it("should render properly  ", () => {
@@ -22,7 +22,7 @@ describe("Notifications", () => {
             }],
         };
         const notifications = create(
-            <Notifications {...props} />,
+            <NotificationsComponent {...props} />,
         );
         expect(notifications.toJSON()).toMatchSnapshot();
 
@@ -40,7 +40,7 @@ describe("Notifications", () => {
             }],
         };
         notifications.update(
-            <Notifications {...newProps} />);
+            <NotificationsComponent {...newProps} />);
         expect(notifications.toJSON()).toMatchSnapshot();
 
     });
@@ -66,7 +66,7 @@ describe("Notifications", () => {
             }],
         };
         const notifications = create(
-            <Notifications {...props} />,
+            <NotificationsComponent {...props} />,
         );
         const notification = notifications.root.findAll((el) => {
             return el.props["data-id"] === notificationToHide;

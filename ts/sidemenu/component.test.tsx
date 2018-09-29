@@ -22,7 +22,7 @@ describe("Side Menu", () => {
     const store = configureStore()({ channelName: storeState });
     it("should render properly for mods", () => {
         const props: ISideMenuProps = {
-            hideMenu: () => { },
+            hideMenu: () => "boo",
             isModOnChannel: true,
             menuState: SideMenuStates.SHOWN,
             userInfo: {
@@ -46,7 +46,7 @@ describe("Side Menu", () => {
 
     it("should render properly for non-mods", () => {
         const props: ISideMenuProps = {
-            hideMenu: () => { },
+            hideMenu: () => "boo",
             isModOnChannel: false,
             menuState: SideMenuStates.SHOWN,
             userInfo: {
@@ -70,7 +70,7 @@ describe("Side Menu", () => {
     });
     it("should not render if not ready", () => {
         const props: ISideMenuProps = {
-            hideMenu: () => { },
+            hideMenu: () => "boo",
             isModOnChannel: false,
             menuState: SideMenuStates.SHOWN,
             userInfo: {

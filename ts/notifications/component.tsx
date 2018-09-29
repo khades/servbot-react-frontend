@@ -12,7 +12,7 @@ export interface INotificationsProps {
     hideNotification: (id: string) => void;
 }
 
-export default class Notifications extends React.Component<INotificationsProps, {}> {
+export default class NotificationsComponent extends React.Component<INotificationsProps, {}> {
     public render() {
         return (
             <TransitionGroup className="notifications" >

@@ -6,7 +6,7 @@ import { IUserInfoState } from "./userinfo/reducer";
 import * as selectors from "./userinfo/storeselectors";
 import States from "./utils/states";
 
-class IndexRedirector extends React.Component<IUserInfoState, {}> {
+class IndexRedirectorComponent extends React.Component<IUserInfoState, {}> {
     public render() {
         if (this.props.state === States.READY) {
             return <Redirect from="/" to={"/channel/" + this.props.userID} />;
@@ -19,8 +19,8 @@ const mapStateToProps = (state: IStore) => {
     return selectors.getUserInfo(state);
 };
 
-const IndexRedirectorContainer = connect(
+const IndexRedirector = connect(
     mapStateToProps,
-)(IndexRedirector);
+)(IndexRedirectorComponent);
 
-export default IndexRedirectorContainer;
+export default IndexRedirector;

@@ -15,7 +15,7 @@ interface IChannelUsersRoute {
 interface IChannelUsersProps extends RouteComponentProps<IChannelUsersRoute>, IChannelUsersState {
     fetchData: (channelID: string, username?: string) => void;
 }
-export default class ChannelUsers extends React.Component<IChannelUsersProps, {}> {
+export default class ChannelUsersComponent extends React.Component<IChannelUsersProps, {}> {
     private textInput: React.RefObject<HTMLInputElement> = React.createRef();
 
     public componentDidMount() {

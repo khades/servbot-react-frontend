@@ -1,6 +1,6 @@
 import config from "../../config";
 import States from "../utils/states";
-import { IUserLogsInfo, IBan } from "./types";
+import { IBan, IUserLogsInfo } from "./types";
 
 function url(uri: string): string {
     if (uri.startsWith("/")) {

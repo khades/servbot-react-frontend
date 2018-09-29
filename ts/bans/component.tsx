@@ -1,9 +1,9 @@
-import classnames from "classnames";
+
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import "../../scss/modules/_channel-bans.scss";
-import { IBan, IBansMessage, MessageType } from "../api/types";
+import { IBan } from "../api/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
@@ -16,7 +16,9 @@ interface IBansRoute {
 interface IBansProps extends RouteComponentProps<IBansRoute>, IBansState {
     fetchData: (channelID: string) => void;
 }
-export default class Bans extends React.Component<IBansProps, {}> {
+
+export default class BansComponent extends React.Component<IBansProps, {}> {
+
     public componentDidMount() {
         this.props.fetchData(this.props.match.params.channelID);
     }

@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import ChannelUsers from "./component";
+import ChannelUsersComponent from "./component";
 
 const mapStateToProps = (state: IStore) => {
     return state.channelUsers;
@@ -14,9 +14,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const VisibleNotifications = connect(
+const ChannelUsers = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(ChannelUsers);
+)(ChannelUsersComponent);
 
-export default VisibleNotifications;
+export default ChannelUsers;

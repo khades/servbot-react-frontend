@@ -3,7 +3,11 @@
 @keyframes loading-shown {
     0% {
         opacity: 0;
+        visibility: visible;
+    }
 
+    1% {
+        //   visibility: visible;
     }
 
     100% {
@@ -18,8 +22,12 @@
 
     }
 
-    100% {
+    99% {
         opacity: 0;
+    }
+
+    100% {
+        visibility: hidden;
 
     }
 }
@@ -27,12 +35,15 @@
 .loading {
     &--hidden {
         animation-name: loading-hidden;
-        animation-duration: 0.3s;
-
+        animation-duration: 0.4s;
+        //opacity: 0;
+        //visibility: hidden;
     }
 
-    animation-name:loading-shown;
-    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    animation-name: loading-shown;
+    animation-duration: 0.1s;
     display: flex;
     justify-content: center;
     position: absolute;
@@ -42,13 +53,14 @@
     bottom: 0;
 
     &__backdrop {
-        background: rgba(0, 0, 0, 0.24);
-        filter: blur(2px);
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        display: inline-flex;
+        border-radius: 5px;
+        width: 70px;
+        height: 70px;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-self: center;
+
     }
 
     &__spinner {

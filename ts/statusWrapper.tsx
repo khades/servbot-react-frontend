@@ -1,7 +1,6 @@
 import classnames from "classnames";
 
 import * as React from "react";
-import { Transition } from "react-transition-group";
 import "../scss/modules/_loading.scss";
 import States from "./utils/states";
 
@@ -10,36 +9,34 @@ export interface IStatusWrapperState {
 }
 
 export class StatusWrapper extends React.Component<IStatusWrapperState, {}> {
-    public render = () => (
-        <div className="content">
-            {this.renderWrappedContent()}
-        </div>
-    )
-    protected generateLoading = (exiting: boolean) => {
+    public render = () => {
+        console.log("a");
+        const renderLoading = this.props.state === States.NOTINITIATED
+            || this.props.state === States.LOADING
+            || this.props.state === States.UPDATING;
         const itemClasses = classnames({
             "loading": true,
-            "loading--hidden": exiting === true,
+            "loading--hidden": renderLoading !== true,
         });
         return (
-            <div className={itemClasses}>
-                <div className="loading__backdrop" />
-                <div className="loading__spinner" />
+            <div className="content">
+                <div className={itemClasses}>
+                    <div className="loading__backdrop">
+                        <div className="loading__spinner" />
+                    </div>
+                </div>
+                {this.renderWrappedContent()}
             </div>
         );
     }
-    protected generateTransitionLoading = () => (
-        <Transition timeout={{enter: 3000, exit: 3000}}>
-            {(state) => this.generateLoading(state === "exiting")}
-        </Transition>
-    )
-    protected renderWrappedContent = () => {
 
+    protected renderWrappedContent = () => {
         if (this.props.state === States.NOTINITIATED) {
-            return this.generateTransitionLoading();
+            return null;
         }
 
         if (this.props.state === States.LOADING) {
-            return this.generateTransitionLoading();
+            return null;
         }
 
         if (this.props.state === States.NOTFOUND) {
@@ -55,7 +52,6 @@ export class StatusWrapper extends React.Component<IStatusWrapperState, {}> {
         if (this.props.state === States.UPDATING) {
             return (
                 <React.Fragment>
-                    {this.generateTransitionLoading()}
                     {this.props.children}
                 </React.Fragment>
             );
@@ -63,7 +59,6 @@ export class StatusWrapper extends React.Component<IStatusWrapperState, {}> {
 
         return (
             <React.Fragment>
-
                 {this.props.children}
             </React.Fragment>
         );

@@ -1,4 +1,4 @@
-import { call, put, select, takeEvery } from "redux-saga/effects";
+import { call, put,  takeEvery } from "redux-saga/effects";
 import API from "../api/api";
 import { IBan } from "../api/types";
 import States from "../utils/states";

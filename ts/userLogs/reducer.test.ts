@@ -9,6 +9,7 @@ describe("UserLogs reducer", () => {
         state: States.NOTINITIATED,
         userID: "",
     };
+
     it("Should properly accept LOADING event", () => {
         expect(reducer(
             initialState, actions.loading("2", "3"))).toEqual({
@@ -17,6 +18,7 @@ describe("UserLogs reducer", () => {
                 userID: "3",
             });
     });
+
     it("Should properly accept FORBIDDEN event", () => {
         expect(reducer(
             initialState, actions.forbidden("2", "3"))).toEqual({
@@ -25,6 +27,7 @@ describe("UserLogs reducer", () => {
                 userID: "3",
             });
     });
+
     it("Should properly accept NOTAUTHORIZED event", () => {
         expect(reducer(
             initialState, actions.notAuthorized("2", "3"))).toEqual({

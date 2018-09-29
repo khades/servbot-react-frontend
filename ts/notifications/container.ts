@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import Notifications from "./component";
+import NotificationsComponent from "./component";
 
 const mapStateToProps = (state: IStore) => {
     return {
@@ -16,9 +16,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const VisibleNotifications = connect(
+const Notifications = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(Notifications);
+)(NotificationsComponent);
 
-export default VisibleNotifications;
+export default Notifications;

@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
 import * as actions from "../sidemenu/actioncreators";
-import Header from "./component";
+import HeaderComponent from "./component";
 
 const mapStateToProps = (state: IStore) => {
     return {
@@ -17,9 +17,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const HeaderContainer = connect(
+const Header = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(Header);
+)(HeaderComponent);
 
-export default HeaderContainer;
+export default Header;

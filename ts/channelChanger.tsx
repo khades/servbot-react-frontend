@@ -12,7 +12,7 @@ interface IChannelChangerRoute {
 interface IChannelChanger extends RouteComponentProps<IChannelChangerRoute> {
     setChannel: (channelID: string) => void;
 }
-class ChannelChanger extends React.Component<IChannelChanger, {}> {
+class ChannelChangerComponent extends React.Component<IChannelChanger, {}> {
     public componentDidMount() {
         this.props.setChannel(this.props.match.params.channelID);
     }
@@ -38,9 +38,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const ChannelChangerContainer = connect(
+const ChannelChanger = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(ChannelChanger);
+)(ChannelChangerComponent);
 
-export default ChannelChangerContainer;
+export default ChannelChanger;

@@ -1,4 +1,3 @@
-import classnames from "classnames";
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import "../../scss/modules/_user-logs.scss";
@@ -7,6 +6,7 @@ import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import { StatusWrapper } from "../statusWrapper";
 import { IUserLogsState } from "./reducer";
+
 interface IUserLogsRoute {
     channelID: string;
     userID: string;
@@ -15,7 +15,8 @@ interface IUserLogsRoute {
 interface IUserLogsProps extends RouteComponentProps<IUserLogsRoute>, IUserLogsState {
     fetchData: (channelID: string, userID: string) => void;
 }
-export default class UserLogs extends React.Component<IUserLogsProps, {}> {
+
+export default class UserLogsComponent extends React.Component<IUserLogsProps, {}> {
     public componentDidMount() {
         this.props.fetchData(this.props.match.params.channelID, this.props.match.params.userID);
     }

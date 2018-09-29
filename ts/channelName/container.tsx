@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import ChannelName, { IChannelNameState } from "./component";
+import ChannelNameComponent, { IChannelNameState } from "./component";
 import * as selectors from "./selectors";
 
 const mapStateToProps = (state: IStore, props: IChannelNameState) => {
@@ -17,9 +17,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const ChannelNameContainer = connect(
+const ChannelName = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(ChannelName);
+)(ChannelNameComponent);
 
-export default ChannelNameContainer;
+export default ChannelName;

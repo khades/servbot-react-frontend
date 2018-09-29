@@ -1,7 +1,7 @@
 import * as React from "react";
 import { create } from "react-test-renderer";
 import { SideMenuStates } from "../sidemenu/reducer";
-import Header, { IHeaderProps } from "./component";
+import HeaderComponent, { IHeaderProps } from "./component";
 
 describe("Header", () => {
     it("should render properly for SideMenuState == SHOWN ", () => {
@@ -11,7 +11,7 @@ describe("Header", () => {
             sideMenuState: SideMenuStates.SHOWN,
         };
         const header = create(
-            <Header {...props} />,
+            <HeaderComponent {...props} />,
         );
         expect(header.toJSON()).toMatchSnapshot();
     });
@@ -22,7 +22,7 @@ describe("Header", () => {
             sideMenuState: SideMenuStates.HIDDEN,
         };
         const header = create(
-            <Header {...props} />,
+            <HeaderComponent {...props} />,
         );
         expect(header.toJSON()).toMatchSnapshot();
     });
@@ -33,7 +33,7 @@ describe("Header", () => {
             sideMenuState: SideMenuStates.INIT,
         };
         const header = create(
-            <Header {...props} />,
+            <HeaderComponent {...props} />,
         );
         expect(header.toJSON()).toMatchSnapshot();
     });

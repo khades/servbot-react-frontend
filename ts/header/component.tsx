@@ -8,7 +8,7 @@ export interface IHeaderProps {
     hideMenu: () => void;
     showMenu: () => void;
 }
-export default class Header extends React.Component<IHeaderProps, {}> {
+export default class HeaderComponent extends React.Component<IHeaderProps, {}> {
     public render() {
         const headerClassNames = classnames({
             "headerContent__menu-button-container": true,

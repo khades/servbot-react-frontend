@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import UserLogs from "./component";
+import UserLogsComponent from "./component";
 
 const mapStateToProps = (state: IStore) => {
     return state.userLogs;
@@ -14,9 +14,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const VisibleNotifications = connect(
+const UserLogs = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(UserLogs);
+)(UserLogsComponent);
 
-export default VisibleNotifications;
+export default UserLogs;
