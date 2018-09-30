@@ -31,11 +31,11 @@ config.devtool = false
 //     }
 
 // }
-config.plugins.push(
+config.plugins = [
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')
     }),
-)
+]
 config.mode = 'production'
 
 module.exports = config
