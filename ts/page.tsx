@@ -1,20 +1,17 @@
 import * as React from "react";
+import { hot } from "react-hot-loader";
 import Loadable from "react-loadable";
 import { connect } from "react-redux";
 import { Route, withRouter } from "react-router";
 import { Dispatch } from "redux";
 import "../scss/index.scss";
-import Header from "./header/container";
 import IndexRedirector from "./indexRedirector";
 import Notifications from "./notifications/container";
 import { IStore } from "./reducers";
 import * as routes from "./routes/routes";
-import SideMenu from "./sidemenu/container";
-import { StatusWrapper } from "./statusWrapper";
 import * as actions from "./userinfo/actioncreators";
 import { IUserInfoState } from "./userinfo/reducer";
 import * as selectors from "./userinfo/storeselectors";
-import UserLogs from "./userLogs/container";
 import States from "./utils/states";
 
 interface IPageProps {
@@ -97,9 +94,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const Page = withRouter(connect(
+const Page = hot(module)(withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
-)(PageComponent));
+)(PageComponent)));
 
 export default Page;

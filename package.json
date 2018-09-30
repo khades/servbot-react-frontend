@@ -67,7 +67,7 @@
   "scripts": {
     "build-dev": "node ./node_modules/webpack/bin/webpack.js",
     "build": "node ./node_modules/webpack/bin/webpack.js --config ./webpack-prod.config.js",
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "node ./node_modules/jest-cli/bin/jest.js"
   },
   "author": "khades",

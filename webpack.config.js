@@ -1,4 +1,3 @@
-// var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var webpack = require("webpack")
 
 module.exports = {
@@ -8,7 +7,6 @@ module.exports = {
         ]
     },
     devServer: {
-        inline: true,
         hot: true,
         contentBase: "./dist"
     },
@@ -23,7 +21,7 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".js", ".jsx",".scss", ".ts", ".tsx"]
+        extensions: [".js", ".jsx", ".scss", ".ts", ".tsx"]
     },
 
     module: {
@@ -48,16 +46,17 @@ module.exports = {
             },
             {
                 test: /\.tsx?$/,
-                loader: "babel-loader?cacheDirectory=true"
+                loader: "babel-loader",
+                options: {
+                    // This is a feature of `babel-loader` for webpack (not Babel itself).
+                    // It enables caching results in ./node_modules/.cache/babel-loader/
+                    // directory for faster rebuilds.
+                    cacheDirectory: true,
+                },
             }
         ]
     },
-    plugins: [
-        // new ExtractTextPlugin({
-        //     filename: 'style.css',
-        //     allChunks: true
-        // }),
-        new webpack.HotModuleReplacementPlugin()
-
-    ]
+    // plugins: [
+    //     new webpack.HotModuleReplacementPlugin()
+    // ]
 };

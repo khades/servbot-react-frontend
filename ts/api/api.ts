@@ -1,6 +1,6 @@
 import config from "../../config";
 import States from "../utils/states";
-import { IBan, IUserLogsInfo } from "./types";
+import { IBan, IUserLogsInfo, ITemplate } from "./types";
 
 function url(uri: string): string {
     if (uri.startsWith("/")) {
@@ -31,16 +31,20 @@ const API = {
             return result;
         });
     },
+
     auth: (...params) => {
         return API.simpleauth(...params);
     },
+
     getTime: () => {
         return fetch(url("api/time"))
             .then((response) => response.json());
     },
+
     getUserInfo: () => {
         return API.auth(url("api/user/index")).then((res: Response) => res.json());
     },
+
     getChannelUsers: (channelID: string, username?: string): Promise<IUserLogsInfo[]> => {
         if (username) {
             return API.auth(url(`/api/channel/${channelID}/logs/search/${username}`))
@@ -48,14 +52,21 @@ const API = {
         }
         return API.auth(url(`/api/channel/${channelID}/logs`)).then((res: Response) => res.json());
     },
+
     getUserLogs: (channelID: string, userID: string): Promise<IUserLogsInfo> => {
         return API.auth(url(`/api/channel/${channelID}/logs/userid/${userID}`)).then((res: Response) => res.json());
     },
+
+    getTemplates: (channelID: string): Promise<ITemplate[]> => {
+        return API.auth(url(`/api/channel/${channelID}/templates`)).then((res: Response) => res.json());
+    },
+
     getBans: (channelID: string): Promise<IBan[]> => {
         return API.auth(url(`/api/channel/${channelID}/bans`))
             .then((res: Response) => res.json())
             .then((res) => res.bans);
     },
+
     getChannelName: (channelID: string): Promise<string> => {
         return API.auth(
             url(`/api/channel/${channelID}/channelname`),

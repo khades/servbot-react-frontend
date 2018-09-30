@@ -27,7 +27,6 @@ export default class StartPage extends React.Component<IStartPageProps, {}> {
     };
 
     public render() {
-
         return (
             <StatusWrapper state={this.props.userInfo.state}>
                 <div className="start-page" >

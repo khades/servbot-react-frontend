@@ -44,3 +44,10 @@ export interface IBan {
     user: string;
     userID: string;
 }
+
+export interface ITemplate {
+    aliasTo: string;
+    channelID: string;
+    commandName: string;
+    template: string;
+}
