@@ -1,6 +1,7 @@
 node_modules
 bower_components
 dist/app.js
+dist/*.js
 dist/app.js.map
 dist/style.css
 dist/style.css.map
