@@ -16,6 +16,11 @@ export const notAuthorized = (channelID: string): actions.ITemplatesNotAuthorize
     type: actions.actiontypes.NOTAUTHORIZED,
 });
 
+export const offline = (channelID: string): actions.ITemplatesOfflineAction => ({
+    payload: { channelID },
+    type: actions.actiontypes.OFFLINE,
+});
+
 export const ready = (channelID: string, content: ITemplate[]): actions.ITemplatesReadyAction => ({
     payload: { content, channelID },
     type: actions.actiontypes.READY,

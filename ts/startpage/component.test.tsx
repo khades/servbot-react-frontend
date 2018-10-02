@@ -22,10 +22,14 @@ describe("Side Menu", () => {
     const store = configureStore()({ channelName: storeState });
     it("should render properly for mods", () => {
         const props: IStartPageProps = {
-            ifUserIsMod: true,
+            isModOnChannel: true,
+            match: {
+                params: {
+                    channelID: "354",
+                },
+            },
             userInfo: {
                 avatarUrl: "",
-                currentChannel: "354",
                 modChannels: [{
                     channel: "test1",
                     channelID: "354",
@@ -45,7 +49,7 @@ describe("Side Menu", () => {
         };
         const notifications = create(
             <Provider store={store}>
-                <MemoryRouter initialEntries={[Routes.toChannelIndex(props.userInfo.currentChannel)]}>
+                <MemoryRouter initialEntries={[Routes.toChannelIndex("354")]}>
                     <StartPage {...props} />
                 </MemoryRouter>
 
@@ -55,10 +59,14 @@ describe("Side Menu", () => {
     });
     it("should render properly for non-mods", () => {
         const props: IStartPageProps = {
-            ifUserIsMod: false,
+            isModOnChannel: false,
+            match: {
+                params: {
+                    channelID: "354",
+                },
+            },
             userInfo: {
                 avatarUrl: "",
-                currentChannel: "354",
                 modChannels: [{
                     channel: "test1",
                     channelID: "354",
@@ -78,7 +86,7 @@ describe("Side Menu", () => {
         };
         const notifications = create(
             <Provider store={store}>
-                <MemoryRouter initialEntries={[Routes.toChannelIndex(props.userInfo.currentChannel)]}>
+                <MemoryRouter initialEntries={[Routes.toChannelIndex("354")]}>
                     <StartPage {...props} />
                 </MemoryRouter>
             </Provider>,

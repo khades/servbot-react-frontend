@@ -25,6 +25,12 @@ const reducer = (state: IUserLogsState = initialState, action: UserLogsAction): 
             return Object.assign({}, action.payload, { state: States.NOTFOUND });
         case actiontypes.FORBIDDEN:
             return Object.assign({}, action.payload, { state: States.FORBIDDEN });
+        case actiontypes.OFFLINE:
+            return {
+                channelID: "",
+                state: States.OFFLINE,
+                userID: "",
+            };
         case actiontypes.NOTAUTHORIZED:
             return Object.assign({}, action.payload, { state: States.NOTAUTHORIZED });
         default:

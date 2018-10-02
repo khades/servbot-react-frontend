@@ -24,6 +24,13 @@ const reducer = (state: IChannelUsersState = initialState, action: ChannelUsersA
                 state: States.READY,
                 users: action.payload,
             });
+        case actiontypes.OFFLINE:
+            return Object.assign({}, state, { state: States.OFFLINE });
+        case actiontypes.FORBIDDEN:
+            return Object.assign({}, state, {
+                channelID: action.payload.channelID,
+                state: States.FORBIDDEN,
+            });
         case actiontypes.NOTAUTHORIZED:
             return Object.assign({}, state, { state: States.NOTAUTHORIZED });
         case actiontypes.LOADING:

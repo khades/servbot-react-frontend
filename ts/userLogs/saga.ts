@@ -20,7 +20,7 @@ export function* getUserLogs(action: IUserLogsGetAction) {
             case States.NOTAUTHORIZED:
                 return yield put(actions.notAuthorized(action.payload.channelID, action.payload.userID));
             default:
-                return yield put(actions.notFound(action.payload.channelID, action.payload.userID));
+                return yield put(actions.offline());
         }
     }
 }

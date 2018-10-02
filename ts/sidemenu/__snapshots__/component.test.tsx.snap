@@ -7,7 +7,64 @@ exports[`Side Menu should not render if not ready 1`] = `
   <div
     className="site-menu__container"
     onClick={[Function]}
-  />
+  >
+    <a
+      className="site-menu__header"
+      href="/channel/2345"
+      onClick={[Function]}
+    >
+      <img
+        src=""
+      />
+      <div
+        className="site-menu__header-info"
+      >
+        <div>
+          
+           
+        </div>
+        <span>
+          Channel 
+          <span
+            className="channel-name"
+          >
+            Channel
+          </span>
+        </span>
+      </div>
+    </a>
+    <a
+      aria-current="page"
+      className="site-menu__link site-menu__link--selected"
+      href="/channel/2345/templates"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span>
+        Chat Commands
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/songrequests"
+      onClick={[Function]}
+    >
+      <span>
+        Song requests
+      </span>
+    </a>
+    <a
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/2345/subdays"
+      onClick={[Function]}
+    >
+      <span>
+        Subdays
+      </span>
+    </a>
+  </div>
 </div>
 `;
 
@@ -17,7 +74,6 @@ exports[`Side Menu should render properly for mods 1`] = `
 >
   <div
     className="site-menu__container"
-    onClick={[Function]}
   >
     <a
       className="site-menu__header"
@@ -55,21 +111,21 @@ exports[`Side Menu should render properly for mods 1`] = `
       </span>
     </a>
     <a
-      aria-current="page"
-      className="site-menu__link site-menu__link--selected"
+      aria-current={null}
+      className="site-menu__link"
       href="/channel/2345/bans"
       onClick={[Function]}
-      style={Object {}}
     >
       <span>
         Bans
       </span>
     </a>
     <a
-      aria-current={null}
-      className="site-menu__link"
+      aria-current="page"
+      className="site-menu__link site-menu__link--selected"
       href="/channel/2345/templates"
       onClick={[Function]}
+      style={Object {}}
     >
       <span>
         Chat Commands
@@ -159,7 +215,7 @@ exports[`Side Menu should render properly for non-mods 1`] = `
   >
     <a
       className="site-menu__header"
-      href="/channel/2345"
+      href="/channel/234567"
       onClick={[Function]}
     >
       <img
@@ -175,19 +231,16 @@ exports[`Side Menu should render properly for non-mods 1`] = `
         <span>
           Channel 
           <span
-            className="channel-name"
-          >
-            Channel
-          </span>
+            className="channel-name channel-name--loading"
+          />
         </span>
       </div>
     </a>
     <a
-      aria-current="page"
-      className="site-menu__link site-menu__link--selected"
-      href="/channel/2345/templates"
+      aria-current={null}
+      className="site-menu__link"
+      href="/channel/234567/templates"
       onClick={[Function]}
-      style={Object {}}
     >
       <span>
         Chat Commands
@@ -196,7 +249,7 @@ exports[`Side Menu should render properly for non-mods 1`] = `
     <a
       aria-current={null}
       className="site-menu__link"
-      href="/channel/2345/songrequests"
+      href="/channel/234567/songrequests"
       onClick={[Function]}
     >
       <span>
@@ -206,7 +259,7 @@ exports[`Side Menu should render properly for non-mods 1`] = `
     <a
       aria-current={null}
       className="site-menu__link"
-      href="/channel/2345/subdays"
+      href="/channel/234567/subdays"
       onClick={[Function]}
     >
       <span>

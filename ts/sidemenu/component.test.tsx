@@ -21,13 +21,16 @@ describe("Side Menu", () => {
     };
     const store = configureStore()({ channelName: storeState });
     it("should render properly for mods", () => {
-        const props: ISideMenuProps = {
-            hideMenu: () => "boo",
+        const props = {
             isModOnChannel: true,
+            match: {
+                params: {
+                    channelID: "2345",
+                },
+            },
             menuState: SideMenuStates.SHOWN,
             userInfo: {
                 avatarUrl: "",
-                currentChannel: "2345",
                 modChannels: [],
                 state: States.READY,
                 userID: "2342342",
@@ -36,7 +39,7 @@ describe("Side Menu", () => {
         };
         const notifications = create(
             <Provider store={store}>
-                <MemoryRouter initialEntries={[Routes.ToBans(props.userInfo.currentChannel)]}>
+                <MemoryRouter initialEntries={[Routes.ToTemplates("2345")]}>
                     <SideMenu {...props} />
                 </MemoryRouter>
             </Provider>,
@@ -45,13 +48,17 @@ describe("Side Menu", () => {
     });
 
     it("should render properly for non-mods", () => {
-        const props: ISideMenuProps = {
+        const props = {
             hideMenu: () => "boo",
             isModOnChannel: false,
+            match: {
+                params: {
+                    channelID: "234567",
+                },
+            },
             menuState: SideMenuStates.SHOWN,
             userInfo: {
                 avatarUrl: "",
-                currentChannel: "2345",
                 modChannels: [],
                 state: States.READY,
                 userID: "2342342",
@@ -60,8 +67,7 @@ describe("Side Menu", () => {
         };
         const notifications = create(
             <Provider store={store}>
-
-                <MemoryRouter initialEntries={[Routes.ToTemplates(props.userInfo.currentChannel)]}>
+                <MemoryRouter initialEntries={[Routes.ToTemplates("2345")]}>
                     <SideMenu {...props} />
                 </MemoryRouter>
             </Provider>,
@@ -69,13 +75,18 @@ describe("Side Menu", () => {
         expect(notifications.toJSON()).toMatchSnapshot();
     });
     it("should not render if not ready", () => {
-        const props: ISideMenuProps = {
+        const props = {
             hideMenu: () => "boo",
             isModOnChannel: false,
+
+            match: {
+                params: {
+                    channelID: "2345",
+                },
+            },
             menuState: SideMenuStates.SHOWN,
             userInfo: {
                 avatarUrl: "",
-                currentChannel: "",
                 modChannels: [],
                 state: States.LOADING,
                 userID: "",
@@ -84,7 +95,7 @@ describe("Side Menu", () => {
         };
         const notifications = create(
             <Provider store={store}>
-                <MemoryRouter initialEntries={[Routes.ToTemplates("1231")]}>
+                <MemoryRouter initialEntries={[Routes.ToTemplates("2345")]}>
                     <SideMenu {...props} />
                 </MemoryRouter>
             </Provider> ,

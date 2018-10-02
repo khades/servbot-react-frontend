@@ -2,17 +2,14 @@ import classnames from "classnames";
 import * as React from "react";
 import { Link, NavLink, RouteComponentProps } from "react-router-dom";
 import "../../scss/modules/_site-menu.scss";
+import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
 import { IUserInfoState } from "../userinfo/reducer";
 import { SideMenuStates } from "./reducer";
 
-interface ISideMenuRoute {
-    channelID: string;
-}
-
-export interface ISideMenuProps extends RouteComponentProps<ISideMenuRoute> {
+export interface ISideMenuProps extends RouteComponentProps<IChannelRoute> {
     hideMenu: () => void;
     menuState: SideMenuStates;
     isModOnChannel: boolean;
@@ -83,7 +80,10 @@ export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuS
         modsOnly: true,
     }];
 
-    public static generateRoutesState = (routes: IRoute[], isMod: boolean, channelID: string): ISideMenuCurrentRoute[] => {
+    public static generateRoutesState = (
+        routes: IRoute[],
+        isMod: boolean,
+        channelID: string): ISideMenuCurrentRoute[] => {
         if (channelID === "") {
             return [];
         }

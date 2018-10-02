@@ -7,6 +7,7 @@ export enum actiontypes {
     NOTFOUND = "USERLOGS/NOTFOUND",
     NOTAUTHORIZED = "USERLOGS/NOTAUTHORIZED",
     FORBIDDEN = "USERLOGS/FORBIDDEN",
+    OFFLINE = "USERLOGS/OFFLINE",
 }
 
 export interface IUserLogsGetAction {
@@ -40,7 +41,9 @@ export interface IUserLogsReadyAction {
         content: IUserLogsInfo,
     };
 }
-
+export interface IUserLogsOfflineAction {
+    type: actiontypes.OFFLINE;
+}
 export interface IUserLogsNotFoundAction {
     type: actiontypes.NOTFOUND;
     payload: {
@@ -61,4 +64,5 @@ export type UserLogsAction = IUserLogsGetAction
     | IUserLogsReadyAction
     | IUserLogsForbiddenAction
     | IUserLogsNotFoundAction
+    | IUserLogsOfflineAction
     | IUserLogsNotAuthorizedAction;

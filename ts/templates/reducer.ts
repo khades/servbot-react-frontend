@@ -23,6 +23,11 @@ const reducer = (state: ITemplateState = initialState, action: TemplatesAction):
                 channelID: action.payload.channelID,
                 showNonEmpty: true,
             }, { state: States.LOADING });
+        case actiontypes.OFFLINE:
+            return Object.assign({}, {
+                channelID: action.payload.channelID,
+                showNonEmpty: true,
+            }, { state: States.OFFLINE });
         case actiontypes.READY:
             return Object.assign({}, {
                 channelID: action.payload.channelID,

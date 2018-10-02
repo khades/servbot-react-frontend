@@ -16,7 +16,7 @@ export function* getTemplates(action: ITemplatesGetAction) {
             case States.NOTAUTHORIZED:
                 return yield put(actions.notAuthorized(action.payload.channelID));
             default:
-                return yield put(actions.ready(action.payload.channelID, []));
+                return yield put(actions.offline(action.payload.channelID));
         }
     }
 }

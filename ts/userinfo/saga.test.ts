@@ -70,7 +70,20 @@ describe("Username sagas", () => {
             },
         }).value).toEqual(put(actions.loading()));
         expect(saga.next().value).toEqual(call(API.getUserInfo));
-        expect(saga.throw("Testing Error").value).toEqual(put(actions.notAuthorized()));
+        expect(saga.throw("Testing Error").value).toEqual(put(actions.offline()));
+        expect(saga.next().done).toBe(true);
+    });
+
+    it("Should do proper reject steps if not authorized", () => {
+        const saga = getUserInfo(actions.get());
+        expect(saga.next().value).toEqual(select());
+        expect(saga.next({
+            userInfo: {
+                state: States.NOTINITIATED,
+            },
+        }).value).toEqual(put(actions.loading()));
+        expect(saga.next().value).toEqual(call(API.getUserInfo));
+        expect(saga.throw(States.NOTAUTHORIZED).value).toEqual(put(actions.notAuthorized()));
         expect(saga.next().done).toBe(true);
     });
 });

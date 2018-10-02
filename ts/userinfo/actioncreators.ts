@@ -9,6 +9,9 @@ export const notAuthorized = (): actions.IUserInfoNotAuthorizedAction =>
 export const loading = (): actions.IUserInfoLoadingAction =>
     ({ type: actions.actiontypes.LOADING });
 
+export const offline = (): actions.IUserInfoOfflineAction =>
+    ({ type: actions.actiontypes.OFFLINE });
+
 export const ready = (payload: IUserInfo): actions.IUserInfoReadyAction => ({
     payload,
     type: actions.actiontypes.READY,

@@ -19,7 +19,12 @@ export function* getUserInfo(action: IUserInfoGetAction) {
         const userInfo: IUserInfoState = yield call(API.getUserInfo);
         yield put(actions.ready(userInfo));
     } catch (err) {
-        yield put(actions.notAuthorized());
+        switch (err) {
+            case States.NOTAUTHORIZED:
+                return yield put(actions.notAuthorized());
+            default:
+                return yield put(actions.offline());
+        }
     }
 }
 

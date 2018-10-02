@@ -11,6 +11,15 @@ export const loading = (channelID: string, userName?: string): actions.IChannelU
     type: actions.actiontypes.LOADING,
 });
 
+export const offline = (): actions.IChannelUsersOfflineAction => ({
+    type: actions.actiontypes.OFFLINE,
+});
+
+export const forbidden = (channelID: string): actions.IChannelUsersForbiddenAction => ({
+    payload: { channelID },
+    type: actions.actiontypes.FORBIDDEN,
+});
+
 export const notAuthorized = (): actions.IChannelUsersNotAuthorizedAction => ({
     type: actions.actiontypes.NOTAUTHORIZED,
 });

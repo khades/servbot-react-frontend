@@ -5,6 +5,7 @@ export enum actiontypes {
     LOADING = "TEMPLATES/LOADING",
     READY = "TEMPLATES/READY",
     NOTAUTHORIZED = "TEMPLATES/NOTAUTHORIZED",
+    OFFLINE = "TEMPLATES/OFFLINE",
 }
 
 export interface ITemplatesGetAction {
@@ -16,6 +17,12 @@ export interface ITemplatesGetAction {
 
 export interface ITemplatesLoadingAction {
     type: actiontypes.LOADING;
+    payload: {
+        channelID: string,
+    };
+}
+export interface ITemplatesOfflineAction {
+    type: actiontypes.OFFLINE;
     payload: {
         channelID: string,
     };
@@ -39,4 +46,5 @@ export interface ITemplatesNotAuthorizedAction {
 export type TemplatesAction = ITemplatesGetAction
     | ITemplatesLoadingAction
     | ITemplatesReadyAction
+    | ITemplatesOfflineAction
     | ITemplatesNotAuthorizedAction;

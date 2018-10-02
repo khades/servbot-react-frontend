@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import * as selectors from "../channel/storeselectors";
 import { IStore } from "../reducers";
-import * as selectors from "../userinfo/storeselectors";
-import StartPage from "./component";
+import StartPage, { IStartPageProps } from "./component";
 
-const mapStateToProps = (state: IStore) => {
+const mapStateToProps = (state: IStore, props: IStartPageProps) => {
     return {
-        ifUserIsMod: selectors.getIfUserIsModerator(state),
-        userInfo: selectors.getUserInfo(state),
+        isModOnChannel: selectors.isUserMod(state, props),
+        userInfo: state.userInfo,
     };
 };
 

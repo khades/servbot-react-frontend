@@ -26,6 +26,10 @@ export const forbidden = (channelID: string, userID: string): actions.IUserLogsF
     type: actions.actiontypes.FORBIDDEN,
 });
 
+export const offline = (): actions.IUserLogsOfflineAction => ({
+    type: actions.actiontypes.OFFLINE,
+});
+
 export const ready = (channelID: string, userID: string, content: IUserLogsInfo): actions.IUserLogsReadyAction => ({
     payload: { content, channelID, userID },
     type: actions.actiontypes.READY,

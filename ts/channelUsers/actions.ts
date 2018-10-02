@@ -5,6 +5,8 @@ export enum actiontypes {
     GET = "CHANNELUSERS/GET",
     NOTAUTHORIZED = "CHANNELUSERS/NOTAUTHORIZED",
     LOADING = "CHANNELUSERS/LOADING",
+    OFFLINE = "CHANNELUSERS/OFFLINE",
+    FORBIDDEN = "CHANNELUSERS/FORBIDDEN",
 }
 
 export interface IChannelUsersReadyAction {
@@ -20,8 +22,18 @@ export interface IChannelUsersGetAction {
     };
 }
 
+export interface IChannelUsersForbiddenAction {
+    type: actiontypes.FORBIDDEN;
+    payload: {
+        channelID: string;
+    };
+}
 export interface IChannelUsersNotAuthorizedAction {
     type: actiontypes.NOTAUTHORIZED;
+}
+
+export interface IChannelUsersOfflineAction {
+    type: actiontypes.OFFLINE;
 }
 
 export interface IChannelUsersLoadingAction {
@@ -34,5 +46,7 @@ export interface IChannelUsersLoadingAction {
 
 export type ChannelUsersAction = IChannelUsersGetAction
     | IChannelUsersReadyAction
+    | IChannelUsersOfflineAction
+    | IChannelUsersForbiddenAction
     | IChannelUsersNotAuthorizedAction
     | IChannelUsersLoadingAction;

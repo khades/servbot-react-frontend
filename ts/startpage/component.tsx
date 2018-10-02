@@ -2,19 +2,16 @@ import * as React from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import "../../scss/modules/_start-page.scss";
 import Select, { ISelectProps } from "../basicComponents/select";
+import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
 import { l10n, setLang } from "../l10n/l10n";
 import * as routes from "../routes/routes";
 import { StatusWrapper } from "../statusWrapper";
 import { IUserInfoState } from "../userinfo/reducer";
 
-interface IStartPageRoute {
-    channelID: string;
-}
-
-export interface IStartPageProps extends RouteComponentProps<IStartPageRoute> {
+export interface IStartPageProps extends RouteComponentProps<IChannelRoute> {
     userInfo: IUserInfoState;
-    ifUserIsMod: boolean;
+    isModOnChannel: boolean;
 }
 
 export default class StartPage extends React.Component<IStartPageProps, {}> {
@@ -57,7 +54,7 @@ export default class StartPage extends React.Component<IStartPageProps, {}> {
         return <ChannelName channelID={this.props.match.params.channelID} />;
     }
     private renderChannelModInfo = () => {
-        if (this.props.ifUserIsMod === true) {
+        if (this.props.isModOnChannel === true) {
             return (
                 <React.Fragment>
                     {l10n.formatString(l10n.YOURE_MODERATOR, this.renderChannelName())}

@@ -69,6 +69,7 @@ export default class ChannelUsersComponent extends React.Component<IChannelUsers
     private generateUserLink = (user: IUserLogsInfo) => {
         return (
             <Link
+                key={user.userID}
                 className="channel-users__user-link"
                 to={Routes.ToChannelUserLogs(this.props.match.params.channelID, user.userID)}
             >

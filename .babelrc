@@ -1,6 +1,5 @@
 {
     "presets": [
-
         "@babel/typescript",
         "@babel/react"
     ],
@@ -9,6 +8,5 @@
         "babel-plugin-redux-saga",
         "@babel/plugin-syntax-dynamic-import",
         "react-hot-loader/babel"
-
     ]
 }
