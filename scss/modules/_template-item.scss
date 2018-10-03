@@ -1,31 +1,35 @@
 $item-border-width: 6px;
 @import '../utils/index';
-.template-list-item {
+
+.template-item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
     color: black;
     @include mshadow;
-    background: white; //  @include media($size-sm) {
-    width: 100%; //  }
+    background: white;
+    width: 100%;
+
     &__header {
         display: inline-flex;
         justify-content: space-between;
-        align-items: center; // .sprite {
-        //     @include svg-size(1.05em !important);
-        //     display: inline-flex;
-        // }
+        align-items: center;
+
         .text {
             display: inline-flex;
         }
+
         width: 100%;
     }
+
     &__type {
         color: $color-grey;
     }
+
     display: inline-flex;
     flex-direction: column;
+
     &__body {
         word-wrap: break-word;
         max-width: 100%;
@@ -34,30 +38,12 @@ $item-border-width: 6px;
     }
 
     padding:$element-spacing;
+
     &__name {
         font-weight: bolder;
-    } // &-template {
-    //     border-left: $item-border-width solid $color-ok;
-    //     border-right: $item-border-width solid $color-ok;
-    //     // .sprite {
-    //     //     background: svg-load("../svg/pencil.svg", fill=#fff);
-    //     // }
-    //     //    background-color: $color-ok;
-    // }
-    // &-deleted {
-    //     border-left: $item-border-width solid $color-error;
-    //     border-right: $item-border-width solid $color-error;
-    //     //     background-color: $background-main-color;
-    //     .sprite {
-    //         background: svg-load("../svg/delete-outline.svg", fill=#fff);
-    //     }
-    // }
-    &-alias &__body {
-        // border-left: $item-border-width solid $color-active;
-        // border-right: $item-border-width solid $color-active;
-    
-            @include prepend-svg("../svg/arrow-forward.svg",1rem, black);
-   
-        //background-color: $color-active;
+    }
+
+    &--alias &__body {
+        @include prepend-svg("../../svg/arrow-forward.svg", 1rem, black);
     }
 }

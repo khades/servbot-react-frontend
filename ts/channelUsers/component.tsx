@@ -2,17 +2,14 @@ import * as React from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import "../../scss/modules/_channel-users.scss";
 import { IUserLogsInfo } from "../api/types";
+import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
 import { StatusWrapper } from "../statusWrapper";
 import { IChannelUsersState } from "./reducer";
 
-interface IChannelUsersRoute {
-    channelID: string;
-}
-
-interface IChannelUsersProps extends RouteComponentProps<IChannelUsersRoute>, IChannelUsersState {
+interface IChannelUsersProps extends RouteComponentProps<IChannelRoute>, IChannelUsersState {
     fetchData: (channelID: string, username?: string) => void;
 }
 export default class ChannelUsersComponent extends React.Component<IChannelUsersProps, {}> {
@@ -55,6 +52,7 @@ export default class ChannelUsersComponent extends React.Component<IChannelUsers
         const value = this.textInput.current.value;
         this.props.fetchData(this.props.match.params.channelID, value);
     }
+
     private generateUserList = () => {
         if (!this.props.users || this.props.users.length === 0) {
             return null;

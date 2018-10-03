@@ -1,5 +1,5 @@
 @import '../utils/index';
-.template-list {
+.templates {
     >*+* {
         margin-top: $element-spacing;
     }
@@ -13,20 +13,23 @@
     }
     &__header-button {
         &--list {
-            @include prepend-svg("../svg/th-list.svg", 1rem, #fff);
+            @include prepend-svg("../../svg/th-list.svg", 1rem, #fff);
         }
         &--create {
-            @include prepend-svg("../svg/plus.svg", 1rem, #fff);
+            @include prepend-svg("../../svg/plus.svg", 1rem, #fff);
         }
         @include button;
     }
 
     &__goto-command {
+        @include button;
+
         width: 100%;
-        display: block;
+        display: inline-block;
         @include breakpoint($desktop-width) {
             width: auto;
         }
+
     }
     &__container {
         >*+* {

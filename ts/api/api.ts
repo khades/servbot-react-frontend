@@ -1,6 +1,6 @@
 import config from "../../config";
 import States from "../utils/states";
-import { IBan, IUserLogsInfo, ITemplate } from "./types";
+import { IBan, ITemplate, IUserLogsInfo } from "./types";
 
 function url(uri: string): string {
     if (uri.startsWith("/")) {
@@ -58,7 +58,9 @@ const API = {
     },
 
     getTemplates: (channelID: string): Promise<ITemplate[]> => {
-        return API.auth(url(`/api/channel/${channelID}/templates`)).then((res: Response) => res.json());
+        return API.auth(url(`/api/channel/${channelID}/templates`))
+            .then((res: Response) => res.json())
+            .then((res) => res.templates);
     },
 
     getBans: (channelID: string): Promise<IBan[]> => {

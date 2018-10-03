@@ -1,4 +1,3 @@
-import { createHashHistory } from "history";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import Loadable from "react-loadable";
@@ -15,8 +14,6 @@ const reduxlogger = createLogger({
     // ...options
 });
 
-const history = createHashHistory();
-
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 const store = createStore(
     reducers,
@@ -24,10 +21,12 @@ const store = createStore(
 );
 
 sagaMiddleware.run(sagas.rootSaga);
+
 const LoadablePageContainer = Loadable({
     loader: () => import("./page"),
     loading: () => <div>Loading...</div>,
 });
+
 ReactDOM.render((
     <Provider store={store}>
         <HashRouter>

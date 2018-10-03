@@ -6,6 +6,11 @@ export enum actiontypes {
     READY = "TEMPLATES/READY",
     NOTAUTHORIZED = "TEMPLATES/NOTAUTHORIZED",
     OFFLINE = "TEMPLATES/OFFLINE",
+    SHOWALL = "TEMPLATES/SHOWALL",
+    SHOWNONEMPTY = "TEMPLATES/SHOWNONEMPTY",
+    SHOWTEMPLATES = "TEMPLATES/SHOWTEMPLATES",
+    SHOWGOTO = "TEMPLATES/SHOWGOTO",
+    SETGOTO = "TEMPLATES/SETGOTO",
 }
 
 export interface ITemplatesGetAction {
@@ -43,8 +48,33 @@ export interface ITemplatesNotAuthorizedAction {
     };
 }
 
+export interface ITemplatesShowAllAction {
+    type: actiontypes.SHOWALL;
+}
+
+export interface ITemplatesShowNonEmptyAction {
+    type: actiontypes.SHOWNONEMPTY;
+}
+export interface ITemplatesShowTemplatesAction {
+    type: actiontypes.SHOWTEMPLATES;
+}
+
+export interface ITemplatesShowGoToAction {
+    type: actiontypes.SHOWGOTO;
+}
+
+export interface ITemplatesSetGoToAction {
+    type: actiontypes.SETGOTO;
+    payload: string;
+}
+
 export type TemplatesAction = ITemplatesGetAction
     | ITemplatesLoadingAction
     | ITemplatesReadyAction
     | ITemplatesOfflineAction
-    | ITemplatesNotAuthorizedAction;
+    | ITemplatesNotAuthorizedAction
+    | ITemplatesShowAllAction
+    | ITemplatesShowTemplatesAction
+    | ITemplatesShowGoToAction
+    | ITemplatesSetGoToAction
+    | ITemplatesShowNonEmptyAction;

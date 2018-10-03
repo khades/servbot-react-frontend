@@ -6,7 +6,7 @@ import configureStore from "redux-mock-store";
 import { IChannelNameStore } from "../channelName/reducer";
 import * as Routes from "../routes/routes";
 import States from "../utils/states";
-import StartPage, { IStartPageProps } from "./component";
+import StartPageComponent, { IStartPageProps } from "./component";
 
 describe("Side Menu", () => {
     const storeState: IChannelNameStore = {
@@ -50,7 +50,7 @@ describe("Side Menu", () => {
         const notifications = create(
             <Provider store={store}>
                 <MemoryRouter initialEntries={[Routes.toChannelIndex("354")]}>
-                    <StartPage {...props} />
+                    <StartPageComponent {...props} />
                 </MemoryRouter>
 
             </Provider>,
@@ -87,7 +87,7 @@ describe("Side Menu", () => {
         const notifications = create(
             <Provider store={store}>
                 <MemoryRouter initialEntries={[Routes.toChannelIndex("354")]}>
-                    <StartPage {...props} />
+                    <StartPageComponent {...props} />
                 </MemoryRouter>
             </Provider>,
         );

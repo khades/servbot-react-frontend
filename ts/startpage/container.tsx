@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import * as selectors from "../channel/storeselectors";
 import { IStore } from "../reducers";
-import StartPage, { IStartPageProps } from "./component";
+import StartPageComponent, { IStartPageProps } from "./component";
 
 const mapStateToProps = (state: IStore, props: IStartPageProps) => {
     return {
@@ -16,9 +16,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const VisibleNotifications = connect(
+const StartPage = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(StartPage);
+)(StartPageComponent);
 
-export default VisibleNotifications;
+export default StartPage;

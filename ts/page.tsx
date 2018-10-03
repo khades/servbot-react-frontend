@@ -49,6 +49,11 @@ const LoadableHeader = Loadable({
     loading: () => <div>Loading...</div>,
 });
 
+const LoadableTemplates = Loadable({
+    loader: () => import("./templates/container"),
+    loading: () => <div>Loading...</div>,
+});
+
 class PageComponent extends React.Component<IPageProps, {}> {
 
     public componentDidMount() {
@@ -75,6 +80,8 @@ class PageComponent extends React.Component<IPageProps, {}> {
                     <Route exact={true} path={routes.ChannelUsers} component={LoadableChannelUsers} />
                     <Route exact={true} path={routes.ChannelUserLogs} component={LoadableUserLogs} />
                     <Route exact={true} path={routes.Bans} component={LoadableBans} />
+                    <Route exact={true} path={routes.Templates} component={LoadableTemplates} />
+
                 </section>
             </div>
             //    </StatusWrapper>
