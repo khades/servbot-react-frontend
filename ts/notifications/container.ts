@@ -6,12 +6,13 @@ import NotificationsComponent from "./component";
 
 const mapStateToProps = (state: IStore) => {
     return {
-        notifications:  state.notifications,
+        notifications: state.notifications,
     };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
+        autohideNotifications: () => dispatch(actions.autohide()),
         hideNotification: (id: string) => dispatch(actions.hide(id)),
     };
 };

@@ -1,4 +1,5 @@
 var webpack = require("webpack")
+var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -55,7 +56,7 @@ module.exports = {
             }
         ]
     },
-    // plugins: [
-    //     new webpack.HotModuleReplacementPlugin()
-    // ]
+     plugins: [
+        new ForkTsCheckerWebpackPlugin({tslint: true})
+     ]
 };

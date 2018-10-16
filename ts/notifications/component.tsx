@@ -8,11 +8,15 @@ import "../../scss/modules/_notifications.scss";
 import { INotification } from "./reducer";
 
 export interface INotificationsProps {
+    autohideNotifications: () => void;
     notifications: INotification[];
     hideNotification: (id: string) => void;
 }
 
 export default class NotificationsComponent extends React.Component<INotificationsProps, {}> {
+    public componentDidMount() {
+        setInterval(this.props.autohideNotifications, 1000);
+    }
     public render() {
         return (
             <TransitionGroup className="notifications" >

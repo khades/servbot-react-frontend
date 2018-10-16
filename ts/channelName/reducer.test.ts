@@ -1,6 +1,6 @@
 import States from "../utils/states";
 import * as actions from "./actioncreators";
-import reducer, { IChannelNameStore } from "./reducer";
+import reducer, { IChannelNameState } from "./reducer";
 
 describe("ChannelName reducer", () => {
     it("Should properly accept LOADING event", () => {
@@ -37,7 +37,7 @@ describe("ChannelName reducer", () => {
         });
     });
     it("Should properly upgrade state from LOADING event to NOTFOUND", () => {
-        let reducerState: IChannelNameStore = reducer({}, actions.loading("1"));
+        let reducerState: IChannelNameState = reducer({}, actions.loading("1"));
         expect(reducerState).toEqual({
             1: {
                 state: States.LOADING,

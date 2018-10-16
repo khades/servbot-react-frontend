@@ -32,7 +32,7 @@ export interface IChannelNameGetAction {
     };
 }
 
-export type ChannelNameActions = IChannelNameReadyAction
+export type ChannelNameAction = IChannelNameReadyAction
     | IChannelNameNotFoundAction
     | IChannelNameLoadingAction
     | IChannelNameGetAction;

@@ -3,13 +3,13 @@ import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router";
 import { create } from "react-test-renderer";
 import configureStore from "redux-mock-store";
-import { IChannelNameStore } from "../channelName/reducer";
+import { IChannelNameState } from "../channelName/reducer";
 import * as Routes from "../routes/routes";
 import States from "../utils/states";
 import StartPageComponent, { IStartPageProps } from "./component";
 
 describe("Side Menu", () => {
-    const storeState: IChannelNameStore = {
+    const storeState: IChannelNameState = {
         2342342: {
             name: "User",
             state: States.READY,

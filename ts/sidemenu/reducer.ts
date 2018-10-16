@@ -1,4 +1,4 @@
-import { actiontypes, SideMenuActions } from "./actions";
+import { actiontypes, SideMenuAction } from "./actions";
 
 export enum SideMenuStates {
     INIT = "INIT",
@@ -6,11 +6,11 @@ export enum SideMenuStates {
     SHOWN = "SHOWN",
 }
 
-export interface ISideMenuStore {
+export interface ISideMenuState {
     state: SideMenuStates;
 }
 
-const reducer = (state: ISideMenuStore = { state: SideMenuStates.INIT }, action: SideMenuActions): ISideMenuStore => {
+const reducer = (state: ISideMenuState = { state: SideMenuStates.INIT }, action: SideMenuAction): ISideMenuState => {
     switch (action.type) {
         case actiontypes.SHOW:
             return { state: SideMenuStates.SHOWN };

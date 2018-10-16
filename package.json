@@ -33,6 +33,7 @@
     "css-loader": "^1.0.0",
     "cssnano": "^4.1.0",
     "fetch-mock": "^7.0.0-alpha.6",
+    "fork-ts-checker-webpack-plugin": "^0.4.10",
     "jest": "^23.6.0",
     "node-fetch": "^2.2.0",
     "node-sass": "^4.9.3",

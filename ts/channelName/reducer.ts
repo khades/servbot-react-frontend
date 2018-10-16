@@ -1,15 +1,15 @@
 import States from "../utils/states";
-import { actiontypes, ChannelNameActions } from "./actions";
+import { actiontypes, ChannelNameAction } from "./actions";
 
 export interface IChannelName {
     name?: string;
     state: States;
 }
-export interface IChannelNameStore {
+export interface IChannelNameState {
     [key: string]: IChannelName;
 }
 
-const reducer = (state: IChannelNameStore = {}, action: ChannelNameActions): IChannelNameStore => {
+const reducer = (state: IChannelNameState = {}, action: ChannelNameAction): IChannelNameState => {
     switch (action.type) {
         case actiontypes.READY:
             return Object.assign({}, state, {

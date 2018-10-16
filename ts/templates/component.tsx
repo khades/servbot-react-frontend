@@ -10,9 +10,9 @@ import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
 import { StatusWrapper } from "../statusWrapper";
-import { IMustacheTemplate, ITemplateState } from "./reducer";
+import { IMustacheTemplate, ITemplatesState } from "./reducer";
 
-export interface ITemplatesProps extends RouteComponentProps<IChannelRoute>, ITemplateState {
+export interface ITemplatesProps extends RouteComponentProps<IChannelRoute>, ITemplatesState {
     fetchData: (channelID: string, username?: string) => void;
     isModOnChannel: boolean;
     setShowAll: () => void;

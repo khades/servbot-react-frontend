@@ -1,4 +1,4 @@
-import { LocalizedStringsMethods } from "localized-strings";
+import { LocalizedStringsMethods } from "react-localization";
 
 export interface IL10nStrings extends LocalizedStringsMethods {
     SAVE: string;

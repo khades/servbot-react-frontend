@@ -1,7 +1,7 @@
 import States from "../utils/states";
-import { IChannelName, IChannelNameStore } from "./reducer";
+import { IChannelName, IChannelNameState } from "./reducer";
 
-export const getChannelName = (state: IChannelNameStore, channelID: string): IChannelName => {
+export const getChannelName = (state: IChannelNameState, channelID: string): IChannelName => {
     if (state[channelID]) {
         return state[channelID];
     } else {

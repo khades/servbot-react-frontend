@@ -8,6 +8,7 @@ enum States {
     UPDATING = "UPDATING",
     OFFLINE = "OFFLINE",
     NOTINITIATED = "NOTINITIATED",
+    VALIDATIONERROR = "VALIDATIONERROR",
 }
 
 export default States;

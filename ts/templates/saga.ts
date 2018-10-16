@@ -1,13 +1,20 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, select, takeEvery } from "redux-saga/effects";
 import API from "../api/api";
 import { ITemplate } from "../api/types";
+import { IStore } from "../reducers";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, ITemplatesGetAction } from "./actions";
 
 export function* getTemplates(action: ITemplatesGetAction) {
+    const state: IStore = yield select();
+
+    if (state.templates.channelID === action.payload.channelID) {
+        return null;
+    }
 
     yield put(actions.loading(action.payload.channelID));
+
     try {
         const content: ITemplate[] = yield call(API.getTemplates, action.payload.channelID);
         yield put(actions.ready(action.payload.channelID, content));

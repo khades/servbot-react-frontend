@@ -11,11 +11,15 @@ import { IChannelUsersState } from "./reducer";
 
 interface IChannelUsersProps extends RouteComponentProps<IChannelRoute>, IChannelUsersState {
     fetchData: (channelID: string, username?: string) => void;
+    showNotification: (body: string) => void;
+
 }
 export default class ChannelUsersComponent extends React.Component<IChannelUsersProps, {}> {
     private textInput: React.RefObject<HTMLInputElement> = React.createRef();
 
     public componentDidMount() {
+        this.props.showNotification(l10n.USER_LIST_TOP_100_SHOWN);
+
         this.props.fetchData(this.props.match.params.channelID);
     }
 

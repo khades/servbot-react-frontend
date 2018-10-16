@@ -1,23 +1,24 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Loadable from "react-loadable";
+import * as Loadable from "react-loadable";
 import { Provider } from "react-redux";
-import { applyMiddleware, createStore } from "redux";
-import { createLogger } from "redux-logger";
-import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
-
 import { HashRouter } from "react-router-dom";
+import { applyMiddleware, createStore } from "redux";
+// import { createLogger } from "redux-logger";
+import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import reducers from "./reducers";
 import * as sagas from "./sagas";
 
-const reduxlogger = createLogger({
-    // ...options
-});
+// const reduxlogger = createLogger({
+//     // ...options
+// });
 
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 const store = createStore(
     reducers,
-    applyMiddleware(reduxlogger, sagaMiddleware),
+    applyMiddleware(
+        // reduxlogger,
+        sagaMiddleware),
 );
 
 sagaMiddleware.run(sagas.rootSaga);

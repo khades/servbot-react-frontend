@@ -2,7 +2,7 @@ import * as React from "react";
 import ControlGroup from "./control-group";
 import { IInputProps } from "./input";
 
-export default class Textarea extends React.Component<IInputProps, {}> {
+export default class TextArea extends React.Component<IInputProps, {}> {
     public render() {
         return (
             <ControlGroup

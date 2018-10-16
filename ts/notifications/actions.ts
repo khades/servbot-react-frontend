@@ -27,6 +27,6 @@ export interface INotificationsAutohideAction {
     };
 }
 
-export type NotificationsActions = INotificationsAddAction
+export type NotificationsAction = INotificationsAddAction
     | INotificationsHideAction
     | INotificationsAutohideAction;

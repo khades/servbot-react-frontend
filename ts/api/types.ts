@@ -51,3 +51,15 @@ export interface ITemplate {
     commandName: string;
     template: string;
 }
+
+export interface ITemplateHistory {
+    aliasTo: string;
+    date: Date;
+    template: string;
+    user: string;
+    userID: string;
+}
+
+export interface ITemplateWithHistory extends ITemplate {
+    history: ITemplateHistory[];
+}

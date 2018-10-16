@@ -11,5 +11,5 @@ export interface ISideMenuHideAction {
     type: actiontypes.HIDE;
 }
 
-export type SideMenuActions = ISideMenuShowAction
+export type SideMenuAction = ISideMenuShowAction
     | ISideMenuHideAction;

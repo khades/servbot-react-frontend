@@ -112,7 +112,8 @@ export default class UserLogsComponent extends React.Component<IUserLogsProps, {
                 <div className="user-logs__block">
                     <hgroup className="user-logs__header">
                         <div>
-                            {l10n.formatString(l10n.USER_BANS, this.props.content.user, this.renderChannelName())}
+                            {l10n.formatString(l10n.USER_BANS, this.props.content.user)}
+                            {this.renderChannelName()}
                         </div>
                     </hgroup>
                     {this.props.content.messages.map(this.renderItem)}
@@ -128,7 +129,8 @@ export default class UserLogsComponent extends React.Component<IUserLogsProps, {
                 <div className="user-logs__block">
                     <hgroup className="user-logs__header">
                         <div>
-                            {l10n.formatString(l10n.USER_LOGS, this.props.content.user, this.renderChannelName())}
+                            {l10n.formatString(l10n.USER_LOGS, this.props.content.user)}
+                            {this.renderChannelName()}
                         </div>
                     </hgroup>
                     {this.props.content.messages.map(this.renderItem)}

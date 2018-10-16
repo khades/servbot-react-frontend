@@ -6,14 +6,14 @@ import HeaderComponent from "./component";
 
 const mapStateToProps = (state: IStore) => {
     return {
-        getSideMenuState: () => state.sideMenu.state,
+        sideMenuState: state.sideMenu.state,
     };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        hideMenu: (id: string) => dispatch(actions.hide()),
-        showMenu: (id: string) => dispatch(actions.show()),
+        hideMenu: () => dispatch(actions.hide()),
+        showMenu: () => dispatch(actions.show()),
     };
 };
 

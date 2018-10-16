@@ -14,9 +14,10 @@ export const Templates = "/channel/:channelID/templates";
 
 export const ToTemplates = (channelID: string) => generatePath(Templates, { channelID });
 
-export const Template = "/channel/:channelID/templates/:template";
+export const Template = "/channel/:channelID/templates/:commandName";
 
-export const ToTemplate = (channelID: string, template: string) => generatePath(Template, { channelID, template });
+export const ToTemplate = (channelID: string, commandName: string) =>
+    generatePath(Template, { channelID, commandName });
 
 export const ChannelUsers = "/channel/:channelID/logs";
 

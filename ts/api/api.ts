@@ -13,8 +13,8 @@ export type ErrorStates = States.NOTFOUND | States.NOTAUTHORIZED | States.FORBID
 
 const API = {
     // input?: Request | string, init?: RequestInit
-    simpleauth: (...params): Promise<Response> => {
-        return fetch(...params).catch((error) => {
+    simpleauth: (input: RequestInfo, init?: RequestInit): Promise<Response> => {
+        return fetch(input, init).catch((error) => {
             if (error.message === "network error") {
                 throw States.OFFLINE;
             }
@@ -28,14 +28,26 @@ const API = {
             if (result.status === 403) {
                 throw States.FORBIDDEN;
             }
+            if (result.status === 422) {
+                throw States.VALIDATIONERROR;
+            }
             return result;
         });
     },
 
-    auth: (...params) => {
-        return API.simpleauth(...params);
+    auth: (input: RequestInfo, init?: RequestInit): Promise<Response> => {
+        return API.simpleauth(input, init);
     },
-
+    authPost: (input: string, body: any): Promise<Response> => {
+        return API.simpleauth(input, {
+            body: JSON.stringify(body),
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+        });
+    },
     getTime: () => {
         return fetch(url("api/time"))
             .then((response) => response.json());
@@ -81,6 +93,18 @@ const API = {
                 }
             })
             .then((result) => result.channel);
+    },
+
+    getTemplate: (channelID: string, commandName: string): Promise<ITemplate> => {
+        return API.auth(url(`/api/channel/${channelID}/templates/${commandName}`))
+            .then((res: Response) => res.json());
+    },
+
+    saveTemplate: (channelID: string, commandName: string, template: string) => {
+        return API.authPost(url(`/api/channel/${channelID}/templates/${commandName}`), { template });
+    },
+    setTemplateAliasTo: (channelID: string, commandName: string, aliasTo: string) => {
+        return API.authPost(url(`/api/channel/${channelID}/templates/${commandName}/setAliasTo`), { aliasTo });
     },
 };
 

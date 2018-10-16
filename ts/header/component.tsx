@@ -8,6 +8,7 @@ export interface IHeaderProps {
     hideMenu: () => void;
     showMenu: () => void;
 }
+
 export default class HeaderComponent extends React.Component<IHeaderProps, {}> {
     public render() {
         const headerClassNames = classnames({

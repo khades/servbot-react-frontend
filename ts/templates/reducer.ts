@@ -3,7 +3,7 @@ import States from "../utils/states";
 import { actiontypes, TemplatesAction } from "./actions";
 import { processMustacheTemplate } from "./utils";
 
-export interface ITemplateState {
+export interface ITemplatesState {
     channelID: string;
     goToValue: string;
     showGoTo: boolean;
@@ -24,7 +24,7 @@ const initialState = {
     state: States.NOTINITIATED,
 };
 
-const reducer = (state: ITemplateState = initialState, action: TemplatesAction): ITemplateState => {
+const reducer = (state: ITemplatesState = initialState, action: TemplatesAction): ITemplatesState => {
     switch (action.type) {
         case actiontypes.LOADING:
             return {
