@@ -88,13 +88,6 @@ const reducer = (state: ITemplateState = initialState, action: TemplateAction): 
                 hasTemplateError: true,
                 state: States.READY,
             });
-        // case actiontypes.AFTERSAVESUCCESS:
-        //     return Object.assign({}, state, {
-        //         channelID: action.payload.channelID,
-        //         commandName: action.payload.commandName,
-        //         hasTemplateError: false,
-        //         state: States.READY,
-        //     });
         default:
             return state;
     }

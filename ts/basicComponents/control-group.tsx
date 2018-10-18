@@ -5,7 +5,8 @@ import "../../scss/modules/_control-group.scss";
 export interface IControlGroupProps {
     errors?: string[];
     id: string;
-    label: string;
+    label: string | string[];
+    className?: string;
 }
 
 export default class ControlGroup extends React.Component<IControlGroupProps, {}> {
@@ -14,7 +15,7 @@ export default class ControlGroup extends React.Component<IControlGroupProps, {}
         const groupClassname = classnames({
             "control-group": true,
             "control-group--error": this.props.errors && this.props.errors.length > 0,
-        });
+        }, this.props.className);
         return (
             <div className={groupClassname} >
                 <label className="control-group__label" htmlFor={this.props.id}>

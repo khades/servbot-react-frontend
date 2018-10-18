@@ -28,12 +28,16 @@ import userInfo, { IUserInfoState } from "./userinfo/reducer";
 import { UserLogsAction } from "./userLogs/actions";
 import userLogs, { IUserLogsState } from "./userLogs/reducer";
 
+import { SubAlertsAction } from "./subAlerts/actions";
+import subAlerts, { ISubAlertsState } from "./subAlerts/reducer";
+
 export interface IStore {
   readonly bans: IBansState;
   readonly channelName: IChannelNameState;
   readonly channelUsers: IChannelUsersState;
   readonly notifications: INotification[];
   readonly sideMenu: ISideMenuState;
+  readonly subAlerts: ISubAlertsState;
   readonly template: ITemplateState;
   readonly templates: ITemplatesState;
   readonly userInfo: IUserInfoState;
@@ -45,6 +49,7 @@ type actions = BansAction
   | ChannelUsersAction
   | NotificationsAction
   | SideMenuAction
+  | SubAlertsAction
   | TemplateAction
   | TemplatesAction
   | UserInfoAction
@@ -56,6 +61,7 @@ export default combineReducers<IStore, actions>({
   channelUsers,
   notifications,
   sideMenu,
+  subAlerts,
   template,
   templates,
   userInfo,

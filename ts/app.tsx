@@ -25,7 +25,7 @@ sagaMiddleware.run(sagas.rootSaga);
 
 const LoadablePageContainer = Loadable({
     loader: () => import("./page"),
-    loading: () => <div>Loading...</div>,
+    loading: () => <div />,
 });
 
 ReactDOM.render((

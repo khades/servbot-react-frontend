@@ -1,6 +1,6 @@
 import config from "../../config";
 import States from "../utils/states";
-import { IBan, ITemplate, IUserLogsInfo } from "./types";
+import { IBan, ISubAlerts, ISubAlertsWithHistory, ITemplate, IUserLogsInfo } from "./types";
 
 function url(uri: string): string {
     if (uri.startsWith("/")) {
@@ -20,16 +20,21 @@ const API = {
             }
         }).then((result: Response) => {
             if (result.status === 404) {
-                throw States.NOTFOUND;
+                throw { state: States.NOTFOUND };
             }
             if (result.status === 401) {
-                throw States.NOTAUTHORIZED;
+                throw { state: States.NOTAUTHORIZED };
             }
             if (result.status === 403) {
-                throw States.FORBIDDEN;
+                throw { state: States.FORBIDDEN };
             }
             if (result.status === 422) {
-                throw States.VALIDATIONERROR;
+                return result.json().then((value) => {
+                    throw {
+                        content: value,
+                        state: States.VALIDATIONERROR,
+                    };
+                });
             }
             return result;
         });
@@ -38,6 +43,7 @@ const API = {
     auth: (input: RequestInfo, init?: RequestInit): Promise<Response> => {
         return API.simpleauth(input, init);
     },
+
     authPost: (input: string, body: any): Promise<Response> => {
         return API.simpleauth(input, {
             body: JSON.stringify(body),
@@ -48,6 +54,7 @@ const API = {
             method: "POST",
         });
     },
+
     getTime: () => {
         return fetch(url("api/time"))
             .then((response) => response.json());
@@ -95,9 +102,18 @@ const API = {
             .then((result) => result.channel);
     },
 
+    getSubAlerts: (channelID: string): Promise<ISubAlertsWithHistory> => {
+        return API.auth(url(`/api/channel/${channelID}/subalert`))
+            .then((res: Response) => res.json());
+    },
+
     getTemplate: (channelID: string, commandName: string): Promise<ITemplate> => {
         return API.auth(url(`/api/channel/${channelID}/templates/${commandName}`))
             .then((res: Response) => res.json());
+    },
+
+    saveSubAlerts: (channelID: string, content: ISubAlerts) => {
+        return API.authPost(url(`/api/channel/${channelID}/subalert`), content);
     },
 
     saveTemplate: (channelID: string, commandName: string, template: string) => {

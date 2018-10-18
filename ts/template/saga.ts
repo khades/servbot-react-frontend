@@ -32,7 +32,7 @@ export function* getTemplate(action: ITemplateGetAction) {
 export function* saveTemplate(action: ITemplateSaveAction) {
     try {
         yield call(API.saveTemplate, action.payload.channelID, action.payload.commandName, action.payload.template);
-        yield call(getTemplate, actions.get(action.payload.channelID, action.payload.commandName, false));
+        yield call(getTemplate, actions.get(action.payload.channelID, action.payload.commandName));
         yield put(notificationActions.add(l10n.SAVE_SUCCESSFULL));
     } catch (err) {
         yield put(notificationActions.add(l10n.TEMPLATE_BODY_ERROR));
@@ -46,7 +46,7 @@ export function* setTemplateTemplateTo(action: ITemplateSetAliasToAction) {
             action.payload.channelID,
             action.payload.commandName,
             action.payload.aliasTo);
-        yield call(getTemplate, actions.get(action.payload.channelID, action.payload.commandName, false));
+        yield call(getTemplate, actions.get(action.payload.channelID, action.payload.commandName));
         yield put(notificationActions.add(l10n.SAVE_SUCCESSFULL));
     } catch (err) {
         yield put(notificationActions.add(l10n.TEMPLATE_BODY_ERROR));

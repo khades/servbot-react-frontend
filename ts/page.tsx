@@ -60,6 +60,11 @@ const LoadableTemplate = Loadable({
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
 });
 
+const LoadableSubAlerts = Loadable({
+    loader: () => import("./subAlerts/container"),
+    loading: () => <StatusWrapper state={States.NOTINITIATED} />,
+});
+
 class PageComponent extends React.Component<IPageProps, {}> {
 
     public componentDidMount() {
@@ -72,7 +77,6 @@ class PageComponent extends React.Component<IPageProps, {}> {
         return (
             //    <StatusWrapper state={this.props.userInfo.state}>
             <div className="site-container">
-                {/* <Route path={routes.ChannelIndex} component={ChannelChanger} /> */}
                 <Route exact={true} path="/" component={IndexRedirector} />
                 <div className="site-container__menu">
                     <Route path={routes.ChannelIndex} component={LoadableSideMenu} />
@@ -88,7 +92,7 @@ class PageComponent extends React.Component<IPageProps, {}> {
                     <Route exact={true} path={routes.Bans} component={LoadableBans} />
                     <Route exact={true} path={routes.Templates} component={LoadableTemplates} />
                     <Route exact={true} path={routes.Template} component={LoadableTemplate} />
-
+                    <Route exact={true} path={routes.SubAlerts} component={LoadableSubAlerts} />
                 </section>
             </div>
             //    </StatusWrapper>

@@ -1,35 +1,46 @@
 @import '../utils/index';
+
 .control-group {
   max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  > * + * {
+  display: flex;
+
+  flex-direction: column;
+
+  >*+* {
     margin-top: $element-spacing;
   }
+
   label {
     text-shadow: 1px 1px 0px white;
 
   }
+
   label,
   #{$all-text-inputs} {
-    display: block;
+    display: flex;
   }
+
   &.has-error {
     label {
       font-weight: bold;
     }
+
     // color: $color-error;
     // ;
     input {
       border-width: 1px;
       border-color: $color-error !important;
+
       &:hover,
-       :focus {
+      :focus {
         border-width: 1px;
         border-color: $color-error !important;
       }
     }
+
     .help-block {
       color: $color-error;
       font-weight: bolder;

@@ -148,6 +148,7 @@ export default class TemplateComponent extends React.Component<ITemplateProps, I
             </div>
         );
     }
+
     private jumpToOriginal = () => {
         if (this.props.template.aliasTo === ""
             || this.props.template.aliasTo === this.props.template.commandName) {
@@ -161,6 +162,7 @@ export default class TemplateComponent extends React.Component<ITemplateProps, I
             </Link>
         );
     }
+
     private renderTemplateSection = () => {
         if (this.state.isAliasTo === true) {
             return null;
