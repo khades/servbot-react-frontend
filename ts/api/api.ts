@@ -15,9 +15,10 @@ const API = {
     // input?: Request | string, init?: RequestInit
     simpleauth: (input: RequestInfo, init?: RequestInit): Promise<Response> => {
         return fetch(input, init).catch((error) => {
-            if (error.message === "network error") {
-                throw States.OFFLINE;
-            }
+            throw { state: States.OFFLINE };
+            // if (error.message === "network error") {
+            //     throw { state: States.OFFLINE };
+            // }
         }).then((result: Response) => {
             if (result.status === 404) {
                 throw { state: States.NOTFOUND };

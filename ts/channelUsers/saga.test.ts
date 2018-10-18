@@ -44,7 +44,7 @@ describe("ChannelUsers sagas", () => {
         const saga = getChannelUsers(actions.get("test"));
         expect(saga.next().value).toEqual(put(actions.loading("test")));
         expect(saga.next().value).toEqual(call(API.getChannelUsers, "test", undefined));
-        expect(saga.throw(States.FORBIDDEN).value).toEqual(put(actions.forbidden("test")));
+        expect(saga.throw({ state: States.FORBIDDEN }).value).toEqual(put(actions.forbidden("test")));
         expect(saga.next().done).toBe(true);
     });
 
@@ -52,7 +52,7 @@ describe("ChannelUsers sagas", () => {
         const saga = getChannelUsers(actions.get("test"));
         expect(saga.next().value).toEqual(put(actions.loading("test")));
         expect(saga.next().value).toEqual(call(API.getChannelUsers, "test", undefined));
-        expect(saga.throw(States.NOTAUTHORIZED).value).toEqual(put(actions.notAuthorized()));
+        expect(saga.throw({ state: States.NOTAUTHORIZED }).value).toEqual(put(actions.notAuthorized()));
         expect(saga.next().done).toBe(true);
     });
 });

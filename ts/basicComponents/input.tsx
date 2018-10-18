@@ -24,7 +24,7 @@ export default class Input extends React.Component<IInputProps, {}> {
                 <input
                     id={this.props.id}
                     onChange={this.setValue}
-                    value={this.props.value}
+                    defaultValue={this.props.value}
                     placeholder={this.props.placeholder}
                 />
             </ControlGroup>

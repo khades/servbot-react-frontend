@@ -18,7 +18,7 @@ export function* getTemplate(action: ITemplateGetAction) {
             action.payload.commandName);
         yield put(actions.ready(action.payload.channelID, action.payload.commandName, content));
     } catch (err) {
-        switch (err) {
+        switch (err.state) {
             case States.NOTAUTHORIZED:
                 return yield put(actions.notAuthorized(action.payload.channelID, action.payload.commandName));
             case States.FORBIDDEN:

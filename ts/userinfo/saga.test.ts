@@ -83,7 +83,7 @@ describe("Username sagas", () => {
             },
         }).value).toEqual(put(actions.loading()));
         expect(saga.next().value).toEqual(call(API.getUserInfo));
-        expect(saga.throw(States.NOTAUTHORIZED).value).toEqual(put(actions.notAuthorized()));
+        expect(saga.throw({ state: States.NOTAUTHORIZED }).value).toEqual(put(actions.notAuthorized()));
         expect(saga.next().done).toBe(true);
     });
 });

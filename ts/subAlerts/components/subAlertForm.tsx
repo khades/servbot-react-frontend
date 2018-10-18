@@ -62,7 +62,7 @@ export default class SubAlertForm extends React.Component<ISubAlertsFormProps, I
         const resubID = `resub${selector}Message`;
         const resubEmotesID = `resub${selector}Smile`;
         return (
-            <div className="subalerts__block">
+            <div className="subalerts__block" key={selector}>
                 <Input
                     label={l10n.formatString(l10n.SUBALERTS_SUB_ALERT, label)}
                     id={subID}

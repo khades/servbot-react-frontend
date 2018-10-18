@@ -24,7 +24,7 @@ describe("UserLogs sagas", () => {
         const saga = getUserLogs(actions.get("test", "aaa"));
         expect(saga.next().value).toEqual(put(actions.loading("test", "aaa")));
         expect(saga.next().value).toEqual(call(API.getUserLogs, "test", "aaa"));
-        expect(saga.throw(States.NOTAUTHORIZED).value).toEqual(put(actions.notAuthorized("test", "aaa")));
+        expect(saga.throw({ state: States.NOTAUTHORIZED }).value).toEqual(put(actions.notAuthorized("test", "aaa")));
         expect(saga.next().done).toBe(true);
     });
 
@@ -32,7 +32,7 @@ describe("UserLogs sagas", () => {
         const saga = getUserLogs(actions.get("test", "aaa"));
         expect(saga.next().value).toEqual(put(actions.loading("test", "aaa")));
         expect(saga.next().value).toEqual(call(API.getUserLogs, "test", "aaa"));
-        expect(saga.throw(States.NOTFOUND).value).toEqual(put(actions.notFound("test", "aaa")));
+        expect(saga.throw({ state: States.NOTFOUND }).value).toEqual(put(actions.notFound("test", "aaa")));
         expect(saga.next().done).toBe(true);
     });
 
@@ -40,7 +40,7 @@ describe("UserLogs sagas", () => {
         const saga = getUserLogs(actions.get("test", "aaa"));
         expect(saga.next().value).toEqual(put(actions.loading("test", "aaa")));
         expect(saga.next().value).toEqual(call(API.getUserLogs, "test", "aaa"));
-        expect(saga.throw(States.FORBIDDEN).value).toEqual(put(actions.forbidden("test", "aaa")));
+        expect(saga.throw({ state: States.FORBIDDEN }).value).toEqual(put(actions.forbidden("test", "aaa")));
         expect(saga.next().done).toBe(true);
     });
 });

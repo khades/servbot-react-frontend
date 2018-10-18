@@ -67,7 +67,7 @@ export default class SubAlertsComponent extends React.Component<ISubAlertsProps,
     }
 
     private renderHistoryItem(item: ISubAlertsHistory) {
-        return <HistoryItem {...item} />;
+        return <HistoryItem key={new Date(item.date).toLocaleString()} {...item} />;
     }
 
     private renderExtendButton = () => {

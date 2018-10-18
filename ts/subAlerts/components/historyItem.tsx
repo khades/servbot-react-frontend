@@ -5,7 +5,7 @@ import { isExtended } from "../utils";
 
 const HistoryItemContainer: React.SFC<ISubAlertsHistory> = (props) => {
     return (
-        <div className="subalerts-history" key={new Date(props.date).toLocaleString()}>
+        <div className="subalerts-history">
             <div className="subalerts-history__row">
                 <div className="subalerts-history__user">
                     @{props.user}

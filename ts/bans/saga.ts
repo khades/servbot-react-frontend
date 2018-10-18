@@ -12,7 +12,7 @@ export function* getBans(action: IBansGetAction) {
         const content: IBan[] = yield call(API.getBans, action.payload.channelID);
         yield put(actions.ready(action.payload.channelID, content));
     } catch (err) {
-        switch (err) {
+        switch (err.state) {
             case States.FORBIDDEN:
                 return yield put(actions.forbidden(action.payload.channelID));
             case States.NOTFOUND:

@@ -17,7 +17,7 @@ export function* getSubAlerts(action: ISubAlertsGetAction) {
             action.payload.channelID);
         yield put(actions.ready(action.payload.channelID, content));
     } catch (err) {
-        switch (err) {
+        switch (err.state) {
             case States.NOTAUTHORIZED:
                 return yield put(actions.notAuthorized(action.payload.channelID));
             case States.FORBIDDEN:

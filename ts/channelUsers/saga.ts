@@ -14,7 +14,7 @@ export function* getChannelUsers(action: IChannelUsersGetAction) {
             yield call(API.getChannelUsers, action.payload.channelID, action.payload.userName);
         yield put(actions.ready(usersLogs));
     } catch (err) {
-        switch (err) {
+        switch (err.state) {
             case States.FORBIDDEN:
                 return yield put(actions.forbidden(action.payload.channelID));
             case States.NOTAUTHORIZED:

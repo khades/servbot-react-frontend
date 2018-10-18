@@ -29,7 +29,7 @@ describe("Bans sagas", () => {
         const saga = getBans(actions.get("test"));
         expect(saga.next().value).toEqual(put(actions.loading("test")));
         expect(saga.next().value).toEqual(call(API.getBans, "test"));
-        expect(saga.throw(States.NOTAUTHORIZED).value).toEqual(put(actions.notAuthorized("test")));
+        expect(saga.throw({ state: States.NOTAUTHORIZED }).value).toEqual(put(actions.notAuthorized("test")));
         expect(saga.next().done).toBe(true);
     });
 
@@ -37,7 +37,7 @@ describe("Bans sagas", () => {
         const saga = getBans(actions.get("test"));
         expect(saga.next().value).toEqual(put(actions.loading("test")));
         expect(saga.next().value).toEqual(call(API.getBans, "test"));
-        expect(saga.throw(States.NOTFOUND).value).toEqual(put(actions.notFound("test")));
+        expect(saga.throw({ state: States.NOTFOUND }).value).toEqual(put(actions.notFound("test")));
         expect(saga.next().done).toBe(true);
     });
 
@@ -45,7 +45,7 @@ describe("Bans sagas", () => {
         const saga = getBans(actions.get("test"));
         expect(saga.next().value).toEqual(put(actions.loading("test")));
         expect(saga.next().value).toEqual(call(API.getBans, "test"));
-        expect(saga.throw(States.FORBIDDEN).value).toEqual(put(actions.forbidden("test")));
+        expect(saga.throw({ state: States.FORBIDDEN }).value).toEqual(put(actions.forbidden("test")));
         expect(saga.next().done).toBe(true);
     });
 });

@@ -12,7 +12,7 @@ export function* getUserLogs(action: IUserLogsGetAction) {
         const content: IUserLogsInfo = yield call(API.getUserLogs, action.payload.channelID, action.payload.userID);
         yield put(actions.ready(action.payload.channelID, action.payload.userID, content));
     } catch (err) {
-        switch (err) {
+        switch (err.state) {
             case States.FORBIDDEN:
                 return yield put(actions.forbidden(action.payload.channelID, action.payload.userID));
             case States.NOTFOUND:
