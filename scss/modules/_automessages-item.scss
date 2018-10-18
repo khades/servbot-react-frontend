@@ -1,0 +1,65 @@
+@import '../utils/index';
+
+.automessages-item {
+    flex-direction: column;
+
+    &__status {
+        color: $color-grey;
+    }
+
+    &__header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: top;
+
+        >* {
+            display: inline-flex;
+        }
+
+        display: flex;
+        width: 100%;
+    }
+
+    justify-content: space-between;
+    color: black;
+    background: white;
+    @include mshadow;
+    padding: $element-spacing;
+    width: 100%;
+    display: inline-flex;
+    align-items: flex-start;
+
+    &__right-container {
+        display: inline-flex;
+        flex-direction: column;
+
+        >* {
+            white-space: nowrap;
+        }
+    }
+
+    &__right-container {
+        margin-top: $element-spacing;
+    }
+
+    &__body {
+        //   flex-grow: 2;
+    }
+
+    &__duration-limit {
+        @include prepend-svg("../../svg/time.svg", 1rem, black);
+    }
+
+    &__message-limit {
+        @include prepend-svg("../../svg/message-typing.svg", 1rem, black);
+    }
+
+    &__game {
+        @include prepend-svg("../../svg/media-play.svg", 1rem, black);
+    }
+
+    &__message {
+        //     flex-grow: 2;
+
+    }
+}

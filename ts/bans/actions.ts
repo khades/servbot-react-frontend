@@ -7,6 +7,7 @@ export enum actiontypes {
     NOTFOUND = "BANS/NOTFOUND",
     NOTAUTHORIZED = "BANS/NOTAUTHORIZED",
     FORBIDDEN = "BANS/FORBIDDEN",
+    OFFLINE = "BANS/OFFLINE",
 }
 
 export interface IBansGetAction {
@@ -50,9 +51,17 @@ export interface IBansNotAuthorizedAction {
     };
 }
 
+export interface IBansOfflineAction {
+    type: actiontypes.OFFLINE;
+    payload: {
+        channelID: string,
+    };
+}
+
 export type BansAction = IBansGetAction
     | IBansLoadingAction
     | IBansReadyAction
     | IBansForbiddenAction
     | IBansNotFoundAction
+    | IBansOfflineAction
     | IBansNotAuthorizedAction;

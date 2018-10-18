@@ -1,6 +1,6 @@
 import config from "../../config";
 import States from "../utils/states";
-import { IBan, ISubAlerts, ISubAlertsWithHistory, ITemplate, IUserLogsInfo } from "./types";
+import { IAutoMessageWithHistory, IBan, ISubAlerts, ISubAlertsWithHistory, ITemplate, IUserLogsInfo } from "./types";
 
 function url(uri: string): string {
     if (uri.startsWith("/")) {
@@ -54,6 +54,10 @@ const API = {
             },
             method: "POST",
         });
+    },
+
+    getAutoMessages: (channelID: string): Promise<IAutoMessageWithHistory[]> => {
+        return API.auth(url(`/api/channel/${channelID}/automessages`)).then((res: Response) => res.json());
     },
 
     getTime: () => {

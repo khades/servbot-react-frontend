@@ -20,7 +20,7 @@ export function* getBans(action: IBansGetAction) {
             case States.NOTAUTHORIZED:
                 return yield put(actions.notAuthorized(action.payload.channelID));
             default:
-                return yield put(actions.notFound(action.payload.channelID));
+                return yield put(actions.offline(action.payload.channelID));
         }
     }
 }

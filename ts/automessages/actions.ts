@@ -1,19 +1,22 @@
+import { IAutoMessage, IAutoMessageWithHistory } from "../api/types";
+
 export enum actiontypes {
     GET = "AUTOMESSAGES/GET",
     LOADING = "AUTOMESSAGES/LOADING",
     READY = "AUTOMESSAGES/READY",
     NOTAUTHORIZED = "AUTOMESSAGES/NOTAUTHORIZED",
-    NOTFOUND= "AUTOMESSAGES/NOTFOUND",
+    NOTFOUND = "AUTOMESSAGES/NOTFOUND",
     FORBIDDEN = "AUTOMESSAGES/FORBIDDEN",
     OFFLINE = "AUTOMESSAGES/OFFLINE",
-    SAVE = "AUTOMESSAGES/SAVE",
-    ONSAVEERROR = "AUTOMESSAGES/ONSAVEERROR",
-};
+    SHOWEMPTY = "AUTOMESSAGE/SHOWEMPTY",
+    HIDEEMPTY = "AUTOMESSAGE/HIDEEMPTY",
+}
 
 export interface IAutoMessagesGetAction {
     type: actiontypes.GET;
     payload: {
         channelID: string,
+        init: boolean,
     };
 }
 
@@ -28,7 +31,7 @@ export interface IAutoMessagesReadyAction {
     type: actiontypes.READY;
     payload: {
         channelID: string,
-        content: 234,
+        content: IAutoMessageWithHistory[],
     };
 }
 
@@ -46,6 +49,13 @@ export interface IAutoMessagesForbiddenAction {
     };
 }
 
+export interface IAutoMessagesNotFoundAction {
+    type: actiontypes.NOTFOUND;
+    payload: {
+        channelID: string,
+    };
+}
+
 export interface IAutoMessagesOfflineAction {
     type: actiontypes.OFFLINE;
     payload: {
@@ -53,26 +63,20 @@ export interface IAutoMessagesOfflineAction {
     };
 }
 
-export interface IAutoMessagesSaveAction {
-    type: actiontypes.SAVE;
-    payload: {
-        channelID: string,
-        content: ,
-    };
+export interface IAutoMessagesShowEmptyAction {
+    type: actiontypes.SHOWEMPTY;
 }
 
-export interface IAutoMessagesOnSaveErrorAction {
-    type: actiontypes.ONSAVEERROR;
-    payload: {
-        channelID: string,
-    };
+export interface IAutoMessagesHideEmptyAction {
+    type: actiontypes.HIDEEMPTY;
 }
 
 export type AutoMessagesAction = IAutoMessagesGetAction
     | IAutoMessagesLoadingAction
-    | ReadyAction
-    | NotAuthorizedAction 
-    | ForbiddenAction
-    | NotOfflineAction
-    | SaveAction
-    | IAutoMessagesSaveErrorAction
+    | IAutoMessagesReadyAction
+    | IAutoMessagesNotAuthorizedAction
+    | IAutoMessagesForbiddenAction
+    | IAutoMessagesNotFoundAction
+    | IAutoMessagesShowEmptyAction
+    | IAutoMessagesHideEmptyAction
+    | IAutoMessagesOfflineAction;

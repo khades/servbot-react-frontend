@@ -1,6 +1,9 @@
 
 import { combineReducers } from "redux";
 
+import { AutoMessagesAction } from "./autoMessages/actions";
+import AutoMessages, { IAutoMessagesState } from "./autoMessages/reducer";
+
 import { BansAction } from "./bans/actions";
 import bans, { IBansState } from "./bans/reducer";
 
@@ -32,6 +35,7 @@ import { SubAlertsAction } from "./subAlerts/actions";
 import subAlerts, { ISubAlertsState } from "./subAlerts/reducer";
 
 export interface IStore {
+  readonly AutoMessages: IAutoMessagesState;
   readonly bans: IBansState;
   readonly channelName: IChannelNameState;
   readonly channelUsers: IChannelUsersState;
@@ -44,7 +48,8 @@ export interface IStore {
   readonly userLogs: IUserLogsState;
 }
 
-type actions = BansAction
+type actions = AutoMessagesAction
+  | BansAction
   | ChannelNameAction
   | ChannelUsersAction
   | NotificationsAction
@@ -56,6 +61,7 @@ type actions = BansAction
   | UserLogsAction;
 
 export default combineReducers<IStore, actions>({
+  AutoMessages,
   bans,
   channelName,
   channelUsers,

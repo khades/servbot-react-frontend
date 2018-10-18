@@ -30,3 +30,8 @@ export const ready = (channelID: string, bans: IBan[]): actions.IBansReadyAction
     payload: { bans, channelID },
     type: actions.actiontypes.READY,
 });
+
+export const offline = (channelID: string): actions.IBansOfflineAction => ({
+    payload: { channelID },
+    type: actions.actiontypes.OFFLINE,
+});

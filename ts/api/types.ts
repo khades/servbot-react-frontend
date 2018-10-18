@@ -11,7 +11,7 @@ export interface IUserModInfo {
 }
 
 export interface IUserLogsInfo {
-    lastUpdate: Date;
+    lastUpdate: number; // Date;
     user: string;
     userID: string;
     knownNicknames?: string[];
@@ -32,7 +32,7 @@ export interface IUserLogsMessage {
     banIssuerID: string;
     banLength: number;
     banReason: string;
-    date: Date;
+    date: number; // Date;
     messageBody: string;
     messageType: MessageType;
     username: string;
@@ -40,7 +40,7 @@ export interface IUserLogsMessage {
 
 export interface IBan {
     banLength: number;
-    date: Date;
+    date: number; // Date;
     user: string;
     userID: string;
 }
@@ -54,7 +54,7 @@ export interface ITemplate {
 
 export interface ITemplateHistory {
     aliasTo: string;
-    date: Date;
+    date: number; // Date;
     template: string;
     user: string;
     userID: string;
@@ -82,7 +82,7 @@ export interface ISubAlerts {
 }
 
 export interface ISubAlertsHistory extends ISubAlerts {
-    date: Date;
+    date: number; // Date;
     user: string;
     userID: string;
 }
@@ -90,4 +90,25 @@ export interface ISubAlertsHistory extends ISubAlerts {
 export interface ISubAlertsWithHistory extends ISubAlerts {
     channelID: string;
     history: ISubAlertsHistory[];
+}
+
+export interface IAutoMessage {
+    durationLimit: number;
+    game: string;
+    message: string;
+    messageLimit: number;
+}
+
+export interface IAutoMessageHistory extends IAutoMessage {
+    date: number; // Date;
+    user: string;
+    userID: string;
+}
+
+export interface IAutoMessageWithHistory extends IAutoMessage {
+    channelID: string;
+    id: string;
+    durationThreshold: number; // Date;
+    messageThreshold: number;
+    history: IAutoMessageHistory[];
 }

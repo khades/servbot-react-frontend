@@ -1,5 +1,3 @@
-var webpack = require("webpack")
-var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -56,7 +54,7 @@ module.exports = {
             }
         ]
     },
-     plugins: [
-        new ForkTsCheckerWebpackPlugin({tslint: true})
-     ]
+    //  plugins: [
+    //     new ForkTsCheckerWebpackPlugin({tslint: true})
+    //  ]
 };

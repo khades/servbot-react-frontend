@@ -25,6 +25,8 @@ const reducer = (state: IBansState = initialState, action: BansAction): IBansSta
             return Object.assign({}, action.payload, { state: States.FORBIDDEN });
         case actiontypes.NOTAUTHORIZED:
             return Object.assign({}, action.payload, { state: States.NOTAUTHORIZED });
+        case actiontypes.OFFLINE:
+            return Object.assign({}, action.payload, { state: States.OFFLINE });
         default:
             return state;
     }

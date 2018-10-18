@@ -65,6 +65,11 @@ const LoadableSubAlerts = Loadable({
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
 });
 
+const LoadableAutoMessages = Loadable({
+    loader: () => import("./autoMessages/container"),
+    loading: () => <StatusWrapper state={States.NOTINITIATED} />,
+});
+
 class PageComponent extends React.Component<IPageProps, {}> {
 
     public componentDidMount() {
@@ -86,6 +91,7 @@ class PageComponent extends React.Component<IPageProps, {}> {
                 </div>
                 <Notifications />
                 <section className="site-container__content">
+                    <Route exact={true} path={routes.AutoMessages} component={LoadableAutoMessages} />
                     <Route exact={true} path={routes.ChannelIndex} component={LoadableStartPage} />
                     <Route exact={true} path={routes.ChannelUsers} component={LoadableChannelUsers} />
                     <Route exact={true} path={routes.ChannelUserLogs} component={LoadableUserLogs} />

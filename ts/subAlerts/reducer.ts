@@ -39,7 +39,6 @@ const reducer = (state: ISubAlertsState = initialState, action: SubAlertsAction)
             };
         case actiontypes.SAVE:
             return Object.assign({}, state, {
-
                 state: States.UPDATING,
             });
         case actiontypes.OFFLINE:
