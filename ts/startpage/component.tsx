@@ -14,7 +14,7 @@ export interface IStartPageProps extends RouteComponentProps<IChannelRoute> {
     isModOnChannel: boolean;
 }
 
-export default class StartPageComponent extends React.Component<IStartPageProps, {}> {
+export default class StartPageComponent extends React.PureComponent<IStartPageProps, {}> {
     private langSelectProps: ISelectProps = {
         id: "language",
         label: l10n.LANGUAGE,

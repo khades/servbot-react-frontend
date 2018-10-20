@@ -14,7 +14,7 @@ interface IChannelUsersProps extends RouteComponentProps<IChannelRoute>, IChanne
     showNotification: (body: string) => void;
 
 }
-export default class ChannelUsersComponent extends React.Component<IChannelUsersProps, {}> {
+export default class ChannelUsersComponent extends React.PureComponent<IChannelUsersProps, {}> {
     private textInput: React.RefObject<HTMLInputElement> = React.createRef();
 
     public componentDidMount() {

@@ -9,7 +9,7 @@ export interface IControlGroupProps {
     className?: string;
 }
 
-export default class ControlGroup extends React.Component<IControlGroupProps, {}> {
+export default class ControlGroup extends React.PureComponent<IControlGroupProps, {}> {
 
     public render() {
         const groupClassname = classnames({

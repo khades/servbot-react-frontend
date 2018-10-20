@@ -70,7 +70,12 @@ const LoadableAutoMessages = Loadable({
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
 });
 
-class PageComponent extends React.Component<IPageProps, {}> {
+const LoadableAutoMessage = Loadable({
+    loader: () => import("./autoMessage/container"),
+    loading: () => <StatusWrapper state={States.NOTINITIATED} />,
+});
+
+class PageComponent extends React.PureComponent<IPageProps, {}> {
 
     public componentDidMount() {
         if (this.props.userInfo.state === States.NOTINITIATED) {
@@ -91,6 +96,7 @@ class PageComponent extends React.Component<IPageProps, {}> {
                 </div>
                 <Notifications />
                 <section className="site-container__content">
+                    <Route exact={true} path={routes.AutoMessage} component={LoadableAutoMessage} />
                     <Route exact={true} path={routes.AutoMessages} component={LoadableAutoMessages} />
                     <Route exact={true} path={routes.ChannelIndex} component={LoadableStartPage} />
                     <Route exact={true} path={routes.ChannelUsers} component={LoadableChannelUsers} />

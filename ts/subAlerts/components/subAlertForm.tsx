@@ -11,10 +11,10 @@ export interface ISubAlertsFormProps {
     isExtended: boolean;
 }
 
-export default class SubAlertForm extends React.Component<ISubAlertsFormProps, ISubAlerts> {
+export default class SubAlertForm extends React.PureComponent<ISubAlertsFormProps, ISubAlerts> {
     constructor(props: ISubAlertsFormProps) {
         super(props);
-        this.state = this.props.content;
+        this.state = Object.assign({}, this.props.content);
     }
     public render() {
         return (
@@ -118,7 +118,7 @@ export default class SubAlertForm extends React.Component<ISubAlertsFormProps, I
         });
     }
     private save = () => {
-         this.props.save(this.props.channelID, this.state);
+        this.props.save(this.props.channelID, this.state);
     }
 
 }

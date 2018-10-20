@@ -16,7 +16,7 @@ interface IUserLogsProps extends RouteComponentProps<IUserLogsRoute>, IUserLogsS
     fetchData: (channelID: string, userID: string) => void;
 }
 
-export default class UserLogsComponent extends React.Component<IUserLogsProps, {}> {
+export default class UserLogsComponent extends React.PureComponent<IUserLogsProps, {}> {
     public componentDidMount() {
         this.props.fetchData(this.props.match.params.channelID, this.props.match.params.userID);
     }

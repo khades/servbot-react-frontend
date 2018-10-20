@@ -11,7 +11,7 @@ export interface IInputProps {
     placeholder?: string;
 }
 
-export default class Input extends React.Component<IInputProps, {}> {
+export default class Input extends React.PureComponent<IInputProps, {}> {
 
     public render() {
         return (

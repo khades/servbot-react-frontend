@@ -41,7 +41,7 @@ interface IListItemState {
     name: string;
 }
 
-export default class ListItem extends React.Component<IAutoMessageWithHistory, IListItemState> {
+export default class ListItem extends React.PureComponent<IAutoMessageWithHistory, IListItemState> {
 
     constructor(props: IAutoMessageWithHistory) {
         super(props);

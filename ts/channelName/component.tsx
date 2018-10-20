@@ -9,7 +9,7 @@ export interface IChannelNameState {
     value: IChannelName;
 }
 
-export default class ChannelNameComponent extends React.Component<IChannelNameState, {}> {
+export default class ChannelNameComponent extends React.PureComponent<IChannelNameState, {}> {
     public componentDidMount() {
         this.fetchChannelName();
     }

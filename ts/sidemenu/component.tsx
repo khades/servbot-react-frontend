@@ -31,7 +31,7 @@ interface ISideMenuState {
     readonly routes: ISideMenuCurrentRoute[];
 }
 
-export default class SideMenu extends React.Component<ISideMenuProps, ISideMenuState> {
+export default class SideMenu extends React.PureComponent<ISideMenuProps, ISideMenuState> {
     public static readonly routes: IRoute[] = [{
         label: l10n.MESSAGE_LOGS,
         link: Routes.ToChannelUsers,

@@ -33,7 +33,7 @@ interface ITemplateComponentState {
     isAliasTo: boolean;
 }
 
-export default class TemplateComponent extends React.Component<ITemplateProps, ITemplateComponentState> {
+export default class TemplateComponent extends React.PureComponent<ITemplateProps, ITemplateComponentState> {
 
     constructor(props: ITemplateProps) {
         super(props);

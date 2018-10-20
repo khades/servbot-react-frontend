@@ -14,9 +14,9 @@ export interface ICheckboxProps {
  *
  * @export
  * @class Checkbox
- * @extends {React.Component<ICheckboxProps, {}>}
+ * @extends {React.PureComponent<ICheckboxProps, {}>}
  */
-export default class Checkbox extends React.Component<ICheckboxProps, {}> {
+export default class Checkbox extends React.PureComponent<ICheckboxProps, {}> {
 
     public render() {
         const inputClassname = classnames({

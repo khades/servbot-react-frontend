@@ -17,7 +17,7 @@ export interface ISelectValue {
 interface ISelectState {
     readonly selectedValue: string;
 }
-export default class Select extends React.Component<ISelectProps, ISelectState> {
+export default class Select extends React.PureComponent<ISelectProps, ISelectState> {
     public static getDerivedStateFromProps(props: ISelectProps, state: ISelectState) {
         return {
             selectedValue: props.values.some((option) => option.value === props.value) ? props.value : "",

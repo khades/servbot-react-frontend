@@ -13,7 +13,7 @@ export interface INotificationsProps {
     hideNotification: (id: string) => void;
 }
 
-export default class NotificationsComponent extends React.Component<INotificationsProps, {}> {
+export default class NotificationsComponent extends React.PureComponent<INotificationsProps, {}> {
     public componentDidMount() {
         setInterval(this.props.autohideNotifications, 1000);
     }

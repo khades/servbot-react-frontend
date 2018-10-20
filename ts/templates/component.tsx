@@ -22,7 +22,7 @@ export interface ITemplatesProps extends RouteComponentProps<IChannelRoute>, ITe
     setGoTo: (value: string) => void;
 }
 
-export default class TemplatesComponent extends React.Component<ITemplatesProps, {}> {
+export default class TemplatesComponent extends React.PureComponent<ITemplatesProps, {}> {
     public componentDidMount() {
         this.props.fetchData(this.props.match.params.channelID);
     }

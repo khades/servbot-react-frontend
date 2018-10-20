@@ -1,6 +1,6 @@
 import config from "../../config";
 import States from "../utils/states";
-import { IAutoMessageWithHistory, IBan, ISubAlerts, ISubAlertsWithHistory, ITemplate, IUserLogsInfo } from "./types";
+import { IAutoMessageWithHistory, IBan, ISubAlerts, ISubAlertsWithHistory, ITemplate, IUserLogsInfo, IAutoMessage } from "./types";
 
 function url(uri: string): string {
     if (uri.startsWith("/")) {
@@ -54,6 +54,10 @@ const API = {
             },
             method: "POST",
         });
+    },
+
+    getAutoMessage: (channelID: string, id: string): Promise<IAutoMessageWithHistory> => {
+        return API.auth(url(`/api/channel/${channelID}/automessages/${id}`)).then((res: Response) => res.json());
     },
 
     getAutoMessages: (channelID: string): Promise<IAutoMessageWithHistory[]> => {
@@ -115,6 +119,10 @@ const API = {
     getTemplate: (channelID: string, commandName: string): Promise<ITemplate> => {
         return API.auth(url(`/api/channel/${channelID}/templates/${commandName}`))
             .then((res: Response) => res.json());
+    },
+
+    saveAutoMessage: (channelID: string, id: string, content: IAutoMessage) => {
+        return API.authPost(url(`/api/channel/${channelID}/automessages/${id}`), content);
     },
 
     saveSubAlerts: (channelID: string, content: ISubAlerts) => {

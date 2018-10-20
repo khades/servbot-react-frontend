@@ -17,7 +17,7 @@ export interface ISubAlertsProps extends RouteComponentProps<IChannelRoute>, ISu
     save: (channelID: string, content: ISubAlerts) => void;
 }
 
-export default class SubAlertsComponent extends React.Component<ISubAlertsProps, ISubAlerts> {
+export default class SubAlertsComponent extends React.PureComponent<ISubAlertsProps, ISubAlerts> {
 
     public componentDidMount() {
         this.props.fetchData(this.props.match.params.channelID);

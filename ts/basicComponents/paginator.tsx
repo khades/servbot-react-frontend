@@ -12,7 +12,7 @@ export interface IPaginatorProps {
     setPage: (page: number) => void;
 }
 
-export default class Paginator extends React.Component<IPaginatorProps, IPaginatorState> {
+export default class Paginator extends React.PureComponent<IPaginatorProps, IPaginatorState> {
     public static getDerivedStateFromProps(props: IPaginatorProps, state: IPaginatorState) {
         return {
             firstPage: props.page === 1,

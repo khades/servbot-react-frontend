@@ -17,7 +17,7 @@ interface IBansProps extends RouteComponentProps<IBansRoute>, IBansState {
     fetchData: (channelID: string) => void;
 }
 
-export default class BansComponent extends React.Component<IBansProps, {}> {
+export default class BansComponent extends React.PureComponent<IBansProps, {}> {
 
     public componentDidMount() {
         this.props.fetchData(this.props.match.params.channelID);

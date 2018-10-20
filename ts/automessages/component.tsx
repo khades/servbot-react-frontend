@@ -18,7 +18,7 @@ interface IAutoMessagesProps extends RouteComponentProps<IChannelRoute>, IAutoMe
     hideEmpty: () => void;
 }
 
-export default class AutoMessagesComponent extends React.Component<IAutoMessagesProps, {}> {
+export default class AutoMessagesComponent extends React.PureComponent<IAutoMessagesProps, {}> {
 
     public componentDidMount() {
         this.props.fetchData(this.props.match.params.channelID);

@@ -8,7 +8,7 @@ export interface IStatusWrapperState {
     state: States;
 }
 
-export class StatusWrapper extends React.Component<IStatusWrapperState, {}> {
+export class StatusWrapper extends React.PureComponent<IStatusWrapperState, {}> {
     public render = () => {
         const renderLoading = this.props.state === States.NOTINITIATED
             || this.props.state === States.LOADING
