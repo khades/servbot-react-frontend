@@ -12,6 +12,7 @@ export enum actiontypes {
     SAVE = "AUTOMESSAGE/SAVE",
     SAVENEW = "AUTOMESSAGE/SAVENEW",
     ONSAVEERROR = "AUTOMESSAGE/ONSAVEERROR",
+    AFTERCREATION = "AUTOMESSAGE/AFTERCREATION",
 }
 
 export interface IAutoMessageGetAction {
@@ -89,6 +90,19 @@ export interface IAutoMessageOnSaveErrorAction {
     type: actiontypes.ONSAVEERROR;
     payload: {
         channelID: string,
+    };
+}
+
+export interface IAutoMessageCreateNewAction {
+    type: actiontypes.CREATENEW;
+    payload: {
+        channelID: string,
+    };
+}
+
+export interface IAutoMessageAfterCreationAction {
+    type: actiontypes.ONSAVEERROR;
+    payload: {
         id: string,
     };
 }
@@ -102,4 +116,6 @@ export type AutoMessageAction = IAutoMessageGetAction
     | IAutoMessageOfflineAction
     | IAutoMessageSaveAction
     | IAutoMessageSaveNewAction
-    | IAutoMessageOnSaveErrorAction;
+    | IAutoMessageOnSaveErrorAction
+    | IAutoMessageCreateNewAction
+    | IAutoMessageAfterCreationAction;

@@ -1,6 +1,6 @@
 import config from "../../config";
 import States from "../utils/states";
-import { IAutoMessageWithHistory, IBan, ISubAlerts, ISubAlertsWithHistory, ITemplate, IUserLogsInfo, IAutoMessage } from "./types";
+import { IAutoMessage, IAutoMessageCreationResult, IAutoMessageWithHistory, IBan, ISubAlerts, ISubAlertsWithHistory, ITemplate, IUserLogsInfo } from "./types";
 
 function url(uri: string): string {
     if (uri.startsWith("/")) {
@@ -125,6 +125,12 @@ const API = {
         return API.authPost(url(`/api/channel/${channelID}/automessages/${id}`), content);
     },
 
+    createAutoMessage: (channelID: string, content: IAutoMessage): Promise<string> => {
+        return API.authPost(url(`/api/channel/${channelID}/automessages`), content)
+            .then((res: Response) => res.json())
+            .then((res: IAutoMessageCreationResult) => res.ID);
+    },
+
     saveSubAlerts: (channelID: string, content: ISubAlerts) => {
         return API.authPost(url(`/api/channel/${channelID}/subalert`), content);
     },
@@ -132,6 +138,7 @@ const API = {
     saveTemplate: (channelID: string, commandName: string, template: string) => {
         return API.authPost(url(`/api/channel/${channelID}/templates/${commandName}`), { template });
     },
+
     setTemplateAliasTo: (channelID: string, commandName: string, aliasTo: string) => {
         return API.authPost(url(`/api/channel/${channelID}/templates/${commandName}/setAliasTo`), { aliasTo });
     },

@@ -11,7 +11,8 @@ const mapStateToProps = (state: IStore) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        fetchData: (channelID: string, id: string) => dispatch(actions.get(channelID, id)),
+        createNew: (channelID: string) => dispatch(actions.createNew(channelID)),
+        fetchData: (channelID: string, id: string, init: boolean) => dispatch(actions.get(channelID, id, init)),
         saveData: (channelID: string, id: string, content: IAutoMessage) =>
             dispatch(actions.save(channelID, id, content)),
         saveNew: (channelID: string, content: IAutoMessage) =>

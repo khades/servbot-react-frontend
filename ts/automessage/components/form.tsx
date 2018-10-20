@@ -10,6 +10,7 @@ interface IFormProps {
     isNew: boolean;
     create: (channelID: string, content: IAutoMessage) => void;
     save: (channelID: string, id: string, content: IAutoMessage) => void;
+    validationError: boolean;
 }
 
 export default class Form extends React.PureComponent<IFormProps, IAutoMessage> {
@@ -35,20 +36,25 @@ export default class Form extends React.PureComponent<IFormProps, IAutoMessage> 
                     className="automessage__message"
                     value={this.state.message}
                     setValue={this.setMessage}
+                    errors={this.props.validationError && l10n.VAL_NOT_EMPTY}
+
                 />
                 <Input
                     label={l10n.AUTOMESSAGES_MESSAGE_THRESHOLD}
                     id="messageLimit"
                     className="automessage__message-limit"
-                    value={this.state.messageLimit}
+                    value={this.state.messageLimit.toString()}
                     setValue={this.setMessageLimit}
+                    errors={this.props.validationError && l10n.formatString(l10n.VAL_INT_MIN, "20")}
                 />
                 <Input
                     label={l10n.AUTOMESSAGES_DURATION_THRESHOLD}
                     id="durationLimit"
                     className="automessage__duration-limit"
-                    value={this.state.durationLimit}
+                    value={this.state.durationLimit.toString()}
                     setValue={this.setDurationLimit}
+                    errors={this.props.validationError && l10n.formatString(l10n.VAL_INT_MIN, "60")}
+
                 />
                 <Input
                     label={l10n.AUTOMESSAGES_SEND_DURING_GAME}

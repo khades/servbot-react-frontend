@@ -4,14 +4,14 @@ import * as Loadable from "react-loadable";
 import { Provider } from "react-redux";
 import { HashRouter } from "react-router-dom";
 import { applyMiddleware, createStore } from "redux";
-// import { createLogger } from "redux-logger";
+import { createLogger } from "redux-logger";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import reducers from "./reducers";
 import * as sagas from "./sagas";
 
-// const reduxlogger = createLogger({
-//     // ...options
-// });
+const reduxlogger = createLogger({
+     // ...options
+ });
 
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 const store = createStore(

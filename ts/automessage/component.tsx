@@ -19,7 +19,7 @@ export interface IAutoMessageRoute {
 
 interface IAutoMessageProps extends RouteComponentProps<IAutoMessageRoute>, IAutoMessageState {
     createNew: (channelID: string) => void;
-    fetchData: (channelID: string, id: string) => void;
+    fetchData: (channelID: string, id: string, init: boolean) => void;
     saveData: (channelID: string, id: string, content: IAutoMessage) => void;
     saveNew: (channelID: string, content: IAutoMessage) => void;
 }
@@ -35,9 +35,15 @@ export default class AutoMessageComponent extends React.PureComponent<IAutoMessa
     }
 
     public componentDidUpdate(prevProps: IAutoMessageProps) {
+
+        if (prevProps.id === "" && this.props.id !== "") {
+            this.props.history.push(Routes.ToAutoMessage(this.props.channelID, this.props.id));
+            return;
+        }
         if (prevProps.match.params.channelID !== this.props.match.params.channelID ||
             prevProps.match.params.id !== this.props.match.params.id) {
-            this.props.fetchData(this.props.match.params.channelID, this.props.match.params.id);
+            const forcedUpdate = prevProps.id !== "";
+            this.props.fetchData(this.props.match.params.channelID, this.props.match.params.id, forcedUpdate);
         }
     }
 
@@ -53,6 +59,7 @@ export default class AutoMessageComponent extends React.PureComponent<IAutoMessa
                         isNew={this.props.isNew}
                         create={this.props.saveNew}
                         save={this.props.saveData}
+                        validationError={this.props.validationError}
                     />
 
                     {this.generateHistory()}

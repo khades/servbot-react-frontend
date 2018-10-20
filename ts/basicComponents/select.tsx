@@ -6,7 +6,7 @@ export interface ISelectProps {
     values: ISelectValue[];
     id: string;
     label: string;
-    errors?: string[];
+    errors?: string | string[];
     setValue: (value: string) => void;
 }
 

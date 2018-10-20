@@ -1,10 +1,11 @@
 import classnames from "classnames";
 import * as React from "react";
 import "../../scss/modules/_checkbox.scss";
+import { generateErrors } from "./utls";
 
 export interface ICheckboxProps {
     value: boolean;
-    errors?: string[];
+    errors?: string | string[];
     label: string;
     id: string;
     setValue: (value: boolean) => void;
@@ -45,7 +46,7 @@ export default class Checkbox extends React.PureComponent<ICheckboxProps, {}> {
         if (this.props.errors && this.props.errors.length > 0) {
             return (
                 <div className="checkbox__errors">
-                    {this.props.errors.join(", ")}
+                    {generateErrors(this.props.errors)}
                 </div>
             );
         }

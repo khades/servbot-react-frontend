@@ -3,7 +3,7 @@ import ControlGroup from "./control-group";
 
 export interface IInputProps {
     className?: string;
-    errors?: string[];
+    errors?: string | string[];
     id: string;
     label: string | string[];
     value: string;

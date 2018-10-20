@@ -112,3 +112,7 @@ export interface IAutoMessageWithHistory extends IAutoMessage {
     messageThreshold: number;
     history: IAutoMessageHistory[];
 }
+
+export interface IAutoMessageCreationResult {
+    ID: string;
+}

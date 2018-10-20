@@ -49,12 +49,17 @@ export const saveNew = (channelID: string, content: IAutoMessage): actions.IAuto
     type: actions.actiontypes.SAVENEW,
 });
 
-export const onSaveError = (channelID: string, id: string): actions.IAutoMessageOnSaveErrorAction => ({
-    payload: { channelID, id },
+export const onSaveError = (channelID: string): actions.IAutoMessageOnSaveErrorAction => ({
+    payload: { channelID },
     type: actions.actiontypes.ONSAVEERROR,
 });
 
-export const createNew = (channelID: string) => ({
+export const createNew = (channelID: string): actions.IAutoMessageCreateNewAction => ({
     payload: { channelID },
     type: actions.actiontypes.CREATENEW,
+});
+
+export const afterCreation = (id: string) => ({
+    payload: { id },
+    type: actions.actiontypes.AFTERCREATION,
 });

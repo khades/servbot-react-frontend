@@ -1,4 +1,4 @@
-import { IAutoMessageWithHistory } from "../api/types";
+import { IAutoMessageHistory, IAutoMessageWithHistory } from "../api/types";
 import States from "../utils/states";
 import { actiontypes, AutoMessageAction } from "./actions";
 
@@ -7,6 +7,7 @@ export interface IAutoMessageState {
     id: string;
     isNew: boolean;
     state: States;
+    validationError: boolean;
     content?: IAutoMessageWithHistory;
 }
 
@@ -15,6 +16,7 @@ const initialState: IAutoMessageState = {
     id: "",
     isNew: false,
     state: States.NOTINITIATED,
+    validationError: false,
 };
 
 const reducer = (state: IAutoMessageState = initialState, action: AutoMessageAction): IAutoMessageState => {
@@ -28,9 +30,22 @@ const reducer = (state: IAutoMessageState = initialState, action: AutoMessageAct
         case actiontypes.CREATENEW:
             return {
                 channelID: action.payload.channelID,
+                content: {
+                    channelID: action.payload.channelID,
+                    durationLimit: 300000000000,
+                    durationThreshold: 0,
+                    game: "",
+                    history: [],
+                    id: "",
+                    message: "",
+                    messageLimit: 50,
+                    messageThreshold: 0,
+                },
                 id: "",
                 isNew: true,
                 state: States.READY,
+                validationError: false,
+
             };
         case actiontypes.READY:
             return Object.assign({}, state, {
@@ -39,6 +54,8 @@ const reducer = (state: IAutoMessageState = initialState, action: AutoMessageAct
                 id: action.payload.id,
                 isNew: false,
                 state: States.READY,
+                validationError: false,
+
             });
         case actiontypes.NOTAUTHORIZED:
             return Object.assign({}, state, {
@@ -67,6 +84,17 @@ const reducer = (state: IAutoMessageState = initialState, action: AutoMessageAct
             return Object.assign({}, state, {
                 state: States.UPDATING,
             });
+        case actiontypes.SAVENEW:
+            return Object.assign({}, state, {
+                state: States.UPDATING,
+            });
+        case actiontypes.ONSAVEERROR:
+            return Object.assign({}, state, {
+                state: States.READY,
+                validationError: true,
+            });
+        case actiontypes.AFTERCREATION:
+            return Object.assign({}, state, { id: action.payload.id });
         default:
             return state;
     }
