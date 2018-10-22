@@ -116,3 +116,11 @@ export interface IAutoMessageWithHistory extends IAutoMessage {
 export interface IAutoMessageCreationResult {
     ID: string;
 }
+
+export interface ISubDay {
+    channelID: string;
+    date: string;
+    id: string;
+    isActive: boolean;
+    name: string;
+}

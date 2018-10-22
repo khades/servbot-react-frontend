@@ -30,7 +30,7 @@ export default class AutoMessageComponent extends React.PureComponent<IAutoMessa
         if (this.props.match.params.id === "new") {
             this.props.createNew(this.props.match.params.channelID);
         } else {
-            this.props.fetchData(this.props.match.params.channelID, this.props.match.params.id);
+            this.props.fetchData(this.props.match.params.channelID, this.props.match.params.id, false);
         }
     }
 

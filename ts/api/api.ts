@@ -1,6 +1,6 @@
 import config from "../../config";
 import States from "../utils/states";
-import { IAutoMessage, IAutoMessageCreationResult, IAutoMessageWithHistory, IBan, ISubAlerts, ISubAlertsWithHistory, ITemplate, IUserLogsInfo } from "./types";
+import { IAutoMessage, IAutoMessageCreationResult, IAutoMessageWithHistory, IBan, ISubAlerts, ISubAlertsWithHistory, ISubDay, ITemplate, IUserLogsInfo } from "./types";
 
 function url(uri: string): string {
     if (uri.startsWith("/")) {
@@ -29,7 +29,7 @@ const API = {
             if (result.status === 403) {
                 throw { state: States.FORBIDDEN };
             }
-            if (result.status === 422) {
+            if (result.status === 422 || result.status === 406) {
                 return result.json().then((value) => {
                     throw {
                         content: value,
@@ -116,6 +116,10 @@ const API = {
             .then((res: Response) => res.json());
     },
 
+    getSubDays: (channelID: string): Promise<ISubDay> => {
+        return API.auth(url(`/api/channel/${channelID}/subdays`)).then((res: Response) => res.json());
+    },
+
     getTemplate: (channelID: string, commandName: string): Promise<ITemplate> => {
         return API.auth(url(`/api/channel/${channelID}/templates/${commandName}`))
             .then((res: Response) => res.json());
@@ -127,6 +131,12 @@ const API = {
 
     createAutoMessage: (channelID: string, content: IAutoMessage): Promise<string> => {
         return API.authPost(url(`/api/channel/${channelID}/automessages`), content)
+            .then((res: Response) => res.json())
+            .then((res: IAutoMessageCreationResult) => res.ID);
+    },
+
+    createSubDay: (channelID: string, name: string, subsOnly: boolean): Promise<string> => {
+        return API.authPost(url(`/api/channel/${channelID}/subdays/new`), { name, subsOnly })
             .then((res: Response) => res.json())
             .then((res: IAutoMessageCreationResult) => res.ID);
     },

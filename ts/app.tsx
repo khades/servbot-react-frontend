@@ -2,7 +2,9 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as Loadable from "react-loadable";
 import { Provider } from "react-redux";
+// import { hashHistory } from "react-router-dom";
 import { HashRouter } from "react-router-dom";
+// import { syncHistoryWithStore } from "react-router-redux";
 import { applyMiddleware, createStore } from "redux";
 import { createLogger } from "redux-logger";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
@@ -10,8 +12,8 @@ import reducers from "./reducers";
 import * as sagas from "./sagas";
 
 const reduxlogger = createLogger({
-     // ...options
- });
+    // ...options
+});
 
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 const store = createStore(
