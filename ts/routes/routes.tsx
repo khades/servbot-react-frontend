@@ -61,10 +61,10 @@ export const SubDays = "/channel/:channelID/subdays";
 
 export const ToSubDays = (channelID: string) => generatePath(SubDays, { channelID });
 
-export const SubDay = "/channel/:channelID/subdays/:subdayID";
+export const SubDay = "/channel/:channelID/subdays/:id";
 
-export const ToSubDay = (channelID: string, subdayID: string) =>
-    generatePath(SubDay, { channelID, subdayID });
+export const ToSubDay = (channelID: string, id: string) =>
+    generatePath(SubDay, { channelID, id });
 
 export const LastSubDay = "/channel/:channelID/subdays/last";
 

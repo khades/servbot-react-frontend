@@ -37,6 +37,9 @@ import userLogs, { IUserLogsState } from "./userLogs/reducer";
 import { SubAlertsAction } from "./subAlerts/actions";
 import subAlerts, { ISubAlertsState } from "./subAlerts/reducer";
 
+import { SubDayAction } from "./subday/actions";
+import SubDay, { ISubDayState } from "./subday/reducer";
+
 import { SubDaysAction } from "./subdays/actions";
 import SubDays, { ISubDaysState } from "./subdays/reducer";
 
@@ -45,6 +48,7 @@ import SubDays, { ISubDaysState } from "./subdays/reducer";
 export interface IStore {
   readonly AutoMessage: IAutoMessageState;
   readonly AutoMessages: IAutoMessagesState;
+  readonly SubDay: ISubDayState;
   readonly SubDays: ISubDaysState;
   readonly bans: IBansState;
   readonly channelName: IChannelNameState;
@@ -66,6 +70,7 @@ type actions = | AutoMessageAction
   | NotificationsAction
   | SideMenuAction
   | SubAlertsAction
+  | SubDayAction
   | SubDaysAction
   | TemplateAction
   | TemplatesAction
@@ -75,6 +80,7 @@ type actions = | AutoMessageAction
 export default combineReducers<IStore, actions>({
   AutoMessage,
   AutoMessages,
+  SubDay,
   SubDays,
   bans,
   channelName,

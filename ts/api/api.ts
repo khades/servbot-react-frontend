@@ -1,6 +1,16 @@
 import config from "../../config";
 import States from "../utils/states";
-import { IAutoMessage, IAutoMessageCreationResult, IAutoMessageWithHistory, IBan, ISubAlerts, ISubAlertsWithHistory, ISubDay, ITemplate, IUserLogsInfo } from "./types";
+import {
+    IAutoMessage,
+    IAutoMessageCreationResult,
+    IAutoMessageWithHistory,
+    IBan,
+    ISubAlerts,
+    ISubAlertsWithHistory,
+    ISubDay,
+    ITemplate,
+    IUserLogsInfo,
+} from "./types";
 
 function url(uri: string): string {
     if (uri.startsWith("/")) {
@@ -116,6 +126,10 @@ const API = {
             .then((res: Response) => res.json());
     },
 
+    getSubDay: (channelID: string, id: string): Promise<ISubDay> => {
+        return API.auth(url(`/api/channel/${channelID}/subdays/${id}`)).then((res: Response) => res.json());
+    },
+
     getSubDays: (channelID: string): Promise<ISubDay> => {
         return API.auth(url(`/api/channel/${channelID}/subdays`)).then((res: Response) => res.json());
     },
@@ -152,6 +166,27 @@ const API = {
     setTemplateAliasTo: (channelID: string, commandName: string, aliasTo: string) => {
         return API.authPost(url(`/api/channel/${channelID}/templates/${commandName}/setAliasTo`), { aliasTo });
     },
+
+    closeSubDay: (channelID: string, id: string) => {
+        return API.auth(url(`api/channel/${channelID}/subdays/${id}/close`));
+    },
+
+    pickSubDayWinner: (channelID: string, id: string) => {
+        return API.auth(url(`api/channel/${channelID}/subdays/${id}/randomize`));
+    },
+
+    pickSubDaySubWinner: (channelID: string, id: string) => {
+        return API.auth(url(`api/channel/${channelID}/subdays/${id}/randomizeSubs`));
+    },
+
+    pickSubDayNonSubWinner: (channelID: string, id: string) => {
+        return API.auth(url(`api/channel/${channelID}/subdays/${id}/randomizeNonSubs`));
+    },
+
+    pullSubDayWinner: (channelID: string, id: string, user: string) => {
+        return API.auth(url(`api/channel/${channelID}/subdays/${id}/pullwinner/${user}`));
+    },
+
 };
 
 export default API;

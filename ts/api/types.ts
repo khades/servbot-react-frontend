@@ -1,3 +1,5 @@
+import { string } from "prop-types";
+
 export interface IUserInfo {
     avatarUrl: string;
     modChannels: IUserModInfo[];
@@ -121,6 +123,20 @@ export interface ISubDay {
     channelID: string;
     date: string;
     id: string;
-    isActive: boolean;
     name: string;
+}
+
+export interface ISubDayVote {
+    user: string;
+    userid: string;
+    game: string;
+    isSub: true;
+}
+export interface ISubDayFull extends ISubDay {
+    isActive: boolean;
+    subsOnly: boolean;
+    closer: string;
+    votes: ISubDayVote[];
+    winners: ISubDayVote[];
+    isMod: boolean;
 }

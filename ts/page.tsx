@@ -75,6 +75,11 @@ const LoadableAutoMessage = Loadable({
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
 });
 
+const LoadableSubDayMessage = Loadable({
+    loader: () => import("./subday/container"),
+    loading: () => <StatusWrapper state={States.NOTINITIATED} />,
+});
+
 const LoadableSubDaysMessage = Loadable({
     loader: () => import("./subdays/container"),
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
@@ -110,6 +115,7 @@ class PageComponent extends React.PureComponent<IPageProps, {}> {
                     <Route exact={true} path={routes.Templates} component={LoadableTemplates} />
                     <Route exact={true} path={routes.Template} component={LoadableTemplate} />
                     <Route exact={true} path={routes.SubAlerts} component={LoadableSubAlerts} />
+                    <Route exact={true} path={routes.SubDay} component={LoadableSubDayMessage} />
                     <Route exact={true} path={routes.SubDays} component={LoadableSubDaysMessage} />
                 </section>
             </div>
