@@ -8,6 +8,6 @@
         "jsx": "react"
     },
     "include": [
-        "./ts/app.tsx", "ts/subdays/saga.ts", "ts/subdays/component.tsx", "ts/subdays/container.tsx"
+        "./ts/app.tsx", "ts/subdays/saga.ts", "ts/subdays/component.tsx", "ts/subdays/container.tsx", "ts/subscriptions/reducer.ts", "ts/utils/WebSocketComponent.tsx"
     ]
 }

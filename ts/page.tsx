@@ -85,6 +85,11 @@ const LoadableSubDaysMessage = Loadable({
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
 });
 
+const LoadableSubscriptionsMessage = Loadable({
+    loader: () => import("./subscriptions/container"),
+    loading: () => <StatusWrapper state={States.NOTINITIATED} />,
+});
+
 class PageComponent extends React.PureComponent<IPageProps, {}> {
 
     public componentDidMount() {
@@ -117,6 +122,7 @@ class PageComponent extends React.PureComponent<IPageProps, {}> {
                     <Route exact={true} path={routes.SubAlerts} component={LoadableSubAlerts} />
                     <Route exact={true} path={routes.SubDay} component={LoadableSubDayMessage} />
                     <Route exact={true} path={routes.SubDays} component={LoadableSubDaysMessage} />
+                    <Route exact={true} path={routes.Subs} component={LoadableSubscriptionsMessage} />
                 </section>
             </div>
             //    </StatusWrapper>

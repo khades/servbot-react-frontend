@@ -7,6 +7,7 @@ import channelUsers from "./channelUsers/saga";
 import subAlerts from "./subAlerts/saga";
 import subDay from "./subday/saga";
 import subDays from "./subdays/saga";
+import subscriptions from "./subscriptions/saga";
 import template from "./template/saga";
 import templates from "./templates/saga";
 import userInfo from "./userinfo/saga";
@@ -22,6 +23,7 @@ export function* rootSaga() {
         fork(subAlerts),
         fork(subDay),
         fork(subDays),
+        fork(subscriptions),
         fork(template),
         fork(templates),
         fork(userInfo),

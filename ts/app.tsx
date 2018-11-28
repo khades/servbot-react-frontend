@@ -10,6 +10,9 @@ import { createLogger } from "redux-logger";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import reducers from "./reducers";
 import * as sagas from "./sagas";
+import time from "./utils/time";
+
+time.getTime();
 
 const reduxlogger = createLogger({
     // ...options

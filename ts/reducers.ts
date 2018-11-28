@@ -43,6 +43,8 @@ import SubDay, { ISubDayState } from "./subday/reducer";
 import { SubDaysAction } from "./subdays/actions";
 import SubDays, { ISubDaysState } from "./subdays/reducer";
 
+import { SubscriptionsAction } from "./subscriptions/actions";
+import Subscriptions, { ISubscriptionsState } from "./subscriptions/reducer";
 // import { routerReducer } from "react-router-redux";
 
 export interface IStore {
@@ -50,6 +52,7 @@ export interface IStore {
   readonly AutoMessages: IAutoMessagesState;
   readonly SubDay: ISubDayState;
   readonly SubDays: ISubDaysState;
+  readonly Subscriptions: ISubscriptionsState;
   readonly bans: IBansState;
   readonly channelName: IChannelNameState;
   readonly channelUsers: IChannelUsersState;
@@ -72,6 +75,7 @@ type actions = | AutoMessageAction
   | SubAlertsAction
   | SubDayAction
   | SubDaysAction
+  | SubscriptionsAction
   | TemplateAction
   | TemplatesAction
   | UserInfoAction
@@ -82,6 +86,7 @@ export default combineReducers<IStore, actions>({
   AutoMessages,
   SubDay,
   SubDays,
+  Subscriptions,
   bans,
   channelName,
   channelUsers,

@@ -8,11 +8,13 @@ import {
     ISubAlerts,
     ISubAlertsWithHistory,
     ISubDay,
+    ISubscriptions,
     ITemplate,
     IUserLogsInfo,
+    ISubscription,
 } from "./types";
 
-function url(uri: string): string {
+export function url(uri: string): string {
     if (uri.startsWith("/")) {
         return config.appUrl + uri;
     } else {
@@ -185,6 +187,15 @@ const API = {
 
     pullSubDayWinner: (channelID: string, id: string, user: string) => {
         return API.auth(url(`api/channel/${channelID}/subdays/${id}/pullwinner/${user}`));
+    },
+
+    getSubscriptions: (channelID: string, limit?: number): Promise<ISubscription[]> => {
+        if (!!limit) {
+            return API.auth(url(`api/channel/${channelID}/subs?limit=${limit}`))
+                .then((res: Response) => res.json());
+        }
+        return API.auth(url(`api/channel/${channelID}/subs`))
+            .then((res: Response) => res.json());
     },
 
 };

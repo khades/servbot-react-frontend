@@ -1,14 +1,11 @@
 import classnames from "classnames";
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
-import { Link } from "react-router-dom";
 import "../../scss/modules/_channel-bans.scss";
 import "../../scss/modules/_subday.scss";
 import { ISubDayFull, ISubDayVote } from "../api/types";
-import IChannelRoute from "../channel/types";
-import ChannelName from "../channelName/container";
+
 import { l10n } from "../l10n/l10n";
-import * as Routes from "../routes/routes";
 import { StatusWrapper } from "../statusWrapper";
 import { concatStrings } from "../utils/concatStrings";
 import { ISubDayState } from "./reducer";
@@ -88,7 +85,7 @@ export default class SubDayComponent extends React.PureComponent<ISubDayProps, {
             "subday__winner-user--sub": content.subsOnly === false && item.isSub === true,
         });
         return (
-            <div className="subday__winner">
+            <div className="subday__winner" key={item.user}>
                 <div className={userClasses}>
                     {item.user}
                 </div>
@@ -169,10 +166,9 @@ export default class SubDayComponent extends React.PureComponent<ISubDayProps, {
 
     private pickSubDayNonSubWinner = () => {
         const id = this.props.content.id;
-
         this.props.pickSubDayNonSubWinner(this.props.channelID, id);
-
     }
+
     private renderVote = (item: ISubDayVote) => {
         const content = this.props.content;
         const userClasses = classnames({
@@ -180,7 +176,7 @@ export default class SubDayComponent extends React.PureComponent<ISubDayProps, {
             "subday__vote-user--sub": content.subsOnly === false && item.isSub === true,
         });
         return (
-            <div className="subday__vote">
+            <div className="subday__vote" key={item.user}>
                 <div className={userClasses}>
                     {item.user}
                 </div>
@@ -213,7 +209,5 @@ export default class SubDayComponent extends React.PureComponent<ISubDayProps, {
             </div>
         );
     }
-    private renderChannelName = () => {
-        return <ChannelName channelID={this.props.match.params.channelID} />;
-    }
+
 }
