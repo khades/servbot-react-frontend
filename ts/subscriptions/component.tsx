@@ -18,6 +18,7 @@ interface ISubscriptionsProps extends RouteComponentProps<IChannelRoute>, ISubsc
     setLimit: (channelID: string, limit: number) => void;
 }
 
+// TODO: Test websocket connection
 export default class SubscriptionsComponent extends React.PureComponent<ISubscriptionsProps, {}> {
 
     public componentDidMount() {

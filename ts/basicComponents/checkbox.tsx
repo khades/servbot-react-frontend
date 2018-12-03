@@ -8,7 +8,7 @@ export interface ICheckboxProps {
     errors?: string | string[];
     label: string;
     id: string;
-    setValue: (value: boolean) => void;
+    setValue: (value: boolean, id?: string) => void;
 }
 /**
  *
@@ -29,18 +29,18 @@ export default class Checkbox extends React.PureComponent<ICheckboxProps, {}> {
                 <input
                     type="checkbox"
                     id={this.props.id}
-                    defaultChecked={this.props.value}
+                    checked={this.props.value}
                     onClick={this.clickButton}
                 />
                 <label htmlFor={this.props.id}>
-                    {this.props.label}
+                    {this.props.label} {this.props.value}
                 </label>
                 {this.renderErrors()}
             </div>
         );
     }
     private clickButton = (event: React.MouseEvent<HTMLInputElement>) => {
-        this.props.setValue(event.currentTarget.checked);
+        this.props.setValue(event.currentTarget.checked, this.props.id);
     }
     private renderErrors = () => {
         if (this.props.errors && this.props.errors.length > 0) {

@@ -8,10 +8,12 @@ import {
     ISubAlerts,
     ISubAlertsWithHistory,
     ISubDay,
+    ISubscription,
     ISubscriptions,
+    ISubTrain,
+    ISubTrainForm,
     ITemplate,
     IUserLogsInfo,
-    ISubscription,
 } from "./types";
 
 export function url(uri: string): string {
@@ -161,6 +163,10 @@ const API = {
         return API.authPost(url(`/api/channel/${channelID}/subalert`), content);
     },
 
+    saveSubTrain: (channelID: string, content: ISubTrainForm) => {
+        return API.authPost(url(`/api/channel/${channelID}/subtrain`), content);
+    },
+
     saveTemplate: (channelID: string, commandName: string, template: string) => {
         return API.authPost(url(`/api/channel/${channelID}/templates/${commandName}`), { template });
     },
@@ -187,6 +193,11 @@ const API = {
 
     pullSubDayWinner: (channelID: string, id: string, user: string) => {
         return API.auth(url(`api/channel/${channelID}/subdays/${id}/pullwinner/${user}`));
+    },
+
+    getSubTrain: (channelID: string): Promise<ISubTrain> => {
+        return API.auth(url(`api/channel/${channelID}/subtrain`))
+            .then((res: Response) => res.json());
     },
 
     getSubscriptions: (channelID: string, limit?: number): Promise<ISubscription[]> => {

@@ -14,7 +14,6 @@ export class WebSocketComponent extends React.Component<IWebSocketProps, {}> {
     private forceClose = false;
     public componentDidMount() {
         console.log("starting");
-
         this.connectToWebSocket();
     }
 

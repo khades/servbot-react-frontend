@@ -75,18 +75,23 @@ const LoadableAutoMessage = Loadable({
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
 });
 
-const LoadableSubDayMessage = Loadable({
+const LoadableSubDay = Loadable({
     loader: () => import("./subday/container"),
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
 });
 
-const LoadableSubDaysMessage = Loadable({
+const LoadableSubDays = Loadable({
     loader: () => import("./subdays/container"),
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
 });
 
-const LoadableSubscriptionsMessage = Loadable({
+const LoadableSubscriptions = Loadable({
     loader: () => import("./subscriptions/container"),
+    loading: () => <StatusWrapper state={States.NOTINITIATED} />,
+});
+
+const LoadableSubTrain = Loadable({
+    loader: () => import("./subtrain/container"),
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
 });
 
@@ -120,9 +125,11 @@ class PageComponent extends React.PureComponent<IPageProps, {}> {
                     <Route exact={true} path={routes.Templates} component={LoadableTemplates} />
                     <Route exact={true} path={routes.Template} component={LoadableTemplate} />
                     <Route exact={true} path={routes.SubAlerts} component={LoadableSubAlerts} />
-                    <Route exact={true} path={routes.SubDay} component={LoadableSubDayMessage} />
-                    <Route exact={true} path={routes.SubDays} component={LoadableSubDaysMessage} />
-                    <Route exact={true} path={routes.Subs} component={LoadableSubscriptionsMessage} />
+                    <Route exact={true} path={routes.SubDay} component={LoadableSubDay} />
+                    <Route exact={true} path={routes.SubDays} component={LoadableSubDays} />
+                    <Route exact={true} path={routes.Subs} component={LoadableSubscriptions} />
+                    <Route exact={true} path={routes.SubTrain} component={LoadableSubTrain} />
+
                 </section>
             </div>
             //    </StatusWrapper>
