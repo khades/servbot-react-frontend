@@ -13,21 +13,17 @@ export class WebSocketComponent extends React.Component<IWebSocketProps, {}> {
     private timeoutID: number = -1;
     private forceClose = false;
     public componentDidMount() {
-        console.log("starting");
         this.connectToWebSocket();
     }
 
     public componentDidUpdate(prevProps: IWebSocketProps) {
         if (prevProps.url !== this.props.url) {
-            console.log("changing route");
             this.preventReconnect();
             this.connectToWebSocket();
         }
     }
 
     public componentWillUnmount() {
-        console.log("unmounting route");
-
         this.preventReconnect();
 
         if (this.eventSource && this.eventSource.readyState === WebSocket.OPEN) {

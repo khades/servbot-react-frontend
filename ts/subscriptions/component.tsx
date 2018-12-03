@@ -14,6 +14,8 @@ import { ISubscriptionsState } from "./reducer";
 
 interface ISubscriptionsProps extends RouteComponentProps<IChannelRoute>, ISubscriptionsState {
     fetchData: (channelID: string, limit?: number) => void;
+    fetchDataWithoutRefresh: (channelID: string, limit?: number) => void;
+
     setBookmark: (channelID: string, id: string) => void;
     setLimit: (channelID: string, limit: number) => void;
 }
@@ -36,7 +38,7 @@ export default class SubscriptionsComponent extends React.PureComponent<ISubscri
             <StatusWrapper state={this.props.state}>
                 <WebSocketComponent
                     url={`api/channel/${this.props.match.params.channelID}/subs/events`}
-                    onMessage={this.fetchData}
+                    onMessage={this.fetchDataWithoutRefresh}
                 />
                 <div className="subscriptions">
                     <div className="subscriptions__hgroup">
@@ -65,6 +67,13 @@ export default class SubscriptionsComponent extends React.PureComponent<ISubscri
     }
     private fetchData = () => {
         this.props.fetchData(this.props.match.params.channelID, this.props.limits[this.props.match.params.channelID]);
+
+    }
+    private fetchDataWithoutRefresh = () => {
+        this.props.fetchDataWithoutRefresh(
+            this.props.match.params.channelID,
+            this.props.limits[this.props.match.params.channelID],
+        );
 
     }
     private setLimit = () => {
