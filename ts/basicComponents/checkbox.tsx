@@ -30,7 +30,7 @@ export default class Checkbox extends React.PureComponent<ICheckboxProps, {}> {
                     type="checkbox"
                     id={this.props.id}
                     checked={this.props.value}
-                    onClick={this.clickButton}
+                    onChange={this.clickButton}
                 />
                 <label htmlFor={this.props.id}>
                     {this.props.label} {this.props.value}
@@ -39,7 +39,7 @@ export default class Checkbox extends React.PureComponent<ICheckboxProps, {}> {
             </div>
         );
     }
-    private clickButton = (event: React.MouseEvent<HTMLInputElement>) => {
+    private clickButton = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.props.setValue(event.currentTarget.checked, this.props.id);
     }
     private renderErrors = () => {

@@ -45,6 +45,11 @@ export class StatusWrapper extends React.PureComponent<IStatusWrapperState, {}> 
         if (this.props.state === States.NOTAUTHORIZED) {
             return <div className="error">NOTAUTHORIZED</div>;
         }
+
+        if (this.props.state === States.OFFLINE) {
+            return <div className="error">OFFLINE</div>;
+        }
+
         if (this.props.state === States.FORBIDDEN) {
             return <div className="error">FORBIDDEN</div>;
         }

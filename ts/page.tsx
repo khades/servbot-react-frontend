@@ -95,6 +95,11 @@ const LoadableSubTrain = Loadable({
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
 });
 
+const LoadableExternalServices = Loadable({
+    loader: () => import("./externalservices/container"),
+    loading: () => <StatusWrapper state={States.NOTINITIATED} />,
+});
+
 class PageComponent extends React.PureComponent<IPageProps, {}> {
 
     public componentDidMount() {
@@ -118,10 +123,11 @@ class PageComponent extends React.PureComponent<IPageProps, {}> {
                 <section className="site-container__content">
                     <Route exact={true} path={routes.AutoMessage} component={LoadableAutoMessage} />
                     <Route exact={true} path={routes.AutoMessages} component={LoadableAutoMessages} />
+                    <Route exact={true} path={routes.Bans} component={LoadableBans} />
                     <Route exact={true} path={routes.ChannelIndex} component={LoadableStartPage} />
                     <Route exact={true} path={routes.ChannelUsers} component={LoadableChannelUsers} />
                     <Route exact={true} path={routes.ChannelUserLogs} component={LoadableUserLogs} />
-                    <Route exact={true} path={routes.Bans} component={LoadableBans} />
+                    <Route exact={true} path={routes.ExternalServices} component={LoadableExternalServices} />
                     <Route exact={true} path={routes.Templates} component={LoadableTemplates} />
                     <Route exact={true} path={routes.Template} component={LoadableTemplate} />
                     <Route exact={true} path={routes.SubAlerts} component={LoadableSubAlerts} />
@@ -129,7 +135,6 @@ class PageComponent extends React.PureComponent<IPageProps, {}> {
                     <Route exact={true} path={routes.SubDays} component={LoadableSubDays} />
                     <Route exact={true} path={routes.Subs} component={LoadableSubscriptions} />
                     <Route exact={true} path={routes.SubTrain} component={LoadableSubTrain} />
-
                 </section>
             </div>
             //    </StatusWrapper>

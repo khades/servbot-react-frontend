@@ -5,6 +5,7 @@ import {
     IAutoMessageCreationResult,
     IAutoMessageWithHistory,
     IBan,
+    IChannelInfo,
     ISubAlerts,
     ISubAlertsWithHistory,
     ISubDay,
@@ -14,6 +15,7 @@ import {
     ISubTrainForm,
     ITemplate,
     IUserLogsInfo,
+    IVkGroupInfoForm,
 } from "./types";
 
 export function url(uri: string): string {
@@ -109,6 +111,11 @@ const API = {
         return API.auth(url(`/api/channel/${channelID}/bans`))
             .then((res: Response) => res.json())
             .then((res) => res.bans);
+    },
+
+    getChannelInfo: (channelID: string): Promise<IChannelInfo> => {
+        return API.auth(url(`/api/channel/${channelID}/info`))
+            .then((res: Response) => res.json());
     },
 
     getChannelName: (channelID: string): Promise<string> => {
@@ -208,7 +215,11 @@ const API = {
         return API.auth(url(`api/channel/${channelID}/subs`))
             .then((res: Response) => res.json());
     },
+    
+    saveVKGroupInfo:( channelID: string, content: IVkGroupInfoForm) => {
+        return API.authPost(url(`/api/channel/${channelID}/externalservices/vk`), content );
 
+    }
 };
 
 export default API;

@@ -4,6 +4,7 @@ import autoMessages from "./automessages/saga";
 import bans from "./bans/saga";
 import channelName from "./channelName/saga";
 import channelUsers from "./channelUsers/saga";
+import externalServices from "./externalservices/saga";
 import subAlerts from "./subAlerts/saga";
 import subDay from "./subday/saga";
 import subDays from "./subdays/saga";
@@ -21,6 +22,7 @@ export function* rootSaga() {
         fork(bans),
         fork(channelName),
         fork(channelUsers),
+        fork(externalServices),
         fork(subAlerts),
         fork(subDay),
         fork(subDays),
