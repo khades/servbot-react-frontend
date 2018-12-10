@@ -5,6 +5,7 @@ import bans from "./bans/saga";
 import channelName from "./channelName/saga";
 import channelUsers from "./channelUsers/saga";
 import externalServices from "./externalservices/saga";
+import songrequests from "./songrequests/saga";
 import subAlerts from "./subAlerts/saga";
 import subDay from "./subday/saga";
 import subDays from "./subdays/saga";
@@ -23,6 +24,7 @@ export function* rootSaga() {
         fork(channelName),
         fork(channelUsers),
         fork(externalServices),
+        fork(songrequests),
         fork(subAlerts),
         fork(subDay),
         fork(subDays),

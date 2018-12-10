@@ -1,4 +1,4 @@
-import { IUserLogsInfo } from "../api/types";
+import { IUserLogsInfo } from "./types";
 
 export enum actiontypes {
     GET = "USERLOGS/GET",

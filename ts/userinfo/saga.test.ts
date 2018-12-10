@@ -1,9 +1,9 @@
 import { call, put, select } from "redux-saga/effects";
-import API from "../api/api";
-import { IUserInfo } from "../api/types";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
+import * as API from "./api";
 import { getUserInfo } from "./saga";
+import { IUserInfo } from "./types";
 
 describe("Username sagas", () => {
 

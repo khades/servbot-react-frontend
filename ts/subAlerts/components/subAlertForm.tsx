@@ -1,8 +1,8 @@
 import * as React from "react";
-import { ISubAlerts } from "../../api/types";
 import CheckBox from "../../basicComponents/checkbox";
 import Input from "../../basicComponents/input";
 import { l10n } from "../../l10n/l10n";
+import { ISubAlerts } from "../types";
 
 export interface ISubAlertsFormProps {
     channelID: string;

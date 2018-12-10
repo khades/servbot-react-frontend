@@ -1,7 +1,6 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import "../../scss/modules/_external-services";
-import { IVkGroupInfoForm } from "../api/types";
 import CheckBox from "../basicComponents/checkbox";
 import Input from "../basicComponents/input";
 import IChannelRoute from "../channel/types";
@@ -10,6 +9,7 @@ import { l10n } from "../l10n/l10n";
 import { StatusWrapper } from "../statusWrapper";
 import States from "../utils/states";
 import { IExternalServicesState } from "./reducer";
+import { IVkGroupInfoForm } from "./types";
 
 interface IExternalServicesProps extends RouteComponentProps<IChannelRoute>, IExternalServicesState {
     fetchData: (channelID: string) => void;

@@ -1,4 +1,4 @@
-import { ISubscription } from "../api/types";
+import { ISubscription } from "./types";
 
 export enum actiontypes {
     GET = "SUBSCRIPTIONS/GET",

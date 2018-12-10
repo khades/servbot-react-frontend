@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import "../../scss/modules/_channel-users.scss";
-import { IUserLogsInfo } from "../api/types";
 import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
 import { StatusWrapper } from "../statusWrapper";
+import { IUserLogsInfo } from "../userLogs/types";
 import { IChannelUsersState } from "./reducer";
 
 interface IChannelUsersProps extends RouteComponentProps<IChannelRoute>, IChannelUsersState {

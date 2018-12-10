@@ -1,5 +1,5 @@
 import * as React from "react";
-import { url } from "../api/api";
+import APIClient from "../apiclient";
 
 export interface IWebSocketProps {
     url: string;
@@ -45,7 +45,7 @@ export class WebSocketComponent extends React.Component<IWebSocketProps, {}> {
             this.eventSource.close();
         }
 
-        this.eventSource = new WebSocket(url(this.props.url).replace("https", "wss").replace("http", "ws"));
+        this.eventSource = new WebSocket(APIClient.url(this.props.url).replace("https", "wss").replace("http", "ws"));
         this.onStateChange(WebSocket.CONNECTING);
 
         this.eventSource.onclose = (): any => {
@@ -79,7 +79,7 @@ export class WebSocketComponent extends React.Component<IWebSocketProps, {}> {
         this.onStateChange(WebSocket.CLOSED);
 
         if (this.forceClose === true) {
-            return null;
+            return;
         }
 
         this.preventReconnect();

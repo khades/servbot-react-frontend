@@ -1,5 +1,5 @@
-import { ISubAlerts, ISubAlertsWithHistory } from "../api/types";
 import * as actions from "./actions";
+import { ISubAlerts, ISubAlertsWithHistory } from "./types";
 
 export const get = (channelID: string, init: boolean = true): actions.ISubAlertsGetAction => ({
     payload: { channelID, init },

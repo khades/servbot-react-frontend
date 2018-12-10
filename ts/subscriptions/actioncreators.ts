@@ -1,5 +1,5 @@
-import { ISubscription } from "../api/types";
 import * as actions from "./actions";
+import { ISubscription } from "./types";
 
 export const get = (channelID: string, init: boolean = true, limit?: number): actions.ISubscriptionsGetAction => ({
     payload: { channelID, init, limit },

@@ -1,4 +1,4 @@
-import { IUserLogsInfo } from "../api/types";
+import { IUserLogsInfo } from "../userLogs/types";
 import States from "../utils/states";
 import { actiontypes, ChannelUsersAction } from "./actions";
 

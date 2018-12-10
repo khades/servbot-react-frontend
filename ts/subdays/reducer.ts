@@ -1,4 +1,4 @@
-import { ISubDay } from "../api/types";
+import { ISubDay } from "../subday/types";
 import States from "../utils/states";
 import { actiontypes, SubDaysAction } from "./actions";
 

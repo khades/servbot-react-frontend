@@ -1,9 +1,9 @@
-import { call, put,  takeEvery } from "redux-saga/effects";
-import API from "../api/api";
-import { IBan } from "../api/types";
+import { call, put, takeEvery } from "redux-saga/effects";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, IBansGetAction } from "./actions";
+import * as API from "./api";
+import { IBan } from "./types";
 
 export function* getBans(action: IBansGetAction) {
 

@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { ISubAlerts } from "../api/types";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
 import SubAlertsComponent from "./component";
+import { ISubAlerts } from "./types";
 
 const mapStateToProps = (state: IStore) => {
     return state.subAlerts;

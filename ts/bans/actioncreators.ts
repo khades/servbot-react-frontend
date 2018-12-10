@@ -1,5 +1,5 @@
-import { IBan } from "../api/types";
 import * as actions from "./actions";
+import { IBan } from "./types";
 
 export const get = (channelID: string): actions.IBansGetAction => ({
     payload: { channelID },

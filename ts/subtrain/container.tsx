@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { ISubTrainForm } from "../api/types";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
 import SubTrainComponent from "./component";
+import { ISubTrainForm } from "./types";
 
 const mapStateToProps = (state: IStore) => {
     return state.SubTrain;

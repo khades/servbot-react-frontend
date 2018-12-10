@@ -1,6 +1,4 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import API from "../api/api";
-import { ISubDayFull } from "../api/types";
 import { l10n } from "../l10n/l10n";
 import * as notificationActions from "../notifications/actioncreators";
 import States from "../utils/states";
@@ -14,6 +12,8 @@ import {
     ISubDayPickWinnerAction,
     ISubDayPullWinnerAction,
 } from "./actions";
+import * as API from "./api";
+import { ISubDayFull } from "./types";
 
 export function* getSubDay(action: ISubDayGetAction) {
     const channelID = action.payload.channelID;

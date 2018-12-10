@@ -100,6 +100,11 @@ const LoadableExternalServices = Loadable({
     loading: () => <StatusWrapper state={States.NOTINITIATED} />,
 });
 
+const LoadableSongRequests = Loadable({
+    loader: () => import("./songrequests/container"),
+    loading: () => <StatusWrapper state={States.NOTINITIATED} />,
+});
+
 class PageComponent extends React.PureComponent<IPageProps, {}> {
 
     public componentDidMount() {
@@ -135,6 +140,7 @@ class PageComponent extends React.PureComponent<IPageProps, {}> {
                     <Route exact={true} path={routes.SubDays} component={LoadableSubDays} />
                     <Route exact={true} path={routes.Subs} component={LoadableSubscriptions} />
                     <Route exact={true} path={routes.SubTrain} component={LoadableSubTrain} />
+                    <Route exact={true} path={routes.SongRequests} component={LoadableSongRequests} />
                 </section>
             </div>
             //    </StatusWrapper>

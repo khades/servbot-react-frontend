@@ -1,9 +1,9 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import API from "../api/api";
-import { ISubscription } from "../api/types";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, ISubscriptionsGetAction, ISubscriptionsSetLimitAction } from "./actions";
+import * as API from "./api";
+import { ISubscription } from "./types";
 
 export function* getSubscriptions(action: ISubscriptionsGetAction) {
     if (action.payload.init === true) {
@@ -30,8 +30,8 @@ export function* getSubscriptions(action: ISubscriptionsGetAction) {
 export function* setLimit(action: ISubscriptionsSetLimitAction) {
     yield call(getSubscriptions, actions.get(action.payload.channelID, false, action.payload.limit));
     yield put(actions.saveLimit(action.payload.channelID, action.payload.limit));
-
 }
+
 export default function* saga() {
     yield takeEvery(actiontypes.GET, getSubscriptions);
     yield takeEvery(actiontypes.SETLIMIT, setLimit);

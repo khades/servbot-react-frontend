@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { IVkGroupInfoForm } from "../api/types";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
 import ExternalServicesComponent from "./component";
+import { IVkGroupInfoForm } from "./types";
 
 const mapStateToProps = (state: IStore) => {
     return state.ExternalServices;

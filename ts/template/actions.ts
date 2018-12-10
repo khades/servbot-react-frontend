@@ -1,4 +1,4 @@
-import { ITemplate, ITemplateWithHistory } from "../api/types";
+import { ITemplateWithHistory } from "./types";
 
 export enum actiontypes {
     GET = "TEMPLATE/GET",

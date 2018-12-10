@@ -1,6 +1,6 @@
-import { ISubDayFull } from "../api/types";
 import States from "../utils/states";
 import { actiontypes, SubDayAction } from "./actions";
+import { ISubDayFull } from "./types";
 
 export interface ISubDayState {
     channelID: string;

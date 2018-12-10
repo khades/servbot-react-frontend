@@ -1,5 +1,5 @@
-import { IUserInfo } from "../api/types";
 import * as actions from "./actions";
+import { IUserInfo } from "./types";
 
 export const get = (): actions.IUserInfoGetAction => ({ type: actions.actiontypes.GET });
 

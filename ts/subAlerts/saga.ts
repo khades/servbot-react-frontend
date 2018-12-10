@@ -1,11 +1,11 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import API from "../api/api";
-import { ISubAlertsWithHistory } from "../api/types";
 import { l10n } from "../l10n/l10n";
 import * as notificationActions from "../notifications/actioncreators";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, ISubAlertsGetAction, ISubAlertsSaveAction } from "./actions";
+import * as API from "./api";
+import { ISubAlertsWithHistory } from "./types";
 
 export function* getSubAlerts(action: ISubAlertsGetAction) {
     if (action.payload.init === true) {

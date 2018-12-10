@@ -1,9 +1,9 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import API from "../api/api";
-import { IAutoMessageWithHistory } from "../api/types";
+import { IAutoMessageWithHistory } from "../automessage/types";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, IAutoMessagesGetAction } from "./actions";
+import * as API from "./api";
 
 export function* getTemplate(action: IAutoMessagesGetAction) {
     if (action.payload.init === true) {

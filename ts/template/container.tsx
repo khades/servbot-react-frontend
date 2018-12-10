@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { ITemplate } from "../api/types";
 import { IStore } from "../reducers";
 import * as templatesActions from "../templates/actioncreators";
 import { getActiveTemplates } from "../templates/storeselectors";

@@ -1,4 +1,4 @@
-import { IAutoMessage, IAutoMessageWithHistory } from "../api/types";
+import { IAutoMessageWithHistory } from "../automessage/types";
 
 export enum actiontypes {
     GET = "AUTOMESSAGES/GET",

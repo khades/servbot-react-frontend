@@ -1,6 +1,6 @@
-import { ITemplateHistory, ITemplateWithHistory } from "../api/types";
 import States from "../utils/states";
 import { actiontypes, TemplateAction } from "./actions";
+import {  ITemplateWithHistory } from "./types";
 
 export interface ITemplateState {
     channelID: string;

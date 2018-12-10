@@ -1,4 +1,4 @@
-import { ITemplate } from "../api/types";
+import { ITemplate } from "../template/types";
 import { IMustacheTemplate } from "./reducer";
 
 export const processMustacheTemplate = (template: ITemplate): IMustacheTemplate => {

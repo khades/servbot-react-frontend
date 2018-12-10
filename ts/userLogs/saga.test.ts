@@ -1,15 +1,15 @@
 import { call, put } from "redux-saga/effects";
-import API from "../api/api";
-import { IUserLogsInfo } from "../api/types";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
+import * as API from "./api";
 import { getUserLogs } from "./saga";
+import { IUserLogsInfo } from "./types";
 
 describe("UserLogs sagas", () => {
     it("Should properly get data from server", () => {
         const date = new Date();
         const userInfo: IUserLogsInfo = {
-            lastUpdate: new Date(),
+            lastUpdate: new Date().getTime(),
             user: "2",
             userID: "4",
         };

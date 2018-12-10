@@ -1,9 +1,9 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import API from "../api/api";
 import { IStore } from "../reducers";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, IUserInfoGetAction } from "./actions";
+import * as API from "./api";
 import { IUserInfoState } from "./reducer";
 
 export function* getUserInfo(action: IUserInfoGetAction) {

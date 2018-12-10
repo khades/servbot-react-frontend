@@ -3,12 +3,12 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import "../../scss/modules/_channel-bans.scss";
-import { IBan } from "../api/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
 import { StatusWrapper } from "../statusWrapper";
 import { IBansState } from "./reducer";
+import { IBan } from "./types";
 interface IBansRoute {
     channelID: string;
 }

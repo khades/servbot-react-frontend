@@ -1,4 +1,4 @@
-import { IAutoMessageWithHistory } from "../api/types";
+import { IAutoMessageWithHistory } from "../automessage/types";
 import States from "../utils/states";
 import { actiontypes, AutoMessagesAction } from "./actions";
 

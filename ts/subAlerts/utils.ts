@@ -1,4 +1,4 @@
-import { ISubAlerts } from "../api/types";
+import { ISubAlerts } from "./types";
 
 export const isExtended = (object: ISubAlerts): boolean => {
     return object.subPrimeMessage !== "" ||

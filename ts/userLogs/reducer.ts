@@ -1,6 +1,6 @@
-import { IUserLogsInfo } from "../api/types";
 import States from "../utils/states";
 import { actiontypes, UserLogsAction } from "./actions";
+import { IUserLogsInfo } from "./types";
 
 export interface IUserLogsState {
     content?: IUserLogsInfo;

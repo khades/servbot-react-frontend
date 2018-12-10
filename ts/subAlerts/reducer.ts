@@ -1,6 +1,6 @@
-import { ISubAlertsWithHistory } from "../api/types";
 import States from "../utils/states";
 import { actiontypes, SubAlertsAction } from "./actions";
+import { ISubAlertsWithHistory } from "./types";
 import { isExtended } from "./utils";
 
 export interface ISubAlertsState {

@@ -1,12 +1,12 @@
 import { call, put } from "redux-saga/effects";
-import API from "../api/api";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
+import * as API from "./api";
 import { getChannelUsers } from "./saga";
 
 describe("ChannelUsers sagas", () => {
     it("Should properly get data from server", () => {
-        const date = new Date();
+        const date = new Date().getTime();
         const saga = getChannelUsers(actions.get("test", "aaa"));
         expect(saga.next().value).toEqual(put(actions.loading("test", "aaa")));
         expect(saga.next().value).toEqual(call(API.getChannelUsers, "test", "aaa"));

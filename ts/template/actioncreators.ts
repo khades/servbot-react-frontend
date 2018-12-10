@@ -1,5 +1,5 @@
-import { ITemplate, ITemplateWithHistory } from "../api/types";
 import * as actions from "./actions";
+import { ITemplateWithHistory } from "./types";
 
 export const get = (channelID: string, commandName: string, init: boolean = true): actions.ITemplateGetAction => ({
     payload: { channelID, commandName, init },

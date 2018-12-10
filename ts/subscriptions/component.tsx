@@ -2,15 +2,15 @@ import classnames from "classnames";
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import "../../scss/modules/_subscriptions.scss";
-import { ISubscription } from "../api/types";
 import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import { StatusWrapper } from "../statusWrapper";
+import time from "../time/time";
 import States from "../utils/states";
-import time from "../utils/time";
-import { WebSocketComponent } from "../utils/WebSocketComponent";
+import { WebSocketComponent } from "../websocket/component";
 import { ISubscriptionsState } from "./reducer";
+import { ISubscription } from "./types";
 
 interface ISubscriptionsProps extends RouteComponentProps<IChannelRoute>, ISubscriptionsState {
     fetchData: (channelID: string, limit?: number) => void;

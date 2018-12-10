@@ -1,5 +1,5 @@
 import * as H from "history";
-import { ISubDay } from "../api/types";
+import { ISubDay } from "../subday/types";
 import * as actions from "./actions";
 
 export const get = (channelID: string, init: boolean = true): actions.ISubDaysGetAction => ({

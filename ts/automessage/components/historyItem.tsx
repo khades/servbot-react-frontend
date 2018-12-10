@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../../scss/modules/_automessage-history.scss";
-import { IAutoMessageHistory } from "../../api/types";
+import { IAutoMessageHistory } from "../types";
 
 export default class HistoryItem extends React.PureComponent<IAutoMessageHistory, {}> {
     public render() {

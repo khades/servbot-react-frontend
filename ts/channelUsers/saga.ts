@@ -1,9 +1,9 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import API from "../api/api";
-import { IUserLogsInfo } from "../api/types";
+import { IUserLogsInfo } from "../userLogs/types";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, IChannelUsersGetAction } from "./actions";
+import * as API from "./api";
 
 export function* getChannelUsers(action: IChannelUsersGetAction) {
 

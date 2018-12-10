@@ -52,12 +52,15 @@ import SubTrain, { ISubTrainState } from "./subtrain/reducer";
 import { ExternalServicesAction } from "./externalservices/actions";
 import ExternalServices, { IExternalServicesState } from "./externalservices/reducer";
 
+import { SongRequestsAction } from "./songrequests/actions";
+import SongRequests, { ISongRequestsState } from "./songrequests/reducer";
 // import { routerReducer } from "react-router-redux";
 
 export interface IStore {
   readonly AutoMessage: IAutoMessageState;
   readonly AutoMessages: IAutoMessagesState;
   readonly ExternalServices: IExternalServicesState;
+  readonly SongRequests: ISongRequestsState;
   readonly SubDay: ISubDayState;
   readonly SubDays: ISubDaysState;
   readonly SubTrain: ISubTrainState;
@@ -82,6 +85,7 @@ type actions = | AutoMessageAction
   | ExternalServicesAction
   | NotificationsAction
   | SideMenuAction
+  | SongRequestsAction
   | SubAlertsAction
   | SubDayAction
   | SubDaysAction
@@ -96,6 +100,7 @@ export default combineReducers<IStore, actions>({
   AutoMessage,
   AutoMessages,
   ExternalServices,
+  SongRequests,
   SubDay,
   SubDays,
   SubTrain,

@@ -1,4 +1,4 @@
-import { IUserLogsInfo } from "../api/types";
+import { IUserLogsInfo } from "../userLogs/types";
 
 export enum actiontypes {
     READY = "CHANNELUSERS/READY",

@@ -10,9 +10,10 @@ import { createLogger } from "redux-logger";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import reducers from "./reducers";
 import * as sagas from "./sagas";
-import time from "./utils/time";
+import time from "./time/time";
 
 time.getTime();
+document.title = "Servbot";
 
 const reduxlogger = createLogger({
     // ...options

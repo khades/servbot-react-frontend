@@ -1,4 +1,4 @@
-import { ISubAlerts, ISubAlertsWithHistory } from "../api/types";
+import { ISubAlerts, ISubAlertsWithHistory } from "./types";
 
 export enum actiontypes {
     GET = "SUBALERTS/GET",

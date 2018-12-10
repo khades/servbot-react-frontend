@@ -1,5 +1,5 @@
-import { ISubTrain, ISubTrainForm } from "../api/types";
 import * as actions from "./actions";
+import { ISubTrain, ISubTrainForm } from "./types";
 
 export const get = (channelID: string, init: boolean = true): actions.ISubTrainGetAction => ({
     payload: { channelID, init },

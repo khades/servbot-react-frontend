@@ -1,4 +1,4 @@
-import { ITemplate } from "../api/types";
+import { ITemplate } from "../template/types";
 
 export enum actiontypes {
     GET = "TEMPLATES/GET",

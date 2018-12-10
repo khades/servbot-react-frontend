@@ -1,15 +1,23 @@
+const webpack = require('webpack');
 
 module.exports = {
     entry: {
         app: [
             "./ts/app.tsx"
-        ]
+        ],
+        vendors: ['react', 'react-dom', 'react-router-dom', "react-redux", "redux", "redux-saga"],
+        l10n: [
+            "./ts/l10n/l10n.ts"
+        ],
+        // redux: [
+        //     "./ts/reducers.ts", "./ts/sagas.ts"
+        // ]
     },
     devServer: {
         contentBase: "./dist"
     },
     output: {
-        filename: "app.js",
+        filename: '[name].js',
         chunkFilename: '[name].bundle.js',
         path: __dirname + "/dist"
     },

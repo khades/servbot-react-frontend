@@ -5,15 +5,16 @@ exports[`Checkbox should render and have errors 1`] = `
   className="checkbox checkbox--error"
 >
   <input
-    defaultChecked={true}
+    checked={true}
     id="LABEL"
-    onClick={[Function]}
+    onChange={[Function]}
     type="checkbox"
   />
   <label
     htmlFor="LABEL"
   >
     LABEL
+     
   </label>
   <div
     className="checkbox__errors"
@@ -28,15 +29,16 @@ exports[`Checkbox should render and have no errors 1`] = `
   className="checkbox"
 >
   <input
-    defaultChecked={false}
+    checked={false}
     id="LABEL"
-    onClick={[Function]}
+    onChange={[Function]}
     type="checkbox"
   />
   <label
     htmlFor="LABEL"
   >
     LABEL
+     
   </label>
 </div>
 `;

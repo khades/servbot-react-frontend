@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../../scss/modules/_subalerts-history.scss";
-import { ISubAlertsHistory } from "../../api/types";
+import { ISubAlertsHistory } from "../types";
 import { isExtended } from "../utils";
 
 const HistoryItemContainer: React.SFC<ISubAlertsHistory> = (props) => {

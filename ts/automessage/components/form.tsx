@@ -1,7 +1,7 @@
 import * as React from "react";
-import { IAutoMessage } from "../../api/types";
 import Input from "../../basicComponents/input";
 import { l10n } from "../../l10n/l10n";
+import { IAutoMessage } from "../types";
 
 interface IFormProps {
     id: string;

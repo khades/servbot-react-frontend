@@ -3,7 +3,7 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import "../../scss/modules/_channel-bans.scss";
 import "../../scss/modules/_subday.scss";
-import { ISubDayFull, ISubDayVote } from "../api/types";
+import { ISubDayVote } from "./types";
 
 import { l10n } from "../l10n/l10n";
 import { StatusWrapper } from "../statusWrapper";

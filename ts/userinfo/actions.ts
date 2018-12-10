@@ -1,4 +1,4 @@
-import { IUserInfo } from "../api/types";
+import { IUserInfo } from "./types";
 
 export enum actiontypes {
     READY = "USERINFO/READY",

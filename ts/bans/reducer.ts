@@ -1,6 +1,6 @@
-import { IBan } from "../api/types";
 import States from "../utils/states";
 import { actiontypes, BansAction } from "./actions";
+import { IBan } from "./types";
 
 export interface IBansState {
     bans?: IBan[];

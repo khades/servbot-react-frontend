@@ -1,6 +1,6 @@
-import { IAutoMessageHistory, IAutoMessageWithHistory } from "../api/types";
 import States from "../utils/states";
 import { actiontypes, AutoMessageAction } from "./actions";
+import { IAutoMessageWithHistory } from "./types";
 
 export interface IAutoMessageState {
     channelID: string;
@@ -45,7 +45,6 @@ const reducer = (state: IAutoMessageState = initialState, action: AutoMessageAct
                 isNew: true,
                 state: States.READY,
                 validationError: false,
-
             };
         case actiontypes.READY:
             return Object.assign({}, state, {
@@ -55,7 +54,6 @@ const reducer = (state: IAutoMessageState = initialState, action: AutoMessageAct
                 isNew: false,
                 state: States.READY,
                 validationError: false,
-
             });
         case actiontypes.NOTAUTHORIZED:
             return Object.assign({}, state, {
@@ -67,7 +65,6 @@ const reducer = (state: IAutoMessageState = initialState, action: AutoMessageAct
             return Object.assign({}, state, {
                 channelID: action.payload.channelID,
                 id: action.payload.id,
-
                 state: States.NOTFOUND,
             });
         case actiontypes.FORBIDDEN:

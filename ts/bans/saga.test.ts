@@ -1,20 +1,20 @@
 import { call, put } from "redux-saga/effects";
-import API from "../api/api";
-import { IBan } from "../api/types";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
+import * as API from "./api";
 import { getBans } from "./saga";
+import { IBan } from "./types";
 
 describe("Bans sagas", () => {
     it("Should properly get data from server", () => {
         const bans: IBan[] = [{
             banLength: 300,
-            date: new Date(),
+            date: new Date().getTime(),
             user: "a",
             userID: "b",
         }, {
             banLength: 308,
-            date: new Date(),
+            date: new Date().getTime(),
             user: "3",
             userID: "b6",
         }];

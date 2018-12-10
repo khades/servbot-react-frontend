@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { IAutoMessage } from "../api/types";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
 import AutoMessageComponent from "./component";
+import { IAutoMessage } from "./types";
 
 const mapStateToProps = (state: IStore) => {
     return state.AutoMessage;

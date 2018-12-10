@@ -1,4 +1,4 @@
-import { ISubDayFull } from "../api/types";
+import { ISubDayFull } from "./types";
 
 export enum actiontypes {
     GET = "SUBDAY/GET",

@@ -1,7 +1,7 @@
-import { IUserLogsInfo } from "../api/types";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import reducer from "./reducer";
+import { IUserLogsInfo } from "./types";
 
 describe("UserLogs reducer", () => {
     const initialState = {
@@ -48,7 +48,7 @@ describe("UserLogs reducer", () => {
 
     it("Should properly accept READY event", () => {
         const userInfo: IUserLogsInfo = {
-            lastUpdate: new Date(),
+            lastUpdate: new Date().getTime(),
             user: "2",
             userID: "4",
         };

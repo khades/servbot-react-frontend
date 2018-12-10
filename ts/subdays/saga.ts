@@ -1,12 +1,12 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import API from "../api/api";
-import { ISubDay } from "../api/types";
 import { l10n } from "../l10n/l10n";
 import * as notificationActions from "../notifications/actioncreators";
 import * as Routes from "../routes/routes";
+import { ISubDay } from "../subday/types";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, ISubDaysCreateAction, ISubDaysGetAction } from "./actions";
+import * as API from "./api";
 
 export function* getSubDays(action: ISubDaysGetAction) {
     if (action.payload.init === true) {

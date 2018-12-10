@@ -1,5 +1,5 @@
-import { IUserLogsInfo } from "../api/types";
 import * as actions from "./actions";
+import { IUserLogsInfo } from "./types";
 
 export const get = (channelID: string, userID: string): actions.IUserLogsGetAction => ({
     payload: { channelID, userID },

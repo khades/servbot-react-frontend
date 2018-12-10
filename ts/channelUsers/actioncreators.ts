@@ -1,4 +1,4 @@
-import { IUserLogsInfo } from "../api/types";
+import { IUserLogsInfo } from "../userLogs/types";
 import * as actions from "./actions";
 
 export const get = (channelID: string, userName?: string): actions.IChannelUsersGetAction => ({

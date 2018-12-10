@@ -1,11 +1,11 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import "../../scss/modules/_user-logs.scss";
-import { IUserLogsMessage, MessageType } from "../api/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import { StatusWrapper } from "../statusWrapper";
 import { IUserLogsState } from "./reducer";
+import { IUserLogsMessage, MessageType } from "./types";
 
 interface IUserLogsRoute {
     channelID: string;
@@ -129,8 +129,7 @@ export default class UserLogsComponent extends React.PureComponent<IUserLogsProp
                 <div className="user-logs__block">
                     <hgroup className="user-logs__header">
                         <div>
-                            {l10n.formatString(l10n.USER_LOGS, this.props.content.user)}
-                            {this.renderChannelName()}
+                            {l10n.formatString(l10n.USER_LOGS, this.props.content.user)} {this.renderChannelName()}
                         </div>
                     </hgroup>
                     {this.props.content.messages.map(this.renderItem)}

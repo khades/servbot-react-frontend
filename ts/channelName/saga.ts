@@ -1,8 +1,8 @@
 import { call, put, select, takeEvery } from "redux-saga/effects";
-import API from "../api/api";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
 import { actiontypes, IChannelNameGetAction } from "./actions";
+import * as API from "./api";
 
 export function* getChannelName(action: IChannelNameGetAction) {
     const state: IStore = yield select();

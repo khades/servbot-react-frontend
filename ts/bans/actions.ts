@@ -1,4 +1,4 @@
-import { IBan } from "../api/types";
+import { IBan } from "./types";
 
 export enum actiontypes {
     GET = "BANS/GET",

@@ -4,11 +4,11 @@ import * as React from "react";
 import "../scss/modules/_loading.scss";
 import States from "./utils/states";
 
-export interface IStatusWrapperState {
+export interface IStatusWrapperProps {
     state: States;
 }
 
-export class StatusWrapper extends React.PureComponent<IStatusWrapperState, {}> {
+export class StatusWrapper extends React.PureComponent<IStatusWrapperProps, {}> {
     public render = () => {
         const renderLoading = this.props.state === States.NOTINITIATED
             || this.props.state === States.LOADING
@@ -28,6 +28,11 @@ export class StatusWrapper extends React.PureComponent<IStatusWrapperState, {}> 
             </div>
         );
     }
+    // public componentDidUpdate(prevProps: IStatusWrapperProps) {
+    //     if (prevProps.state !== this.props.state && this.props.state === States.LOADING) {
+    //         document.title = "LOADING";
+    //     }
+    // }
 
     protected renderWrappedContent = () => {
         if (this.props.state === States.NOTINITIATED) {

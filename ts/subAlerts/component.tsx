@@ -2,7 +2,6 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import "../../scss/modules/_subalerts.scss";
-import { ISubAlerts, ISubAlertsHistory } from "../api/types";
 import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
@@ -10,6 +9,7 @@ import { StatusWrapper } from "../statusWrapper";
 import HistoryItem from "./components/historyItem";
 import SubAlertForm from "./components/subAlertForm";
 import { ISubAlertsState } from "./reducer";
+import { ISubAlerts, ISubAlertsHistory } from "./types";
 
 export interface ISubAlertsProps extends RouteComponentProps<IChannelRoute>, ISubAlertsState {
     fetchData: (channelID: string) => void;

@@ -1,5 +1,5 @@
-import { IAutoMessage, IAutoMessageWithHistory } from "../api/types";
 import * as actions from "./actions";
+import { IAutoMessage, IAutoMessageWithHistory } from "./types";
 
 export const get = (channelID: string, id: string, init: boolean = true): actions.IAutoMessageGetAction => ({
     payload: { channelID, id, init },

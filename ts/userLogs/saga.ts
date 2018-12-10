@@ -1,9 +1,9 @@
 import { call, put, select, takeEvery } from "redux-saga/effects";
-import API from "../api/api";
-import { IUserLogsInfo } from "../api/types";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, IUserLogsGetAction } from "./actions";
+import * as API from "./api";
+import { IUserLogsInfo } from "./types";
 
 export function* getUserLogs(action: IUserLogsGetAction) {
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import "../../../scss/modules/_automessages-item.scss";
-import { IAutoMessageWithHistory } from "../../api/types";
+import { IAutoMessageWithHistory } from "../../automessage/types";
 import { l10n } from "../../l10n/l10n";
 import * as Routes from "../../routes/routes";
 

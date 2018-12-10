@@ -1,10 +1,10 @@
 import { call, put, select, takeEvery } from "redux-saga/effects";
-import API from "../api/api";
-import { ITemplate } from "../api/types";
 import { IStore } from "../reducers";
+import { ITemplate } from "../template/types";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, ITemplatesGetAction } from "./actions";
+import * as API from "./api";
 
 export function* getTemplates(action: ITemplatesGetAction) {
     const state: IStore = yield select();

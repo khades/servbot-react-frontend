@@ -1,4 +1,4 @@
-import { ISubTrain, ISubTrainForm } from "../api/types";
+import { ISubTrain, ISubTrainForm } from "./types";
 
 export enum actiontypes {
     GET = "SUBTRAIN/GET",

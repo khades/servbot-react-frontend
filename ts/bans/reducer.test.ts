@@ -1,7 +1,7 @@
-import { IBan } from "../api/types";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import reducer from "./reducer";
+import { IBan } from "./types";
 
 describe("Bans reducer", () => {
     const initialState = {
@@ -41,12 +41,12 @@ describe("Bans reducer", () => {
     it("Should properly accept READY event", () => {
         const bans: IBan[] = [{
             banLength: 300,
-            date: new Date(),
+            date: new Date().getTime(),
             user: "a",
             userID: "b",
         }, {
             banLength: 308,
-            date: new Date(),
+            date: new Date().getTime(),
             user: "3",
             userID: "b6",
         }];

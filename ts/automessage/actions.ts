@@ -1,4 +1,4 @@
-import { IAutoMessage, IAutoMessageWithHistory } from "../api/types";
+import { IAutoMessage, IAutoMessageWithHistory } from "./types";
 
 export enum actiontypes {
     GET = "AUTOMESSAGE/GET",
@@ -101,7 +101,7 @@ export interface IAutoMessageCreateNewAction {
 }
 
 export interface IAutoMessageAfterCreationAction {
-    type: actiontypes.ONSAVEERROR;
+    type: actiontypes.AFTERCREATION;
     payload: {
         id: string,
     };

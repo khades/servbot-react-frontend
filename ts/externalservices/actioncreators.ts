@@ -1,5 +1,5 @@
-import { IChannelInfo, IVkGroupInfoForm } from "../api/types";
 import * as actions from "./actions";
+import { IChannelExternalServices, IVkGroupInfoForm } from "./types";
 
 export const get = (channelID: string, init: boolean = true): actions.IExternalServicesGetAction => ({
     payload: { channelID, init },
@@ -11,7 +11,7 @@ export const loading = (channelID: string): actions.IExternalServicesLoadingActi
     type: actions.actiontypes.LOADING,
 });
 
-export const ready = (channelID: string, content: IChannelInfo): actions.IExternalServicesReadyAction => ({
+export const ready = (channelID: string, content: IChannelExternalServices): actions.IExternalServicesReadyAction => ({
     payload: { channelID, content },
     type: actions.actiontypes.READY,
 });

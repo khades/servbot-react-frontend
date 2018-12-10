@@ -3,7 +3,6 @@ import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import "../../scss/modules/_template-history.scss";
 import "../../scss/modules/_template-show.scss";
-import { ITemplateHistory } from "../api/types";
 import Select, { ISelectValue } from "../basicComponents/select";
 import TextArea from "../basicComponents/textarea";
 import ChannelName from "../channelName/container";
@@ -11,6 +10,7 @@ import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
 import { StatusWrapper } from "../statusWrapper";
 import { ITemplateState } from "./reducer";
+import { ITemplateHistory } from "./types";
 
 export interface ITemplateRoute {
     channelID: string;

@@ -1,5 +1,5 @@
-import { ISubDayFull } from "../api/types";
 import * as actions from "./actions";
+import { ISubDayFull } from "./types";
 
 export const get = (channelID: string, id: string, init: boolean = true): actions.ISubDayGetAction => ({
     payload: { channelID, id, init },

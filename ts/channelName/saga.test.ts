@@ -1,7 +1,7 @@
 import { call, put, select } from "redux-saga/effects";
-import API from "../api/api";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
+import * as API from "./api";
 import { getChannelName } from "./saga";
 
 describe("ChannelName sagas", () => {

@@ -1,5 +1,4 @@
 import { createSelector } from "reselect";
-import { IAutoMessageWithHistory } from "../api/types";
 import { IStore } from "../reducers";
 import { IAutoMessagesState } from "./reducer";
 import { getVisibleAutoMessages as getVisibleAutoMessagesSelector } from "./selectors";

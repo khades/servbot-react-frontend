@@ -1,11 +1,11 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import API from "../api/api";
-import { ITemplate, ITemplateWithHistory } from "../api/types";
 import { l10n } from "../l10n/l10n";
 import * as notificationActions from "../notifications/actioncreators";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, ITemplateGetAction, ITemplateSaveAction, ITemplateSetAliasToAction } from "./actions";
+import * as API from "./api";
+import { ITemplateWithHistory } from "./types";
 
 export function* getTemplate(action: ITemplateGetAction) {
     if (action.payload.init === true) {

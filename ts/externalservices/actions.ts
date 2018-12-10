@@ -1,4 +1,4 @@
-import { IChannelInfo, IVkGroupInfoForm } from "../api/types";
+import { IChannelExternalServices, IVkGroupInfoForm } from "./types";
 
 export enum actiontypes {
     GET = "EXTERNALSERVICES/GET",
@@ -31,7 +31,7 @@ export interface IExternalServicesReadyAction {
     type: actiontypes.READY;
     payload: {
         channelID: string,
-        content: IChannelInfo,
+        content: IChannelExternalServices,
     };
 }
 

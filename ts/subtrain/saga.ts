@@ -1,11 +1,11 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import API from "../api/api";
-import { ISubTrain } from "../api/types";
 import { l10n } from "../l10n/l10n";
 import * as notificationActions from "../notifications/actioncreators";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
 import { actiontypes, ISubTrainGetAction, ISubTrainSaveAction } from "./actions";
+import * as API from "./api";
+import { ISubTrain } from "./types";
 
 export function* getSubTrain(action: ISubTrainGetAction) {
     if (action.payload.init === true) {

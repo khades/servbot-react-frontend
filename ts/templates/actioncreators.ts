@@ -1,4 +1,4 @@
-import { ITemplate } from "../api/types";
+import { ITemplate } from "../template/types";
 import * as actions from "./actions";
 
 export const get = (channelID: string): actions.ITemplatesGetAction => ({

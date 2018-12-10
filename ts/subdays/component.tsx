@@ -1,11 +1,9 @@
 import classnames from "classnames";
-import { timingSafeEqual } from "crypto";
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import "../../scss/modules/_channel-bans.scss";
 import "../../scss/modules/_subday-list.scss";
-import { ISubDay } from "../api/types";
 import Checkbox from "../basicComponents/checkbox";
 import Input from "../basicComponents/input";
 import IChannelRoute from "../channel/types";
@@ -13,6 +11,7 @@ import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
 import { StatusWrapper } from "../statusWrapper";
+import { ISubDay } from "../subday/types";
 import { ISubDaysState } from "./reducer";
 
 export interface ISubDaysProps extends RouteComponentProps<IChannelRoute>, ISubDaysState {

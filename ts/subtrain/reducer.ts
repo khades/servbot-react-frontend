@@ -1,6 +1,6 @@
-import { ISubTrain } from "../api/types";
 import States from "../utils/states";
 import { actiontypes, SubTrainAction } from "./actions";
+import { ISubTrain } from "./types";
 
 export interface ISubTrainState {
     channelID: string;

@@ -3,7 +3,6 @@ import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import "../../scss/modules/_automessage.scss";
 import "../../scss/modules/_channel-bans.scss";
-import { IAutoMessage } from "../api/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
@@ -11,6 +10,7 @@ import { StatusWrapper } from "../statusWrapper";
 import Form from "./components/form";
 import HistoryItem from "./components/historyItem";
 import { IAutoMessageState } from "./reducer";
+import { IAutoMessage } from "./types";
 
 export interface IAutoMessageRoute {
     channelID: string;

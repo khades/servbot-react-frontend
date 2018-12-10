@@ -1,5 +1,5 @@
 import * as H from "history";
-import { ISubDay } from "../api/types";
+import { ISubDay } from "../subday/types";
 
 export enum actiontypes {
     GET = "SUBDAYS/GET",

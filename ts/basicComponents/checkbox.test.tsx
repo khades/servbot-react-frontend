@@ -62,11 +62,11 @@ describe("Checkbox", () => {
             <Checkbox {...props} />,
         ).root;
         const input = checkbox.find((el) => el.type === "input" && el.props.type === "checkbox");
-        input.props.onClick({ currentTarget: { checked: true } });
+        input.props.onChange({ currentTarget: { checked: true } });
         expect(startingValue).toBe(true);
-        input.props.onClick({ currentTarget: { checked: false } });
+        input.props.onChange({ currentTarget: { checked: false } });
         expect(startingValue).toBe(false);
-        input.props.onClick({ currentTarget: { checked: false } });
+        input.props.onChange({ currentTarget: { checked: false } });
         expect(startingValue).toBe(false);
     });
 });

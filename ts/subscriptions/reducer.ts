@@ -1,6 +1,6 @@
-import { ISubscription } from "../api/types";
 import States from "../utils/states";
 import { actiontypes, SubscriptionsAction } from "./actions";
+import { ISubscription } from "./types";
 
 export interface ISubscriptionsState {
     channelID: string;

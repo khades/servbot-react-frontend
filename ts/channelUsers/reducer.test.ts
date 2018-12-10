@@ -41,7 +41,7 @@ describe("ChannelUsers reducer", () => {
             userName: "345",
             users: [],
         };
-        const date = new Date();
+        const date = new Date().getTime();
         expect(reducer(initialState,
             actions.ready([{
                 lastUpdate: date,
@@ -77,7 +77,7 @@ describe("ChannelUsers reducer", () => {
             users: [],
         };
         let reducerState = reducer(initialState, actions.loading("234", "457"));
-        const date = new Date();
+        const date = new Date().getTime();
 
         expect(reducerState).toEqual({
             channelID: "234",

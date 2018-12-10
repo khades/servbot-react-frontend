@@ -1,7 +1,6 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import "../../scss/modules/_subtrain.scss";
-import { ISubTrainForm } from "../api/types";
 import CheckBox from "../basicComponents/checkbox";
 import Input from "../basicComponents/input";
 import NumericInput from "../basicComponents/numericInput";
@@ -11,6 +10,7 @@ import { l10n } from "../l10n/l10n";
 import { StatusWrapper } from "../statusWrapper";
 import States from "../utils/states";
 import { ISubTrainState } from "./reducer";
+import { ISubTrainForm } from "./types";
 
 interface ISubTrainProps extends RouteComponentProps<IChannelRoute>, ISubTrainState {
     fetchData: (channelID: string) => void;
