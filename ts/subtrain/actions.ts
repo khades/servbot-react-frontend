@@ -10,6 +10,8 @@ export enum actiontypes {
     OFFLINE = "SUBTRAIN/OFFLINE",
     SAVE = "SUBTRAIN/SAVE",
     ONSAVEERROR = "SUBTRAIN/ONSAVEERROR",
+    RESET = "SUBTRAIN/RESET",
+
 }
 
 export interface ISubTrainGetAction {
@@ -77,6 +79,10 @@ export interface ISubTrainOnSaveErrorAction {
     };
 }
 
+export interface ISubTrainResetAction {
+    type: actiontypes.RESET;
+}
+
 export type SubTrainAction = ISubTrainGetAction
     | ISubTrainLoadingAction
     | ISubTrainReadyAction
@@ -85,4 +91,5 @@ export type SubTrainAction = ISubTrainGetAction
     | ISubTrainNotFoundAction
     | ISubTrainOfflineAction
     | ISubTrainSaveAction
-    | ISubTrainOnSaveErrorAction;
+    | ISubTrainOnSaveErrorAction
+    | ISubTrainResetAction;

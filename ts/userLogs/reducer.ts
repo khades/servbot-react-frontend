@@ -33,6 +33,8 @@ const reducer = (state: IUserLogsState = initialState, action: UserLogsAction): 
             };
         case actiontypes.NOTAUTHORIZED:
             return Object.assign({}, action.payload, { state: States.NOTAUTHORIZED });
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

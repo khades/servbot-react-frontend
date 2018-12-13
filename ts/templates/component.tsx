@@ -20,6 +20,7 @@ export interface ITemplatesProps extends RouteComponentProps<IChannelRoute>, ITe
     setShowGoTo: () => void;
     setShowTemplates: () => void;
     setGoTo: (value: string) => void;
+    reset: () => void;
 }
 
 export default class TemplatesComponent extends React.PureComponent<ITemplatesProps, {}> {
@@ -31,6 +32,10 @@ export default class TemplatesComponent extends React.PureComponent<ITemplatesPr
         if (prevProps.match.params.channelID !== this.props.match.params.channelID) {
             this.props.fetchData(this.props.match.params.channelID);
         }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render = () => (

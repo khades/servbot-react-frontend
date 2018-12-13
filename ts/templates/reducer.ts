@@ -69,6 +69,8 @@ const reducer = (state: ITemplatesState = initialState, action: TemplatesAction)
             return Object.assign({}, state, { showGoTo: false });
         case actiontypes.SETGOTO:
             return Object.assign({}, state, { goToValue: action.payload });
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

@@ -13,6 +13,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         createNew: (channelID: string) => dispatch(actions.createNew(channelID)),
         fetchData: (channelID: string, id: string, init: boolean) => dispatch(actions.get(channelID, id, init)),
+        reset: () => dispatch(actions.reset),
         saveData: (channelID: string, id: string, content: IAutoMessage) =>
             dispatch(actions.save(channelID, id, content)),
         saveNew: (channelID: string, content: IAutoMessage) =>

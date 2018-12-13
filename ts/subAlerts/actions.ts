@@ -9,6 +9,7 @@ export enum actiontypes {
     OFFLINE = "SUBALERTS/OFFLINE",
     SETEXTENDED = "SUBALERTS/SETEXTENDED",
     SAVE = "SUBALERTS/SAVE",
+    RESET = "SUBALERTS/RESET",
 }
 
 export interface ISubAlertsGetAction {
@@ -64,6 +65,10 @@ export interface ISubAlertsSaveAction {
     };
 }
 
+export interface ISubAlertsResetAction {
+    type: actiontypes.RESET;
+}
+
 export type SubAlertsAction = ISubAlertsGetAction
     | ISubAlertsLoadingAction
     | ISubAlertsNotAuthorizedAction
@@ -71,4 +76,5 @@ export type SubAlertsAction = ISubAlertsGetAction
     | ISubAlertsOfflineAction
     | ISubAlertsReadyAction
     | ISubAlertsSaveAction
-    | ISubAlertsSetExtendedAction;
+    | ISubAlertsSetExtendedAction
+    | ISubAlertsResetAction;

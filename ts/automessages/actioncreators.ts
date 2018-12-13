@@ -43,3 +43,7 @@ export const showEmpty: actions.IAutoMessagesShowEmptyAction = {
 export const hideEmpty: actions.IAutoMessagesHideEmptyAction = {
     type: actions.actiontypes.HIDEEMPTY,
 };
+
+export const reset: actions.IAutoMessagesResetAction = {
+    type: actions.actiontypes.RESET,
+};

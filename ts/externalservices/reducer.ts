@@ -1,11 +1,11 @@
-import { IChannelInfo } from "../api/types";
 import States from "../utils/states";
 import { actiontypes, ExternalServicesAction } from "./actions";
+import { IChannelExternalServices } from "./types";
 
 export interface IExternalServicesState {
     channelID: string;
     state: States;
-    content?: IChannelInfo;
+    content?: IChannelExternalServices;
 
 }
 
@@ -52,6 +52,8 @@ const reducer = (
             return Object.assign({}, state, {
                 state: States.UPDATING,
             });
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

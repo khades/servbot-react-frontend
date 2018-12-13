@@ -13,6 +13,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         fetchData: (channelID: string) =>
             dispatch(actions.get(channelID)),
+        reset: () => dispatch(actions.reset),
         save: (channelID: string, content: ISubAlerts) => {
             dispatch(actions.save(channelID, content));
         },

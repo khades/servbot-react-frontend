@@ -21,6 +21,7 @@ interface ISubDayProps extends RouteComponentProps<ISubDaysRoute>, ISubDayState 
     pickSubDaySubWinner: (channelID: string, id: string) => void;
     pickSubDayNonSubWinner: (channelID: string, id: string) => void;
     pullSubDayWinner: (channelID: string, id: string, user: string) => void;
+    reset: () => void;
 }
 
 export default class SubDayComponent extends React.PureComponent<ISubDayProps, {}> {
@@ -34,6 +35,10 @@ export default class SubDayComponent extends React.PureComponent<ISubDayProps, {
             || prevProps.match.params.id !== this.props.match.params.id) {
             this.props.fetchData(this.props.match.params.channelID, this.props.match.params.id);
         }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render() {

@@ -67,7 +67,8 @@ const reducer = (state: ISubscriptionsState = initialState, action: Subscription
                 channelID: action.payload.channelID,
                 state: States.FORBIDDEN,
             });
-
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

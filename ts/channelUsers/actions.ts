@@ -7,6 +7,8 @@ export enum actiontypes {
     LOADING = "CHANNELUSERS/LOADING",
     OFFLINE = "CHANNELUSERS/OFFLINE",
     FORBIDDEN = "CHANNELUSERS/FORBIDDEN",
+    RESET = "CHANNELUSERS/RESET",
+
 }
 
 export interface IChannelUsersReadyAction {
@@ -44,9 +46,14 @@ export interface IChannelUsersLoadingAction {
     };
 }
 
+export interface IChannelUsersResetAction {
+    type: actiontypes.RESET;
+}
+
 export type ChannelUsersAction = IChannelUsersGetAction
     | IChannelUsersReadyAction
     | IChannelUsersOfflineAction
     | IChannelUsersForbiddenAction
     | IChannelUsersNotAuthorizedAction
-    | IChannelUsersLoadingAction;
+    | IChannelUsersLoadingAction
+    | IChannelUsersResetAction;

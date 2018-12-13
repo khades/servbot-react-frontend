@@ -13,6 +13,7 @@ export enum actiontypes {
     SAVENEW = "AUTOMESSAGE/SAVENEW",
     ONSAVEERROR = "AUTOMESSAGE/ONSAVEERROR",
     AFTERCREATION = "AUTOMESSAGE/AFTERCREATION",
+    RESET = "AUTOMESSAGE/RESET",
 }
 
 export interface IAutoMessageGetAction {
@@ -107,6 +108,10 @@ export interface IAutoMessageAfterCreationAction {
     };
 }
 
+export interface IAutoMessageResetAction {
+    type: actiontypes.RESET;
+}
+
 export type AutoMessageAction = IAutoMessageGetAction
     | IAutoMessageLoadingAction
     | IAutoMessageReadyAction
@@ -118,4 +123,5 @@ export type AutoMessageAction = IAutoMessageGetAction
     | IAutoMessageSaveNewAction
     | IAutoMessageOnSaveErrorAction
     | IAutoMessageCreateNewAction
-    | IAutoMessageAfterCreationAction;
+    | IAutoMessageAfterCreationAction
+    | IAutoMessageResetAction;

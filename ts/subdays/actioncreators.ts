@@ -53,3 +53,7 @@ export const create = (channelID: string,
 export const onSaveError: actions.ISubDaysOnSaveError = {
     type: actions.actiontypes.ONSAVEERROR,
 };
+
+export const reset: actions.ISubDaysResetAction = {
+    type: actions.actiontypes.RESET,
+};

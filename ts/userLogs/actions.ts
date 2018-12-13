@@ -8,6 +8,7 @@ export enum actiontypes {
     NOTAUTHORIZED = "USERLOGS/NOTAUTHORIZED",
     FORBIDDEN = "USERLOGS/FORBIDDEN",
     OFFLINE = "USERLOGS/OFFLINE",
+    RESET = "USERLOGS/RESET",
 }
 
 export interface IUserLogsGetAction {
@@ -59,10 +60,15 @@ export interface IUserLogsNotAuthorizedAction {
     };
 }
 
+export interface IUserLogsResetAction {
+    type: actiontypes.RESET;
+}
+
 export type UserLogsAction = IUserLogsGetAction
     | IUserLogsLoadingAction
     | IUserLogsReadyAction
     | IUserLogsForbiddenAction
     | IUserLogsNotFoundAction
     | IUserLogsOfflineAction
-    | IUserLogsNotAuthorizedAction;
+    | IUserLogsNotAuthorizedAction
+    | IUserLogsResetAction;

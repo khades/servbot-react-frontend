@@ -48,6 +48,8 @@ const reducer = (state: IChannelUsersState = initialState, action: ChannelUsersA
                     users: [],
                 };
             }
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

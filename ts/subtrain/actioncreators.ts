@@ -45,3 +45,7 @@ export const onSaveError = (channelID: string): actions.ISubTrainOnSaveErrorActi
     payload: { channelID },
     type: actions.actiontypes.ONSAVEERROR,
 });
+
+export const reset: actions.ISubTrainResetAction = {
+    type: actions.actiontypes.RESET,
+};

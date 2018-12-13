@@ -45,3 +45,7 @@ export const setBookmark = (channelID: string, bookmark: string): actions.ISubsc
     payload: { channelID, bookmark },
     type: actions.actiontypes.SETBOOKMARK,
 });
+
+export const reset: actions.ISubscriptionsResetAction = {
+    type: actions.actiontypes.RESET,
+};

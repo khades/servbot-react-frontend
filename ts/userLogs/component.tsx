@@ -14,6 +14,7 @@ interface IUserLogsRoute {
 
 interface IUserLogsProps extends RouteComponentProps<IUserLogsRoute>, IUserLogsState {
     fetchData: (channelID: string, userID: string) => void;
+    reset: () => void;
 }
 
 export default class UserLogsComponent extends React.PureComponent<IUserLogsProps, {}> {
@@ -27,6 +28,10 @@ export default class UserLogsComponent extends React.PureComponent<IUserLogsProp
         ) {
             this.props.fetchData(this.props.match.params.channelID, this.props.match.params.userID);
         }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render = () => (

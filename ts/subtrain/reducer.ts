@@ -49,6 +49,8 @@ const reducer = (state: ISubTrainState = initialState, action: SubTrainAction): 
             return Object.assign({}, state, {
                 state: States.UPDATING,
             });
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

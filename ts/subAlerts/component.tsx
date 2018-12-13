@@ -14,6 +14,7 @@ import { ISubAlerts, ISubAlertsHistory } from "./types";
 export interface ISubAlertsProps extends RouteComponentProps<IChannelRoute>, ISubAlertsState {
     fetchData: (channelID: string) => void;
     setExtended: () => void;
+    reset: () => void;
     save: (channelID: string, content: ISubAlerts) => void;
 }
 
@@ -27,6 +28,10 @@ export default class SubAlertsComponent extends React.PureComponent<ISubAlertsPr
         if (prevProps.match.params.channelID !== this.props.match.params.channelID) {
             this.props.fetchData(this.props.match.params.channelID);
         }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render() {

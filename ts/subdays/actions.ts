@@ -12,6 +12,7 @@ export enum actiontypes {
     HIDECREATIONPANEL = "SUBDAYS/HIDECREATIONPANEL",
     CREATE = "SUBDAYS/CREATE",
     ONSAVEERROR = "SUBDAYS/ONSAVEERROR",
+    RESET = "SUBDAYS/RESET",
 }
 
 export interface ISubDaysGetAction {
@@ -74,9 +75,15 @@ export interface ISubDaysCreateAction {
         subsOnly: boolean,
     };
 }
+
 export interface ISubDaysOnSaveError {
     type: actiontypes.ONSAVEERROR;
 }
+
+export interface ISubDaysResetAction {
+    type: actiontypes.RESET;
+}
+
 export type SubDaysAction = ISubDaysGetAction
     | ISubDaysLoadingAction
     | ISubDaysReadyAction
@@ -86,4 +93,5 @@ export type SubDaysAction = ISubDaysGetAction
     | ISubDaysShowCreationPanelAction
     | ISubDaysHideCreationPanelAction
     | ISubDaysCreateAction
-    | ISubDaysOnSaveError;
+    | ISubDaysOnSaveError
+    | ISubDaysResetAction;

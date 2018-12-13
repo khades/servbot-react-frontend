@@ -60,3 +60,7 @@ export const afterSaveSuccess = (channelID: string, commandName: string): action
     payload: { channelID, commandName },
     type: actions.actiontypes.AFTERSAVESUCCESS,
 });
+
+export const reset: actions.ITemplateResetAction = {
+    type: actions.actiontypes.RESET,
+};

@@ -15,6 +15,7 @@ interface IBansRoute {
 
 interface IBansProps extends RouteComponentProps<IBansRoute>, IBansState {
     fetchData: (channelID: string) => void;
+    reset: () => void;
 }
 
 export default class BansComponent extends React.PureComponent<IBansProps, {}> {
@@ -27,6 +28,10 @@ export default class BansComponent extends React.PureComponent<IBansProps, {}> {
         if (prevProps.match.params.channelID !== this.props.match.params.channelID) {
             this.props.fetchData(this.props.match.params.channelID);
         }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render = () => (

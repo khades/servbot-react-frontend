@@ -11,6 +11,7 @@ export enum actiontypes {
     AFTERSAVESUCCESS = "TEMPLATE/AFTERSAVESUCCESS",
     AFTERSAVEERROR = "TEMPLATE/AFTERSAVEERROR",
     SETALIASTO = "TEMPLATE/SETALIASTO",
+    RESET = "TEMPLATE/RESET",
 }
 
 export interface ITemplateGetAction {
@@ -96,6 +97,10 @@ export interface ITemplateAfterSaveSuccessAction {
     };
 }
 
+export interface ITemplateResetAction {
+    type: actiontypes.RESET;
+}
+
 export type TemplateAction = ITemplateGetAction
     | ITemplateLoadingAction
     | ITemplateReadyAction
@@ -105,4 +110,5 @@ export type TemplateAction = ITemplateGetAction
     | ITemplateForbiddenAction
     | ITemplateAfterSaveErrorAction
     | ITemplateSetAliasToAction
-    | ITemplateAfterSaveSuccessAction;
+    | ITemplateAfterSaveSuccessAction
+    | ITemplateResetAction;

@@ -8,8 +8,9 @@ export enum actiontypes {
     NOTFOUND = "AUTOMESSAGES/NOTFOUND",
     FORBIDDEN = "AUTOMESSAGES/FORBIDDEN",
     OFFLINE = "AUTOMESSAGES/OFFLINE",
-    SHOWEMPTY = "AUTOMESSAGE/SHOWEMPTY",
-    HIDEEMPTY = "AUTOMESSAGE/HIDEEMPTY",
+    SHOWEMPTY = "AUTOMESSAGES/SHOWEMPTY",
+    HIDEEMPTY = "AUTOMESSAGES/HIDEEMPTY",
+    RESET = "AUTOMESSAGES/RESET",
 }
 
 export interface IAutoMessagesGetAction {
@@ -71,6 +72,10 @@ export interface IAutoMessagesHideEmptyAction {
     type: actiontypes.HIDEEMPTY;
 }
 
+export interface IAutoMessagesResetAction {
+    type: actiontypes.RESET;
+}
+
 export type AutoMessagesAction = IAutoMessagesGetAction
     | IAutoMessagesLoadingAction
     | IAutoMessagesReadyAction
@@ -79,4 +84,5 @@ export type AutoMessagesAction = IAutoMessagesGetAction
     | IAutoMessagesNotFoundAction
     | IAutoMessagesShowEmptyAction
     | IAutoMessagesHideEmptyAction
-    | IAutoMessagesOfflineAction;
+    | IAutoMessagesOfflineAction
+    | IAutoMessagesResetAction;

@@ -32,6 +32,7 @@ export interface ISongRequestsProps extends RouteComponentProps<IChannelRoute>, 
     bubbleVideoToSecond: (channelID: string, videoID: string) => void;
     skipVideo: (channelID: string, videoID: string) => void;
     saveSettings: (channelID: string, content: ISongRequestsSettings) => void;
+    reset: () => void;
 }
 
 interface ISongRequestsComponentState {
@@ -66,7 +67,10 @@ export default class SongRequestsComponent extends React.PureComponent<
         if (prevProps.state !== States.READY && this.props.state === States.READY) {
             this.setState({ volume: this.props.content.settings.volume });
         }
+    }
 
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render() {
@@ -75,27 +79,25 @@ export default class SongRequestsComponent extends React.PureComponent<
             "songrequests--noplayer": !this.props.content || this.props.content.isOwner === false,
         });
         return (
-            <React.Fragment>
+            <StatusWrapper state={this.props.state}>
                 <WebSocketComponent
                     url={`api/channel/${this.props.match.params.channelID}/songrequests/events`}
                     onMessage={this.processWSMessage}
                 />
-                <StatusWrapper state={this.props.state}>
-                    <div className={songrequestsClasses}>
-                        <div className="songrequests__hgroup">
-                            <div className="songrequests__header">
-                                {l10n.formatString(l10n.SONGREQUESTS_TITLE, this.renderChannelName())}
-                            </div>
-                            {this.renderHeaderButtons()}
+                <div className={songrequestsClasses}>
+                    <div className="songrequests__hgroup">
+                        <div className="songrequests__header">
+                            {l10n.formatString(l10n.SONGREQUESTS_TITLE, this.renderChannelName())}
                         </div>
-                        {this.renderPlayer()}
-                        {this.renderPlayerControls()}
-                        {this.renderRequests()}
-                        {this.renderBannedTracks()}
-                        {this.renderSettings()}
+                        {this.renderHeaderButtons()}
                     </div>
-                </StatusWrapper>
-            </React.Fragment>
+                    {this.renderPlayer()}
+                    {this.renderPlayerControls()}
+                    {this.renderRequests()}
+                    {this.renderBannedTracks()}
+                    {this.renderSettings()}
+                </div>
+            </StatusWrapper>
         );
     }
 

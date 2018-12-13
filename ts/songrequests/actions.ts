@@ -21,6 +21,8 @@ export enum actiontypes {
     BUBBLEVIDEOUP = "SONGREQUESTS/BUBBLEVIDEOUP",
     BUBBLEVIDEOTOSECOND = "SONGREQUESTS/BUBBLEVIDEOTOSECOND",
     SKIPVIDEO = "SONGREQUESTS/SKIPVIDEO",
+
+    RESET = "SONGREQUESTS/RESET",
 }
 
 export interface ISongRequestsGetAction {
@@ -156,6 +158,10 @@ export interface ISongRequestsSkipVideoAction {
     };
 }
 
+export interface ISongRequestsResetAction {
+    type: actiontypes.RESET;
+}
+
 export type SongRequestsAction = ISongRequestsGetAction
     | ISongRequestsLoadingAction
     | ISongRequestsReadyAction
@@ -173,4 +179,5 @@ export type SongRequestsAction = ISongRequestsGetAction
     | ISongRequestsSetVideoAsChannelRestrictedAction
     | ISongRequestsBubbleVideoUpAction
     | ISongRequestsBubbleVideoToSecondAction
-    | ISongRequestsSkipVideoAction;
+    | ISongRequestsSkipVideoAction
+    | ISongRequestsResetAction;

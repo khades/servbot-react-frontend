@@ -1,6 +1,6 @@
 import States from "../utils/states";
 import { actiontypes, TemplateAction } from "./actions";
-import {  ITemplateWithHistory } from "./types";
+import { ITemplateWithHistory } from "./types";
 
 export interface ITemplateState {
     channelID: string;
@@ -88,6 +88,8 @@ const reducer = (state: ITemplateState = initialState, action: TemplateAction): 
                 hasTemplateError: true,
                 state: States.READY,
             });
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

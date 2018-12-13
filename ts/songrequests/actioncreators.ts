@@ -110,3 +110,7 @@ export const skipVideo = (
     payload: { channelID, videoID },
     type: actions.actiontypes.SKIPVIDEO,
 });
+
+export const reset: actions.ISongRequestsResetAction = {
+    type: actions.actiontypes.RESET,
+};

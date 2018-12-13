@@ -55,6 +55,8 @@ const reducer = (state: ISubAlertsState = initialState, action: SubAlertsAction)
             };
         case actiontypes.SETEXTENDED:
             return Object.assign({}, state, { isExtended: true });
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

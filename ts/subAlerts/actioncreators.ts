@@ -44,3 +44,7 @@ export const save = (channelID: string, content: ISubAlerts): actions.ISubAlerts
 export const setExtended: actions.ISubAlertsSetExtendedAction = {
     type: actions.actiontypes.SETEXTENDED,
 };
+
+export const reset: actions.ISubAlertsResetAction = {
+    type: actions.actiontypes.RESET,
+};

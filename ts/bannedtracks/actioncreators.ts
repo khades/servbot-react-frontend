@@ -50,3 +50,7 @@ export const unbanVideo = (
     payload: { channelID, videoID, page, title },
     type: actions.actiontypes.UNBAN,
 });
+
+export const reset: actions.IBannedTracksResetAction = {
+    type: actions.actiontypes.RESET,
+};

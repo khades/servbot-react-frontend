@@ -35,3 +35,7 @@ export const offline = (channelID: string): actions.IBansOfflineAction => ({
     payload: { channelID },
     type: actions.actiontypes.OFFLINE,
 });
+
+export const reset: actions.IBansResetAction = {
+    type: actions.actiontypes.RESET,
+};

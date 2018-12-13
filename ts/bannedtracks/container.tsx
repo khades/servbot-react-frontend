@@ -12,6 +12,7 @@ export interface IBannedTracksContainerProps {
 interface IBannedTracksDispatchedProps {
     fetchData: (channelID: string, page: number, init: boolean) => void;
     unbanVideo: (channelID: string, videoID: string, title: string) => void;
+    reset: () => void;
 }
 
 const mapStateToProps = (state: IStore) => {
@@ -21,6 +22,7 @@ const mapStateToProps = (state: IStore) => {
 const mapDispatchToProps = (dispatch: Dispatch, ownProps: IBannedTracksProps) => {
     return {
         fetchData: (channelID: string, page: number, init: boolean) => dispatch(actions.get(channelID, page, init)),
+        reset: () => dispatch(actions.reset),
         unbanVideo: (channelID: string, videoID: string, title: string) =>
             dispatch(actions.unbanVideo(channelID, videoID, title, ownProps.page)),
     };

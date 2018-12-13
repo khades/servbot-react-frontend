@@ -22,6 +22,7 @@ interface IAutoMessageProps extends RouteComponentProps<IAutoMessageRoute>, IAut
     fetchData: (channelID: string, id: string, init: boolean) => void;
     saveData: (channelID: string, id: string, content: IAutoMessage) => void;
     saveNew: (channelID: string, content: IAutoMessage) => void;
+    reset: () => void;
 }
 
 export default class AutoMessageComponent extends React.PureComponent<IAutoMessageProps, {}> {
@@ -45,6 +46,10 @@ export default class AutoMessageComponent extends React.PureComponent<IAutoMessa
             const forcedUpdate = prevProps.id !== "";
             this.props.fetchData(this.props.match.params.channelID, this.props.match.params.id, forcedUpdate);
         }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render() {

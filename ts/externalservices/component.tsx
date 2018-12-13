@@ -14,6 +14,7 @@ import { IVkGroupInfoForm } from "./types";
 interface IExternalServicesProps extends RouteComponentProps<IChannelRoute>, IExternalServicesState {
     fetchData: (channelID: string) => void;
     saveVKInfo: (channelID: string, content: IVkGroupInfoForm) => void;
+    reset: () => void;
 }
 
 export default class ExternalServicesComponent extends React.PureComponent<IExternalServicesProps, IVkGroupInfoForm> {
@@ -36,6 +37,10 @@ export default class ExternalServicesComponent extends React.PureComponent<IExte
         if (prevProps.state === States.LOADING && this.props.state === States.READY) {
             this.setState(this.props.content.vkGroupInfo);
         }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render() {

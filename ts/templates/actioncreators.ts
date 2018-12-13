@@ -38,3 +38,7 @@ export const setGoTo = (goTo: string): actions.ITemplatesSetGoToAction => ({
     payload: goTo,
     type: actions.actiontypes.SETGOTO,
 });
+
+export const reset: actions.ITemplatesResetAction = {
+    type: actions.actiontypes.RESET,
+};

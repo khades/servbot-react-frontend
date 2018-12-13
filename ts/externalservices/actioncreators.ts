@@ -45,3 +45,7 @@ export const onSaveError = (channelID: string): actions.IExternalServicesOnSaveE
     payload: { channelID },
     type: actions.actiontypes.ONSAVEERROR,
 });
+
+export const reset: actions.IExternalServicesResetAction = {
+    type: actions.actiontypes.RESET,
+};

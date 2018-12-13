@@ -59,7 +59,11 @@ export const createNew = (channelID: string): actions.IAutoMessageCreateNewActio
     type: actions.actiontypes.CREATENEW,
 });
 
-export const afterCreation = (id: string) => ({
+export const afterCreation = (id: string): actions.IAutoMessageAfterCreationAction => ({
     payload: { id },
     type: actions.actiontypes.AFTERCREATION,
 });
+
+export const reset: actions.IAutoMessageResetAction = {
+    type: actions.actiontypes.RESET,
+};

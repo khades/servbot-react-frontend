@@ -8,6 +8,7 @@ export enum actiontypes {
     NOTAUTHORIZED = "BANS/NOTAUTHORIZED",
     FORBIDDEN = "BANS/FORBIDDEN",
     OFFLINE = "BANS/OFFLINE",
+    RESET = "BANS/RESET",
 }
 
 export interface IBansGetAction {
@@ -58,10 +59,15 @@ export interface IBansOfflineAction {
     };
 }
 
+export interface IBansResetAction {
+    type: actiontypes.RESET;
+}
+
 export type BansAction = IBansGetAction
     | IBansLoadingAction
     | IBansReadyAction
     | IBansForbiddenAction
     | IBansNotFoundAction
     | IBansOfflineAction
-    | IBansNotAuthorizedAction;
+    | IBansNotAuthorizedAction
+    | IBansResetAction;

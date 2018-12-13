@@ -28,3 +28,7 @@ export const ready = (users: IUserLogsInfo[]): actions.IChannelUsersReadyAction 
     payload: users,
     type: actions.actiontypes.READY,
 });
+
+export const reset: actions.IChannelUsersResetAction = {
+    type: actions.actiontypes.RESET,
+};

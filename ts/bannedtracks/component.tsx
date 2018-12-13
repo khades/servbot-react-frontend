@@ -12,6 +12,7 @@ export interface IBannedTracksProps extends IBannedTracksState {
     fetchData: (channelID: string, page: number, init: boolean) => void;
     unbanVideo: (channelID: string, videoID: string, title: string) => void;
     routeChannelID: string;
+    reset: () => void;
 }
 
 export default class BannedTracksComponent extends React.PureComponent<IBannedTracksProps, {}> {
@@ -24,6 +25,10 @@ export default class BannedTracksComponent extends React.PureComponent<IBannedTr
         if (prevProps.routeChannelID !== this.props.routeChannelID) {
             this.props.fetchData(this.props.routeChannelID, 1, true);
         }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render() {

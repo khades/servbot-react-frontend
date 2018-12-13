@@ -56,6 +56,8 @@ const reducer = (state: IAutoMessagesState = initialState, action: AutoMessagesA
             return Object.assign({}, state, {
                 emptyShown: false,
             });
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

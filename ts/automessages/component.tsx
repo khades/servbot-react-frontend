@@ -17,6 +17,7 @@ interface IAutoMessagesProps extends RouteComponentProps<IChannelRoute>, IAutoMe
     fetchData: (channelID: string) => void;
     showEmpty: () => void;
     hideEmpty: () => void;
+    reset: () => void;
 }
 
 export default class AutoMessagesComponent extends React.PureComponent<IAutoMessagesProps, {}> {
@@ -34,6 +35,10 @@ export default class AutoMessagesComponent extends React.PureComponent<IAutoMess
         // if (document.title !== title) {
         //     document.title = title;
         // }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render() {

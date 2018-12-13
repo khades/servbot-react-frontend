@@ -12,6 +12,7 @@ const mapStateToProps = (state: IStore) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         fetchData: (channelID: string) => dispatch(actions.get(channelID)),
+        reset: () => dispatch(actions.reset),
         saveVKInfo: (channelID: string, content: IVkGroupInfoForm) => dispatch(actions.save(channelID, content)),
     };
 };

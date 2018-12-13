@@ -10,6 +10,7 @@ export enum actiontypes {
     FORBIDDEN = "BANNEDTRACKS/FORBIDDEN",
     OFFLINE = "BANNEDTRACKS/OFFLINE",
     UNBAN = "BANNEDTRACKS/UNBAN",
+    RESET = "BANNEDTRACKS/RESET",
 }
 
 export interface IBannedTracksGetAction {
@@ -81,6 +82,10 @@ export interface IBannedTracksUnbanVideoAction {
     };
 }
 
+export interface IBannedTracksResetAction {
+    type: actiontypes.RESET;
+}
+
 export type BannedTracksAction = IBannedTracksGetAction
     | IBannedTracksLoadingAction
     | IBannedTracksReadyAction
@@ -89,4 +94,5 @@ export type BannedTracksAction = IBannedTracksGetAction
     | IBannedTracksForbiddenAction
     | IBannedTracksNotFoundAction
     | IBannedTracksOfflineAction
-    | IBannedTracksUnbanVideoAction;
+    | IBannedTracksUnbanVideoAction
+    | IBannedTracksResetAction;

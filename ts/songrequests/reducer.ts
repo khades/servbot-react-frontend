@@ -85,6 +85,8 @@ const reducer = (state: ISongRequestsState = initialState, action: SongRequestsA
                 shownPanel: songRequestsPanels.PLAYLIST,
             });
         }
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

@@ -15,6 +15,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         fetchData: (channelID: string, commandName: string) =>
             dispatch(actions.get(channelID, commandName)),
         fetchTemplates: (channelID: string) => dispatch(templatesActions.get(channelID)),
+        reset: () => dispatch(actions.reset),
         saveTemplate: (channelID: string, commandName: string, template: string) =>
             dispatch(actions.save(channelID, commandName, template)),
         setTemplateAliasTo: (channelID: string, commandName: string, aliasTo: string) =>

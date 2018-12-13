@@ -12,6 +12,7 @@ const mapStateToProps = (state: IStore) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         fetchData: (channelID: string, username?: string) => dispatch(actions.get(channelID, username)),
+        reset: () => dispatch(actions.reset),
         showNotification: (body: string) => dispatch(notificationActions.add(body, "templates")),
     };
 };

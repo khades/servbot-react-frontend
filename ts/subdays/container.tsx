@@ -14,6 +14,7 @@ const mapDispatchToProps = (dispatch: Dispatch, props: ISubDaysProps) => {
             dispatch(actions.create(channelID, name, subsOnly, props.history));
         },
         fetchData: (channelID: string) => dispatch(actions.get(channelID)),
+        reset: () => dispatch(actions.reset),
         setHideCreationPanel: () => dispatch(actions.hideCreationPanel),
         setShowCreationPanel: () => dispatch(actions.showCreationPanel),
     };

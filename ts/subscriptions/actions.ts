@@ -14,6 +14,8 @@ export enum actiontypes {
     SAVELIMIT = "SUBSCRIPTIONS/SAVELIMIT",
 
     SETBOOKMARK = "SUBSCRIPTIONS/SETBOOKMARK",
+    RESET = "SUBSCRIPTIONS/RESET",
+
 }
 
 export interface ISubscriptionsGetAction {
@@ -83,6 +85,10 @@ export interface ISubscriptionsSetBookmarkAction {
     };
 }
 
+export interface ISubscriptionsResetAction {
+    type: actiontypes.RESET;
+}
+
 export type SubscriptionsAction = ISubscriptionsGetAction
     | ISubscriptionsLoadingAction
     | ISubscriptionsReadyAction
@@ -91,4 +97,5 @@ export type SubscriptionsAction = ISubscriptionsGetAction
     | ISubscriptionsOfflineAction
     | ISubscriptionsSetLimitAction
     | ISubscriptionsSaveLimitAction
-    | ISubscriptionsSetBookmarkAction;
+    | ISubscriptionsSetBookmarkAction
+    | ISubscriptionsResetAction;

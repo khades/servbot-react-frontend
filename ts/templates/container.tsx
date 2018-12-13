@@ -12,6 +12,7 @@ const mapStateToProps = (state: IStore, props: ITemplatesProps) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         fetchData: (channelID: string) => dispatch(actions.get(channelID)),
+        reset: () => dispatch(actions.reset),
         setGoTo: (value: string) => dispatch(actions.setGoTo(value)),
         setShowAll: () => dispatch(actions.showAll()),
         setShowGoTo: () => dispatch(actions.showGoTo()),

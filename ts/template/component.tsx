@@ -24,6 +24,7 @@ export interface ITemplateProps extends RouteComponentProps<ITemplateRoute>, ITe
     setTemplateAliasTo: (channelID: string, commandName: string, aliasTo: string) => void;
     setIsAlias: () => void;
     setIsNotAlias: () => void;
+    reset: () => void;
     templates: string[];
 }
 
@@ -63,6 +64,10 @@ export default class TemplateComponent extends React.PureComponent<ITemplateProp
                 template: this.props.template.template,
             });
         }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render() {

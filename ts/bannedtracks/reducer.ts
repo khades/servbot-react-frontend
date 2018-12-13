@@ -46,6 +46,8 @@ const reducer = (state: IBannedTracksState = initialState, action: BannedTracksA
             return Object.assign({}, state, {
                 state: States.UPDATING,
             });
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

@@ -52,6 +52,8 @@ const reducer = (state: ISubDayState = initialState, action: SubDayAction): ISub
             return Object.assign({}, state, {
                 state: States.OFFLINE,
             });
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

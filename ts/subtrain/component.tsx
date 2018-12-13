@@ -15,7 +15,7 @@ import { ISubTrainForm } from "./types";
 interface ISubTrainProps extends RouteComponentProps<IChannelRoute>, ISubTrainState {
     fetchData: (channelID: string) => void;
     saveData: (channelID: string, content: ISubTrainForm) => void;
-
+    reset: () => void;
 }
 
 export default class SubTrainComponent extends React.PureComponent<ISubTrainProps, ISubTrainForm> {
@@ -51,6 +51,10 @@ export default class SubTrainComponent extends React.PureComponent<ISubTrainProp
             };
             this.setState(state);
         }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render() {

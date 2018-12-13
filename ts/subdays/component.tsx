@@ -17,6 +17,7 @@ import { ISubDaysState } from "./reducer";
 export interface ISubDaysProps extends RouteComponentProps<IChannelRoute>, ISubDaysState {
     createNewSubDay: (channelID: string, name: string, subsOnly: boolean) => void;
     fetchData: (channelID: string) => void;
+    reset: () => void;
     setHideCreationPanel: () => void;
     setShowCreationPanel: () => void;
 }
@@ -47,6 +48,10 @@ export default class SubDaysComponent extends React.PureComponent<ISubDaysProps,
             });
             this.props.fetchData(this.props.match.params.channelID);
         }
+    }
+
+    public componentWillUnmount() {
+        this.props.reset();
     }
 
     public render() {

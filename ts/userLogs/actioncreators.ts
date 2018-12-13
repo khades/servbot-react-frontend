@@ -34,3 +34,7 @@ export const ready = (channelID: string, userID: string, content: IUserLogsInfo)
     payload: { content, channelID, userID },
     type: actions.actiontypes.READY,
 });
+
+export const reset: actions.IUserLogsResetAction = {
+    type: actions.actiontypes.RESET,
+};

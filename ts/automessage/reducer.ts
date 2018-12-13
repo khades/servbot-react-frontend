@@ -90,6 +90,8 @@ const reducer = (state: IAutoMessageState = initialState, action: AutoMessageAct
                 state: States.READY,
                 validationError: true,
             });
+        case actiontypes.RESET:
+            return initialState;
         case actiontypes.AFTERCREATION:
             return Object.assign({}, state, { id: action.payload.id });
         default:

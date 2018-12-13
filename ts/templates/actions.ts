@@ -11,6 +11,7 @@ export enum actiontypes {
     SHOWTEMPLATES = "TEMPLATES/SHOWTEMPLATES",
     SHOWGOTO = "TEMPLATES/SHOWGOTO",
     SETGOTO = "TEMPLATES/SETGOTO",
+    RESET = "TEMPLATES/RESET",
 }
 
 export interface ITemplatesGetAction {
@@ -68,6 +69,10 @@ export interface ITemplatesSetGoToAction {
     payload: string;
 }
 
+export interface ITemplatesResetAction {
+    type: actiontypes.RESET;
+}
+
 export type TemplatesAction = ITemplatesGetAction
     | ITemplatesLoadingAction
     | ITemplatesReadyAction
@@ -77,4 +82,5 @@ export type TemplatesAction = ITemplatesGetAction
     | ITemplatesShowTemplatesAction
     | ITemplatesShowGoToAction
     | ITemplatesSetGoToAction
-    | ITemplatesShowNonEmptyAction;
+    | ITemplatesShowNonEmptyAction
+    | ITemplatesResetAction;

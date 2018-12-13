@@ -10,6 +10,7 @@ export enum actiontypes {
     OFFLINE = "EXTERNALSERVICES/OFFLINE",
     SAVE = "EXTERNALSERVICES/SAVE",
     ONSAVEERROR = "EXTERNALSERVICES/ONSAVEERROR",
+    RESET = "EXTERNALSERVICES/RESET",
 }
 
 export interface IExternalServicesGetAction {
@@ -77,6 +78,10 @@ export interface IExternalServicesOnSaveErrorAction {
     };
 }
 
+export interface IExternalServicesResetAction {
+    type: actiontypes.RESET;
+}
+
 export type ExternalServicesAction = IExternalServicesGetAction
     | IExternalServicesLoadingAction
     | IExternalServicesReadyAction
@@ -85,4 +90,5 @@ export type ExternalServicesAction = IExternalServicesGetAction
     | IExternalServicesNotFoundAction
     | IExternalServicesOfflineAction
     | IExternalServicesSaveAction
-    | IExternalServicesOnSaveErrorAction;
+    | IExternalServicesOnSaveErrorAction
+    | IExternalServicesResetAction;

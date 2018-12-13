@@ -11,6 +11,7 @@ const mapStateToProps = (state: IStore) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         fetchData: (channelID: string, userID: string) => dispatch(actions.get(channelID, userID)),
+        reset: () => dispatch(actions.reset),
     };
 };
 

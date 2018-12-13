@@ -13,6 +13,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         fetchData: (channelID: string) => dispatch(actions.get(channelID)),
         hideEmpty: () => dispatch(actions.hideEmpty),
+        reset: () => dispatch(actions.reset),
         showEmpty: () => dispatch(actions.showEmpty),
     };
 };

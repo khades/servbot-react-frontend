@@ -13,6 +13,8 @@ export enum actiontypes {
     PICKNONSUBWINNER = "SUBDAY/PICKNONSUBWINNER",
     PULLWINNER = "SUBDAY/PULLWINNER",
     CLOSE = "SUBDAY/CLOSE",
+    RESET = "SUBDAY/RESET",
+
 }
 
 export interface ISubDayGetAction {
@@ -112,6 +114,10 @@ export interface ISubDayPullWinnerAction {
     };
 }
 
+export interface ISubDayResetAction {
+    type: actiontypes.RESET;
+}
+
 export type SubDayAction = ISubDayGetAction
     | ISubDayLoadingAction
     | ISubDayReadyAction
@@ -123,4 +129,5 @@ export type SubDayAction = ISubDayGetAction
     | ISubDayPickSubWinnerAction
     | ISubDayPickNonSubWinnerAction
     | ISubDayPullWinnerAction
-    | ISubDayCloseAction;
+    | ISubDayCloseAction
+    | ISubDayResetAction;

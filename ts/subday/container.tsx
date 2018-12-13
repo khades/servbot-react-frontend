@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         pickSubDayWinner: (channelID: string, id: string) => dispatch(actions.pickWinner(channelID, id)),
         pullSubDayWinner: (channelID: string, id: string, user: string) =>
             dispatch(actions.pullWinner(channelID, id, user)),
+        reset: () => dispatch(actions.reset),
     };
 };
 

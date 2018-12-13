@@ -59,6 +59,8 @@ const reducer = (state: ISubDaysState = initialState, action: SubDaysAction): IS
             return Object.assign({}, state, {
                 showCreationPanel: false,
             });
+        case actiontypes.RESET:
+            return initialState;
         default:
             return state;
     }

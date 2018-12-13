@@ -23,6 +23,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         goToBannedTracks: () => dispatch(actions.goToBannedTracks),
         goToPlaylist: () => dispatch(actions.goToPlaylist),
         goToSettings: () => dispatch(actions.goToSettings),
+        reset: () => dispatch(actions.reset),
         saveSettings: (channelID: string, content: ISongRequestsSettings) => dispatch(actions.save(channelID, content)),
         saveVolume: (channelID: string, volume: number) => dispatch(actions.saveVolume(channelID, volume)),
 

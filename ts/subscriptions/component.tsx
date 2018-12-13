@@ -15,12 +15,11 @@ import { ISubscription } from "./types";
 interface ISubscriptionsProps extends RouteComponentProps<IChannelRoute>, ISubscriptionsState {
     fetchData: (channelID: string, limit?: number) => void;
     fetchDataWithoutRefresh: (channelID: string, limit?: number) => void;
-
+    reset: () => void;
     setBookmark: (channelID: string, id: string) => void;
     setLimit: (channelID: string, limit: number) => void;
 }
 
-// TODO: Test websocket connection
 export default class SubscriptionsComponent extends React.PureComponent<ISubscriptionsProps, {}> {
 
     public componentDidMount() {
@@ -33,39 +32,39 @@ export default class SubscriptionsComponent extends React.PureComponent<ISubscri
         }
     }
 
+    public componentWillUnmount() {
+        this.props.reset();
+    }
+
     public render() {
         return (
-            <React.Fragment>
+            <StatusWrapper state={this.props.state}>
                 <WebSocketComponent
                     url={`api/channel/${this.props.match.params.channelID}/subs/events`}
                     onMessage={this.fetchDataWithoutRefresh}
                 />
-                <StatusWrapper state={this.props.state}>
-
-                    <div className="subscriptions">
-                        <div className="subscriptions__hgroup">
-                            <div>
-                                <div className="subscriptions__header">
-                                    {l10n.formatString(l10n.SUBSCRIPTIONS_TITLE, this.renderChannelName())}
-                                </div>
-                                {this.generateSubHeader()}
+                <div className="subscriptions">
+                    <div className="subscriptions__hgroup">
+                        <div>
+                            <div className="subscriptions__header">
+                                {l10n.formatString(l10n.SUBSCRIPTIONS_TITLE, this.renderChannelName())}
                             </div>
-                            <div className="subscriptions__buttons">
-                                <button onClick={this.setLimit}>
-                                    {l10n.MARK_AS_READ}
-                                </button>
-                                <button onClick={this.resetLimit}>
-                                    {l10n.SUBSCRIPTIONS_SHOW_LAST_THREE_DAYS}
-                                </button>
-                            </div>
-
+                            {this.generateSubHeader()}
                         </div>
-                        <div className="subscriptions__items">
-                            {this.renderItems()}
+                        <div className="subscriptions__buttons">
+                            <button onClick={this.setLimit}>
+                                {l10n.MARK_AS_READ}
+                            </button>
+                            <button onClick={this.resetLimit}>
+                                {l10n.SUBSCRIPTIONS_SHOW_LAST_THREE_DAYS}
+                            </button>
                         </div>
                     </div>
-                </StatusWrapper>
-            </React.Fragment>
+                    <div className="subscriptions__items">
+                        {this.renderItems()}
+                    </div>
+                </div>
+            </StatusWrapper>
         );
     }
     private fetchData = () => {
