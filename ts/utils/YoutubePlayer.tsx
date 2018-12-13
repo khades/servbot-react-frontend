@@ -19,7 +19,7 @@ export interface IYoutubeVideoTiming {
 export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps, {}> {
     private playerRef: React.RefObject<HTMLDivElement> = React.createRef();
     private player: YT.Player;
-
+    private ready: boolean = false;
     public seekTo = (seconds: number) => {
         if (this.player) {
             this.player.seekTo(seconds, true);
@@ -40,9 +40,10 @@ export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps,
     }
 
     public componentDidUpdate(prevProps: IYoutubePlayerProps) {
-        if (!this.player) {
+        if (!this.player || this.ready === false) {
             return;
         }
+        console.log(this.player);
         if (prevProps.video !== this.props.video && this.props.video === "") {
             this.player.stopVideo();
         }
@@ -92,6 +93,7 @@ export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps,
     }
 
     private onPlayerReady = () => {
+        this.ready = true;
         this.player.setVolume(this.props.volume);
         this.player.loadVideoById(this.props.video, 0);
         this.player.seekTo(0, true);
@@ -117,7 +119,6 @@ export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps,
                 vq: "large",
             },
         });
-        this.player.setVolume(this.props.volume);
 
     }
     private onError = (event: YT.OnErrorEvent) => {

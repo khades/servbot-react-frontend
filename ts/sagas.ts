@@ -1,6 +1,7 @@
 import { all, fork } from "redux-saga/effects";
 import autoMessage from "./automessage/saga";
 import autoMessages from "./automessages/saga";
+import bannedTracks from "./bannedtracks/saga";
 import bans from "./bans/saga";
 import channelName from "./channelName/saga";
 import channelUsers from "./channelUsers/saga";
@@ -20,6 +21,7 @@ export function* rootSaga() {
     yield all([
         fork(autoMessage),
         fork(autoMessages),
+        fork(bannedTracks),
         fork(bans),
         fork(channelName),
         fork(channelUsers),

@@ -49,7 +49,7 @@ const APIClient = {
     },
 
     authPost: (input: string, body: any): Promise<Response> => {
-        return APIClient.simpleauth(input, {
+        return APIClient.simpleauth(url(input), {
             body: JSON.stringify(body),
             headers: {
                 "Accept": "application/json",

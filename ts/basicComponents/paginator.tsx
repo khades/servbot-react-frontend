@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import * as React from "react";
-
+import "../../scss/modules/_paginator.scss";
 export interface IPaginatorState {
     readonly lastPage: boolean;
     readonly firstPage: boolean;
@@ -91,7 +91,7 @@ export default class Paginator extends React.PureComponent<IPaginatorProps, IPag
             <React.Fragment>
                 <div className={firstButtonClasses} data-value={"first"} key="first" onClick={this.goToFirst}>
                     <div className="paginator__item-content">
-                        "❮❮"
+                        ❮❮
                     </div>
                 </div>
                 <div
@@ -101,7 +101,7 @@ export default class Paginator extends React.PureComponent<IPaginatorProps, IPag
                     onClick={this.goToPrevious}
                 >
                     <div className="paginator__item-content">
-                        "❮"
+                        ❮
                     </div>
                 </div>
             </React.Fragment>
@@ -128,7 +128,7 @@ export default class Paginator extends React.PureComponent<IPaginatorProps, IPag
                     onClick={this.goToNext}
                 >
                     <div className="paginator__item-content">
-                        "❯"
+                        ❯
                     </div>
                 </div>
                 <div
@@ -138,7 +138,7 @@ export default class Paginator extends React.PureComponent<IPaginatorProps, IPag
                     onClick={this.goToLast}
                 >
                     <div className="paginator__item-content">
-                        "❯❯"
+                        ❯❯
                     </div>
                 </div>
 

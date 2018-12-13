@@ -54,11 +54,15 @@ import ExternalServices, { IExternalServicesState } from "./externalservices/red
 
 import { SongRequestsAction } from "./songrequests/actions";
 import SongRequests, { ISongRequestsState } from "./songrequests/reducer";
+
+import { BannedTracksAction } from "./bannedtracks/actions";
+import BannedTracks, { IBannedTracksState } from "./bannedtracks/reducer";
 // import { routerReducer } from "react-router-redux";
 
 export interface IStore {
   readonly AutoMessage: IAutoMessageState;
   readonly AutoMessages: IAutoMessagesState;
+  readonly BannedTracks: IBannedTracksState;
   readonly ExternalServices: IExternalServicesState;
   readonly SongRequests: ISongRequestsState;
   readonly SubDay: ISubDayState;
@@ -80,6 +84,7 @@ export interface IStore {
 type actions = | AutoMessageAction
   | AutoMessagesAction
   | BansAction
+  | BannedTracksAction
   | ChannelNameAction
   | ChannelUsersAction
   | ExternalServicesAction
@@ -99,6 +104,7 @@ type actions = | AutoMessageAction
 export default combineReducers<IStore, actions>({
   AutoMessage,
   AutoMessages,
+  BannedTracks,
   ExternalServices,
   SongRequests,
   SubDay,

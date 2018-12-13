@@ -6,6 +6,7 @@ import States from "./utils/states";
 
 export interface IStatusWrapperProps {
     state: States;
+    hideContainer?: boolean;
 }
 
 export class StatusWrapper extends React.PureComponent<IStatusWrapperProps, {}> {
@@ -17,8 +18,11 @@ export class StatusWrapper extends React.PureComponent<IStatusWrapperProps, {}> 
             "loading": true,
             "loading--hidden": renderLoading !== true,
         });
+        const containerClassName = classnames({
+            content: !this.props.hideContainer,
+        });
         return (
-            <div className="content">
+            <div className={containerClassName}>
                 <div className={itemClasses}>
                     <div className="loading__backdrop">
                         <div className="loading__spinner" />
@@ -28,6 +32,7 @@ export class StatusWrapper extends React.PureComponent<IStatusWrapperProps, {}> 
             </div>
         );
     }
+
     // public componentDidUpdate(prevProps: IStatusWrapperProps) {
     //     if (prevProps.state !== this.props.state && this.props.state === States.LOADING) {
     //         document.title = "LOADING";

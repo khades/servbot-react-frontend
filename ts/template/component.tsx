@@ -82,19 +82,27 @@ export default class TemplateComponent extends React.PureComponent<ITemplateProp
                         {this.renderAliasSection()}
                         {this.renderTemplateSection()}
                     </div>
-                    <div className="template-show__block">
-                        <div className="template-show__header">
-                            {l10n.TEMPLATE_EDIT_HISTORY}
-                        </div>
-                        <div className="template-show__history">
-                            {this.props.template && this.props.template.history.map(this.renderHistoryItem)}
-                        </div>
-                    </div>
+                    {this.renderHistory()}
                 </div>
             </StatusWrapper>
         );
     }
+    private renderHistory = () => {
+        if (!this.props.template || !this.props.template.history) {
+            return;
+        }
+        return (
+            <div className="template-show__block">
+                <div className="template-show__header">
+                    {l10n.TEMPLATE_EDIT_HISTORY}
+                </div>
+                <div className="template-show__history">
+                    {this.props.template.history.map(this.renderHistoryItem)}
+                </div>
+            </div>
+        );
 
+    }
     private renderAliasSubheader = () => (
         <React.Fragment>
             {this.props.isAliasTo === true && l10n.formatString(l10n.ALIAS_TO, this.props.template.aliasTo)}

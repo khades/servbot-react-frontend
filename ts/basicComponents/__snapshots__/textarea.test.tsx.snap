@@ -11,9 +11,9 @@ exports[`Textarea inital value should be properly set 1`] = `
     LABEL
   </label>
   <textarea
-    defaultValue="testValue"
     id="ID"
     onChange={[Function]}
+    value="testValue"
   />
 </div>
 `;

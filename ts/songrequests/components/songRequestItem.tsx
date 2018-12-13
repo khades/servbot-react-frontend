@@ -6,6 +6,11 @@ import { ISongRequest } from "./../types";
 
 export interface ISongRequestItemProp {
     item: ISongRequest;
+    channelID: string;
+    setVideoAsChannelRestricted: (channelID: string, videoID: string) => void;
+    bubbleVideoUp: (channelID: string, videoID: string) => void;
+    bubbleVideoToSecond: (channelID: string, videoID: string) => void;
+    skipVideo: (channelID: string, videoID: string) => void;
 }
 
 export class SongRequestItemComponent extends React.PureComponent<ISongRequestItemProp, {}> {
@@ -34,10 +39,10 @@ export class SongRequestItemComponent extends React.PureComponent<ISongRequestIt
             <div className="songrequests-item__buttons">
                 {this.renderPlayNowButton()}
                 {this.renderPlayNextButton()}
-                <button type="button" className="songrequests-item__delete-button">
+                <button type="button" onClick={this.skipVideo} className="songrequests-item__delete-button">
                     {l10n.SONGREQUESTS_DELETE}
                 </button>
-                <button type="button" className="songrequests-item__ban-button">
+                <button type="button" onClick={this.banVideo} className="songrequests-item__ban-button">
                     {l10n.SONGREQUESTS_BAN}
                 </button>
             </div>
@@ -49,7 +54,7 @@ export class SongRequestItemComponent extends React.PureComponent<ISongRequestIt
             return;
         }
         return (
-            <button type="button" className="songrequests-item__play-button">
+            <button type="button" onClick={this.playNow} className="songrequests-item__play-button">
                 {l10n.SONGREQUESTS_PLAY_NOW}
             </button>
         );
@@ -60,9 +65,25 @@ export class SongRequestItemComponent extends React.PureComponent<ISongRequestIt
             return;
         }
         return (
-            <button type="button" className="songrequests-item__play-next-button">
+            <button type="button" onClick={this.playNext} className="songrequests-item__play-next-button">
                 {l10n.SONGREQUESTS_PLAY_NEXT}
             </button>
         );
+    }
+
+    private skipVideo = () => {
+        this.props.skipVideo(this.props.channelID, this.props.item.videoID);
+    }
+
+    private banVideo = () => {
+        this.props.setVideoAsChannelRestricted(this.props.channelID, this.props.item.videoID);
+    }
+
+    private playNow = () => {
+        this.props.bubbleVideoUp(this.props.channelID, this.props.item.videoID);
+    }
+
+    private playNext = () => {
+        this.props.bubbleVideoToSecond(this.props.channelID, this.props.item.videoID);
     }
 }

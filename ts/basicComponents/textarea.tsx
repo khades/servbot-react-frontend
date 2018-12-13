@@ -13,7 +13,7 @@ export default class TextArea extends React.PureComponent<IInputProps, {}> {
                 <textarea
                     id={this.props.id}
                     onChange={this.setValue}
-                    defaultValue={this.props.value}
+                    value={this.props.value}
                 />
             </ControlGroup>
         );

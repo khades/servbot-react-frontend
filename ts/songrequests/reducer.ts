@@ -2,15 +2,24 @@ import States from "../utils/states";
 import { actiontypes, SongRequestsAction } from "./actions";
 import { ISongRequest, ISongRequests } from "./types";
 
+export enum songRequestsPanels {
+    BANNEDTRACKS,
+    SETTINGS,
+    PLAYLIST,
+}
+
 export interface ISongRequestsState {
     channelID: string;
     state: States;
     content?: ISongRequests;
     currentTrack?: ISongRequest;
+    shownPanel: songRequestsPanels;
+
 }
 
 const initialState: ISongRequestsState = {
     channelID: "",
+    shownPanel: songRequestsPanels.PLAYLIST,
     state: States.NOTINITIATED,
 };
 
@@ -19,6 +28,7 @@ const reducer = (state: ISongRequestsState = initialState, action: SongRequestsA
         case actiontypes.LOADING:
             return {
                 channelID: action.payload.channelID,
+                shownPanel: songRequestsPanels.PLAYLIST,
                 state: States.LOADING,
             };
         case actiontypes.READY:
@@ -58,6 +68,21 @@ const reducer = (state: ISongRequestsState = initialState, action: SongRequestsA
             return Object.assign({}, state, {
                 state: States.UPDATING,
             });
+        case actiontypes.GOTOBANNEDTRACKS: {
+            return Object.assign({}, state, {
+                shownPanel: songRequestsPanels.BANNEDTRACKS,
+            });
+        }
+        case actiontypes.GOTOSETTINGS: {
+            return Object.assign({}, state, {
+                shownPanel: songRequestsPanels.SETTINGS,
+            });
+        }
+        case actiontypes.GOTOPLAYLIST: {
+            return Object.assign({}, state, {
+                shownPanel: songRequestsPanels.PLAYLIST,
+            });
+        }
         default:
             return state;
     }
