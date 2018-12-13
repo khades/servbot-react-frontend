@@ -43,12 +43,11 @@ export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps,
         if (!this.player || this.ready === false) {
             return;
         }
-        console.log(this.player);
-        if (prevProps.video !== this.props.video && this.props.video === "") {
+        if (prevProps.video !== this.props.video && this.props.video === null) {
             this.player.stopVideo();
         }
 
-        if (prevProps.video !== this.props.video && this.props.video !== "") {
+        if (prevProps.video !== this.props.video && !!this.props.video) {
             this.player.loadVideoById(this.props.video, 0);
             this.player.seekTo(0, true);
         }
@@ -95,8 +94,11 @@ export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps,
     private onPlayerReady = () => {
         this.ready = true;
         this.player.setVolume(this.props.volume);
-        this.player.loadVideoById(this.props.video, 0);
-        this.player.seekTo(0, true);
+        if (!!this.props.video) {
+            this.player.loadVideoById(this.props.video, 0);
+            this.player.seekTo(0, true);
+            this.player.pauseVideo();
+        }
         if (!!this.props.onReady) {
             this.props.onReady();
         }

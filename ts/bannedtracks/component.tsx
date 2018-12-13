@@ -3,7 +3,7 @@ import "../../scss/modules/_songrequests-library.scss";
 import Paginator from "../basicComponents/paginator";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
-import { StatusWrapper } from "../statusWrapper";
+import StatusWrapper from "../statusWrapper/container";
 import { BannedTrackComponent } from "./components/BannedTrack";
 import { IBannedTracksState } from "./reducer";
 import { IVideoLibraryItem } from "./types";
@@ -28,7 +28,7 @@ export default class BannedTracksComponent extends React.PureComponent<IBannedTr
 
     public render() {
         return (
-            <StatusWrapper state={this.props.state} hideContainer={true}>
+            <StatusWrapper state={this.props.state}>
                 <div className="songrequests-library">
                     <div className="songrequests-library__header">
                         {l10n.SONGREQUESTS_BANNED_TRACKS}

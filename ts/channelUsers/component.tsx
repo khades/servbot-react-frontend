@@ -5,7 +5,7 @@ import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
-import { StatusWrapper } from "../statusWrapper";
+import StatusWrapper from "../statusWrapper/container";
 import { IUserLogsInfo } from "../userLogs/types";
 import { IChannelUsersState } from "./reducer";
 

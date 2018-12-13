@@ -13,6 +13,8 @@ export interface IPlayerControlsProps {
     paused: boolean;
     pause: () => void;
     unpause: () => void;
+    playlistSize: number;
+    skipCurrentVideo: () => void;
     currentTrack?: ISongRequest;
 }
 
@@ -27,6 +29,7 @@ interface IPlayerControlsState {
 
 export class PlayerControlsComponent extends React.PureComponent<IPlayerControlsProps, IPlayerControlsState> {
     private timer: number = -1;
+
     constructor(props: IPlayerControlsProps) {
         super(props);
         const trackduration = this.props.getTrackDuration();
@@ -53,42 +56,60 @@ export class PlayerControlsComponent extends React.PureComponent<IPlayerControls
     public render() {
         return (
             <div className="player-controls">
-                <input
-                    type="range"
-                    onChange={this.onSeekerChange}
-                    onMouseUp={this.onMouseUp}
-                    onTouchEnd={this.onMouseUp}
-                    className="player-controls__seeker"
-                    min={0}
-                    max={this.state.seekerDuration}
-                    value={this.state.seekerValue}
-                />
+                {this.renderSeeker()}
                 <div className="player-controls__song-info">
                     {this.renderPauseButton()}
                     {this.renderUnpauseButton()}
+                    {this.renderSkipButton()}
                     {this.renderTrackInfo()}
                 </div>
                 {this.renderVolumeInput()}
-
             </div>
         );
     }
+
+    private renderSkipButton = () => {
+        if (this.props.playlistSize < 2) {
+            return;
+        }
+        return (
+            <div onClick={this.props.skipCurrentVideo} className="player-controls__skip-button" />
+        );
+    }
+
+    private renderSeeker = () => {
+        if (!this.props.currentTrack) {
+            return;
+        }
+        return (
+            <input
+                type="range"
+                onChange={this.onSeekerChange}
+                onMouseUp={this.onMouseUp}
+                onTouchEnd={this.onMouseUp}
+                className="player-controls__seeker"
+                min={0}
+                max={this.state.seekerDuration}
+                value={this.state.seekerValue}
+            />
+        );
+    }
+
     private renderPauseButton = () => {
-        if (this.props.paused === true) {
+        if (!this.props.currentTrack || this.props.paused === true) {
             return null;
         }
         return <div className="player-controls__pause-button" onClick={this.props.pause} />;
     }
+
     private renderUnpauseButton = () => {
-        if (this.props.paused === false) {
+        if (!this.props.currentTrack || this.props.paused === false) {
             return null;
         }
         return <div className="player-controls__play-button" onClick={this.props.unpause} />;
     }
+
     private renderVolumeInput = () => {
-        if (!this.props.currentTrack) {
-            return null;
-        }
         return (
             <div className="player-controls__volume-control">
                 <div className="player-controls__volume-control-icon" />
@@ -102,13 +123,9 @@ export class PlayerControlsComponent extends React.PureComponent<IPlayerControls
                     onTouchEnd={this.props.saveVolume}
                 />
             </div>
-
         );
     }
-    // private onSeekerPick = () => {
-    //     console.log("OnInput");
-    //     // this.setState({ seekerIsPicked: true });
-    // }
+
     private renderTrackInfo = () => {
         if (!this.props.currentTrack) {
             return null;
@@ -129,12 +146,13 @@ export class PlayerControlsComponent extends React.PureComponent<IPlayerControls
             </div>
         );
     }
+
     private onSeekerChange = (input: React.FormEvent<HTMLInputElement>) => {
         this.setState({ seekerValue: parseInt(input.currentTarget.value, 10), seekerIsPicked: true });
     }
 
     private onVolumeChange = (input: React.FormEvent<HTMLInputElement>) => {
-       this.props.setVolume(parseInt(input.currentTarget.value, 10));
+        this.props.setVolume(parseInt(input.currentTarget.value, 10));
     }
 
     private onMouseUp = () => {

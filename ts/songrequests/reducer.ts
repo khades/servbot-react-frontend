@@ -32,7 +32,9 @@ const reducer = (state: ISongRequestsState = initialState, action: SongRequestsA
                 state: States.LOADING,
             };
         case actiontypes.READY:
-            const requests = action.payload.content.requests.sort((a, b) => a.order - b.order);
+            const requests = !!action.payload.content.requests ?
+                action.payload.content.requests.sort((a, b) => a.order - b.order)
+                : [];
             return Object.assign({}, state, {
                 channelID: action.payload.channelID,
                 content: Object.assign(

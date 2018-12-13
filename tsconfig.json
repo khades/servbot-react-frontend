@@ -8,6 +8,6 @@
         "jsx": "react"
     },
     "include": [
-        "./ts/app.tsx",
+        "./ts/app.tsx", "ts/statusWrapper/pageLoader.tsx", "ts/statusWrapper/component.tsx", "ts/loadingSpinner/component.tsx",
     ]
 }

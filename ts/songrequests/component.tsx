@@ -1,16 +1,16 @@
 import classnames from "classnames";
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
-import { Link } from "react-router-dom";
 import "../../scss/modules/_songrequests.scss";
 import BannedTracks from "../bannedtracks/container";
 import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
-import * as Routes from "../routes/routes";
-import { StatusWrapper } from "../statusWrapper";
+import StatusWrapper from "../statusWrapper/container";
+import { concatStrings } from "../utils/concatStrings";
 import States from "../utils/states";
 import { YoutubePlayerComponent as YoutubePlayer } from "../utils/YoutubePlayer";
+import { WebSocketComponent } from "../websocket/component";
 import { PlayerControlsComponent } from "./components/playerControls";
 import { SettingsComponent } from "./components/settings";
 import { SongRequestItemComponent } from "./components/songRequestItem";
@@ -19,7 +19,9 @@ import { ISongRequest, ISongRequestsSettings } from "./types";
 
 export interface ISongRequestsProps extends RouteComponentProps<IChannelRoute>, ISongRequestsState {
     fetchData: (channelID: string) => void;
+    updateData: (channelID: string) => void;
     saveVolume: (channelID: string, volume: number) => void;
+    addNotification: (body: string) => void;
     goToBannedTracks: () => void;
     goToPlaylist: () => void;
     goToSettings: () => void;
@@ -47,7 +49,7 @@ export default class SongRequestsComponent extends React.PureComponent<
     constructor(props: ISongRequestsProps) {
         super(props);
         this.state = {
-            paused: false,
+            paused: true,
             ready: false,
             volume: 0,
         };
@@ -73,6 +75,10 @@ export default class SongRequestsComponent extends React.PureComponent<
         });
         return (
             <StatusWrapper state={this.props.state}>
+                <WebSocketComponent
+                    url={`api/channel/${this.props.match.params.channelID}/songrequests/events`}
+                    onMessage={this.processWSMessage}
+                />
                 <div className={songrequestsClasses}>
                     <div className="songrequests__hgroup">
                         <div className="songrequests__header">
@@ -108,10 +114,12 @@ export default class SongRequestsComponent extends React.PureComponent<
                     volume={this.state.volume}
                     paused={this.state.paused}
                     onReady={this.onPlayerReady}
+                    onEnd={this.skipCurrentVideo}
                 />
             </div>
         );
     }
+
     private renderSettings = () => {
         if (!this.props.content || this.props.shownPanel !== songRequestsPanels.SETTINGS) {
             return;
@@ -123,6 +131,7 @@ export default class SongRequestsComponent extends React.PureComponent<
             />
         );
     }
+
     private renderBannedTracks = () => {
         if (!this.props.content || this.props.shownPanel !== songRequestsPanels.BANNEDTRACKS) {
             return;
@@ -133,10 +142,50 @@ export default class SongRequestsComponent extends React.PureComponent<
             />
         );
     }
+
+    private processWSMessage = (event: string) => {
+        if (String(event).startsWith("volume")) {
+            const volume = parseInt(String(event).split(":")[1], 10);
+            this.setVolume(volume);
+        }
+        if (event === "update") {
+            this.props.updateData(this.props.match.params.channelID);
+        }
+        if (String(event).startsWith("youtuberestricted")) {
+            this.props.addNotification(concatStrings(l10n.formatString(
+                l10n.SONGREQUEST_CANT_PLAY_DUE_YOUTUBE,
+                String(event).replace("youtuberestricted:", ""),
+            ),
+            ));
+        }
+        if (String(event).startsWith("twitchrestricted")) {
+            this.props.addNotification(concatStrings(l10n.formatString(
+                l10n.SONGREQUEST_CANT_PLAY_DUE_TWITCH,
+                String(event).replace("twitchrestricted:", ""),
+            ),
+            ));
+        }
+        if (String(event).startsWith("channelrestricted")) {
+            this.props.addNotification(concatStrings(l10n.formatString(
+                l10n.SONGREQUEST_CANT_PLAY_DUE_CHANNEL,
+                String(event).replace("channelrestricted:", ""),
+            ),
+            ));
+        }
+        if (String(event).startsWith("tagrestricted")) {
+            this.props.addNotification(concatStrings(l10n.formatString(
+                l10n.SONGREQUEST_CANT_PLAY_DUE_TAG,
+                String(event).replace("channelrestricted:", ""),
+            ),
+            ));
+        }
+    }
+
     private renderPlayerControls = () => {
         if (this.state.ready === false || !this.props.content || this.props.content.isOwner === false) {
             return null;
         }
+        const playlistSize = !!this.props.content.requests ? this.props.content.requests.length : 0;
         return (
             <PlayerControlsComponent
                 getTrackDuration={this.playerRef.current.getTime}
@@ -146,6 +195,8 @@ export default class SongRequestsComponent extends React.PureComponent<
                 paused={this.state.paused}
                 volume={this.state.volume}
                 setVolume={this.setVolume}
+                playlistSize={playlistSize}
+                skipCurrentVideo={this.skipCurrentVideo}
                 currentTrack={this.props.currentTrack}
                 saveVolume={this.saveVolume}
             />
@@ -242,7 +293,11 @@ export default class SongRequestsComponent extends React.PureComponent<
     private saveVolume = () => {
         this.props.saveVolume(this.props.match.params.channelID, this.state.volume);
     }
-
+    private skipCurrentVideo = () => {
+        if (!!this.props.currentTrack) {
+            this.props.skipVideo(this.props.match.params.channelID, this.props.currentTrack.videoID);
+        }
+    }
     private saveSettings = (content: ISongRequestsSettings) => {
         this.props.saveSettings(this.props.match.params.channelID, content);
     }

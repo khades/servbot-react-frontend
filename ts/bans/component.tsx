@@ -6,7 +6,7 @@ import "../../scss/modules/_channel-bans.scss";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
-import { StatusWrapper } from "../statusWrapper";
+import StatusWrapper from "../statusWrapper/container";
 import { IBansState } from "./reducer";
 import { IBan } from "./types";
 interface IBansRoute {
@@ -38,7 +38,6 @@ export default class BansComponent extends React.PureComponent<IBansProps, {}> {
                 <div className="channel-bans__items">
                     {this.props.bans && this.props.bans.map(this.renderBanItem)}
                 </div>
-
             </div>
         </StatusWrapper>
     )

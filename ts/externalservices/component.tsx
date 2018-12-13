@@ -6,7 +6,7 @@ import Input from "../basicComponents/input";
 import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
-import { StatusWrapper } from "../statusWrapper";
+import StatusWrapper from "../statusWrapper/container";
 import States from "../utils/states";
 import { IExternalServicesState } from "./reducer";
 import { IVkGroupInfoForm } from "./types";

@@ -9,9 +9,9 @@ import * as API from "./api";
 export function* getTemplates(action: ITemplatesGetAction) {
     const state: IStore = yield select();
 
-    if (state.templates.channelID === action.payload.channelID) {
-        return null;
-    }
+    // if (state.templates.channelID === action.payload.channelID) {
+    //     return null;
+    // }
 
     yield put(actions.loading(action.payload.channelID));
 

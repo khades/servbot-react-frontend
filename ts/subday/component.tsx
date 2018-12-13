@@ -6,7 +6,7 @@ import "../../scss/modules/_subday.scss";
 import { ISubDayVote } from "./types";
 
 import { l10n } from "../l10n/l10n";
-import { StatusWrapper } from "../statusWrapper";
+import StatusWrapper from "../statusWrapper/container";
 import { concatStrings } from "../utils/concatStrings";
 import { ISubDayState } from "./reducer";
 

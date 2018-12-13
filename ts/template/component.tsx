@@ -8,7 +8,7 @@ import TextArea from "../basicComponents/textarea";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
-import { StatusWrapper } from "../statusWrapper";
+import StatusWrapper from "../statusWrapper/container";
 import { ITemplateState } from "./reducer";
 import { ITemplateHistory } from "./types";
 

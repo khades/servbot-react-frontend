@@ -57,6 +57,9 @@ import SongRequests, { ISongRequestsState } from "./songrequests/reducer";
 
 import { BannedTracksAction } from "./bannedtracks/actions";
 import BannedTracks, { IBannedTracksState } from "./bannedtracks/reducer";
+
+import { StatusWrapperAction } from "./statuswrapper/actions";
+import StatusWrapper, { IStatusWrapperState } from "./statuswrapper/reducer";
 // import { routerReducer } from "react-router-redux";
 
 export interface IStore {
@@ -65,6 +68,7 @@ export interface IStore {
   readonly BannedTracks: IBannedTracksState;
   readonly ExternalServices: IExternalServicesState;
   readonly SongRequests: ISongRequestsState;
+  readonly StatusWrapper: IStatusWrapperState;
   readonly SubDay: ISubDayState;
   readonly SubDays: ISubDaysState;
   readonly SubTrain: ISubTrainState;
@@ -91,6 +95,7 @@ type actions = | AutoMessageAction
   | NotificationsAction
   | SideMenuAction
   | SongRequestsAction
+  | StatusWrapperAction
   | SubAlertsAction
   | SubDayAction
   | SubDaysAction
@@ -107,6 +112,7 @@ export default combineReducers<IStore, actions>({
   BannedTracks,
   ExternalServices,
   SongRequests,
+  StatusWrapper,
   SubDay,
   SubDays,
   SubTrain,

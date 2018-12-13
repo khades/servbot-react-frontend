@@ -11,7 +11,7 @@ export interface IBannedTracksContainerProps {
 
 interface IBannedTracksDispatchedProps {
     fetchData: (channelID: string, page: number, init: boolean) => void;
-    unbanVideo: (channelID: string, videoID: string) => void;
+    unbanVideo: (channelID: string, videoID: string, title: string) => void;
 }
 
 const mapStateToProps = (state: IStore) => {

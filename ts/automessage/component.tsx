@@ -6,7 +6,7 @@ import "../../scss/modules/_channel-bans.scss";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
-import { StatusWrapper } from "../statusWrapper";
+import StatusWrapper from "../statusWrapper/container";
 import Form from "./components/form";
 import HistoryItem from "./components/historyItem";
 import { IAutoMessageState } from "./reducer";

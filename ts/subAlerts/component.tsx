@@ -5,7 +5,7 @@ import "../../scss/modules/_subalerts.scss";
 import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
-import { StatusWrapper } from "../statusWrapper";
+import StatusWrapper from "../statusWrapper/container";
 import HistoryItem from "./components/historyItem";
 import SubAlertForm from "./components/subAlertForm";
 import { ISubAlertsState } from "./reducer";

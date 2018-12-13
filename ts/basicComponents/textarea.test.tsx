@@ -39,6 +39,6 @@ describe("Textarea", () => {
         );
         expect(input.toJSON()).toMatchSnapshot();
         const inputInstance = input.root.find((el) => el.type === "textarea");
-        expect(inputInstance.props.defaultValue).toBe("testValue");
+        expect(inputInstance.props.value).toBe("testValue");
     });
 });

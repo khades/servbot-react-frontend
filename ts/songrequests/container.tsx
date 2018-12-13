@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import * as notificationActions from "../notifications/actioncreators";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
 import SongRequestsComponent from "./component";
@@ -11,11 +12,14 @@ const mapStateToProps = (state: IStore) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
+        addNotification: (body: string) => dispatch(notificationActions.add(body)),
         bubbleVideoToSecond: (channelID: string, videoID: string) =>
             dispatch(actions.bubbleVideoToSecond(channelID, videoID)),
         bubbleVideoUp: (channelID: string, videoID: string) => dispatch(actions.bubbleVideoUp(channelID, videoID)),
 
         fetchData: (channelID: string) => dispatch(actions.get(channelID, true)),
+        updateData: (channelID: string) => dispatch(actions.get(channelID, false)),
+
         goToBannedTracks: () => dispatch(actions.goToBannedTracks),
         goToPlaylist: () => dispatch(actions.goToPlaylist),
         goToSettings: () => dispatch(actions.goToSettings),
@@ -30,7 +34,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
             dispatch(actions.setVideoAsYoutubeRestricted(channelID, videoID)),
 
         skipVideo: (channelID: string, videoID: string) => dispatch(actions.skipVideo(channelID, videoID)),
-
     };
 };
 

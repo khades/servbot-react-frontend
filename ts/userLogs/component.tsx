@@ -3,7 +3,7 @@ import { RouteComponentProps } from "react-router";
 import "../../scss/modules/_user-logs.scss";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
-import { StatusWrapper } from "../statusWrapper";
+import StatusWrapper from "../statusWrapper/container";
 import { IUserLogsState } from "./reducer";
 import { IUserLogsMessage, MessageType } from "./types";
 

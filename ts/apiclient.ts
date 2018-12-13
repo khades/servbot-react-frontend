@@ -19,9 +19,6 @@ const APIClient = {
     simpleauth: (input: RequestInfo, init?: RequestInit): Promise<Response> => {
         return fetch(input, init).catch((error) => {
             throw { state: States.OFFLINE };
-            // if (error.message === "network error") {
-            //     throw { state: States.OFFLINE };
-            // }
         }).then((result: Response) => {
             if (result.status === 404) {
                 throw { state: States.NOTFOUND };
