@@ -35,34 +35,37 @@ export default class SubscriptionsComponent extends React.PureComponent<ISubscri
 
     public render() {
         return (
-            <StatusWrapper state={this.props.state}>
+            <React.Fragment>
                 <WebSocketComponent
                     url={`api/channel/${this.props.match.params.channelID}/subs/events`}
                     onMessage={this.fetchDataWithoutRefresh}
                 />
-                <div className="subscriptions">
-                    <div className="subscriptions__hgroup">
-                        <div>
-                            <div className="subscriptions__header">
-                                {l10n.formatString(l10n.SUBSCRIPTIONS_TITLE, this.renderChannelName())}
-                            </div>
-                            {this.generateSubHeader()}
-                        </div>
-                        <div className="subscriptions__buttons">
-                            <button onClick={this.setLimit}>
-                                {l10n.MARK_AS_READ}
-                            </button>
-                            <button onClick={this.resetLimit}>
-                                {l10n.SUBSCRIPTIONS_SHOW_LAST_THREE_DAYS}
-                            </button>
-                        </div>
+                <StatusWrapper state={this.props.state}>
 
+                    <div className="subscriptions">
+                        <div className="subscriptions__hgroup">
+                            <div>
+                                <div className="subscriptions__header">
+                                    {l10n.formatString(l10n.SUBSCRIPTIONS_TITLE, this.renderChannelName())}
+                                </div>
+                                {this.generateSubHeader()}
+                            </div>
+                            <div className="subscriptions__buttons">
+                                <button onClick={this.setLimit}>
+                                    {l10n.MARK_AS_READ}
+                                </button>
+                                <button onClick={this.resetLimit}>
+                                    {l10n.SUBSCRIPTIONS_SHOW_LAST_THREE_DAYS}
+                                </button>
+                            </div>
+
+                        </div>
+                        <div className="subscriptions__items">
+                            {this.renderItems()}
+                        </div>
                     </div>
-                    <div className="subscriptions__items">
-                        {this.renderItems()}
-                    </div>
-                </div>
-            </StatusWrapper>
+                </StatusWrapper>
+            </React.Fragment>
         );
     }
     private fetchData = () => {

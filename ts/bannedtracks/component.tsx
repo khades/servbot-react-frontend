@@ -33,7 +33,9 @@ export default class BannedTracksComponent extends React.PureComponent<IBannedTr
                     <div className="songrequests-library__header">
                         {l10n.SONGREQUESTS_BANNED_TRACKS}
                     </div>
-                    {this.renderItems()}
+                    <div className="songrequests-library__items">
+                        {this.renderItems()}
+                    </div>
                     {this.renderPaginator()}
                 </div>
             </StatusWrapper>

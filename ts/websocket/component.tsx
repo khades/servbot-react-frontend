@@ -25,7 +25,6 @@ export class WebSocketComponent extends React.Component<IWebSocketProps, {}> {
 
     public componentWillUnmount() {
         this.preventReconnect();
-
         if (this.eventSource && this.eventSource.readyState === WebSocket.OPEN) {
             this.forceClose = true;
             this.eventSource.close();
@@ -44,7 +43,6 @@ export class WebSocketComponent extends React.Component<IWebSocketProps, {}> {
         if (this.eventSource && this.eventSource.readyState === WebSocket.OPEN) {
             this.eventSource.close();
         }
-
         this.eventSource = new WebSocket(APIClient.url(this.props.url).replace("https", "wss").replace("http", "ws"));
         this.onStateChange(WebSocket.CONNECTING);
 

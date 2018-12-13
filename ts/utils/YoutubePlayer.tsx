@@ -50,6 +50,9 @@ export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps,
         if (prevProps.video !== this.props.video && !!this.props.video) {
             this.player.loadVideoById(this.props.video, 0);
             this.player.seekTo(0, true);
+            if (this.props.paused === true) {
+                this.player.pauseVideo();
+            }
         }
 
         if (prevProps.volume !== this.props.volume) {
@@ -97,7 +100,9 @@ export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps,
         if (!!this.props.video) {
             this.player.loadVideoById(this.props.video, 0);
             this.player.seekTo(0, true);
-            this.player.pauseVideo();
+            if (this.props.paused === true) {
+                this.player.pauseVideo();
+            }
         }
         if (!!this.props.onReady) {
             this.props.onReady();
