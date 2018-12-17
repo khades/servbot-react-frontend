@@ -24,6 +24,8 @@ const APIClient = {
                 throw { state: States.NOTFOUND };
             }
             if (result.status === 401) {
+                localStorage.setItem("redirect", window.location.hash.replace("#", ""));
+                window.location.href = "/oauth/initiate";
                 throw { state: States.NOTAUTHORIZED };
             }
             if (result.status === 403) {

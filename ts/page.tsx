@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Route, RouteComponentProps, withRouter } from "react-router";
 import { Dispatch } from "redux";
 import "../scss/index.scss";
+import AfterAuth from "./afterAuth/component";
 import IndexRedirector from "./indexRedirector";
 import LoadingSpinner from "./loadingSpinner/container";
 import Notifications from "./notifications/container";
@@ -129,6 +130,7 @@ class PageComponent extends React.PureComponent<IPageProps, {}> {
                 <section className="site-container__content">
                     <div className="content">
                         <LoadingSpinner />
+                        <Route exact={true} path={routes.AfterAuth} component={AfterAuth} />
                         <Route exact={true} path={routes.AutoMessage} component={LoadableAutoMessage} />
                         <Route exact={true} path={routes.AutoMessages} component={LoadableAutoMessages} />
                         <Route exact={true} path={routes.Bans} component={LoadableBans} />

@@ -1,6 +1,5 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
-import { Link } from "react-router-dom";
 import "../../scss/modules/_automessage.scss";
 import "../../scss/modules/_channel-bans.scss";
 import ChannelName from "../channelName/container";

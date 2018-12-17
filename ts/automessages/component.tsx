@@ -9,7 +9,6 @@ import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
 import StatusWrapper from "../statusWrapper/container";
-import { concatStrings } from "../utils/concatStrings";
 import ListItem from "./components/listItem";
 import { IAutoMessagesState } from "./reducer";
 
