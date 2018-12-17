@@ -128,7 +128,7 @@ const l10nRU = {
     SUBTRAIN_NOTIFICAION_BODY: "Сообщение об предстоящем окончании сабтрейна",
     SUBTRAIN_NOTIFICATION_DURATION: "Время уведомления об предстоящем окончании сабтрейна со старта сабтрейна",
     SUBTRAIN_PARTICIPANTS: "Участники текущего сабтрейна: {0}",
-    SUBTRAIN_SIZE: "Размер сабтрейна: {0}",
+    SUBTRAIN_SIZE: "Размер сабтрейна: ",
     SUBTRAIN_TITLE: "Сабтрейн на канале {0}",
     TEMPLATES_COMMAND_LIST: "Список команд",
     TEMPLATES_CREATE_GOTO: "Создать новую команду или перейти к существующей",

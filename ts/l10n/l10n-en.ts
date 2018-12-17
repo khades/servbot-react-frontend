@@ -126,7 +126,7 @@ const l10nEN = {
     SUBTRAIN_NOTIFICAION_BODY: "Subtrain expiration notification message",
     SUBTRAIN_NOTIFICATION_DURATION: "Subtrain expiration notification duration",
     SUBTRAIN_PARTICIPANTS: "Current subtrain participants: {0}",
-    SUBTRAIN_SIZE: "Subtrain size: {0}",
+    SUBTRAIN_SIZE: "Subtrain size: ",
     SUBTRAIN_TITLE: "Subtrain on channel {0}",
     TEMPLATES_COMMAND_LIST: "List of commands",
     TEMPLATES_CREATE_GOTO: "Create new command or jump to existing one",
