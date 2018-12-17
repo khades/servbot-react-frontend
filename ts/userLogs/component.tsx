@@ -5,7 +5,7 @@ import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import StatusWrapper from "../statusWrapper/container";
 import { IUserLogsState } from "./reducer";
-import { IUserLogsMessage, MessageType } from "./types";
+import { IUserBansMessage, IUserLogsMessage, MessageType } from "./types";
 
 interface IUserLogsRoute {
     channelID: string;
@@ -110,6 +110,50 @@ export default class UserLogsComponent extends React.PureComponent<IUserLogsProp
             </div>
         </div>
     )
+    private generateSpecialBanType = (item: IUserBansMessage) => {
+        if (item.type === MessageType.TIMEOUT) {
+            return l10n.formatString(l10n.BANS_TIMEOUT, item.duration);
+        }
+        if (item.type === MessageType.UNTIMEOUT) {
+            return l10n.BANS_UNTIMEOUT;
+        }
+        if (item.type === MessageType.UNBAN) {
+            return l10n.BANS_UNBAN;
+        }
+        return l10n.BANS_PERMANENT;
+    }
+
+    private generateSpecialBanDescription = (item: IUserBansMessage) => {
+        if (item.banIssuer === "") {
+            return null;
+        }
+        if (item.reason === "") {
+            return (
+                <div className="user-logs__ban-description">
+                    @{item.banIssuer}
+                </div>
+            );
+        }
+        return (
+            <div className="user-logs__ban-description">
+                @{item.banIssuer} - {l10n.REASON}: {item.reason}"
+            </div>
+        );
+    }
+
+    private renderSpecialBanItem = (item: IUserBansMessage) => (
+        <div className="user-logs__history" key={item.date.toString()}>
+            <div className="user-logs__history__row">
+                <div className="user-logs__history__ban">
+                    <div className="user-logs__ban-reason">
+                        {this.generateSpecialBanType(item)}
+                    </div>
+                    {this.generateSpecialBanDescription(item)}
+                </div>
+                <div className="user-logs__history__date">{new Date(item.date).toLocaleString()}</div>
+            </div>
+        </div>
+    )
 
     private renderBansBlock = () => {
         if (this.props.content && this.props.content.bans) {
@@ -121,7 +165,7 @@ export default class UserLogsComponent extends React.PureComponent<IUserLogsProp
                             {this.renderChannelName()}
                         </div>
                     </hgroup>
-                    {this.props.content.bans.map(this.renderItem)}
+                    {this.props.content.bans.map(this.renderSpecialBanItem)}
                 </div>
             );
         }

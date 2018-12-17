@@ -4,7 +4,7 @@ export interface IUserLogsInfo {
     userID: string;
     knownNicknames?: string[];
     messages?: IUserLogsMessage[];
-    bans?: IUserLogsMessage[];
+    bans?: IUserBansMessage[];
 }
 
 export enum MessageType {
@@ -13,6 +13,15 @@ export enum MessageType {
     UNTIMEOUT = "untimeout",
     BAN = "ban",
     UNBAN = "unban",
+}
+export interface IUserBansMessage {
+    banIssuer: string;
+    banIssuerID: string;
+    duration: number;
+    date: string;
+    reason: string;
+    type: string;
+    user: string;
 }
 
 export interface IUserLogsMessage {
