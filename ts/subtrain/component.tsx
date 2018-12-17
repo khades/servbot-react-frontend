@@ -141,7 +141,7 @@ export default class SubTrainComponent extends React.PureComponent<ISubTrainProp
                     {l10n.formatString(l10n.SUBTRAIN_END_TIME, new Date(content.expirationTime).toLocaleString())}
                 </div>
                 <div>
-                    {l10n.SUBTRAIN_SIZE} {content.currentStreak)}
+                    {l10n.SUBTRAIN_SIZE} {content.currentStreak}
                 </div>
                 <div>
                     {l10n.formatString(l10n.SUBTRAIN_PARTICIPANTS, user)}
