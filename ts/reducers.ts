@@ -1,11 +1,11 @@
 
 import { combineReducers } from "redux";
 
-import { AutoMessagesAction } from "./autoMessages/actions";
-import AutoMessages, { IAutoMessagesState } from "./autoMessages/reducer";
+import { AutoMessagesAction } from "./automessages/actions";
+import AutoMessages, { IAutoMessagesState } from "./automessages/reducer";
 
-import { AutoMessageAction } from "./autoMessage/actions";
-import AutoMessage, { IAutoMessageState } from "./autoMessage/reducer";
+import { AutoMessageAction } from "./automessage/actions";
+import AutoMessage, { IAutoMessageState } from "./automessage/reducer";
 
 import { BansAction } from "./bans/actions";
 import bans, { IBansState } from "./bans/reducer";
@@ -58,8 +58,8 @@ import SongRequests, { ISongRequestsState } from "./songrequests/reducer";
 import { BannedTracksAction } from "./bannedtracks/actions";
 import BannedTracks, { IBannedTracksState } from "./bannedtracks/reducer";
 
-import { StatusWrapperAction } from "./statuswrapper/actions";
-import StatusWrapper, { IStatusWrapperState } from "./statuswrapper/reducer";
+import { StatusWrapperAction } from "./statusWrapper/actions";
+import StatusWrapper, { IStatusWrapperState } from "./statusWrapper/reducer";
 // import { routerReducer } from "react-router-redux";
 
 export interface IStore {

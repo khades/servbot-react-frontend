@@ -69,12 +69,12 @@ const LoadableSubAlerts = Loadable({
 });
 
 const LoadableAutoMessages = Loadable({
-    loader: () => import("./autoMessages/container"),
+    loader: () => import("./automessages/container"),
     loading: () => <StatusWrapper state={States.LOADING} />,
 });
 
 const LoadableAutoMessage = Loadable({
-    loader: () => import("./autoMessage/container"),
+    loader: () => import("./automessage/container"),
     loading: () => <StatusWrapper state={States.LOADING} />,
 });
 
