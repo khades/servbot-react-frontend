@@ -121,7 +121,7 @@ export default class UserLogsComponent extends React.PureComponent<IUserLogsProp
                             {this.renderChannelName()}
                         </div>
                     </hgroup>
-                    {this.props.content.messages.map(this.renderItem)}
+                    {this.props.content.bans.map(this.renderItem)}
                 </div>
             );
         }
