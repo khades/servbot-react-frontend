@@ -37,7 +37,7 @@ export default class Select extends React.PureComponent<ISelectProps, ISelectSta
                 errors={this.props.errors}
                 label={this.props.label}
             >
-                <select defaultValue={this.state.selectedValue} id={this.props.id} onChange={this.setValue}>
+                <select value={this.state.selectedValue} id={this.props.id} onChange={this.setValue}>
                     {this.generateOptions()}
                 </select>
             </ControlGroup>

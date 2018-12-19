@@ -1,60 +1,57 @@
 import * as React from "react";
-import States from "../utils/states";
+import {
+    Transition,
 
-export interface IStatusWrapperProps {
+} from "react-transition-group";
+import time from "../time/time";
+import States from "../utils/states";
+export interface IStatusWrapperOwnProps {
     state: States;
+    children?: any;
+}
+
+export interface IStatusWrappedDispatchedProps {
     setState: (state: States) => void;
 }
 
-export default class StatusWrapperComponent extends React.PureComponent<IStatusWrapperProps, {}> {
+export type IStatusWrapperProps = IStatusWrapperOwnProps & IStatusWrappedDispatchedProps;
 
-    public componentDidMount() {
-        this.props.setState(this.props.state);
+const StatusWrapperComponent = React.memo((props: IStatusWrapperProps) => {
+    props.setState(props.state);
+
+    if (props.state === States.NOTINITIATED) {
+        return null;
     }
 
-    public componentDidUpdate(prevProps: IStatusWrapperProps) {
-        if (prevProps.state !== this.props.state) {
-            this.props.setState(this.props.state);
-        }
+    if (props.state === States.LOADING) {
+        return null;
     }
 
-    public render = () => {
-        if (this.props.state === States.NOTINITIATED) {
-            return null;
-        }
-
-        if (this.props.state === States.LOADING) {
-            return null;
-        }
-
-        if (this.props.state === States.NOTFOUND) {
-            return <div className="error">NOT FOUND</div>;
-        }
-
-        if (this.props.state === States.NOTAUTHORIZED) {
-            return <div className="error">NOTAUTHORIZED</div>;
-        }
-
-        if (this.props.state === States.OFFLINE) {
-            return <div className="error">OFFLINE</div>;
-        }
-
-        if (this.props.state === States.FORBIDDEN) {
-            return <div className="error">FORBIDDEN</div>;
-        }
-        if (this.props.state === States.UPDATING) {
-            return (
-                <React.Fragment>
-                    {this.props.children}
-                </React.Fragment>
-            );
-        }
-
-        return (
-            <React.Fragment>
-                {this.props.children}
-            </React.Fragment>
-        );
+    if (props.state === States.NOTFOUND) {
+        return <div className="error">NOT FOUND</div>;
     }
 
-}
+    if (props.state === States.NOTAUTHORIZED) {
+        return <div className="error">NOTAUTHORIZED</div>;
+    }
+
+    if (props.state === States.OFFLINE) {
+        return <div className="error">OFFLINE</div>;
+    }
+
+    if (props.state === States.FORBIDDEN) {
+        return <div className="error">FORBIDDEN</div>;
+    }
+
+    const transitionStyles = {
+        entered: { opacity: 1 },
+        entering: { opacity: 1 },
+        exited: { opacity: 1 },
+        exiting: { opacity: 0 },
+    };
+
+    return props.children;
+
+});
+
+export default StatusWrapperComponent;

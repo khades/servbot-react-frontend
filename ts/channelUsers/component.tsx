@@ -9,17 +9,21 @@ import StatusWrapper from "../statusWrapper/container";
 import { IUserLogsInfo } from "../userLogs/types";
 import { IChannelUsersState } from "./reducer";
 
-interface IChannelUsersProps extends RouteComponentProps<IChannelRoute>, IChannelUsersState {
+export type IChannelUsersOwnProps = RouteComponentProps<IChannelRoute>;
+
+export interface IChannelUsersDispatchedProps {
     fetchData: (channelID: string, username?: string) => void;
     showNotification: (body: string) => void;
     reset: () => void;
 }
+
+export type IChannelUsersProps = IChannelUsersOwnProps & IChannelUsersState & IChannelUsersDispatchedProps;
+
 export default class ChannelUsersComponent extends React.PureComponent<IChannelUsersProps, {}> {
     private textInput: React.RefObject<HTMLInputElement> = React.createRef();
 
     public componentDidMount() {
         this.props.showNotification(l10n.USER_LIST_TOP_100_SHOWN);
-
         this.props.fetchData(this.props.match.params.channelID);
     }
 

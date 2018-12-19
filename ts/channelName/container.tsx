@@ -2,35 +2,26 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import ChannelNameComponent, { IChannelNameState } from "./component";
-import { IChannelName } from "./reducer";
+import ChannelNameComponent, {
+    IChannelNameDispatchedProps,
+    IChannelNameOwnProps,
+    IChannelNameStateProps,
+} from "./component";
 import * as selectors from "./selectors";
 
-export interface IChannelNameContainerProps {
-    channelID: string;
-}
-
-interface IChannelNameMappedProps {
-    value: IChannelName;
-}
-
-interface IChannelNameDispatchedprops {
-    getChannelName: (id: string) => void;
-}
-
-const mapStateToProps = (state: IStore, props: IChannelNameState): IChannelNameMappedProps => {
+const mapStateToProps = (state: IStore, ownProps: IChannelNameOwnProps): IChannelNameStateProps => {
     return {
-        value: selectors.getChannelName(state.channelName, props.channelID),
+        value: selectors.getChannelName(state.ChannelName, ownProps.channelID),
     };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: IChannelNameOwnProps): IChannelNameDispatchedProps => {
     return {
-        getChannelName: (id: string) => dispatch(actions.get(id)),
+        getChannelName: (channelID: string) => dispatch(actions.get(channelID)),
     };
 };
 
-const ChannelName = connect<IChannelNameMappedProps, IChannelNameDispatchedprops, IChannelNameContainerProps>(
+const ChannelName = connect<IChannelNameStateProps, IChannelNameDispatchedProps, IChannelNameOwnProps>(
     mapStateToProps,
     mapDispatchToProps,
 )(ChannelNameComponent);

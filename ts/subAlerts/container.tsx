@@ -2,14 +2,15 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import SubAlertsComponent from "./component";
+import SubAlertsComponent, { ISubAlertsDispatchProps, ISubAlertsOwnProps } from "./component";
+import { ISubAlertsState } from "./reducer";
 import { ISubAlerts } from "./types";
 
-const mapStateToProps = (state: IStore) => {
-    return state.subAlerts;
+const mapStateToProps = (state: IStore, ownProps: ISubAlertsOwnProps): ISubAlertsState => {
+    return state.SubAlerts;
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: ISubAlertsOwnProps): ISubAlertsDispatchProps => {
     return {
         fetchData: (channelID: string) =>
             dispatch(actions.get(channelID)),
@@ -22,7 +23,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const SubAlerts = connect(
+const SubAlerts = connect<ISubAlertsState, ISubAlertsDispatchProps, ISubAlertsOwnProps>(
     mapStateToProps,
     mapDispatchToProps,
 )(SubAlertsComponent);

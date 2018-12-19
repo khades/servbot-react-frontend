@@ -14,13 +14,17 @@ import StatusWrapper from "../statusWrapper/container";
 import { ISubDay } from "../subday/types";
 import { ISubDaysState } from "./reducer";
 
-export interface ISubDaysProps extends RouteComponentProps<IChannelRoute>, ISubDaysState {
+export type ISubDaysOwnProps = RouteComponentProps<IChannelRoute>;
+
+export interface ISubDaysDispatchProps {
     createNewSubDay: (channelID: string, name: string, subsOnly: boolean) => void;
     fetchData: (channelID: string) => void;
     reset: () => void;
     setHideCreationPanel: () => void;
     setShowCreationPanel: () => void;
 }
+
+export type ISubDaysProps = ISubDaysOwnProps & ISubDaysState & ISubDaysDispatchProps;
 
 interface ISubDaysComponentState {
     allowNonSubs: boolean;

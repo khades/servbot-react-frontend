@@ -9,24 +9,29 @@ import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
 import StatusWrapper from "../statusWrapper/container";
+import HistoryItem from "./components/historyItem";
 import { ITemplateState } from "./reducer";
-import { ITemplateHistory } from "./types";
 
 export interface ITemplateRoute {
     channelID: string;
     commandName: string;
 }
 
-export interface ITemplateProps extends RouteComponentProps<ITemplateRoute>, ITemplateState {
+export type ITemplateOwnProps = RouteComponentProps<ITemplateRoute>;
+
+export interface ITemplateStateProps extends ITemplateState {
+    templates: string[];
+
+}
+export interface ITemplateDispatchProps {
     fetchData: (channelID: string, commandName: string) => void;
     fetchTemplates: (channelID: string) => void;
     saveTemplate: (channelID: string, commandName: string, template: string) => void;
     setTemplateAliasTo: (channelID: string, commandName: string, aliasTo: string) => void;
-    setIsAlias: () => void;
-    setIsNotAlias: () => void;
     reset: () => void;
-    templates: string[];
 }
+
+export type ITemplateProps = ITemplateOwnProps & ITemplateStateProps & ITemplateDispatchProps;
 
 interface ITemplateComponentState {
     aliasTo: string;
@@ -57,6 +62,7 @@ export default class TemplateComponent extends React.PureComponent<ITemplateProp
             this.props.fetchData(this.props.match.params.channelID, this.props.match.params.commandName);
         }
         if (prevProps.template.aliasTo !== this.props.template.aliasTo
+            || prevProps.isAliasTo !== this.props.isAliasTo
             || prevProps.template.template !== this.props.template.template) {
             this.setState({
                 aliasTo: this.props.template.aliasTo,
@@ -102,7 +108,7 @@ export default class TemplateComponent extends React.PureComponent<ITemplateProp
                     {l10n.TEMPLATE_EDIT_HISTORY}
                 </div>
                 <div className="template-show__history">
-                    {this.props.template.history.map(this.renderHistoryItem)}
+                    {this.props.template.history.map((item) => <HistoryItem {...item} key={item.date.toString()} />)}
                 </div>
             </div>
         );
@@ -226,40 +232,24 @@ export default class TemplateComponent extends React.PureComponent<ITemplateProp
         );
     }
 
-    private renderHistoryItem = (item: ITemplateHistory) => (
-        <div className="template-history" key={item.date.toString()}>
-            <div className="template-history__row">
-                <div className="template-history__user">
-                    {item.user}
-                    <div className="template-history__user__tooltip">
-                        {item.user}
-                        #
-                        {item.userID}
-                    </div>
-                </div>
-                <div className="template-history__date">
-                    {new Date(item.date).toLocaleString()}
-                </div>
-            </div>
-            <div className="template-history__body">{item.template}</div>
-        </div>
-
-    )
-
     private renderChannelName = () => {
         return <ChannelName channelID={this.props.match.params.channelID} />;
     }
 
     private saveTemplate = () => {
-        this.props.saveTemplate(this.props.channelID, this.props.commandName, this.state.template);
+        this.props.saveTemplate(this.props.match.params.channelID,
+            this.props.match.params.commandName,
+            this.state.template);
     }
 
     private deleteTemplate = () => {
-        this.props.saveTemplate(this.props.channelID, this.props.commandName, "");
+        this.props.saveTemplate(this.props.match.params.channelID, this.props.match.params.commandName, "");
     }
 
     private saveTemplateAliasTo = () => {
-        this.props.setTemplateAliasTo(this.props.channelID, this.props.commandName, this.state.aliasTo);
+        this.props.setTemplateAliasTo(this.props.match.params.channelID,
+            this.props.match.params.commandName,
+            this.state.aliasTo);
     }
 
     private setIsAlias = () => {

@@ -9,7 +9,7 @@ import { IUserInfoState } from "./reducer";
 export function* getUserInfo(action: IUserInfoGetAction) {
     const state: IStore = yield select();
 
-    if (state.userInfo.state !== States.NOTINITIATED) {
+    if (state.UserInfo.state !== States.NOTINITIATED) {
         return;
     }
 

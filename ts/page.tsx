@@ -1,8 +1,11 @@
 import * as React from "react";
-import { hot } from "react-hot-loader";
+// import { hot } from "react-hot-loader";
 import * as Loadable from "react-loadable";
 import { connect } from "react-redux";
 import { Route, RouteComponentProps, withRouter } from "react-router";
+import {
+    TransitionGroup,
+} from "react-transition-group";
 import { Dispatch } from "redux";
 import "../scss/index.scss";
 import AfterAuth from "./afterAuth/component";
@@ -17,7 +20,6 @@ import * as actions from "./userinfo/actioncreators";
 import { IUserInfoState } from "./userinfo/reducer";
 import * as selectors from "./userinfo/storeselectors";
 import States from "./utils/states";
-
 interface IPageProps extends RouteComponentProps {
     getUserInfo: () => void;
     userInfo: IUserInfoState;
@@ -128,7 +130,7 @@ class PageComponent extends React.PureComponent<IPageProps, {}> {
                 </div>
                 <Notifications />
                 <section className="site-container__content">
-                    <div className="content">
+                    <TransitionGroup className="content">
                         <LoadingSpinner />
                         <Route exact={true} path={routes.AfterAuth} component={AfterAuth} />
                         <Route exact={true} path={routes.AutoMessage} component={LoadableAutoMessage} />
@@ -146,7 +148,7 @@ class PageComponent extends React.PureComponent<IPageProps, {}> {
                         <Route exact={true} path={routes.Subs} component={LoadableSubscriptions} />
                         <Route exact={true} path={routes.SubTrain} component={LoadableSubTrain} />
                         <Route exact={true} path={routes.SongRequests} component={LoadableSongRequests} />
-                    </div>
+                    </TransitionGroup>
                 </section>
             </div>
         );
@@ -173,9 +175,13 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const Page = hot(module)(withRouter(connect<IPageMappedProps, IPageDispatchProps>(
-    mapStateToProps,
-    mapDispatchToProps,
-)(PageComponent)));
+const Page =
+    // hot(module)(
+    withRouter(connect<IPageMappedProps, IPageDispatchProps>(
+        mapStateToProps,
+        mapDispatchToProps,
+    )(PageComponent))
+    // )
+    ;
 
 export default Page;

@@ -2,33 +2,23 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import BannedTracksComponent, { IBannedTracksProps } from "./component";
+import BannedTracksComponent, { IBannedTracksDispatchedProps, IBannedTracksOwnProps} from "./component";
 import { IBannedTracksState } from "./reducer";
 
-export interface IBannedTracksContainerProps {
-    routeChannelID: string;
-}
-
-interface IBannedTracksDispatchedProps {
-    fetchData: (channelID: string, page: number, init: boolean) => void;
-    unbanVideo: (channelID: string, videoID: string, title: string) => void;
-    reset: () => void;
-}
-
-const mapStateToProps = (state: IStore) => {
+const mapStateToProps = (state: IStore, ownProps: IBannedTracksOwnProps): IBannedTracksState => {
     return state.BannedTracks;
 };
 
-const mapDispatchToProps = (dispatch: Dispatch, ownProps: IBannedTracksProps) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: IBannedTracksOwnProps): IBannedTracksDispatchedProps => {
     return {
         fetchData: (channelID: string, page: number, init: boolean) => dispatch(actions.get(channelID, page, init)),
         reset: () => dispatch(actions.reset),
-        unbanVideo: (channelID: string, videoID: string, title: string) =>
-            dispatch(actions.unbanVideo(channelID, videoID, title, ownProps.page)),
+        unbanVideo: (channelID: string, videoID: string, title: string, page: number) =>
+            dispatch(actions.unbanVideo(channelID, videoID, title, page)),
     };
 };
 
-const BannedTracks = connect<IBannedTracksState, IBannedTracksDispatchedProps, IBannedTracksContainerProps>(
+const BannedTracks = connect<IBannedTracksState, IBannedTracksDispatchedProps, IBannedTracksOwnProps>(
     mapStateToProps,
     mapDispatchToProps,
 )(BannedTracksComponent);

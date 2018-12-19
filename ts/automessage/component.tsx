@@ -7,7 +7,8 @@ import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
 import StatusWrapper from "../statusWrapper/container";
 import Form from "./components/form";
-import HistoryItem from "./components/historyItem";
+import AutoMessageHeader from "./components/header";
+import AutoMessageHistory from "./components/history";
 import { IAutoMessageState } from "./reducer";
 import { IAutoMessage } from "./types";
 
@@ -16,13 +17,19 @@ export interface IAutoMessageRoute {
     id: string;
 }
 
-interface IAutoMessageProps extends RouteComponentProps<IAutoMessageRoute>, IAutoMessageState {
+export type IAutoMessageOwnProps = RouteComponentProps<IAutoMessageRoute>;
+
+export interface IAutoMessageDispatchedProps {
     createNew: (channelID: string) => void;
     fetchData: (channelID: string, id: string, init: boolean) => void;
     saveData: (channelID: string, id: string, content: IAutoMessage) => void;
     saveNew: (channelID: string, content: IAutoMessage) => void;
     reset: () => void;
 }
+
+export type IAutoMessageProps = IAutoMessageOwnProps
+    & IAutoMessageState
+    & IAutoMessageDispatchedProps;
 
 export default class AutoMessageComponent extends React.PureComponent<IAutoMessageProps, {}> {
 
@@ -55,7 +62,7 @@ export default class AutoMessageComponent extends React.PureComponent<IAutoMessa
         return (
             <StatusWrapper state={this.props.state}>
                 <div className="automessage">
-                    {this.generateHeader()}
+                    <AutoMessageHeader {...this.props} />
                     <Form
                         id={this.props.id}
                         channelID={this.props.match.params.channelID}
@@ -66,48 +73,9 @@ export default class AutoMessageComponent extends React.PureComponent<IAutoMessa
                         validationError={this.props.validationError}
                     />
 
-                    {this.generateHistory()}
+                    <AutoMessageHistory {...this.props} />
                 </div>
             </StatusWrapper>
         );
-    }
-    private generateHeader = () => {
-        if (!this.props.content || this.props.isNew === true) {
-            return null;
-        }
-        const object = this.props.content;
-        const messageThreshold = object.messageThreshold < 0 ? "0" : object.messageThreshold;
-        const durationThreshold = new Date(object.durationThreshold).toLocaleString();
-        return (
-            <React.Fragment>
-                <div className="automessage__header">
-                    {l10n.AUTOMESSAGES_INFORMATION}
-                </div>
-                <div className="automessage__stats">
-                    <div className="automessage__stats__messagethreshold">
-                        {l10n.formatString(l10n.AUTOMESSAGES_NEXT_MESSAGETHRESHOLD, messageThreshold)}
-                    </div>
-                    <div className="automessage__stats__datethreshold">
-                        {l10n.formatString(l10n.AUTOMESSAGES_NEXT_DURATIONTHRESHOLD, durationThreshold)}
-                    </div>
-                </div>
-            </React.Fragment>
-        );
-    }
-
-    private generateHistory = () => {
-        if (!this.props.content || this.props.isNew === true || !this.props.content.history) {
-            return null;
-        }
-        const object = this.props.content.history;
-        return (
-            <div className="automessage__history">
-                {object.map((item) => <HistoryItem key={item.date} {...item} />)}
-            </div>
-        );
-    }
-
-    private renderChannelName = () => {
-        return <ChannelName channelID={this.props.match.params.channelID} />;
     }
 }

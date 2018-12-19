@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import { IStore } from "../reducers";
-import LoadingSpinnerComponent from "./component";
+import LoadingSpinnerComponent, { ILoadingSpinnerStateProps } from "./component";
 
-const mapStateToProps = (state: IStore) => {
+const mapStateToProps = (state: IStore, ownProps: {}): ILoadingSpinnerStateProps => {
     return { state: state.StatusWrapper.state };
 };
 
-const LoadingSpinner = connect(
+const LoadingSpinner = connect<ILoadingSpinnerStateProps, {}, {}>(
     mapStateToProps,
 )(LoadingSpinnerComponent);
 

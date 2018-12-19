@@ -3,7 +3,11 @@ import "../../../scss/modules/_subalerts-history.scss";
 import { ISubAlertsHistory } from "../types";
 import { isExtended } from "../utils";
 
-const HistoryItemContainer: React.SFC<ISubAlertsHistory> = (props) => {
+interface ISubAlertsHistoryContainer extends ISubAlertsHistory {
+    children?: any;
+}
+
+const HistoryItemContainer = React.memo((props: ISubAlertsHistoryContainer) => {
     return (
         <div className="subalerts-history">
             <div className="subalerts-history__row">
@@ -20,9 +24,9 @@ const HistoryItemContainer: React.SFC<ISubAlertsHistory> = (props) => {
             {props.children}
         </div>
     );
-};
+});
 
-const HistoryItem: React.SFC<ISubAlertsHistory> = (props) => {
+const HistoryItem = React.memo((props: ISubAlertsHistory) => {
     const itemIsExtended = isExtended(props);
     if (itemIsExtended === false) {
         return (
@@ -121,6 +125,6 @@ const HistoryItem: React.SFC<ISubAlertsHistory> = (props) => {
             </div>
         </HistoryItemContainer>
     );
-};
+});
 
 export default HistoryItem;

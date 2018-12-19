@@ -8,34 +8,34 @@ import { AutoMessageAction } from "./automessage/actions";
 import AutoMessage, { IAutoMessageState } from "./automessage/reducer";
 
 import { BansAction } from "./bans/actions";
-import bans, { IBansState } from "./bans/reducer";
+import Bans, { IBansState } from "./bans/reducer";
 
 import { ChannelNameAction } from "./channelName/actions";
-import channelName, { IChannelNameState } from "./channelName/reducer";
+import ChannelName, { IChannelNameState } from "./channelName/reducer";
 
 import { ChannelUsersAction } from "./channelUsers/actions";
-import channelUsers, { IChannelUsersState } from "./channelUsers/reducer";
+import ChannelUsers, { IChannelUsersState } from "./channelUsers/reducer";
 
 import { NotificationsAction } from "./notifications/actions";
-import notifications, { INotification } from "./notifications/reducer";
+import Notifications, { INotification } from "./notifications/reducer";
 
 import { SideMenuAction } from "./sidemenu/actions";
-import sideMenu, { ISideMenuState } from "./sidemenu/reducer";
+import SideMenu, { ISideMenuState } from "./sidemenu/reducer";
 
 import { TemplateAction } from "./template/actions";
-import template, { ITemplateState } from "./template/reducer";
+import Template, { ITemplateState } from "./template/reducer";
 
 import { TemplatesAction } from "./templates/actions";
-import templates, { ITemplatesState } from "./templates/reducer";
+import Templates, { ITemplatesState } from "./templates/reducer";
 
 import { UserInfoAction } from "./userinfo/actions";
-import userInfo, { IUserInfoState } from "./userinfo/reducer";
+import UserInfo, { IUserInfoState } from "./userinfo/reducer";
 
 import { UserLogsAction } from "./userLogs/actions";
-import userLogs, { IUserLogsState } from "./userLogs/reducer";
+import UserLogs, { IUserLogsState } from "./userLogs/reducer";
 
 import { SubAlertsAction } from "./subAlerts/actions";
-import subAlerts, { ISubAlertsState } from "./subAlerts/reducer";
+import SubAlerts, { ISubAlertsState } from "./subAlerts/reducer";
 
 import { SubDayAction } from "./subday/actions";
 import SubDay, { ISubDayState } from "./subday/reducer";
@@ -66,29 +66,29 @@ export interface IStore {
   readonly AutoMessage: IAutoMessageState;
   readonly AutoMessages: IAutoMessagesState;
   readonly BannedTracks: IBannedTracksState;
+  readonly Bans: IBansState;
+  readonly ChannelName: IChannelNameState;
+  readonly ChannelUsers: IChannelUsersState;
   readonly ExternalServices: IExternalServicesState;
+  readonly Notifications: INotification[];
+  readonly SideMenu: ISideMenuState;
   readonly SongRequests: ISongRequestsState;
   readonly StatusWrapper: IStatusWrapperState;
+  readonly SubAlerts: ISubAlertsState;
   readonly SubDay: ISubDayState;
   readonly SubDays: ISubDaysState;
   readonly SubTrain: ISubTrainState;
   readonly Subscriptions: ISubscriptionsState;
-  readonly bans: IBansState;
-  readonly channelName: IChannelNameState;
-  readonly channelUsers: IChannelUsersState;
-  readonly notifications: INotification[];
-  readonly sideMenu: ISideMenuState;
-  readonly subAlerts: ISubAlertsState;
-  readonly template: ITemplateState;
-  readonly templates: ITemplatesState;
-  readonly userInfo: IUserInfoState;
-  readonly userLogs: IUserLogsState;
+  readonly Template: ITemplateState;
+  readonly Templates: ITemplatesState;
+  readonly UserInfo: IUserInfoState;
+  readonly UserLogs: IUserLogsState;
 }
 
 type actions = | AutoMessageAction
   | AutoMessagesAction
-  | BansAction
   | BannedTracksAction
+  | BansAction
   | ChannelNameAction
   | ChannelUsersAction
   | ExternalServicesAction
@@ -110,22 +110,21 @@ export default combineReducers<IStore, actions>({
   AutoMessage,
   AutoMessages,
   BannedTracks,
+  Bans,
+  ChannelName,
+  ChannelUsers,
   ExternalServices,
+  Notifications,
+  SideMenu,
   SongRequests,
   StatusWrapper,
+  SubAlerts,
   SubDay,
   SubDays,
   SubTrain,
   Subscriptions,
-  bans,
-  channelName,
-  channelUsers,
-  notifications,
-  // routerReducer,
-  sideMenu,
-  subAlerts,
-  template,
-  templates,
-  userInfo,
-  userLogs,
+  Template,
+  Templates,
+  UserInfo,
+  UserLogs,
 });

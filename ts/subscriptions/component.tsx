@@ -7,18 +7,21 @@ import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import StatusWrapper from "../statusWrapper/container";
 import time from "../time/time";
-import States from "../utils/states";
 import { WebSocketComponent } from "../websocket/component";
 import { ISubscriptionsState } from "./reducer";
 import { ISubscription } from "./types";
 
-interface ISubscriptionsProps extends RouteComponentProps<IChannelRoute>, ISubscriptionsState {
+export type ISubscriptionsOwnProps = RouteComponentProps<IChannelRoute>;
+
+export interface ISubscriptionsDispatchProps {
     fetchData: (channelID: string, limit?: number) => void;
     fetchDataWithoutRefresh: (channelID: string, limit?: number) => void;
     reset: () => void;
     setBookmark: (channelID: string, id: string) => void;
     setLimit: (channelID: string, limit: number) => void;
 }
+
+type ISubscriptionsProps = ISubscriptionsOwnProps & ISubscriptionsState & ISubscriptionsDispatchProps;
 
 export default class SubscriptionsComponent extends React.PureComponent<ISubscriptionsProps, {}> {
 
@@ -118,9 +121,8 @@ export default class SubscriptionsComponent extends React.PureComponent<ISubscri
             "subscriptions__item--bookmarked": bookmark === item.id,
         });
         const planClass = this.generatePlanClassName(item);
-        const onClickHandler = () => this.props.setBookmark(this.props.match.params.channelID, item.id);
         return (
-            <div className={itemClasses} key={item.id} onClick={onClickHandler}>
+            <div className={itemClasses} key={item.id} onClick={this.onBookMarkClick}>
                 <div className={planClass}>
                     ${item.user} ({item.count})
                     <div className="subscriptions__item__user__tooltip">
@@ -134,11 +136,16 @@ export default class SubscriptionsComponent extends React.PureComponent<ISubscri
             </div>
         );
     }
+
+    private onBookMarkClick = (event: React.MouseEvent<HTMLDivElement>): void => {
+        this.props.setBookmark(this.props.match.params.channelID, event.currentTarget.dataset.id);
+    }
+
     private renderChannelName = () => {
         return <ChannelName channelID={this.props.match.params.channelID} />;
     }
-    private generateSubHeader = () => {
 
+    private generateSubHeader = () => {
         let subs = "0";
         if (!!this.props.content) {
             subs = this.props.content.length.toString();

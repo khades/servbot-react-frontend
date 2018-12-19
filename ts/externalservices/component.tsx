@@ -11,11 +11,16 @@ import States from "../utils/states";
 import { IExternalServicesState } from "./reducer";
 import { IVkGroupInfoForm } from "./types";
 
-interface IExternalServicesProps extends RouteComponentProps<IChannelRoute>, IExternalServicesState {
+export type IExternalServicesOwnProps = RouteComponentProps<IChannelRoute>;
+
+export interface IExternalServicesDispatchedProps {
     fetchData: (channelID: string) => void;
     saveVKInfo: (channelID: string, content: IVkGroupInfoForm) => void;
     reset: () => void;
 }
+export type IExternalServicesProps = IExternalServicesOwnProps
+    & IExternalServicesState
+    & IExternalServicesDispatchedProps;
 
 export default class ExternalServicesComponent extends React.PureComponent<IExternalServicesProps, IVkGroupInfoForm> {
     constructor(props: IExternalServicesProps) {
@@ -50,36 +55,32 @@ export default class ExternalServicesComponent extends React.PureComponent<IExte
                     <div className="external-services__header">
                         {l10n.formatString(l10n.EXTERNAL_SERVICES_TITLE, this.renderChannelName())}
                     </div>
-                    {this.renderVKBlock()}
+                    <div className="external-services__block">
+                        <div className="external-services__subheader">
+                            {l10n.EXTERNAL_SERVICES_VKGROUP}
+                        </div>
+                        <Input
+                            id="groupName"
+                            value={this.state.groupName}
+                            setValue={this.setVKgroup}
+                            label={l10n.EXTERNAL_SERVICES_VKGROUP_NAME}
+                        />
+                        <CheckBox
+                            id="notifyOnChange"
+                            value={this.state.notifyOnChange}
+                            label={l10n.EXTERNAL_SERVICES_VKGROUP_NOTIFY}
+                            setValue={this.setVKNotify}
+                        />
+                        {this.renderVKLastMessage()}
+                        <button type="button" onClick={this.saveVKInfo}>
+                            {l10n.SAVE}
+                        </button>
+                    </div>
                 </div>
             </StatusWrapper>
         );
     }
-    private renderVKBlock = () => {
-        return (
-            <div className="external-services__block">
-                <div className="external-services__subheader">
-                    {l10n.EXTERNAL_SERVICES_VKGROUP}
-                </div>
-                <Input
-                    id="groupName"
-                    value={this.state.groupName}
-                    setValue={this.setVKgroup}
-                    label={l10n.EXTERNAL_SERVICES_VKGROUP_NAME}
-                />
-                <CheckBox
-                    id="notifyOnChange"
-                    value={this.state.notifyOnChange}
-                    label={l10n.EXTERNAL_SERVICES_VKGROUP_NOTIFY}
-                    setValue={this.setVKNotify}
-                />
-                {this.renderVKLastMessage()}
-                <button type="button" onClick={this.saveVKInfo}>
-                    {l10n.SAVE}
-                </button>
-            </div>
-        );
-    }
+
     private renderVKLastMessage = () => {
         if (!this.props.content || !this.props.content.vkGroupInfo.lastMessageBody) {
             return null;
@@ -95,15 +96,19 @@ export default class ExternalServicesComponent extends React.PureComponent<IExte
             </React.Fragment>
         );
     }
+
     private setVKgroup = (groupName: string) => {
         this.setState({ groupName });
     }
+
     private setVKNotify = (notifyOnChange: boolean) => {
         this.setState({ notifyOnChange });
     }
+
     private saveVKInfo = () => {
         this.props.saveVKInfo(this.props.match.params.channelID, this.state);
     }
+
     private renderChannelName = () => {
         return <ChannelName channelID={this.props.match.params.channelID} />;
     }

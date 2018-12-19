@@ -12,11 +12,15 @@ import States from "../utils/states";
 import { ISubTrainState } from "./reducer";
 import { ISubTrainForm } from "./types";
 
-interface ISubTrainProps extends RouteComponentProps<IChannelRoute>, ISubTrainState {
+export type ISubTrainOwnProps =  RouteComponentProps<IChannelRoute>;
+
+export interface ISubTrainDispatchProps  {
     fetchData: (channelID: string) => void;
     saveData: (channelID: string, content: ISubTrainForm) => void;
     reset: () => void;
 }
+
+export type ISubTrainProps = ISubTrainOwnProps & ISubTrainState & ISubTrainDispatchProps;
 
 export default class SubTrainComponent extends React.PureComponent<ISubTrainProps, ISubTrainForm> {
     constructor(props: ISubTrainProps) {

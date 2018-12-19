@@ -3,13 +3,13 @@ import { Dispatch } from "redux";
 import * as selectors from "../channel/storeselectors";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import TemplatesComponent, { ITemplatesProps } from "./component";
+import TemplatesComponent, { ITemplatesDispatchProps, ITemplatesOwnProps, ITemplatesStateProps } from "./component";
 
-const mapStateToProps = (state: IStore, props: ITemplatesProps) => {
-    return Object.assign(selectors.isUserMod(state, props), state.templates);
+const mapStateToProps = (state: IStore, props: ITemplatesOwnProps): ITemplatesStateProps => {
+    return Object.assign({ isModOnChannel: selectors.isUserMod(state, props) }, state.Templates);
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: ITemplatesOwnProps): ITemplatesDispatchProps => {
     return {
         fetchData: (channelID: string) => dispatch(actions.get(channelID)),
         reset: () => dispatch(actions.reset),
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const Templates = connect(
+const Templates = connect<ITemplatesStateProps, ITemplatesDispatchProps, ITemplatesOwnProps>(
     mapStateToProps,
     mapDispatchToProps,
 )(TemplatesComponent);

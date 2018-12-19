@@ -2,14 +2,15 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import AutoMessagesComponent from "./component";
-import {getVisibleAutoMessages} from "./storeselectors";
+import AutoMessagesComponent, { IAutoMessagesDispatchedProps, IAutoMessagesOwnProps } from "./component";
+import { IAutoMessagesState } from "./reducer";
+import { getVisibleAutoMessages } from "./storeselectors";
 
-const mapStateToProps = (state: IStore) => {
+const mapStateToProps = (state: IStore, ownProps: IAutoMessagesOwnProps): IAutoMessagesState => {
     return getVisibleAutoMessages(state);
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: IAutoMessagesOwnProps): IAutoMessagesDispatchedProps => {
     return {
         fetchData: (channelID: string) => dispatch(actions.get(channelID)),
         hideEmpty: () => dispatch(actions.hideEmpty),
@@ -18,7 +19,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const AutoMessages = connect(
+const AutoMessages = connect<IAutoMessagesState, IAutoMessagesDispatchedProps, IAutoMessagesOwnProps>(
     mapStateToProps,
     mapDispatchToProps,
 )(AutoMessagesComponent);

@@ -1,22 +1,23 @@
 
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
-import { Link } from "react-router-dom";
 import "../../scss/modules/_channel-bans.scss";
+import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
-import * as Routes from "../routes/routes";
 import StatusWrapper from "../statusWrapper/container";
+import BanItem from "./components/banItem";
 import { IBansState } from "./reducer";
 import { IBan } from "./types";
-interface IBansRoute {
-    channelID: string;
-}
 
-interface IBansProps extends RouteComponentProps<IBansRoute>, IBansState {
+export type IBansOwnProps = RouteComponentProps<IChannelRoute>;
+
+export interface IBansDispatchedProps {
     fetchData: (channelID: string) => void;
     reset: () => void;
 }
+
+export type IBansProps = IBansOwnProps & IBansState & IBansDispatchedProps;
 
 export default class BansComponent extends React.PureComponent<IBansProps, {}> {
 
@@ -47,32 +48,8 @@ export default class BansComponent extends React.PureComponent<IBansProps, {}> {
         </StatusWrapper>
     )
 
-    private generateBanType = (item: IBan) => {
-        if (item.banLength > 0) {
-            return l10n.formatString(l10n.TIME_SECONDS, item.banLength);
-        }
-        return l10n.BANS_PERMANENT;
-    }
-
     private renderBanItem = (item: IBan) => (
-        <Link
-            to={Routes.ToChannelUserLogs(this.props.match.params.channelID, item.userID)}
-            className="channel-bans__item"
-            key={item.date.toString()}
-        >
-            <div className="channel-bans__header">
-                <div className="channel-bans__name">
-                    @{item.user}
-                </div>
-                <div className="channel-bans__date">
-                    {new Date(item.date).toLocaleString()}
-                </div>
-            </div>
-            <div className="channel-bans__duration">
-                {this.generateBanType(item)}
-            </div>
-
-        </Link>
+        <BanItem {...item} channelID={this.props.match.params.channelID} key={item.date.toString()} />
     )
 
     private renderChannelName = () => {

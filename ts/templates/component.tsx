@@ -1,4 +1,3 @@
-import classnames from "classnames";
 import * as React from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import "../../scss/modules/_mustache.scss";
@@ -10,11 +9,17 @@ import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import * as Routes from "../routes/routes";
 import StatusWrapper from "../statusWrapper/container";
+import TemplateItem from "./components/item";
 import { IMustacheTemplate, ITemplatesState } from "./reducer";
 
-export interface ITemplatesProps extends RouteComponentProps<IChannelRoute>, ITemplatesState {
-    fetchData: (channelID: string, username?: string) => void;
+export type ITemplatesOwnProps = RouteComponentProps<IChannelRoute>;
+
+export interface ITemplatesStateProps extends ITemplatesState {
     isModOnChannel: boolean;
+}
+
+export interface ITemplatesDispatchProps {
+    fetchData: (channelID: string) => void;
     setShowAll: () => void;
     setShowNonEmpty: () => void;
     setShowGoTo: () => void;
@@ -22,6 +27,8 @@ export interface ITemplatesProps extends RouteComponentProps<IChannelRoute>, ITe
     setGoTo: (value: string) => void;
     reset: () => void;
 }
+
+export type ITemplatesProps = ITemplatesOwnProps & ITemplatesStateProps & ITemplatesDispatchProps;
 
 export default class TemplatesComponent extends React.PureComponent<ITemplatesProps, {}> {
     public componentDidMount() {
@@ -160,89 +167,12 @@ export default class TemplatesComponent extends React.PureComponent<ITemplatesPr
         );
     }
 
-    private generateTemplate = (template: IMustacheTemplate) => {
-        if (template.commandName === "") {
-            return null;
-        }
-        const isAlias = template.aliasTo !== "" && template.aliasTo !== template.commandName;
-        const isEmpty = template.template === "";
-        const templateclassnames = classnames({
-            "template-item": true,
-            "template-item--alias": isAlias,
-        });
-        return (
-            <Link
-                key={template.commandName}
-                className={templateclassnames}
-                to={Routes.ToTemplate(this.props.match.params.channelID, template.commandName)}
-            >
-                <div className="template-item__header">
-                    <div className="template-item__name">
-                        {template.commandName}
-                    </div>
-                    <div className="template-item__type">
-                        {this.generateTemplateType(isEmpty, isAlias)}
-                    </div>
-                </div>
-                {this.generateTemplateBody(template, isEmpty, isAlias)}
-            </Link>
-        );
-    }
-
-    private generateTemplateBody = (template: IMustacheTemplate, isEmpty: boolean, isAlias: boolean) => {
-        if (isEmpty === true) {
-            return null;
-        }
-        return (
-            <div className="template-item__body">
-                {isAlias === true && template.aliasTo}
-                {isAlias !== true && template.mustacheBody.map(this.generateMustachedTemplateBody)}
-            </div>
-        );
-    }
-    private generateMustachedTemplateBody = (line: string, index: number) => {
-        if (line.startsWith("|mustache|")) {
-            const rawLine = line.replace("|mustache|", "");
-            if (rawLine.startsWith("\/")) {
-                return (
-                    <span key={index} className="mustache mustache__end-if" />
-                );
-            }
-            if (rawLine.startsWith("\#")) {
-                return (
-                    <span key={index} className="mustache mustache__start-if-true">
-                        {rawLine.replace("\#", "")}
-                    </span>
-                );
-            }
-            if (rawLine.startsWith("\^")) {
-                return (
-                    <span key={index} className="mustache mustache__start-if-false">
-                        {rawLine.replace("\^", "")}
-                    </span>
-                );
-            }
-            return (
-                <span key={index} className="mustache mustache__variable">{rawLine}</span>
-            );
-        } else {
-            return (
-                <React.Fragment key={index}>
-                    {line.trim()}
-                </React.Fragment>
-            );
-        }
-    }
-
-    private generateTemplateType = (isEmpty: boolean, isAlias: boolean) => {
-        if (isEmpty === true) {
-            return l10n.DELETED;
-        }
-        if (isAlias === true) {
-            return l10n.ALIAS;
-        }
-        return l10n.COMMAND;
-    }
+    private generateTemplate = (template: IMustacheTemplate) => (
+        <TemplateItem
+            template={template}
+            channelID={this.props.match.params.channelID}
+        />
+    )
 
     private renderChannelName = () => {
         return <ChannelName channelID={this.props.match.params.channelID} />;

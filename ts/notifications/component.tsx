@@ -7,11 +7,16 @@ import {
 import "../../scss/modules/_notifications.scss";
 import { INotification } from "./reducer";
 
-export interface INotificationsProps {
-    autohideNotifications: () => void;
+export interface INotificationsStoreProps {
     notifications: INotification[];
+}
+
+export interface INotificationsDispatchedProps {
+    autohideNotifications: () => void;
     hideNotification: (id: string) => void;
 }
+
+export type INotificationsProps = INotificationsStoreProps & INotificationsDispatchedProps;
 
 export default class NotificationsComponent extends React.PureComponent<INotificationsProps, {}> {
     public componentDidMount() {

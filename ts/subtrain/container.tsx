@@ -2,14 +2,15 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import SubTrainComponent from "./component";
+import SubTrainComponent, { ISubTrainDispatchProps, ISubTrainOwnProps } from "./component";
+import { ISubTrainState } from "./reducer";
 import { ISubTrainForm } from "./types";
 
-const mapStateToProps = (state: IStore) => {
+const mapStateToProps = (state: IStore, ownProps: ISubTrainOwnProps): ISubTrainState => {
     return state.SubTrain;
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: ISubTrainOwnProps): ISubTrainDispatchProps => {
     return {
         fetchData: (channelID: string) => dispatch(actions.get(channelID)),
         reset: () => dispatch(actions.reset),
@@ -17,7 +18,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const SubTrain = connect(
+const SubTrain = connect<ISubTrainState, ISubTrainDispatchProps, ISubTrainOwnProps>(
     mapStateToProps,
     mapDispatchToProps,
 )(SubTrainComponent);

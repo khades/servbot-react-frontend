@@ -1,17 +1,16 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { IStore } from "../reducers";
 import States from "../utils/states";
 import * as actions from "./actioncreators";
-import StatusWrapperComponent from "./component";
+import StatusWrapperComponent, { IStatusWrappedDispatchedProps, IStatusWrapperOwnProps } from "./component";
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: IStatusWrapperOwnProps): IStatusWrappedDispatchedProps => {
     return {
         setState: (state: States) => dispatch(actions.setState(state)),
     };
 };
 
-const StatusWrapper = connect(
+const StatusWrapper = connect<{}, IStatusWrappedDispatchedProps, IStatusWrapperOwnProps>(
     null,
     mapDispatchToProps,
 )(StatusWrapperComponent);

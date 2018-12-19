@@ -4,13 +4,18 @@ import { IStore } from "../reducers";
 import * as templatesActions from "../templates/actioncreators";
 import { getActiveTemplates } from "../templates/storeselectors";
 import * as actions from "./actioncreators";
-import TemplateComponent, { ITemplateProps } from "./component";
+import TemplateComponent, {
+    ITemplateDispatchProps,
+    ITemplateOwnProps,
+    ITemplateProps,
+    ITemplateStateProps,
+} from "./component";
 
-const mapStateToProps = (state: IStore, props: ITemplateProps) => {
-    return Object.assign({}, state.template, { templates: getActiveTemplates(state) });
+const mapStateToProps = (state: IStore, ownProps: ITemplateProps): ITemplateStateProps => {
+    return Object.assign({}, state.Template, { templates: getActiveTemplates(state) });
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: ITemplateProps): ITemplateDispatchProps => {
     return {
         fetchData: (channelID: string, commandName: string) =>
             dispatch(actions.get(channelID, commandName)),
@@ -23,7 +28,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const Template = connect(
+const Template = connect<ITemplateStateProps, ITemplateDispatchProps, ITemplateOwnProps>(
     mapStateToProps,
     mapDispatchToProps,
 )(TemplateComponent);

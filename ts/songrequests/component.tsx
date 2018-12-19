@@ -17,7 +17,9 @@ import { SongRequestItemComponent } from "./components/songRequestItem";
 import { ISongRequestsState, songRequestsPanels } from "./reducer";
 import { ISongRequest, ISongRequestsSettings } from "./types";
 
-export interface ISongRequestsProps extends RouteComponentProps<IChannelRoute>, ISongRequestsState {
+export type ISongRequestsOwnProps = RouteComponentProps<IChannelRoute>;
+
+export interface ISongRequestsDispatchedProps {
     fetchData: (channelID: string) => void;
     updateData: (channelID: string) => void;
     saveVolume: (channelID: string, volume: number) => void;
@@ -34,6 +36,8 @@ export interface ISongRequestsProps extends RouteComponentProps<IChannelRoute>, 
     saveSettings: (channelID: string, content: ISongRequestsSettings) => void;
     reset: () => void;
 }
+
+export type ISongRequestsProps = ISongRequestsOwnProps & ISongRequestsState & ISongRequestsDispatchedProps;
 
 interface ISongRequestsComponentState {
     paused: boolean;
@@ -298,13 +302,15 @@ export default class SongRequestsComponent extends React.PureComponent<
     private saveVolume = () => {
         this.props.saveVolume(this.props.match.params.channelID, this.state.volume);
     }
+
     private skipCurrentVideo = () => {
         if (!!this.props.currentTrack) {
             this.props.skipVideo(this.props.match.params.channelID, this.props.currentTrack.videoID);
         }
     }
-    private saveSettings = (content: ISongRequestsSettings) => {
-        this.props.saveSettings(this.props.match.params.channelID, content);
+
+    private saveSettings = (settings: ISongRequestsSettings) => {
+        this.props.saveSettings(this.props.match.params.channelID, settings);
     }
 
     private renderChannelName = () => {

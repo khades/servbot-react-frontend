@@ -11,12 +11,16 @@ import SubAlertForm from "./components/subAlertForm";
 import { ISubAlertsState } from "./reducer";
 import { ISubAlerts, ISubAlertsHistory } from "./types";
 
-export interface ISubAlertsProps extends RouteComponentProps<IChannelRoute>, ISubAlertsState {
+export type ISubAlertsOwnProps = RouteComponentProps<IChannelRoute>;
+
+export interface ISubAlertsDispatchProps {
     fetchData: (channelID: string) => void;
     setExtended: () => void;
     reset: () => void;
     save: (channelID: string, content: ISubAlerts) => void;
 }
+
+export type ISubAlertsProps = ISubAlertsOwnProps & ISubAlertsState & ISubAlertsDispatchProps;
 
 export default class SubAlertsComponent extends React.PureComponent<ISubAlertsProps, ISubAlerts> {
 

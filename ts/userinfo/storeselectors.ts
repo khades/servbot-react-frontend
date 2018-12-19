@@ -1,4 +1,4 @@
 import { IStore } from "../reducers";
 import { IUserInfoState } from "./reducer";
 
-export const getUserInfo = (state: IStore): IUserInfoState => state.userInfo;
+export const getUserInfo = (state: IStore): IUserInfoState => state.UserInfo;

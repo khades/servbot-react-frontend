@@ -3,13 +3,14 @@ import { Dispatch } from "redux";
 import * as notificationActions from "../notifications/actioncreators";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import ChannelUsersComponent from "./component";
+import ChannelUsersComponent, { IChannelUsersDispatchedProps, IChannelUsersOwnProps } from "./component";
+import { IChannelUsersState } from "./reducer";
 
-const mapStateToProps = (state: IStore) => {
-    return state.channelUsers;
+const mapStateToProps = (state: IStore, ownProps: IChannelUsersOwnProps): IChannelUsersState => {
+    return state.ChannelUsers;
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: IChannelUsersOwnProps): IChannelUsersDispatchedProps => {
     return {
         fetchData: (channelID: string, username?: string) => dispatch(actions.get(channelID, username)),
         reset: () => dispatch(actions.reset),
@@ -17,7 +18,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const ChannelUsers = connect(
+const ChannelUsers = connect<IChannelUsersState, IChannelUsersDispatchedProps, IChannelUsersOwnProps>(
     mapStateToProps,
     mapDispatchToProps,
 )(ChannelUsersComponent);

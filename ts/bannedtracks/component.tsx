@@ -4,16 +4,21 @@ import Paginator from "../basicComponents/paginator";
 import ChannelName from "../channelName/container";
 import { l10n } from "../l10n/l10n";
 import StatusWrapper from "../statusWrapper/container";
-import { BannedTrackComponent } from "./components/BannedTrack";
+import BannedTrackComponent from "./components/BannedTrack";
 import { IBannedTracksState } from "./reducer";
 import { IVideoLibraryItem } from "./types";
 
-export interface IBannedTracksProps extends IBannedTracksState {
-    fetchData: (channelID: string, page: number, init: boolean) => void;
-    unbanVideo: (channelID: string, videoID: string, title: string) => void;
+export interface IBannedTracksOwnProps {
     routeChannelID: string;
+}
+
+export interface IBannedTracksDispatchedProps {
+    fetchData: (channelID: string, page: number, init: boolean) => void;
+    unbanVideo: (channelID: string, videoID: string, title: string, page: number) => void;
     reset: () => void;
 }
+
+export type IBannedTracksProps = IBannedTracksOwnProps & IBannedTracksState & IBannedTracksDispatchedProps;
 
 export default class BannedTracksComponent extends React.PureComponent<IBannedTracksProps, {}> {
 
@@ -60,20 +65,13 @@ export default class BannedTracksComponent extends React.PureComponent<IBannedTr
         );
     }
 
-    private setPage = (page: number) => {
-        this.props.fetchData(this.props.routeChannelID, page, false);
-    }
-
-    private unbanVideo = (videoID: string, title: string) => {
-        this.props.unbanVideo(this.props.routeChannelID, videoID, title);
-    }
-
     private renderItems = () => {
         if (!this.props.content) {
             return;
         }
         return this.props.content.items.map(this.renderItem);
     }
+
     private renderItem = (item: IVideoLibraryItem) => {
         return (
             <BannedTrackComponent
@@ -84,7 +82,12 @@ export default class BannedTracksComponent extends React.PureComponent<IBannedTr
             />
         );
     }
-    private renderChannelName = () => {
-        return <ChannelName channelID={this.props.routeChannelID} />;
+
+    private setPage = (page: number) => {
+        this.props.fetchData(this.props.routeChannelID, page, false);
+    }
+
+    private unbanVideo = (videoID: string, title: string) => {
+        this.props.unbanVideo(this.props.routeChannelID, videoID, title, this.props.page);
     }
 }

@@ -3,14 +3,15 @@ import { Dispatch } from "redux";
 import * as notificationActions from "../notifications/actioncreators";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import SongRequestsComponent from "./component";
+import SongRequestsComponent, { ISongRequestsDispatchedProps, ISongRequestsOwnProps } from "./component";
+import { ISongRequestsState } from "./reducer";
 import { ISongRequestsSettings } from "./types";
 
-const mapStateToProps = (state: IStore) => {
+const mapStateToProps = (state: IStore, ownProps: ISongRequestsOwnProps): ISongRequestsState => {
     return state.SongRequests;
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: ISongRequestsOwnProps): ISongRequestsDispatchedProps => {
     return {
         addNotification: (body: string) => dispatch(notificationActions.add(body)),
         bubbleVideoToSecond: (channelID: string, videoID: string) =>
@@ -38,7 +39,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const SongRequests = connect(
+const SongRequests = connect<ISongRequestsState, ISongRequestsDispatchedProps, ISongRequestsOwnProps>(
     mapStateToProps,
     mapDispatchToProps,
 )(SongRequestsComponent);

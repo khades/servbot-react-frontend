@@ -7,15 +7,19 @@ import StatusWrapper from "../statusWrapper/container";
 import { IUserLogsState } from "./reducer";
 import { IUserBansMessage, IUserLogsMessage, MessageType } from "./types";
 
-interface IUserLogsRoute {
+export interface IUserLogsRoute {
     channelID: string;
     userID: string;
 }
 
-interface IUserLogsProps extends RouteComponentProps<IUserLogsRoute>, IUserLogsState {
+export type IUserLogsOwnProps =  RouteComponentProps<IUserLogsRoute>;
+
+export interface IUserLogsDispatchProps  {
     fetchData: (channelID: string, userID: string) => void;
     reset: () => void;
 }
+
+export type IUserLogsProps = IUserLogsOwnProps & IUserLogsState & IUserLogsDispatchProps;
 
 export default class UserLogsComponent extends React.PureComponent<IUserLogsProps, {}> {
     public componentDidMount() {

@@ -2,14 +2,16 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { IStore } from "../reducers";
 import * as actions from "./actioncreators";
-import ExternalServicesComponent from "./component";
+import ExternalServicesComponent, { IExternalServicesDispatchedProps, IExternalServicesOwnProps } from "./component";
+import { IExternalServicesState } from "./reducer";
 import { IVkGroupInfoForm } from "./types";
 
-const mapStateToProps = (state: IStore) => {
+const mapStateToProps = (state: IStore, ownProps: IExternalServicesOwnProps): IExternalServicesState => {
     return state.ExternalServices;
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: IExternalServicesOwnProps)
+    : IExternalServicesDispatchedProps => {
     return {
         fetchData: (channelID: string) => dispatch(actions.get(channelID)),
         reset: () => dispatch(actions.reset),
@@ -17,7 +19,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const ExternalServices = connect(
+const ExternalServices = connect<IExternalServicesState, IExternalServicesDispatchedProps, IExternalServicesOwnProps>(
     mapStateToProps,
     mapDispatchToProps,
 )(ExternalServicesComponent);

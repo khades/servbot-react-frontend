@@ -3,11 +3,17 @@ import * as React from "react";
 import "../../scss/modules/_headerContent.scss";
 import { SideMenuStates } from "../sidemenu/reducer";
 
-export interface IHeaderProps {
+export interface IHeaderStateProps {
     sideMenuState: SideMenuStates;
+
+}
+
+export interface IHeaderDispatchProps {
     hideMenu: () => void;
     showMenu: () => void;
 }
+
+export type IHeaderProps = IHeaderStateProps & IHeaderDispatchProps;
 
 export default class HeaderComponent extends React.PureComponent<IHeaderProps, {}> {
     public render() {

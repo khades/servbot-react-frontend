@@ -41,44 +41,39 @@ interface IListItemState {
     name: string;
 }
 
-export default class ListItem extends React.PureComponent<IAutoMessageWithHistory, IListItemState> {
-
-    constructor(props: IAutoMessageWithHistory) {
-        super(props);
-        this.state = generateState(props);
+function propsAreEqual(prevProps: IAutoMessageWithHistory, props: IAutoMessageWithHistory) {
+    if (prevProps.channelID !== props.channelID
+        || props.id !== prevProps.id
+        || props.history.length !== prevProps.history.length) {
+        return false;
     }
-
-    public componentDidUpdate(prevProps: IAutoMessageWithHistory) {
-        if (prevProps.channelID !== this.props.channelID
-            || this.props.id !== prevProps.id
-            || this.props.history.length !== prevProps.history.length) {
-            this.setState(generateState(this.props));
-        }
-    }
-
-    public render() {
-        const item = this.state;
-        return (
-            <Link
-                to={Routes.ToAutoMessage(this.props.channelID, this.props.id)}
-                className="automessages-item"
-            >
-                <div className="automessages-item__header">
-                    <div className="automessages-item__message">
-                        {item.name}
-                    </div>
-                    {item.isEmpty === true && <div className="automessages-item__status">{l10n.DELETED}</div>}
-                </div>
-                <div className="automessages-item__right-container">
-                    <div className="automessages-item__message-limit">
-                        {item.messageLimit}
-                    </div>
-                    < div className="automessages-item__duration-limit" >
-                        {item.durationLimit}
-                    </div>
-                    {item.hasGame === true && <div className="automessages-item__game">{this.props.game}</div>}
-                </div>
-            </Link>
-        );
-    }
+    return true;
 }
+
+const ListItem = React.memo((props: IAutoMessageWithHistory) => {
+    const item = generateState(props);
+    return (
+        <Link
+            to={Routes.ToAutoMessage(props.channelID, props.id)}
+            className="automessages-item"
+        >
+            <div className="automessages-item__header">
+                <div className="automessages-item__message">
+                    {item.name}
+                </div>
+                {item.isEmpty === true && <div className="automessages-item__status">{l10n.DELETED}</div>}
+            </div>
+            <div className="automessages-item__right-container">
+                <div className="automessages-item__message-limit">
+                    {item.messageLimit}
+                </div>
+                < div className="automessages-item__duration-limit" >
+                    {item.durationLimit}
+                </div>
+                {item.hasGame === true && <div className="automessages-item__game">{props.game}</div>}
+            </div>
+        </Link>
+    );
+}, propsAreEqual);
+
+export default ListItem;

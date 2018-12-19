@@ -7,7 +7,7 @@ import * as API from "./api";
 export function* getChannelName(action: IChannelNameGetAction) {
     const state: IStore = yield select();
 
-    if (state.channelName[action.payload.channelNameID]) {
+    if (state.ChannelName[action.payload.channelNameID]) {
         return;
     }
     yield put(actions.loading(action.payload.channelNameID));

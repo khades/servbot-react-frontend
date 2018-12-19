@@ -2,7 +2,6 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import "../../scss/modules/_automessages.scss";
-import "../../scss/modules/_channel-bans.scss";
 import { IAutoMessageWithHistory } from "../automessage/types";
 import IChannelRoute from "../channel/types";
 import ChannelName from "../channelName/container";
@@ -12,12 +11,16 @@ import StatusWrapper from "../statusWrapper/container";
 import ListItem from "./components/listItem";
 import { IAutoMessagesState } from "./reducer";
 
-interface IAutoMessagesProps extends RouteComponentProps<IChannelRoute>, IAutoMessagesState {
+export type IAutoMessagesOwnProps = RouteComponentProps<IChannelRoute>;
+
+export interface IAutoMessagesDispatchedProps {
     fetchData: (channelID: string) => void;
     showEmpty: () => void;
     hideEmpty: () => void;
     reset: () => void;
 }
+
+export type IAutoMessagesProps = IAutoMessagesOwnProps & IAutoMessagesState & IAutoMessagesDispatchedProps;
 
 export default class AutoMessagesComponent extends React.PureComponent<IAutoMessagesProps, {}> {
 
@@ -29,11 +32,6 @@ export default class AutoMessagesComponent extends React.PureComponent<IAutoMess
         if (prevProps.match.params.channelID !== this.props.match.params.channelID) {
             this.props.fetchData(this.props.match.params.channelID);
         }
-        // TODO: Find better way
-        // const title = concatStrings(l10n.formatString(l10n.AUTOMESSAGES_TITLE, this.renderChannelName()));
-        // if (document.title !== title) {
-        //     document.title = title;
-        // }
     }
 
     public componentWillUnmount() {

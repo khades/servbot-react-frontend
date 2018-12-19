@@ -2,23 +2,17 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import * as selectors from "../channel/storeselectors";
 import { IStore } from "../reducers";
-import StartPageComponent, { IStartPageProps } from "./component";
+import StartPageComponent, { IStartPageOwnProps, IStartPageStateProps } from "./component";
 
-const mapStateToProps = (state: IStore, props: IStartPageProps) => {
+const mapStateToProps = (state: IStore, ownProps: IStartPageOwnProps): IStartPageStateProps => {
     return {
-        isModOnChannel: selectors.isUserMod(state, props),
-        userInfo: state.userInfo,
+        isModOnChannel: selectors.isUserMod(state, ownProps),
+        userInfo: state.UserInfo,
     };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
-    return {
-    };
-};
-
-const StartPage = connect(
+const StartPage = connect<IStartPageStateProps, IStartPageOwnProps>(
     mapStateToProps,
-    mapDispatchToProps,
 )(StartPageComponent);
 
 export default StartPage;
