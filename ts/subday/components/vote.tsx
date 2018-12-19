@@ -6,10 +6,9 @@ interface IVoteProps extends ISubDayVote {
     subsOnly: boolean;
 }
 const vote = React.memo((item: IVoteProps) => {
-    const content = this.props.content;
     const userClasses = classnames({
         "subday__vote-user": true,
-        "subday__vote-user--sub": content.subsOnly === false && item.isSub === true,
+        "subday__vote-user--sub": item.subsOnly === false && item.isSub === true,
     });
     return (
         <div className="subday__vote">

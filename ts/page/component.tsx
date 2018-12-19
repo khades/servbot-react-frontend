@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as Loadable from "react-loadable";
 import { Route, RouteComponentProps } from "react-router";
+import "../../scss/index.scss";
 import AfterAuth from "../afterAuth/component";
 import IndexRedirector from "../indexRedirector/container";
 import LoadingSpinner from "../loadingSpinner/container";
 import Notifications from "../notifications/container";
 import * as routes from "../routes/routes";
-import "../scss/index.scss";
 import SideMenu from "../sidemenu/container";
 import StatusWrapper from "../statusWrapper/container";
 import { IUserInfoState } from "../userinfo/reducer";
