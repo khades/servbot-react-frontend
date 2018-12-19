@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import States from "../utils/states";
 
 export function getChannelName(channelID: string): Promise<string> {

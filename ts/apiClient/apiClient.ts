@@ -1,5 +1,5 @@
-import config from "../config";
-import States from "./utils/states";
+import config from "../../config";
+import States from "../utils/states";
 
 export function url(uri: string): string {
     if (uri.startsWith("http")) {

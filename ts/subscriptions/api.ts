@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { ISubscription } from "./types";
 
 export function getSubscriptions(channelID: string, limit?: number): Promise<ISubscription[]> {

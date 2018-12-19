@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { ISubDayFull } from "./types";
 
 export function getSubDay(channelID: string, id: string): Promise<ISubDayFull> {

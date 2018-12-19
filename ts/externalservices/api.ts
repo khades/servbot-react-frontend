@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { IChannelExternalServices, IVkGroupInfoForm } from "./types";
 
 export function getChannelExternalServices(channelID: string): Promise<IChannelExternalServices> {

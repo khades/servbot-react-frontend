@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { IAutoMessageWithHistory } from "../automessage/types";
 
 export function getAutoMessages(channelID: string): Promise<IAutoMessageWithHistory[]> {

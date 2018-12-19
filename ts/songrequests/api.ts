@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { ISongRequests, ISongRequestsSettings } from "./types";
 
 export function getSongRequests(channelID: string): Promise<ISongRequests> {

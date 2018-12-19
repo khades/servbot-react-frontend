@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { ISubDay } from "../subday/types";
 import { ISubDayCreationResult } from "./types";
 

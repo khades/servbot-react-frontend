@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { ISubTrain, ISubTrainForm } from "./types";
 
 export function saveSubTrain(channelID: string, content: ISubTrainForm) {

@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { IUserInfo } from "./types";
 
 export function getUserInfo(): Promise<IUserInfo> {

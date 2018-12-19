@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { IBannedTracks } from "./types";
 
 export function unbanVideo(channelID: string, videoID: string) {

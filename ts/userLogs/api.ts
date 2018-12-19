@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { IUserLogsInfo } from "./types";
 
 export function getUserLogs(channelID: string, userID: string): Promise<IUserLogsInfo> {

@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { IBan } from "./types";
 
 export function getBans(channelID: string): Promise<IBan[]> {

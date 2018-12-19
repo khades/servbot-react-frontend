@@ -1,5 +1,5 @@
 import * as React from "react";
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 
 export interface IWebSocketProps {
     url: string;

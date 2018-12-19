@@ -1,6 +1,6 @@
 import { fetchMock } from "fetch-mock";
 import APIClient from "./apiclient";
-import States from "./utils/states";
+import States from "../utils/states";
 
 describe("API auth", () => {
     afterEach(() => {

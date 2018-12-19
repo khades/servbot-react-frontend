@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { ITemplate } from "../template/types";
 
 export function getTemplates(channelID: string): Promise<ITemplate[]> {

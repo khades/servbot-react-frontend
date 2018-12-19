@@ -28,7 +28,7 @@ const store = createStore(
 sagaMiddleware.run(sagas.rootSaga);
 
 const LoadablePageContainer = Loadable({
-    loader: () => import("./page"),
+    loader: () => import("./page/container"),
     loading: () => <div />,
 });
 

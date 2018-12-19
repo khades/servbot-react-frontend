@@ -1,4 +1,4 @@
-import APIClient from "../apiclient";
+import APIClient from "../apiClient/apiClient";
 import { ISubAlerts, ISubAlertsWithHistory } from "./types";
 
 export function getSubAlerts(channelID: string): Promise<ISubAlertsWithHistory> {
