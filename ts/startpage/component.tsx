@@ -8,6 +8,7 @@ import { l10n, setLang } from "../l10n/l10n";
 import * as routes from "../routes/routes";
 import StatusWrapper from "../statusWrapper/container";
 import { IUserInfoState } from "../userinfo/reducer";
+import States from "../utils/states";
 
 export type IStartPageOwnProps = RouteComponentProps<IChannelRoute>;
 
@@ -27,17 +28,22 @@ const langSelectProps: ISelectProps = {
 };
 
 const StartPageComponent = React.memo((props: IStartPageProps) => {
-    const modChannels = props.userInfo.modChannels.filter(
-        (channel) => channel.channelID !== props.match.params.channelID,
-    ).map((item) =>
-        (
-            <Link
-                key={item.channelID}
-                to={routes.toChannelIndex(item.channelID)}
-            >
-                {item.channel}
-            </Link>
-        ));
+    let modChannels = null;
+
+    if (props.userInfo.state === States.READY && !!props.userInfo.modChannels) {
+        modChannels = props.userInfo.modChannels.filter(
+            (channel) => channel.channelID !== props.match.params.channelID,
+        ).map((item) =>
+            (
+                <Link
+                    key={item.channelID}
+                    to={routes.toChannelIndex(item.channelID)}
+                >
+                    {item.channel}
+                </Link>
+            ));
+
+    }
 
     const channelName = <ChannelName channelID={props.match.params.channelID} />;
 
