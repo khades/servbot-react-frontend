@@ -44,7 +44,7 @@ export function* pickWinner(action: ISubDayPickWinnerAction) {
 
     yield put(actions.loading(channelID, id));
     yield call(API.pickSubDayWinner, channelID, id);
-    yield call(getSubDay, actions.get(channelID, id));
+    yield call(getSubDay, actions.get(channelID, id, false));
 
 }
 
@@ -54,7 +54,7 @@ export function* pickSubWinner(action: ISubDayPickSubWinnerAction) {
 
     yield put(actions.loading(channelID, id));
     yield call(API.pickSubDaySubWinner, channelID, id);
-    yield call(getSubDay, actions.get(channelID, id));
+    yield call(getSubDay, actions.get(channelID, id, false));
 }
 
 export function* pickNonSubWinner(action: ISubDayPickNonSubWinnerAction) {
@@ -63,7 +63,7 @@ export function* pickNonSubWinner(action: ISubDayPickNonSubWinnerAction) {
 
     yield put(actions.loading(channelID, id));
     yield call(API.pickSubDayNonSubWinner, channelID, id);
-    yield call(getSubDay, actions.get(channelID, id));
+    yield call(getSubDay, actions.get(channelID, id, false));
 }
 
 export function* close(action: ISubDayCloseAction) {
@@ -72,7 +72,7 @@ export function* close(action: ISubDayCloseAction) {
 
     yield put(actions.loading(channelID, id));
     yield call(API.closeSubDay, channelID, id);
-    yield call(getSubDay, actions.get(channelID, id));
+    yield call(getSubDay, actions.get(channelID, id, false));
 }
 
 export function* pullWinner(action: ISubDayPullWinnerAction) {
@@ -82,7 +82,7 @@ export function* pullWinner(action: ISubDayPullWinnerAction) {
 
     yield put(actions.loading(channelID, id));
     yield call(API.pullSubDayWinner, channelID, id, user);
-    yield call(getSubDay, actions.get(channelID, id));
+    yield call(getSubDay, actions.get(channelID, id, false));
 }
 
 export default function* saga() {
