@@ -39,11 +39,18 @@
         animation-duration: 0.3s;
         //opacity: 0;
         //visibility: hidden;
-        & + * > * {
-            animation-name: loading-shown;
-            animation-duration: 0.1s; 
-        }
+        // & + * > * {
+        //     animation-name: loading-shown;
+        //     animation-duration: 0.1s; 
+        // }
     }
+
+
+    &+*>* {
+        animation-name: loading-shown;
+        animation-duration: 0.1s;
+    }
+
 
     animation-fill-mode: forwards;
     opacity: 0;
@@ -60,6 +67,7 @@
 
     padding-top: 2.85em; // padding-bottom: 6.5em;
     padding-left: 0em;
+
     @include breakpoint($desktop-width) {
         padding-top: 0px;
         padding-left: 15em;

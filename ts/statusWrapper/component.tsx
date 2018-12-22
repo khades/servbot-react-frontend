@@ -43,13 +43,6 @@ const StatusWrapperComponent = React.memo((props: IStatusWrapperProps) => {
         return <div className="error">FORBIDDEN</div>;
     }
 
-    const transitionStyles = {
-        entered: { opacity: 1 },
-        entering: { opacity: 1 },
-        exited: { opacity: 1 },
-        exiting: { opacity: 0 },
-    };
-
     return props.children;
 
 });
