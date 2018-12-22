@@ -30,6 +30,8 @@ const reducer = (state: ISubDayState = initialState, action: SubDayAction): ISub
                 id: action.payload.id,
                 state: States.READY,
             });
+        case actiontypes.UPDATING:
+            return Object.assign({}, state, { state: States.UPDATING });
         case actiontypes.NOTAUTHORIZED:
             return Object.assign({}, state, {
                 channelID: action.payload.channelID,

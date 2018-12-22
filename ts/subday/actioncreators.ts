@@ -64,3 +64,7 @@ export const pullWinner = (channelID: string, id: string, user: string): actions
 export const reset: actions.ISubDayResetAction = {
     type: actions.actiontypes.RESET,
 };
+
+export const updating: actions.ISubDayUpdatingAction = {
+    type: actions.actiontypes.UPDATING,
+};

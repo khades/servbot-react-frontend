@@ -42,7 +42,7 @@ export function* pickWinner(action: ISubDayPickWinnerAction) {
     const channelID = action.payload.channelID;
     const id = action.payload.id;
 
-    yield put(actions.loading(channelID, id));
+    yield put(actions.updating);
     yield call(API.pickSubDayWinner, channelID, id);
     yield call(getSubDay, actions.get(channelID, id, false));
 
@@ -52,7 +52,7 @@ export function* pickSubWinner(action: ISubDayPickSubWinnerAction) {
     const channelID = action.payload.channelID;
     const id = action.payload.id;
 
-    yield put(actions.loading(channelID, id));
+    yield put(actions.updating);
     yield call(API.pickSubDaySubWinner, channelID, id);
     yield call(getSubDay, actions.get(channelID, id, false));
 }
@@ -61,7 +61,7 @@ export function* pickNonSubWinner(action: ISubDayPickNonSubWinnerAction) {
     const channelID = action.payload.channelID;
     const id = action.payload.id;
 
-    yield put(actions.loading(channelID, id));
+    yield put(actions.updating);
     yield call(API.pickSubDayNonSubWinner, channelID, id);
     yield call(getSubDay, actions.get(channelID, id, false));
 }
@@ -70,7 +70,7 @@ export function* close(action: ISubDayCloseAction) {
     const channelID = action.payload.channelID;
     const id = action.payload.id;
 
-    yield put(actions.loading(channelID, id));
+    yield put(actions.updating);
     yield call(API.closeSubDay, channelID, id);
     yield call(getSubDay, actions.get(channelID, id, false));
 }
@@ -80,7 +80,7 @@ export function* pullWinner(action: ISubDayPullWinnerAction) {
     const id = action.payload.id;
     const user = action.payload.user;
 
-    yield put(actions.loading(channelID, id));
+    yield put(actions.updating);
     yield call(API.pullSubDayWinner, channelID, id, user);
     yield call(getSubDay, actions.get(channelID, id, false));
 }

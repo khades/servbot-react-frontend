@@ -42,6 +42,18 @@ const ModeratorPanel = React.memo((props: ISubDayProps) => {
         </React.Fragment>
     ) : null;
 
+    const buttons = content.isActive === true ? (
+        <div className="subday__buttons">
+            <button type="button" onClick={pickSubDayWinner}>
+                {l10n.SUBDAY_RANDOMIZE_WINNER}
+            </button>
+            {extraButtons}
+            <button type="button" onClick={closeSubDay}>
+                {l10n.SUBDAY_CLOSE}
+            </button>
+        </div>
+    ) : null;
+
     return (
         <React.Fragment>
             <div className="subday__subheader">
@@ -50,15 +62,7 @@ const ModeratorPanel = React.memo((props: ISubDayProps) => {
             <div className="subday__winners">
                 {winners}
             </div>
-            <div className="subday__buttons">
-                <button type="button" onClick={pickSubDayWinner}>
-                    {l10n.SUBDAY_RANDOMIZE_WINNER}
-                </button>
-                {extraButtons}
-                <button type="button" onClick={closeSubDay}>
-                    {l10n.SUBDAY_CLOSE}
-                </button>
-            </div>
+            {buttons}
         </React.Fragment>
     );
 });

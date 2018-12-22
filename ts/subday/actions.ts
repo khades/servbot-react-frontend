@@ -8,6 +8,7 @@ export enum actiontypes {
     NOTFOUND = "SUBDAY/NOTFOUND",
     FORBIDDEN = "SUBDAY/FORBIDDEN",
     OFFLINE = "SUBDAY/OFFLINE",
+    UPDATING = "SUBDAY/UPDATING",
     PICKWINNER = "SUBDAY/PICKWINNER",
     PICKSUBWINNER = "SUBDAY/PICKSUBWINNER",
     PICKNONSUBWINNER = "SUBDAY/PICKNONSUBWINNER",
@@ -118,6 +119,10 @@ export interface ISubDayResetAction {
     type: actiontypes.RESET;
 }
 
+export interface ISubDayUpdatingAction {
+    type: actiontypes.UPDATING;
+}
+
 export type SubDayAction = ISubDayGetAction
     | ISubDayLoadingAction
     | ISubDayReadyAction
@@ -130,4 +135,5 @@ export type SubDayAction = ISubDayGetAction
     | ISubDayPickNonSubWinnerAction
     | ISubDayPullWinnerAction
     | ISubDayCloseAction
+    | ISubDayUpdatingAction
     | ISubDayResetAction;
