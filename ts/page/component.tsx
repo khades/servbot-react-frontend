@@ -122,8 +122,8 @@ export default class PageComponent extends React.PureComponent<IPageProps, {}> {
                 </div>
                 <Notifications />
                 <section className="site-container__content">
+                    <LoadingSpinner />
                     <div className="content">
-                        <LoadingSpinner />
                         <Route exact={true} path={routes.AfterAuth} component={AfterAuth} />
                         <Route exact={true} path={routes.AutoMessage} component={LoadableAutoMessage} />
                         <Route exact={true} path={routes.AutoMessages} component={LoadableAutoMessages} />
