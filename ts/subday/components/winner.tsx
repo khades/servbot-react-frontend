@@ -19,8 +19,7 @@ const winner = React.memo((content: IWinnerProps) => {
 
     if (content.isActive === true) {
         const remove = () => {
-            const id = this.props.content.id;
-            this.props.pullSubDayWinner(this.props.channelID, id, content.user);
+            content.remove(content.user);
         };
         button = (
             <button type="button" data-id={content.user} onClick={remove}>
