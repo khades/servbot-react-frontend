@@ -39,7 +39,7 @@
         animation-duration: 0.3s;
         //opacity: 0;
         //visibility: hidden;
-        & + * {
+        & + * > * {
             animation-name: loading-shown;
             animation-duration: 0.1s; 
         }
@@ -58,6 +58,13 @@
     bottom: 0;
     z-index: 1000;
 
+    padding-top: 2.85em; // padding-bottom: 6.5em;
+    padding-left: 0em;
+    @include breakpoint($desktop-width) {
+        padding-top: 0px;
+        padding-left: 15em;
+    }
+
     &__backdrop {
         display: inline-flex;
         border-radius: 5px;
@@ -66,7 +73,6 @@
         background: rgba(0, 0, 0, 0.5);
         justify-content: center;
         align-self: center;
-
     }
 
     &__spinner {
