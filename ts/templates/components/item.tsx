@@ -8,6 +8,7 @@ import { IMustacheTemplate } from "../reducer";
 
 export interface ITemplatesItem {
     template: IMustacheTemplate;
+    isMod: boolean;
     channelID: string;
 }
 
@@ -73,18 +74,16 @@ const TemplateItem = React.memo((props: ITemplatesItem) => {
     if (template.commandName === "") {
         return null;
     }
+
     const isAlias = template.aliasTo !== "" && template.aliasTo !== template.commandName;
     const isEmpty = template.template === "";
     const templateclassnames = classnames({
         "template-item": true,
         "template-item--alias": isAlias,
     });
-    return (
-        <Link
-            key={template.commandName}
-            className={templateclassnames}
-            to={Routes.ToTemplate(props.channelID, template.commandName)}
-        >
+
+    const content = (
+        <React.Fragment>
             <div className="template-item__header">
                 <div className="template-item__name">
                     {template.commandName}
@@ -94,6 +93,24 @@ const TemplateItem = React.memo((props: ITemplatesItem) => {
                 </div>
             </div>
             {generateTemplateBody(template, isEmpty, isAlias)}
+        </React.Fragment>
+    );
+
+    if (props.isMod === false) {
+        return (
+            <div className={templateclassnames}>
+                {content}
+            </div>
+        );
+    }
+
+    return (
+        <Link
+            key={template.commandName}
+            className={templateclassnames}
+            to={Routes.ToTemplate(props.channelID, template.commandName)}
+        >
+            {content}
         </Link>
     );
 });

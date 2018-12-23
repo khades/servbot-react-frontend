@@ -169,6 +169,7 @@ export default class TemplatesComponent extends React.PureComponent<ITemplatesPr
 
     private generateTemplate = (template: IMustacheTemplate) => (
         <TemplateItem
+            isMod={this.props.isModOnChannel}
             template={template}
             channelID={this.props.match.params.channelID}
         />
