@@ -2,6 +2,7 @@ import { ITemplate } from "../template/types";
 import States from "../utils/states";
 import { actiontypes, TemplatesAction } from "./actions";
 import { processMustacheTemplate } from "./utils";
+import Templates from "./container";
 
 export interface ITemplatesState {
     channelID: string;
@@ -43,13 +44,17 @@ const reducer = (state: ITemplatesState = initialState, action: TemplatesAction)
                 state: States.OFFLINE,
             };
         case actiontypes.READY:
+            let templates: IMustacheTemplate[] = [];
+            if (!!action.payload.content) {
+                templates = action.payload.content.map(processMustacheTemplate);
+            }
             return {
                 channelID: action.payload.channelID,
                 goToValue: "",
                 showGoTo: false,
                 showNonEmpty: true,
                 state: States.READY,
-                templates: action.payload.content.map(processMustacheTemplate),
+                templates,
             };
         case actiontypes.NOTAUTHORIZED:
             return {
