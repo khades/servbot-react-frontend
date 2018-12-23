@@ -1,8 +1,8 @@
 import LocalizedStrings from "react-localization";
+import config from "../../config";
 import l10nEN from "./l10n-en";
 import l10nRU from "./l10n-ru";
 import { IL10nStrings } from "./l10nString";
-import { config } from "../../config";
 
 export const l10n: IL10nStrings = new LocalizedStrings({
     "en-US": l10nEN,
