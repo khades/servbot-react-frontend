@@ -272,6 +272,7 @@ export default class SongRequestsComponent extends React.PureComponent<
     private renderItem = (item: ISongRequest) => {
         return (
             <SongRequestItemComponent
+                isMod={this.props.content.isMod}
                 channelID={this.props.match.params.channelID}
                 setVideoAsChannelRestricted={this.props.setVideoAsChannelRestricted}
                 bubbleVideoUp={this.props.bubbleVideoUp}

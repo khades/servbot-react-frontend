@@ -7,6 +7,7 @@ import { ISongRequest } from "./../types";
 export interface ISongRequestItemProp {
     item: ISongRequest;
     channelID: string;
+    isMod: boolean;
     setVideoAsChannelRestricted: (channelID: string, videoID: string) => void;
     bubbleVideoUp: (channelID: string, videoID: string) => void;
     bubbleVideoToSecond: (channelID: string, videoID: string) => void;
@@ -35,18 +36,20 @@ export class SongRequestItemComponent extends React.PureComponent<ISongRequestIt
     }
 
     private renderButtons = () => {
-        return (
-            <div className="songrequests-item__buttons">
-                {this.renderPlayNowButton()}
-                {this.renderPlayNextButton()}
-                <button type="button" onClick={this.skipVideo} className="songrequests-item__delete-button">
-                    {l10n.SONGREQUESTS_DELETE}
-                </button>
-                <button type="button" onClick={this.banVideo} className="songrequests-item__ban-button">
-                    {l10n.SONGREQUESTS_BAN}
-                </button>
-            </div>
-        );
+        if (this.props.isMod === true) {
+            return (
+                <div className="songrequests-item__buttons">
+                    {this.renderPlayNowButton()}
+                    {this.renderPlayNextButton()}
+                    <button type="button" onClick={this.skipVideo} className="songrequests-item__delete-button">
+                        {l10n.SONGREQUESTS_DELETE}
+                    </button>
+                    <button type="button" onClick={this.banVideo} className="songrequests-item__ban-button">
+                        {l10n.SONGREQUESTS_BAN}
+                    </button>
+                </div>
+            );
+        }
     }
 
     private renderPlayNowButton = () => {
