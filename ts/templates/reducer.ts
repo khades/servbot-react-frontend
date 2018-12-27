@@ -2,7 +2,6 @@ import { ITemplate } from "../template/types";
 import States from "../utils/states";
 import { actiontypes, TemplatesAction } from "./actions";
 import { processMustacheTemplate } from "./utils";
-import Templates from "./container";
 
 export interface ITemplatesState {
     channelID: string;
