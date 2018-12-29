@@ -17,9 +17,7 @@ export type ErrorStates = States.NOTFOUND | States.NOTAUTHORIZED | States.FORBID
 const APIClient = {
     // input?: Request | string, init?: RequestInit
     simpleauth: (input: RequestInfo, init?: RequestInit): Promise<Response> => {
-        return fetch(input, init).catch((error) => {
-            throw { state: States.OFFLINE };
-        }).then((result: Response) => {
+        return fetch(input, init).then((result: Response): Response => {
             if (result.status === 404) {
                 throw { state: States.NOTFOUND };
             }
@@ -31,7 +29,9 @@ const APIClient = {
             if (result.status === 403) {
                 throw { state: States.FORBIDDEN };
             }
+
             if (result.status === 422 || result.status === 406) {
+                // @ts-ignore
                 return result.json().then((value) => {
                     throw {
                         content: value,
@@ -40,6 +40,8 @@ const APIClient = {
                 });
             }
             return result;
+        }, () => {
+            throw { state: States.OFFLINE };
         });
     },
 

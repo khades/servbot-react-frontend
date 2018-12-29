@@ -1,4 +1,5 @@
 @import '../utils/index';
+
 * {
   box-sizing: border-box;
 }
@@ -9,9 +10,11 @@ h3 {
   & {
     margin: 0;
   }
+
   &+* {
     margin-bottom: 1.5rem !important;
   }
+
   *+& {
     margin-top: 1.5rem !important;
   }
@@ -23,22 +26,26 @@ hgroup {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+
   @include breakpoint($desktop-width) {
     flex-direction: row;
     justify-content: space-between;
   }
+
   >*+* {
     margin-top: $element-spacing;
+
     @include breakpoint($desktop-width) {
       margin-top: 0px;
     }
   }
+
   &+* {
     margin-top: $container-spacing !important;
   }
+
   .hgroup-info {
     margin-left: $element-spacing;
     cursor: pointer;
-    @include prepend-svg("../../svg/info-large.svg", 1.6rem, black);
   }
 }

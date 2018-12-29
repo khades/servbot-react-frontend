@@ -4,38 +4,44 @@ import * as Loadable from "react-loadable";
 import { Provider } from "react-redux";
 import { HashRouter } from "react-router-dom";
 import { applyMiddleware, createStore } from "redux";
-// import { createLogger } from "redux-logger";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
-import reducers from "./reducers";
-import * as sagas from "./sagas";
 import time from "./time/time";
+// import { createLogger } from "redux-logger";
 
 time.getTime();
-document.title = "Servbot";
+Promise.all([import("./reducers"), import("./sagas")]).then((input) => {
+    const reducers = input[0];
+    const sagas = input[1];
+    // const reduxlogger = createLogger({
+    //     // ...options
+    // });
 
-// const reduxlogger = createLogger({
-//     // ...options
-// });
+    const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
+    const store = createStore(
+        reducers.default,
+        applyMiddleware(
+            // reduxlogger,
+            sagaMiddleware),
+    );
 
-const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
-const store = createStore(
-    reducers,
-    applyMiddleware(
-        // reduxlogger,
-        sagaMiddleware),
-);
+    sagaMiddleware.run(sagas.default);
 
-sagaMiddleware.run(sagas.rootSaga);
+    const LoadablePageContainer = Loadable({
+        loader: () => import("./page/container"),
+        loading: () => <div />,
+    });
 
-const LoadablePageContainer = Loadable({
-    loader: () => import("./page/container"),
-    loading: () => <div />,
+    ReactDOM.render((
+        <Provider store={store}>
+            <HashRouter>
+                <LoadablePageContainer />
+            </HashRouter>
+        </Provider>
+    ), document.getElementById("main"));
+
 });
 
-ReactDOM.render((
-    <Provider store={store}>
-        <HashRouter>
-            <LoadablePageContainer />
-        </HashRouter>
-    </Provider>
-), document.getElementById("main"));
+// import reducers from "./reducers";
+//  import sagas from "./sagas";
+
+document.title = "Servbot";

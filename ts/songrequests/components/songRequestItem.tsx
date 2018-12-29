@@ -19,12 +19,15 @@ export class SongRequestItemComponent extends React.PureComponent<ISongRequestIt
         return (
             <div className="songrequests-item">
                 <div className="songrequests-item__header">
-                    <a className="songrequests-item__title">
+                    <a
+                        target="_blank"
+                        href={`https://youtu.be/${this.props.item.videoID}`}
+                        className="songrequests-item__title"
+                    >
                         <span className="songrequests-item__order">{this.props.item.order}</span>
                         <span>
-                            {this.props.item.title}
-                            [{formatDuration(this.props.item.length / 1000000000)}]
-                    </span>
+                            {this.props.item.title} [{formatDuration(this.props.item.length / 1000000000)}]
+                        </span>
                     </a>
                     <div className="songrequests-item__user">
                         @{this.props.item.user}

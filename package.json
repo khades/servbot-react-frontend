@@ -4,11 +4,6 @@
   "description": "",
   "main": "gulpfile.js",
   "devDependencies": {
-    "@babel/core": "^7.0.1",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.0.0",
     "@types/classnames": "^2.2.6",
     "@types/fetch-mock": "^6.0.3",
     "@types/jest": "^23.3.2",
@@ -21,19 +16,15 @@
     "@types/react-transition-group": "^2.0.14",
     "@types/redux-mock-store": "^1.0.0",
     "@types/reselect": "^2.2.0",
+    "@types/youtube": "^0.0.35",
     "autoprefixer": "^9.1.5",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "babel-loader": "^8.0.2",
-    "babel-plugin-redux-saga": "^1.0.0-beta.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "bourbon": "^5.1.0",
     "breakpoint-sass": "^2.7.1",
     "classnames": "^2.2.6",
     "css-loader": "^1.0.0",
     "cssnano": "^4.1.0",
     "fetch-mock": "^7.0.0-alpha.6",
-    "fork-ts-checker-webpack-plugin": "^0.4.10",
+    "fork-ts-checker-webpack-plugin": "^0.5.2",
     "jest": "^23.6.0",
     "node-fetch": "^2.2.0",
     "node-sass": "^4.9.3",
@@ -64,7 +55,8 @@
     "typescript": "^3.0.3",
     "webpack": "^4.19.0",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8"
+    "webpack-dev-server": "^3.1.8",
+    "youtube": "^0.1.0"
   },
   "scripts": {
     "build-dev": "node ./node_modules/webpack/bin/webpack.js",
@@ -75,7 +67,8 @@
   "author": "khades",
   "license": "ISC",
   "dependencies": {
-    "@types/youtube": "^0.0.35",
-    "youtube": "^0.1.0"
+    "@types/redux": "^3.6.0",
+    "happypack": "^5.0.0",
+    "ts-loader": "^5.3.2"
   }
 }

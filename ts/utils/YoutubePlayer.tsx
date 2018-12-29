@@ -72,15 +72,16 @@ export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps,
         const scripts = document.getElementsByTagName("script");
         const hasYoutubeIFrameAPI = Array.prototype.some.call(
             scripts,
-            (item) => item.src === "https://www.youtube.com/player_api");
+            (item: any) => item.src === "https://www.youtube.com/player_api");
         if (hasYoutubeIFrameAPI === true) {
             this.createPlayer();
-
         } else {
             const tag = document.createElement("script");
             tag.src = "https://www.youtube.com/player_api";
+
             const firstScriptTag = scripts[0];
             firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+             // @ts-ignore
             window.onYouTubePlayerAPIReady = this.createPlayer;
         }
     }
@@ -110,6 +111,7 @@ export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps,
 
     }
     private createPlayer = () => {
+        // @ts-ignore
         this.player = new YT.Player(this.playerRef.current, {
             events: {
                 onError: this.onError,

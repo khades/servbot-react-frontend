@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+var HappyPack = require('happypack');
 
 module.exports = {
     entry: {
@@ -9,21 +11,19 @@ module.exports = {
         l10n: [
             "./ts/l10n/l10n.ts"
         ],
-        // redux: [
-        //     "./ts/reducers.ts", "./ts/sagas.ts"
-        // ]
     },
     devServer: {
         contentBase: "./dist"
     },
     output: {
+        pathinfo: false,
         filename: '[name].js',
         chunkFilename: '[name].bundle.js',
         path: __dirname + "/dist"
     },
     mode: 'development',
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    devtool: "inline-source-map",
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
@@ -33,8 +33,6 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.scss$/,
-                // use: ExtractTextPlugin.extract({
-                //    fallback: "style-loader",
                 use: [{
                         loader: 'style-loader'
                     },
@@ -52,17 +50,35 @@ module.exports = {
             },
             {
                 test: /\.tsx?$/,
-                loader: "babel-loader",
-                options: {
-                    // This is a feature of `babel-loader` for webpack (not Babel itself).
-                    // It enables caching results in ./node_modules/.cache/babel-loader/
-                    // directory for faster rebuilds.
-                    cacheDirectory: true,
-                },
+                use: [{
+                    loader: 'happypack/loader?id=ts'
+                }],
+                exclude: /node_modules/,
             }
         ]
     },
-    //  plugins: [
-    //     new ForkTsCheckerWebpackPlugin({tslint: true})
-    //  ]
+    plugins: [
+        new HappyPack({
+            id: 'ts',
+            threads: 6,
+            loaders: [
+                {
+                    path: 'ts-loader',
+                    query: { 
+                        happyPackMode: true,
+                        experimentalWatchApi: true,
+                        onlyCompileBundledFiles: true,
+                        transpileOnly: true,
+                    }
+                }
+            ]
+        }),
+        new ForkTsCheckerWebpackPlugin({
+            tslint: true,
+            options: {
+                onlyCompileBundledFiles: true,
+                checkSyntacticErrors: true
+            }
+        })
+    ]
 };

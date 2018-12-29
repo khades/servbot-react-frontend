@@ -30,8 +30,9 @@ export class WebSocketComponent extends React.Component<IWebSocketProps, {}> {
             this.eventSource.close();
         }
     }
+     // @ts-ignore
     public render() {
-        return null;
+        return (null);
     }
     private onStateChange = (state: number) => {
         if (this.props.onStateChange) {

@@ -17,7 +17,7 @@ import templates from "./templates/saga";
 import userInfo from "./userinfo/saga";
 import userLogs from "./userLogs/saga";
 
-export function* rootSaga() {
+export default function* rootSaga() {
     yield all([
         fork(autoMessage),
         fork(autoMessages),
