@@ -9,7 +9,7 @@ describe("ChannelName sagas", () => {
     it("Should do proper steps if store is empty", () => {
         const saga = getChannelName(actions.get("1"));
         expect(saga.next().value).toEqual(select());
-        expect(saga.next({ channelName: {} }).value).toEqual(put(actions.loading("1")));
+        expect(saga.next({ ChannelName: {} }).value).toEqual(put(actions.loading("1")));
         expect(saga.next().value).toEqual(call(API.getChannelName, "1"));
         expect(saga.next("world").value).toEqual(put(actions.ready("1", "world")));
         expect(saga.next().done).toBe(true);
@@ -18,7 +18,7 @@ describe("ChannelName sagas", () => {
     it("Should do proper steps if store is empty with error", () => {
         const saga = getChannelName(actions.get("1"));
         expect(saga.next().value).toEqual(select());
-        expect(saga.next({ channelName: {} }).value).toEqual(put(actions.loading("1")));
+        expect(saga.next({ ChannelName: {} }).value).toEqual(put(actions.loading("1")));
         expect(saga.next().value).toEqual(call(API.getChannelName, "1"));
         expect(saga.throw("Testing Error").value).toEqual(put(actions.notFound("1")));
         expect(saga.next().done).toBe(true);
@@ -28,7 +28,7 @@ describe("ChannelName sagas", () => {
         const saga = getChannelName(actions.get("1"));
         expect(saga.next().value).toEqual(select());
         expect(saga.next({
-            channelName:
+            ChannelName:
                 { 1: { state: States.READY, value: "something" } },
         }).done).toBe(true);
     });
@@ -37,7 +37,7 @@ describe("ChannelName sagas", () => {
         const saga = getChannelName(actions.get("1"));
         expect(saga.next().value).toEqual(select());
         expect(saga.next({
-            channelName: { 1: { state: States.NOTFOUND } },
+            ChannelName: { 1: { state: States.NOTFOUND } },
         }).done).toBe(true);
     });
 });

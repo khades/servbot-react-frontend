@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Side Menu should render properly for mods 1`] = `
+exports[`Start Page should render properly for mods 1`] = `
 <div
   className="start-page"
 >
@@ -54,9 +54,9 @@ exports[`Side Menu should render properly for mods 1`] = `
         Localisation of app
       </label>
       <select
-        defaultValue="en-US"
         id="language"
         onChange={[Function]}
+        value="en-US"
       >
         <option
           value="en-US"
@@ -74,7 +74,7 @@ exports[`Side Menu should render properly for mods 1`] = `
 </div>
 `;
 
-exports[`Side Menu should render properly for non-mods 1`] = `
+exports[`Start Page should render properly for non-mods 1`] = `
 <div
   className="start-page"
 >
@@ -128,9 +128,9 @@ exports[`Side Menu should render properly for non-mods 1`] = `
         Localisation of app
       </label>
       <select
-        defaultValue="en-US"
         id="language"
         onChange={[Function]}
+        value="en-US"
       >
         <option
           value="en-US"

@@ -8,7 +8,9 @@ import * as Routes from "../routes/routes";
 import States from "../utils/states";
 import StartPageComponent, { IStartPageProps } from "./component";
 
-describe("Side Menu", () => {
+jest.mock("../../config");
+
+describe("Start Page", () => {
     const storeState: IChannelNameState = {
         2342342: {
             name: "User",
@@ -19,10 +21,11 @@ describe("Side Menu", () => {
             state: States.READY,
         },
     };
-    const store = configureStore()({ channelName: storeState });
+    const store = configureStore()({ ChannelName: storeState });
     it("should render properly for mods", () => {
         const props: IStartPageProps = {
             isModOnChannel: true,
+            // @ts-ignore
             match: {
                 params: {
                     channelID: "354",
@@ -60,6 +63,7 @@ describe("Side Menu", () => {
     it("should render properly for non-mods", () => {
         const props: IStartPageProps = {
             isModOnChannel: false,
+            // @ts-ignore
             match: {
                 params: {
                     channelID: "354",

@@ -11,7 +11,7 @@ describe("Username sagas", () => {
         const saga = getUserInfo(actions.get());
         expect(saga.next().value).toEqual(select());
         expect(saga.next({
-            userInfo: {
+            UserInfo: {
                 state: States.NOTINITIATED,
             },
         }).value).toEqual(put(actions.loading()));
@@ -33,7 +33,7 @@ describe("Username sagas", () => {
 
         expect(saga.next().value).toEqual(select());
         expect(saga.next({
-            userInfo: {
+            UserInfo: {
                 state: States.READY,
             },
         }).done).toBe(true);
@@ -44,7 +44,7 @@ describe("Username sagas", () => {
 
         expect(saga.next().value).toEqual(select());
         expect(saga.next({
-            userInfo: {
+            UserInfo: {
                 state: States.LOADING,
             },
         }).done).toBe(true);
@@ -55,7 +55,7 @@ describe("Username sagas", () => {
 
         expect(saga.next().value).toEqual(select());
         expect(saga.next({
-            userInfo: {
+            UserInfo: {
                 state: States.NOTAUTHORIZED,
             },
         }).done).toBe(true);
@@ -65,7 +65,7 @@ describe("Username sagas", () => {
         const saga = getUserInfo(actions.get());
         expect(saga.next().value).toEqual(select());
         expect(saga.next({
-            userInfo: {
+            UserInfo: {
                 state: States.NOTINITIATED,
             },
         }).value).toEqual(put(actions.loading()));
@@ -78,7 +78,7 @@ describe("Username sagas", () => {
         const saga = getUserInfo(actions.get());
         expect(saga.next().value).toEqual(select());
         expect(saga.next({
-            userInfo: {
+            UserInfo: {
                 state: States.NOTINITIATED,
             },
         }).value).toEqual(put(actions.loading()));

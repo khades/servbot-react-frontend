@@ -126,6 +126,7 @@ export default class SubTrainComponent extends React.PureComponent<ISubTrainProp
         this.props.saveData(this.props.match.params.channelID, this.state);
     }
     private setStateValue = (value: any, id: keyof ISubTrainForm) => {
+        // THIS is NOT fine
         // @ts-ignore
         this.setState({ [id]: value });
     }

@@ -81,7 +81,8 @@ export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps,
 
             const firstScriptTag = scripts[0];
             firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-             // @ts-ignore
+            // THIS is fine
+            // @ts-ignore
             window.onYouTubePlayerAPIReady = this.createPlayer;
         }
     }
@@ -111,6 +112,7 @@ export class YoutubePlayerComponent extends React.Component<IYoutubePlayerProps,
 
     }
     private createPlayer = () => {
+        // THIS is fine
         // @ts-ignore
         this.player = new YT.Player(this.playerRef.current, {
             events: {

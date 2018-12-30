@@ -3,11 +3,17 @@ import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router";
 import { create } from "react-test-renderer";
 import configureStore from "redux-mock-store";
+import IChannelRoute from "../channel/types";
 import { IChannelNameState } from "../channelName/reducer";
 import * as Routes from "../routes/routes";
+import {IUserModInfo} from "../userinfo/types";
+import getMockRouterProps from "../utils/getMockRouterProps";
 import States from "../utils/states";
-import SideMenu, { ISideMenuProps } from "./component";
+import SideMenu from "./component";
 import { SideMenuStates } from "./reducer";
+
+jest.mock("../../config");
+
 describe("Side Menu", () => {
     const storeState: IChannelNameState = {
         2342342: {
@@ -19,28 +25,27 @@ describe("Side Menu", () => {
             state: States.READY,
         },
     };
-    const store = configureStore()({ channelName: storeState });
+    const store = configureStore()({ ChannelName: storeState });
     it("should render properly for mods", () => {
         const props = {
+            hideMenu: () => {return; },
             isModOnChannel: true,
-            match: {
-                params: {
-                    channelID: "2345",
-                },
-            },
             menuState: SideMenuStates.SHOWN,
             userInfo: {
                 avatarUrl: "",
-                modChannels: [],
+                modChannels: [] as IUserModInfo[],
                 state: States.READY,
                 userID: "2342342",
                 username: "63636363",
             },
         };
+        const matchProps = getMockRouterProps<IChannelRoute>({
+            channelID: "2345",
+        });
         const notifications = create(
             <Provider store={store}>
                 <MemoryRouter initialEntries={[Routes.ToTemplates("2345")]}>
-                    <SideMenu {...props} />
+                    <SideMenu {...matchProps} {...props} />
                 </MemoryRouter>
             </Provider>,
         );
@@ -51,24 +56,23 @@ describe("Side Menu", () => {
         const props = {
             hideMenu: () => "boo",
             isModOnChannel: false,
-            match: {
-                params: {
-                    channelID: "234567",
-                },
-            },
             menuState: SideMenuStates.SHOWN,
             userInfo: {
                 avatarUrl: "",
-                modChannels: [],
+                modChannels: [] as IUserModInfo[],
                 state: States.READY,
                 userID: "2342342",
                 username: "63636363",
             },
         };
+        const matchProps = getMockRouterProps<IChannelRoute>({
+            channelID: "234567",
+        });
+
         const notifications = create(
             <Provider store={store}>
                 <MemoryRouter initialEntries={[Routes.ToTemplates("2345")]}>
-                    <SideMenu {...props} />
+                    <SideMenu {...matchProps} {...props} />
                 </MemoryRouter>
             </Provider>,
         );
@@ -78,25 +82,22 @@ describe("Side Menu", () => {
         const props = {
             hideMenu: () => "boo",
             isModOnChannel: false,
-
-            match: {
-                params: {
-                    channelID: "2345",
-                },
-            },
             menuState: SideMenuStates.SHOWN,
             userInfo: {
                 avatarUrl: "",
-                modChannels: [],
+                modChannels: [] as IUserModInfo[],
                 state: States.LOADING,
                 userID: "",
                 username: "",
             },
         };
+        const matchProps = getMockRouterProps<IChannelRoute>({
+            channelID: "2345",
+        });
         const notifications = create(
             <Provider store={store}>
                 <MemoryRouter initialEntries={[Routes.ToTemplates("2345")]}>
-                    <SideMenu {...props} />
+                    <SideMenu {...matchProps} {...props} />
                 </MemoryRouter>
             </Provider> ,
         );

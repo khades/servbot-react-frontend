@@ -74,6 +74,7 @@ exports[`Side Menu should render properly for mods 1`] = `
 >
   <div
     className="site-menu__container"
+    onClick={[Function]}
   >
     <a
       className="site-menu__header"

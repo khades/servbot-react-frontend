@@ -67,6 +67,7 @@ export default class SubAlertForm extends React.PureComponent<ISubAlertsFormProp
                     label={l10n.formatString(l10n.SUBALERTS_SUB_ALERT, label)}
                     id={subID}
                     className="subalerts__sub-message"
+                    // THIS is fine
                     // @ts-ignore
                     value={this.state[subID]}
                     setValue={this.setValue}

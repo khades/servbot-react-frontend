@@ -5,8 +5,8 @@ import NotificationsComponent, { INotificationsProps } from "./component";
 describe("Notifications", () => {
     it("should render properly  ", () => {
         const props: INotificationsProps = {
+            autohideNotifications: () => null,
             hideNotification: (id) => id,
-
             notifications: [{
                 body: "AAAAAA",
                 date: new Date(),
@@ -27,8 +27,8 @@ describe("Notifications", () => {
         expect(notifications.toJSON()).toMatchSnapshot();
 
         const newProps: INotificationsProps = {
+            autohideNotifications: () => null,
             hideNotification: (id) => id,
-
             notifications: [{
                 body: "AAAAAA",
                 date: new Date(),
@@ -49,8 +49,8 @@ describe("Notifications", () => {
         let hiddenNotification = "";
         const notificationToHide = "333";
         const props: INotificationsProps = {
+            autohideNotifications: () => null,
             hideNotification: (id) => hiddenNotification = id,
-
             notifications: [{
                 body: "AAAAAA",
                 date: new Date(),

@@ -16,7 +16,12 @@ const ModeratorPanel = React.memo((props: ISubDayProps) => {
     function pickSubDayWinner() {
         props.pickSubDayWinner(props.match.params.channelID, props.id);
     }
-
+    function pickSubDaySubWinner() {
+        props.pickSubDaySubWinner(props.match.params.channelID, props.id);
+    }
+    function pickSubDayNonSubWinner() {
+        props.pickSubDayNonSubWinner(props.match.params.channelID, props.id);
+    }
     function closeSubDay() {
         props.closeSubDay(props.match.params.channelID, props.id);
     }
@@ -33,10 +38,10 @@ const ModeratorPanel = React.memo((props: ISubDayProps) => {
 
     const extraButtons = content.subsOnly !== true ? (
         <React.Fragment>
-            <button type="button" onClick={this.props.pickSubDaySubWinner}>
+            <button type="button" onClick={pickSubDaySubWinner}>
                 {l10n.SUBDAY_RANDOMIZE_WINNER_SUBS}
             </button>
-            <button type="button" onClick={this.props.pickSubDayNonSubWinner}>
+            <button type="button" onClick={pickSubDayNonSubWinner}>
                 {l10n.SUBDAY_RANDOMIZE_WINNER_NONSUBS}
             </button>
         </React.Fragment>
