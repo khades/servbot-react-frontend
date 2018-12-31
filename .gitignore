@@ -5,10 +5,10 @@ dist/*.js
 dist/app.js.map
 dist/style.css
 dist/style.css.map
-config.js
+/config.js
 yarn.lock
 package-lock.json
-config.ts
+/config.ts
 yarn-error.log
 .vscode
 coverage
