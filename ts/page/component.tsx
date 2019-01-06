@@ -92,6 +92,11 @@ const LoadableSongRequests = Loadable({
     loading: () => <StatusWrapper state={States.LOADING} />,
 });
 
+const LoadableDonationSources = Loadable({
+    loader: () => import("../donationSources/container"),
+    loading: () => <StatusWrapper state={States.LOADING} />,
+});
+
 export interface IPageStateProps {
     userInfo: IUserInfoState;
 }
@@ -140,6 +145,7 @@ export default class PageComponent extends React.PureComponent<IPageProps, {}> {
                         <Route exact={true} path={routes.Subs} component={LoadableSubscriptions} />
                         <Route exact={true} path={routes.SubTrain} component={LoadableSubTrain} />
                         <Route exact={true} path={routes.SongRequests} component={LoadableSongRequests} />
+                        <Route exact={true} path={routes.DonationSources} component={LoadableDonationSources} />
                     </div>
                 </section>
             </div>

@@ -74,3 +74,7 @@ export const ToLastSubDay = (channelID: string) =>
 export const SongRequests = "/channel/:channelID/songrequests";
 
 export const ToSongRequests = (channelID: string) => generatePath(SongRequests, { channelID });
+
+export const DonationSources = "/channel/:channelID/donationSources";
+
+export const ToDonationSources = (channelID: string) => generatePath(DonationSources, { channelID });

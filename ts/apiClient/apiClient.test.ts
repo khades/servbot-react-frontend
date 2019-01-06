@@ -15,7 +15,7 @@ describe("API auth", () => {
         return expect(APIClient.auth("1")).rejects.toEqual({ state: States.FORBIDDEN });
     });
     it("Should properly reject if status code is 422", () => {
-        fetchMock.get("*", { status: 422 });
+        fetchMock.get("*", { status: 422, body: { sdsds: "Sds" }, sendAsJson: true });
         return expect(APIClient.auth("1")).rejects.toEqual({ state: States.VALIDATIONERROR, content: {} });
     });
 

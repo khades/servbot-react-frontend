@@ -1,6 +1,7 @@
 var config = {
     appUrl: "http://localhost:8080",
-    defaultLang:"ru-RU"
+    defaultLang:"ru-RU",
+    yandexClientID:"",
 }
 
 export default config;

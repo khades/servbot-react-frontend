@@ -60,6 +60,9 @@ import BannedTracks, { IBannedTracksState } from "./bannedtracks/reducer";
 
 import { StatusWrapperAction } from "./statusWrapper/actions";
 import StatusWrapper, { IStatusWrapperState } from "./statusWrapper/reducer";
+
+import { DonationSourcesAction } from "./donationSources/actions";
+import DonationSources, { IDonationSourcesState } from "./donationSources/reducer";
 // import { routerReducer } from "react-router-redux";
 
 export interface IStore {
@@ -69,6 +72,7 @@ export interface IStore {
   readonly Bans: IBansState;
   readonly ChannelName: IChannelNameState;
   readonly ChannelUsers: IChannelUsersState;
+  readonly DonationSources: IDonationSourcesState;
   readonly ExternalServices: IExternalServicesState;
   readonly Notifications: INotification[];
   readonly SideMenu: ISideMenuState;
@@ -91,6 +95,7 @@ type actions = | AutoMessageAction
   | BansAction
   | ChannelNameAction
   | ChannelUsersAction
+  | DonationSourcesAction
   | ExternalServicesAction
   | NotificationsAction
   | SideMenuAction
@@ -113,6 +118,7 @@ export default combineReducers<IStore, actions>({
   Bans,
   ChannelName,
   ChannelUsers,
+  DonationSources,
   ExternalServices,
   Notifications,
   SideMenu,
