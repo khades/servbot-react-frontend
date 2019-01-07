@@ -2,8 +2,9 @@
     "compilerOptions": {
         "sourceMap": true,
         "noImplicitAny": true,
-        "target": "es2015",
         "module": "esNext",
+        "target": "es5",
+        "lib": ["es6", "es2015","dom", "es2015.promise"],
         "jsx": "react",
         "moduleResolution": "node"
         //,
