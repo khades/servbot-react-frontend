@@ -9,7 +9,6 @@
 
     &__menu {
         top: 2.85em;
-        // background-color: $background-main-color;
         margin-left: auto;
         margin-right: auto;
 
@@ -23,22 +22,9 @@
             top: 0;
         }
 
-        //   top: 0;
+
         overflow: hidden;
         z-index: 5;
-        //transition: transform 150ms linear;
-
-        // &.hidden {
-        //     transform: translateX(-100%);
-
-        //     @include breakpoint($desktop-width) {
-        //         transform: translateX(0%);
-        //     }
-        // }
-
-        // &.shown {
-        //     transform: translateX(0%);
-        // }
     }
 
     &__content {
