@@ -130,6 +130,7 @@ const l10nRU = {
     SUBTRAIN_PARTICIPANTS: "Участники текущего сабтрейна: {0}",
     SUBTRAIN_SIZE: "Размер сабтрейна: ",
     SUBTRAIN_TITLE: "Сабтрейн на канале {0}",
+    SUPPORT_BOT_DEVELOPER: "Поддержать разработчика",
     TEMPLATES_COMMAND_LIST: "Список команд",
     TEMPLATES_CREATE_GOTO: "Создать новую команду или перейти к существующей",
     TEMPLATES_LIST: "Показать команды",

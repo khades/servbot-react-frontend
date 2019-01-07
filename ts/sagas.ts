@@ -5,7 +5,7 @@ import bannedTracks from "./bannedtracks/saga";
 import bans from "./bans/saga";
 import channelName from "./channelName/saga";
 import channelUsers from "./channelUsers/saga";
-import donationSources from "./donationSources/saga";
+// import donationSources from "./donationSources/saga";
 import externalServices from "./externalservices/saga";
 import songrequests from "./songrequests/saga";
 import subAlerts from "./subAlerts/saga";
@@ -26,7 +26,7 @@ export default function* rootSaga() {
         fork(bans),
         fork(channelName),
         fork(channelUsers),
-        fork(donationSources),
+        // fork(donationSources),
         fork(externalServices),
         fork(songrequests),
         fork(subAlerts),

@@ -175,4 +175,5 @@ export interface IL10nStrings extends LocalizedStringsMethods {
     SUBDAY_LIST: string;
     SUBDAY_ALREADY_ACTIVE: string;
     LANGUAGE: string;
+    SUPPORT_BOT_DEVELOPER: string;
 }

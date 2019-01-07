@@ -128,6 +128,7 @@ const l10nEN = {
     SUBTRAIN_PARTICIPANTS: "Current subtrain participants: {0}",
     SUBTRAIN_SIZE: "Subtrain size: ",
     SUBTRAIN_TITLE: "Subtrain on channel {0}",
+    SUPPORT_BOT_DEVELOPER: "Support developer",
     TEMPLATES_COMMAND_LIST: "List of commands",
     TEMPLATES_CREATE_GOTO: "Create new command or jump to existing one",
     TEMPLATES_LIST: "Show commands",

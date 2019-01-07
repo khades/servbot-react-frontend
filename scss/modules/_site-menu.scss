@@ -4,8 +4,35 @@
     background-color: $background-main-color;
     overflow-y: hidden;
     overflow-x: hidden;
-
+    // height:100vh;
+    // min-height:100vh;
+    justify-content: space-between;
+    &__footer {
+        background: black;
+        display:flex;
+        flex-direction: column;
+        height: 80px;
+        justify-content: center;
+        position: fixed;
+        bottom:0;
+        left:0;
+        right:0;
+        color: white;
+        > * {
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+    }
     &__container {
+        a {
+            width: 89%;
+            transition: background-color 150ms linear;
+            display: inline-flex;
+            align-items: center;
+            padding-left: 1em;
+            padding-right: 1em;
+            vertical-align: middle;
+        }
         overflow-y: scroll;
         overflow-x: hidden;
         width: 120%;
@@ -15,7 +42,6 @@
             background-color: black; //border-bottom: 2px solid white;
             //    border-top: 2px solid white;
         }
-
         height: 100%;
         display: inline-flex;
         flex-direction: column;
@@ -27,6 +53,8 @@
 
         padding: 0;
         margin: 0;
+        padding-bottom: 80px;
+
     }
 
     &__header {
@@ -51,15 +79,7 @@
         }
     }
 
-    a {
-        width: 89%;
-        transition: background-color 150ms linear;
-        display: inline-flex;
-        align-items: center;
-        padding-left: 1em;
-        padding-right: 1em;
-        vertical-align: middle;
-    }
+
 
     &__link {
         min-height: 2.85em;

@@ -18,7 +18,7 @@ export interface ISideMenuStateProps {
     userInfo: IUserInfoState;
 }
 
-export interface ISideMenuDispatchedProps  {
+export interface ISideMenuDispatchedProps {
     hideMenu: () => void;
 }
 
@@ -89,6 +89,13 @@ export default class SideMenu extends React.PureComponent<ISideMenuProps, ISideM
                 <div className="site-menu__container" onClick={this.props.hideMenu}>
                     {this.generateLink()}
                     {this.state.routes.map(this.generateMenuItem)}
+                </div>
+                <div className="site-menu__footer">
+                    <div>
+                        {l10n.SUPPORT_BOT_DEVELOPER}
+                    </div>
+                    <a href="https://www.paypal.me/khades" target="_blank">Paypal</a>
+                    <a href="https://yasobe.ru/na/na_razrabotku_etozhebot" target="_blank">Yandex.Money</a>
                 </div>
             </div>
         );
