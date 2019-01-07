@@ -27,7 +27,7 @@ const reducer = (state: ISubDayState = initialState, action: SubDayAction): ISub
             return Object.assign({}, state, {
                 channelID: action.payload.channelID,
                 content: action.payload.content,
-                id: action.payload.id,
+                id: action.payload.content.id,
                 state: States.READY,
             });
         case actiontypes.UPDATING:
