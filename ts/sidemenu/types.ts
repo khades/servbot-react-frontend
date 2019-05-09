@@ -5,6 +5,7 @@ export interface IRoute {
     link: (channelID: string) => string;
     label: string;
     modsOnly?: boolean;
+    nonModsOnly?: boolean;
 }
 
 export const routes: IRoute[] = [{
@@ -38,6 +39,12 @@ export const routes: IRoute[] = [{
 {
     label: l10n.SUBDAYS,
     link: Routes.ToSubDays,
+    modsOnly: true,
+},
+{
+    label: l10n.SUBDAYS,
+    link: Routes.ToLastSubDay,
+    nonModsOnly: true,
 },
 {
     label: l10n.SUBSCRIPTIONS,
@@ -53,4 +60,4 @@ export const routes: IRoute[] = [{
     label: l10n.SUBTRAIN,
     link: Routes.ToSubTrain,
     modsOnly: true,
-}];
+},];

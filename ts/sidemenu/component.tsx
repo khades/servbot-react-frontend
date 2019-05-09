@@ -49,7 +49,7 @@ export default class SideMenu extends React.PureComponent<ISideMenuProps, ISideM
                 };
             });
         } else {
-            return routes.map((item) => {
+            return routes.filter((item) => item.nonModsOnly !== true).map((item) => {
                 return {
                     label: item.label,
                     link: item.link(channelID),

@@ -124,7 +124,7 @@ export default class SubscriptionsComponent extends React.PureComponent<ISubscri
         return (
             <div className={itemClasses} key={item.id} onClick={this.onBookMarkClick}>
                 <div className={planClass}>
-                    ${item.user} ({item.count})
+                    {item.user} ({item.count})
                     <div className="subscriptions__item__user__tooltip">
                         {item.user}#{item.userID}
                     </div>
